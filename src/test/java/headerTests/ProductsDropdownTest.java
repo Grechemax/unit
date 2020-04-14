@@ -5,7 +5,6 @@ import base.BaseTest;
 import base.HeaderBasePage;
 import data.Urls;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
 
 public class ProductsDropdownTest extends BaseTest {
     private HeaderBasePage headerBasePage;

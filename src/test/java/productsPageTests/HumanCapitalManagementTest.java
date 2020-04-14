@@ -3,24 +3,23 @@ package productsPageTests;
 
 import base.BasePage;
 import base.BaseTest;
+import base.HeaderBasePage;
 import data.Urls;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
 import pageObjects.products.HumanCapitalManagementPage;
 
 public class HumanCapitalManagementTest extends BaseTest {
-    HomePage homePage;
+    HeaderBasePage headerBasePage;
     HumanCapitalManagementPage humanCapitalManagementPage;
 
 
     @Test
     public void checkAllTitlesPresent() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        homePage = new HomePage(getDriver());
+        headerBasePage = new HeaderBasePage(getDriver());
         humanCapitalManagementPage = new HumanCapitalManagementPage(getDriver());
-        homePage.goToHumanCapitalManagement();
-        homePage.acceptCookies();
+        headerBasePage.goToHumanCapitalManagement();
 
         Assert.assertTrue(humanCapitalManagementPage.isMainTitlePresent());
         Assert.assertTrue(humanCapitalManagementPage.isEnergizeYourPeopleTitlePresent());

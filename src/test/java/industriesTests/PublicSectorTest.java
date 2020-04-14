@@ -2,11 +2,10 @@ package industriesTests;
 
 import base.BasePage;
 import base.BaseTest;
+import base.HeaderBasePage;
 import data.Urls;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
-import pageObjects.industries.ProfessionalServicesPage;
 import pageObjects.industries.PublicSectorPage;
 
 public class PublicSectorTest extends BaseTest {
@@ -15,12 +14,12 @@ public class PublicSectorTest extends BaseTest {
     @Test
     public void checkAllTitlesPresent() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        HomePage homePage = new HomePage(getDriver());
+        HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
         publicSectorPage = new PublicSectorPage(getDriver());
-        homePage.goToPublicSector();
+        headerBasePage.goToPublicSector();
 
         Assert.assertTrue(publicSectorPage.isMainTitlePresent());
-        Assert.assertTrue(publicSectorPage.isDownLoadPDFPresent());
+        Assert.assertTrue(publicSectorPage.isLearnMoreBtnPresent());
         Assert.assertTrue(publicSectorPage.isCustomerSuccessTitle());
         Assert.assertTrue(publicSectorPage.isCityOfPortTitleTitle());
         Assert.assertTrue(publicSectorPage.isBreakFreeTitlePresent());

@@ -3,10 +3,10 @@ package industriesTests;
 
 import base.BasePage;
 import base.BaseTest;
+import base.HeaderBasePage;
 import data.Urls;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
 import pageObjects.industries.NonprofitPage;
 
 public class NonprofitTest extends BaseTest {
@@ -15,13 +15,13 @@ public class NonprofitTest extends BaseTest {
     @Test
     public void checkAllTitlesPresent() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        HomePage homePage = new HomePage(getDriver());
+        HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
         nonprofitPage = new NonprofitPage(getDriver());
-        homePage.goToNonProfit();
+        headerBasePage.goToNonProfit();
 
         Assert.assertTrue(nonprofitPage.isMainTitlePresent());
         Assert.assertTrue(nonprofitPage.isWarChildPresent());
-        Assert.assertTrue(nonprofitPage.isDownLoadPDFPresent());
+        Assert.assertTrue(nonprofitPage.isLearnMoreBtnPresent());
         Assert.assertTrue(nonprofitPage.isCustomerSuccessTitle());
         Assert.assertTrue(nonprofitPage.isBreakFreeTitlePresent());
         Assert.assertTrue(nonprofitPage.isYourPartnerInNonprofitTitlePresent());

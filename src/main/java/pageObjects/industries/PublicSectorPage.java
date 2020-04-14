@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public class PublicSectorPage extends BasePage {
-    private By mainTitle = By.xpath("//h1[contains(@class, 'section-title')]");
-    private By downLoadPDF = By.xpath("//a[contains(text(), 'Download PDF')]");
+    private By mainTitle = By.xpath("//h1[contains(text(), 'Public Sector')]");
+    private By learnMoreButton = By.xpath("//section[1]//a[contains(text(), 'Learn more')]");
     private By yourPartnerInPublicServiceTitle = By.xpath("//section[2]/div/div[1]/h2");
     private By breakFreeTitle = By.xpath("//section[3]/div/div/div[1]/h3");
     private By yourNewPeopleExperienceTitle = By.xpath("//section[4]/div/div[1]/h2");
@@ -37,9 +37,9 @@ public class PublicSectorPage extends BasePage {
         return isElementPresent(mainTitle);
     }
 
-    public boolean isDownLoadPDFPresent() {
-        Reporter.log("'Download PDF button' is present");
-        return isElementPresent(downLoadPDF);
+    public boolean isLearnMoreBtnPresent() {
+        Reporter.log("'Learn more' button is present");
+        return isElementPresent(learnMoreButton);
     }
 
     public boolean isYourPartnerInPublicServiceTitlePresent() {

@@ -47,6 +47,7 @@ public class FinancialPlanningPage extends BasePage {
 
     public boolean isGainMeaningfulInsightsTitlePresent() {
         Reporter.log("Gain Meaningful Insights title is present");
+        waitForElement(gainMeaningfulInsightsTitle);
         return isElementPresent(gainMeaningfulInsightsTitle);
     }
 

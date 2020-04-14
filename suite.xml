@@ -8,9 +8,20 @@
         </classes>
     </test>
 
-    <test name="CheckSiteNavDropdowns">
+<!--    Dropdowns-->
+    <test name="IndustriesDropdownTest">
         <classes>
-            <class name="headerTests.CheckSiteNavTest"/>
+            <class name="headerTests.IndustriesDropdownTest"/>
+        </classes>
+    </test>
+    <test name="ProductsDropdownTest">
+        <classes>
+            <class name="headerTests.ProductsDropdownTest"/>
+        </classes>
+    </test>
+    <test name="ResourcesDropdownTest">
+        <classes>
+            <class name="headerTests.ResourcesDropdownTest"/>
         </classes>
     </test>
 
@@ -31,57 +42,75 @@
         </classes>
     </test>
 
-<!--    <test name="ProductsPageTest">-->
-<!--        <classes>-->
-<!--            <class name="productsPageTests.ProductsPageTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="Products => EnterpriseResourcePlanningTest">-->
-<!--        <classes>-->
-<!--            <class name="productsPageTests.EnterpriseResourcePlanningTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="Products => FinancialPlanningTest">-->
-<!--        <classes>-->
-<!--            <class name="productsPageTests.FinancialPlanningTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="Products => HumanCapitalManagementTest">-->
-<!--        <classes>-->
-<!--            <class name="productsPageTests.HumanCapitalManagementTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="Products = > StudentManagementTest">-->
-<!--        <classes>-->
-<!--            <class name="productsPageTests.StudentManagementTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="ProductsPageTest">
+        <classes>
+            <class name="productsPageTests.ProductsHomePageTest"/>
+        </classes>
+    </test>
+    <test name="Products => EnterpriseResourcePlanningTest">
+        <classes>
+            <class name="productsPageTests.EnterpriseResourcePlanningTest"/>
+        </classes>
+    </test>
+    <test name="Products => FinancialPlanningTest">
+        <classes>
+            <class name="productsPageTests.FinancialPlanningTest"/>
+        </classes>
+    </test>
+    <test name="Products => HumanCapitalManagementTest">
+        <classes>
+            <class name="productsPageTests.HumanCapitalManagementTest"/>
+        </classes>
+    </test>
+    <test name="Products = > StudentManagementTest">
+        <classes>
+            <class name="productsPageTests.StudentManagementTest"/>
+        </classes>
+    </test>
 
-<!--    <test name="Industries = > HigherEducationTest">-->
-<!--        <classes>-->
-<!--            <class name="industriesTests.HigherEducationTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="Industries = > NonprofitTest">-->
-<!--        <classes>-->
-<!--            <class name="industriesTests.NonprofitTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="Industries = > ProfessionalServicesTest">-->
-<!--        <classes>-->
-<!--            <class name="industriesTests.ProfessionalServicesTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-<!--    <test name="Industries = > PublicSectorTest">-->
-<!--        <classes>-->
-<!--            <class name="industriesTests.PublicSectorTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Industries = > HigherEducationTest">
+        <classes>
+            <class name="industriesTests.HigherEducationTest"/>
+        </classes>
+    </test>
+    <test name="Industries = > NonprofitTest">
+        <classes>
+            <class name="industriesTests.NonprofitTest"/>
+        </classes>
+    </test>
+    <test name="Industries = > ProfessionalServicesTest">
+        <classes>
+            <class name="industriesTests.ProfessionalServicesTest"/>
+        </classes>
+    </test>
+    <test name="Industries = > PublicSectorTest">
+        <classes>
+            <class name="industriesTests.PublicSectorTest"/>
+        </classes>
+    </test>
 
-<!--    <test name="LeaveMessageFormTest">-->
-<!--        <classes>-->
-<!--            <class name="homePageTests.LeaveMessageFormTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+
+<!--    Customers-->
+    <test name="Customers = > CityOfPortTest">
+        <classes>
+            <class name="customersTests.CityOfPortTest"/>
+        </classes>
+    </test>
+    <test name="Customers = > FHstPoltenTest">
+        <classes>
+            <class name="customersTests.FHstPoltenTest"/>
+        </classes>
+    </test>
+    <test name="Customers = > ManchesterUniversityTest">
+        <classes>
+            <class name="customersTests.ManchesterUniversityTest"/>
+        </classes>
+    </test>
+
+    <!--    <test name="LeaveMessageFormTest">-->
+    <!--        <classes>-->
+    <!--            <class name="homePageTests.LeaveMessageFormTest"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 
 </suite>

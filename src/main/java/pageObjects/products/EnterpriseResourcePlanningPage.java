@@ -8,11 +8,11 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class EnterpriseResourcePlanningPage extends BasePage {
-    private By mainTitle = By.xpath("//h1[contains(@class, 'section-title')]");
+    private By erpMainTitle = By.xpath("//h1[contains(text(), 'Unit4 Enterprise Resource Planning')]");
     private By elevateYourBusinessTitle = By.xpath("//section[2]/div[1]/div/h2");
     private By experienceSuiteTitle = By.xpath("//section[3]/div/div[1]/h2");
     private By createBetterWayTitle = By.xpath("//section[4]/div/div/div[1]/h2");
-    private By warChildTitle = By.xpath("//section[5]/div/div/div[2]/div[1]/h3");
+    private By warChildTitle = By.xpath("//*[contains(text(), 'War Child')]");
 
     private By financialManagementPanelItem = By.xpath("//a[@id='tab-link-1716']");
     private By projectManagementPanelItem = By.xpath("//a[@id='tab-link-4436']");
@@ -34,9 +34,9 @@ public class EnterpriseResourcePlanningPage extends BasePage {
 
 
     public boolean isMainTitlePresent() {
-        waitForElement(mainTitle);
+        waitForElement(erpMainTitle);
         Reporter.log("Main title is present");
-        return isElementPresent(mainTitle);
+        return isElementPresent(erpMainTitle);
     }
 
 
@@ -61,7 +61,7 @@ public class EnterpriseResourcePlanningPage extends BasePage {
     }
 
     public String getMainTitleText() {
-        return getElementText(mainTitle);
+        return getElementText(erpMainTitle);
     }
 
     public String getElevateYourBusinessTitleText() {

@@ -20,7 +20,7 @@ public class CustomersHomePage extends BasePage {
     private By manchesterUniversityTitle = By.xpath("//*[contains(text(), 'Manchester Metropolitan University')]");
     private By screwFixTitle = By.xpath("//*[contains(text(), 'Screwfix')]");
     private By stanleySecurityTitle = By.xpath("//*[contains(text(), 'Stanley Security)]");
-    private By warChildTitle = By.xpath("//*[contains(text(), 'War)]");
+    private By warChildTitle = By.xpath("//*[contains(text(), 'War Child')]");
 
 
     public void isCustomersMainTitlePresent() {

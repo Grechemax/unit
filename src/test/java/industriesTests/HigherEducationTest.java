@@ -2,10 +2,10 @@ package industriesTests;
 
 import base.BasePage;
 import base.BaseTest;
+import base.HeaderBasePage;
 import data.Urls;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
 import pageObjects.industries.HigherEducationPage;
 
 
@@ -15,9 +15,9 @@ public class HigherEducationTest extends BaseTest {
     @Test
     public void checkAllTitlesPresent() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        HomePage homePage = new HomePage(getDriver());
+        HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
         higherEducationPage = new HigherEducationPage(getDriver());
-        homePage.goToHigherEducation();
+        headerBasePage.goToHigherEducation();
 
         Assert.assertTrue(higherEducationPage.isMainTitlePresent());
         Assert.assertTrue(higherEducationPage.isYourPartnerInEducationTitle());

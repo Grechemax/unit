@@ -2,24 +2,24 @@ package productsPageTests;
 
 import base.BasePage;
 import base.BaseTest;
+import base.HeaderBasePage;
 import data.Urls;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.products.FinancialPlanningPage;
 import pageObjects.HomePage;
+import pageObjects.products.FinancialPlanningPage;
 
 public class FinancialPlanningTest extends BaseTest {
-    HomePage homePage;
-    FinancialPlanningPage financialPlanningPage;
+    private HomePage homePage = new HomePage(getDriver());
+    private HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
+    private FinancialPlanningPage financialPlanningPage = new FinancialPlanningPage(getDriver());
 
 
     @Test
     public void checkAllTitlesPresent() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        homePage = new HomePage(getDriver());
-        financialPlanningPage = new FinancialPlanningPage(getDriver());
-        homePage.goToFinancialPlaning();
-        homePage.acceptCookies();
+        headerBasePage.goToFinancialPlaning();
+//        homePage.acceptCookies();
 
         Assert.assertTrue(financialPlanningPage.isMainTitlePresent());
         Assert.assertTrue(financialPlanningPage.isGainMeaningfulInsightsTitlePresent());

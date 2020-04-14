@@ -14,7 +14,7 @@ import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 
 import javax.imageio.ImageIO;
-import javax.xml.ws.Response;
+//import javax.xml.ws.Response;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -845,7 +845,6 @@ public class BasePage extends BaseTest {
             WebDriverWait wait = new WebDriverWait(getDriver(), 60);
             wait.until(ExpectedConditions.visibilityOf(element));
         } catch (Exception e) {
-
             throw e;
         }
     }

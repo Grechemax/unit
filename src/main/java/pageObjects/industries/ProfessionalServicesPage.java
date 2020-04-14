@@ -7,12 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public class ProfessionalServicesPage extends BasePage {
-    private By mainTitle = By.xpath("//h1[contains(@class, 'section-title')]");
-    private By yourPartnerInOperationalExcellenceTitle = By.xpath("//section[2]/div/div[1]/h2");
-    private By crackingProductivityTitle = By.xpath("//section[3]/div/div/div[1]/h2");
-    private By yourNewPeopleExperienceTitle = By.xpath("//*[contains(text(), 'The Unit4 People Experience Suite will humanize')]");
-    private By customersSuccessStoriesTitle = By.xpath("//section[5]/div/div/h2");
-    private By stanleySecurityTitle = By.xpath("//section[6]/div/div/div[2]/div[1]/h3");
+    private By professionalServiceMainTitle = By.xpath("//h1[contains(text(), 'Professional Services')]");
+    private By yourPartnerInDeliveringExcellenceTitle = By.xpath("//h2[contains(text(), 'Your Partner in Delivering Excellence')]");
+    private By crackProductivityCodeTitle = By.xpath("//h2[contains(text(), 'Crack the Productivity Code')]");
+    private By yourNewPeopleExperienceTitle = By.xpath("//h2[contains(text(), 'Your New Unit4 People Experience Suite')]");
+    private By customersSuccessStoriesTitle = By.xpath("//h2[contains(text(), 'Customer Success Stories')]");
+    private By stanleySecurityTitle = By.xpath("//h3[contains(text(), 'Stanley Security')]");
 
     private By driveProjectPanelItem = By.xpath("//a[@id='tab-link-1966']");
     private By optimizeResourcePanelItem = By.xpath("//a[@id='tab-link-1976']");
@@ -29,19 +29,19 @@ public class ProfessionalServicesPage extends BasePage {
     }
 
     public boolean isMainTitlePresent() {
-        waitForElement(mainTitle);
+        waitForElement(professionalServiceMainTitle);
         Reporter.log("Main title is present");
-        return isElementPresent(mainTitle);
+        return isElementPresent(professionalServiceMainTitle);
     }
 
-    public boolean isYourPartnerInOperationalExcellenceTitlePresent() {
-        Reporter.log("'Your Partner In Operational Excellence' is present");
-        return isElementPresent(yourPartnerInOperationalExcellenceTitle);
+    public boolean isYourPartnerInDeliveringExcellenceTitlePresent() {
+        Reporter.log("'Your Partner In Delivering Excellence' is present");
+        return isElementPresent(yourPartnerInDeliveringExcellenceTitle);
     }
 
-    public boolean isCrackingProductivityTitlePresent() {
-        Reporter.log("'Cracking Productivity' is present");
-        return isElementPresent(crackingProductivityTitle);
+    public boolean isCrackProductivityCodeTitlePresent() {
+        Reporter.log("'Crack The Productivity Code' Title is present");
+        return isElementPresent(crackProductivityCodeTitle);
     }
 
     public boolean isYourNewPeopleExperienceTitlePresent() {
@@ -60,15 +60,16 @@ public class ProfessionalServicesPage extends BasePage {
     }
 
     public String getMainTitleText() {
-        return getElementText(mainTitle);
+        waitForElement(professionalServiceMainTitle);
+        return getElementText(professionalServiceMainTitle);
     }
 
     public String getYourPartnerInOperationalExcellenceTitleText() {
-        return getElementText(yourPartnerInOperationalExcellenceTitle);
+        return getElementText(yourPartnerInDeliveringExcellenceTitle);
     }
 
-    public String getCrackingProductivityTitleText() {
-        return getElementText(crackingProductivityTitle);
+    public String getCrackProductivityCodeTitleText() {
+        return getElementText(crackProductivityCodeTitle);
     }
 
     public String getYourNewPeopleExperienceTitleText() {

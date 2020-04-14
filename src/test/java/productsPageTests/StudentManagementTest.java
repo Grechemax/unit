@@ -2,24 +2,23 @@ package productsPageTests;
 
 import base.BasePage;
 import base.BaseTest;
+import base.HeaderBasePage;
 import data.Urls;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
 import pageObjects.products.StudentManagementPage;
 
 public class StudentManagementTest extends BaseTest {
-    HomePage homePage;
+    HeaderBasePage headerBasePage;
     StudentManagementPage studentManagementPage;
 
 
     @Test
     public void checkAllTitlesPresent() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        homePage = new HomePage(getDriver());
+        headerBasePage = new HeaderBasePage(getDriver());
         studentManagementPage = new StudentManagementPage(getDriver());
-        homePage.goToStudentManagement();
-        homePage.acceptCookies();
+        headerBasePage.goToStudentManagement();
 
         Assert.assertTrue(studentManagementPage.isMainTitlePresent());
         Assert.assertTrue(studentManagementPage.isSupportGrowthTitlePresent());

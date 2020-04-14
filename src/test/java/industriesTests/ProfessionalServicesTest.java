@@ -2,10 +2,10 @@ package industriesTests;
 
 import base.BasePage;
 import base.BaseTest;
+import base.HeaderBasePage;
 import data.Urls;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
 import pageObjects.industries.ProfessionalServicesPage;
 
 public class ProfessionalServicesTest extends BaseTest {
@@ -14,14 +14,13 @@ public class ProfessionalServicesTest extends BaseTest {
     @Test
     public void checkAllTitlesPresent() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        HomePage homePage = new HomePage(getDriver());
+        HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
         professionalServicesPage = new ProfessionalServicesPage(getDriver());
-        homePage.goToProfessionalServices();
+        headerBasePage.goToProfessionalServices();
 
         Assert.assertTrue(professionalServicesPage.isMainTitlePresent());
-        Assert.assertTrue(professionalServicesPage.isYourPartnerInOperationalExcellenceTitlePresent());
-        Assert.assertTrue(professionalServicesPage.isCrackingProductivityTitlePresent());
-        Assert.assertTrue(professionalServicesPage.isCrackingProductivityTitlePresent());
+        Assert.assertTrue(professionalServicesPage.isYourPartnerInDeliveringExcellenceTitlePresent());
+        Assert.assertTrue(professionalServicesPage.isCrackProductivityCodeTitlePresent());
         Assert.assertTrue(professionalServicesPage.isYourNewPeopleExperienceTitlePresent());
         Assert.assertTrue(professionalServicesPage.isCustomerSuccessTitle());
         Assert.assertTrue(professionalServicesPage.isStanleySecurityTitlePresent());
@@ -31,8 +30,8 @@ public class ProfessionalServicesTest extends BaseTest {
     @Test
     public void checkAllTitlesText() {
         Assert.assertEquals(professionalServicesPage.getMainTitleText(), "Professional Services Organizations");
-        Assert.assertEquals(professionalServicesPage.getYourPartnerInOperationalExcellenceTitleText(), "Your Partner in Operational Excellence");
-        Assert.assertEquals(professionalServicesPage.getCrackingProductivityTitleText(), "Cracking the Productivity Code");
+        Assert.assertEquals(professionalServicesPage.getYourPartnerInOperationalExcellenceTitleText(), "Your Partner in Delivering Excellence");
+        Assert.assertEquals(professionalServicesPage.getCrackProductivityCodeTitleText(), "Crack the Productivity Code");
         Assert.assertEquals(professionalServicesPage.getYourNewPeopleExperienceTitleText(), "Your New Unit4 People Experience Suite");
         Assert.assertEquals(professionalServicesPage.getCustomersSuccessStoriesTitleText(), "Customer Success Stories");
         Assert.assertEquals(professionalServicesPage.getStanleySecurityTitleText(), "Stanley Security");
