@@ -1,1 +1,0 @@
-{"uuid":"12b2ead9-0346-47fd-889a-511e1c30a4a5","name":"NegativeSearch","children":["4d720211-c6d4-4423-9d6a-5db61bafe68d"],"befores":[{"name":"driverSetUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1585913711487,"stop":1585913712871}],"afters":[],"links":[],"start":1585913711487,"stop":1585913721643}
