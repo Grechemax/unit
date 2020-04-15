@@ -13,18 +13,43 @@ public class CustomersHomePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    private By customersMainTitle = By.xpath("//*contains[(text(), 'People-centric work solutions for people who serve people')]");
+    private By customersMainTitle = By.xpath("//*[contains(text(), 'People-centric work solutions')]");
 
     private By cityOfPortTitle = By.xpath("//*[contains(text(), 'City of Port Coquitlam')]");
     private By austrianUniversityTitle = By.xpath("//*[contains(text(), 'FH St Pölten')]");
     private By manchesterUniversityTitle = By.xpath("//*[contains(text(), 'Manchester Metropolitan University')]");
     private By screwFixTitle = By.xpath("//*[contains(text(), 'Screwfix')]");
-    private By stanleySecurityTitle = By.xpath("//*[contains(text(), 'Stanley Security)]");
+    private By stanleySecurityTitle = By.xpath("//*[contains(text(), 'Stanley Security')]");
     private By warChildTitle = By.xpath("//*[contains(text(), 'War Child')]");
 
 
-    public void isCustomersMainTitlePresent() {
-        isElementPresent(customersMainTitle);
+    public boolean isCustomersMainTitlePresent() {
+        waitForElement(customersMainTitle);
+        return isElementPresent(customersMainTitle);
+    }
+
+    public boolean isCityOfPortTitlePresent() {
+        return isElementPresent(cityOfPortTitle);
+    }
+
+    public boolean isAustrianUniversityTitlePresent() {
+        return isElementPresent(austrianUniversityTitle);
+    }
+
+    public boolean isManchesterUniversityTitlePresent() {
+        return isElementPresent(manchesterUniversityTitle);
+    }
+
+    public boolean isScrewFixTitlePresent() {
+        return isElementPresent(screwFixTitle);
+    }
+
+    public boolean isStanleySecurityTitlePresent() {
+        return isElementPresent(stanleySecurityTitle);
+    }
+
+    public boolean isWarChildTitlePresent() {
+        return isElementPresent(warChildTitle);
     }
 
     public void goToCityOfPortBlock() {

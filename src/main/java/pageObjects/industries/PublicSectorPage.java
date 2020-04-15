@@ -26,6 +26,13 @@ public class PublicSectorPage extends BasePage {
     private By empowerEmployeesSectionTitle = By.xpath("//*[@id='tab-content-4701']/div[1]/div/h3");
     private By improveServicesSectionTitle = By.xpath("//*[@id='tab-content-4711']/div[1]/div/h3");
 
+    private By readMoreCustomersStories = By.xpath("//a[contains(text(), 'Read our customer stories')]");
+
+    private By erpReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][1]//*[contains(text(), 'Read more')]");
+    private By financialPlanningReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][2]//*[contains(text(), 'Read more')]");
+    private By humanCapitalReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][3]//*[contains(text(), 'Read more')]");
+    private By cityOfPortReadMore = By.xpath("//section[6]//a[contains(text(), 'Read more')]");
+
 
     public PublicSectorPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -118,5 +125,30 @@ public class PublicSectorPage extends BasePage {
         waitForPresenceOfElement(findElement(improveServicesSectionTitle));
         Reporter.log("'Improve Citizen Services' is present");
         return isElementPresent(improveServicesSectionTitle);
+    }
+
+    public void clickReadMoreAboutERP() {
+        scrollToElement(yourNewPeopleExperienceTitle);
+        Reporter.log("clicking read more in 'ERP' block");
+        clickOnElement(erpReadMore);
+    }
+
+    public void clickReadMoreAboutFinancialPlanning() {
+        Reporter.log("clicking read more in 'Financial Capital' block");
+        clickOnElement(financialPlanningReadMore);
+    }
+
+    public void clickReadMoreAboutHumanCapital() {
+        Reporter.log("clicking read more in 'Human Capital' block");
+        clickOnElement(humanCapitalReadMore);
+    }
+
+    public void clickReadMoreAboutCityOfPort() {
+        Reporter.log("clicking read more in Customer Success Stories 'City of Port' block");
+        clickOnElement(cityOfPortReadMore);
+    }
+
+    public void clickReadCustomersStories() {
+        clickOnElement(readMoreCustomersStories);
     }
 }

@@ -1,8 +1,9 @@
 package base;
+
+import com.aventstack.extentreports.ExtentTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
@@ -19,7 +20,6 @@ public class BaseTest {
     }
 
 
-
     public static WebDriver getDriver() {
         return driver;
     }
@@ -27,5 +27,11 @@ public class BaseTest {
     @AfterTest
     public void afterTest() {
         getDriver().close();
+    }
+
+    private static ThreadLocal<ExtentTest> test = new ThreadLocal();
+
+    public static ThreadLocal<ExtentTest> getTest() {
+        return test;
     }
 }

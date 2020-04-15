@@ -39,7 +39,6 @@ public class EnterpriseResourcePlanningPage extends BasePage {
         return isElementPresent(erpMainTitle);
     }
 
-
     public boolean isElevateYourBusinessTitlePresent() {
         Reporter.log("ElevateYourBusinessTitle present");
         return isElementPresent(elevateYourBusinessTitle);
@@ -121,4 +120,5 @@ public class EnterpriseResourcePlanningPage extends BasePage {
         Reporter.log("Field Service Management Header is present");
         return isElementPresent(fieldServiceManagementSectionTitle);
     }
+
 }

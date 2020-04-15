@@ -1,17 +1,19 @@
 package productsPageTests;
 
-import base.BasePage;
-import base.BaseTest;
-import base.HeaderBasePage;
+import base.*;
 import data.Urls;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
+import pageObjects.RequestDemoPopupPage;
 import pageObjects.products.FinancialPlanningPage;
 
 public class FinancialPlanningTest extends BaseTest {
     private HomePage homePage = new HomePage(getDriver());
     private HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
+    private BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
+    private LetsTalkSectionPage letsTalkSectionPage = new LetsTalkSectionPage(getDriver());
+    private RequestDemoPopupPage requestDemoPopupPage = new RequestDemoPopupPage(getDriver());
     private FinancialPlanningPage financialPlanningPage = new FinancialPlanningPage(getDriver());
 
 
@@ -19,7 +21,7 @@ public class FinancialPlanningTest extends BaseTest {
     public void checkAllTitlesPresent() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
         headerBasePage.goToFinancialPlaning();
-//        homePage.acceptCookies();
+        homePage.acceptCookies();
 
         Assert.assertTrue(financialPlanningPage.isMainTitlePresent());
         Assert.assertTrue(financialPlanningPage.isGainMeaningfulInsightsTitlePresent());
@@ -31,7 +33,7 @@ public class FinancialPlanningTest extends BaseTest {
 
     @Test
     public void checkAllTitlesText() {
-        Assert.assertEquals(financialPlanningPage.getAustrianUniversityTitleText(), "FH St Pölten");
+        Assert.assertEquals(financialPlanningPage.getAustrianUniversityTitleText(), "Customer Overview: FH St Pölten");
         Assert.assertEquals(financialPlanningPage.getMainTitleText(), "Unit4 Financial Planning & Analysis");
         Assert.assertEquals(financialPlanningPage.getMeaningfulInsightsTitleText(), "Gain Meaningful Insights");
         Assert.assertEquals(financialPlanningPage.getCreateBetterWayTitleText(), "Create a Better Way to Work");
@@ -49,4 +51,27 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertTrue(financialPlanningPage.isCorporatePerformanceSectionHeaderPresent());
         Assert.assertTrue(financialPlanningPage.isFinalConsolidationSectionHeaderPresent());
     }
+
+    @Test
+    public void checkFinancialPlanningCrumb() {
+        Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
+    }
+
+    @Test()
+    public void openRequestDemoViaHeader() {
+        headerBasePage.clickRequestDemoForm();
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
+        requestDemoPopupPage.closeRequestDemoForm();
+    }
+
+    @Test()
+    public void openRequestDemoViaSection() {
+        letsTalkSectionPage.clickRequestDemoInSection();
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
+        requestDemoPopupPage.closeRequestDemoForm();
+    }
+
+
 }

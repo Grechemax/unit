@@ -67,6 +67,12 @@
             <class name="productsPageTests.StudentManagementTest"/>
         </classes>
     </test>
+    <test name="Products = > PeopleExperienceSuiteTest">
+        <classes>
+            <class name="productsPageTests.PeopleExperienceSuiteTest"/>
+        </classes>
+    </test>
+
 
     <test name="Industries = > HigherEducationTest">
         <classes>
@@ -93,17 +99,17 @@
 <!--    Customers-->
     <test name="Customers = > CityOfPortTest">
         <classes>
-            <class name="customersTests.CityOfPortTest"/>
+            <class name="customersTests.customers.CityOfPortTest"/>
         </classes>
     </test>
     <test name="Customers = > FHstPoltenTest">
         <classes>
-            <class name="customersTests.FHstPoltenTest"/>
+            <class name="customersTests.customers.FHstPoltenTest"/>
         </classes>
     </test>
     <test name="Customers = > ManchesterUniversityTest">
         <classes>
-            <class name="customersTests.ManchesterUniversityTest"/>
+            <class name="customersTests.customers.ManchesterUniversityTest"/>
         </classes>
     </test>
 

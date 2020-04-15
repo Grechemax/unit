@@ -2,6 +2,7 @@ package pageObjects;
 
 import base.BasePage;
 
+import base.Reporter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +22,12 @@ public class HomePage extends BasePage {
     private By leaveMessageMinimized = By.xpath("//p[contains(text(), 'Leave a message')]");
     private By leaveMessageFormHeader = By.xpath("//h1[contains(text(), 'Welcome to LiveChat')]");
     private By magnifierIconToSubmit = By.xpath("//*[@id='site-search-button-desktop']");
+    private By erpReadMore = By.xpath("//section[2]//*[contains(text(), 'Read more')]");
+    private By financialPlanningReadMore = By.xpath("//section[3]//*[contains(text(), 'Read more')]");
+    private By humanCapitalReadMore = By.xpath("//section[4]//*[contains(text(), 'Read more')]");
+    private By studentManagementReadMore = By.xpath("//section[5]//*[contains(text(), 'Read more')]");
+    private By readMoreCustomersStories = By.xpath("//a[contains(text(), 'Read our customer stories')]");
+    private By readMoreWarChild = By.xpath("//section[8]//a[contains(text(), 'Read more')]");
 
 
     public HomePage(WebDriver driver) {
@@ -32,11 +39,14 @@ public class HomePage extends BasePage {
     }
 
     public void acceptCookies() {
-        waitForElementClickable(acceptCookiesButton);
-        clickOnElementUsingJS(acceptCookiesButton);
+        if (isElementPresent(acceptCookiesButton)) {
+            Reporter.log("accepting cookies");
+            clickOnElementUsingJS(acceptCookiesButton);
+        }
     }
 
     public void checkLogoPresence() {
+        Reporter.log("site logo is present");
         isElementPresent(siteLogo);
     }
 
@@ -52,6 +62,7 @@ public class HomePage extends BasePage {
 
 
     public void doSearch(String query) {
+        Reporter.log("inputting query");
         clickOnElement(magnifierIconToOpenSearch);
         getDriver().findElement(searchInput).sendKeys(query);
         getDriver().findElement(searchInput).sendKeys(Keys.RETURN);
@@ -67,5 +78,33 @@ public class HomePage extends BasePage {
         Assert.assertEquals(displayedLeaveMessageFormHeader, "Welcome to LiveChat");
     }
 
+    public void clickReadMoreAboutERP() {
+        Reporter.log("clicking read more about 'Enterprise Resource Planning'");
+        clickOnElement(erpReadMore);
+    }
 
+    public void clickReadMoreAboutFinancialPlanning() {
+        Reporter.log("clicking read more about 'Financial Planning'");
+        clickOnElement(financialPlanningReadMore);
+    }
+
+    public void clickReadMoreAboutHumanCapital() {
+        Reporter.log("clicking read more about 'Human Capital'");
+        clickOnElement(humanCapitalReadMore);
+    }
+
+    public void clickReadMoreAboutStudentManagement() {
+        Reporter.log("clicking read more about 'Students Management'");
+        clickOnElement(studentManagementReadMore);
+    }
+
+    public void clickReadCustomersStories() {
+        Reporter.log("clicking 'See more customer success stories in 'Trusted by public sector organizations worldwide' section");
+        clickOnElement(readMoreCustomersStories);
+    }
+
+    public void clickReadMoreAboutWarChild() {
+        Reporter.log("clicking read more in Customer Success Stories 'War Child' block");
+        clickOnElement(readMoreWarChild);
+    }
 }

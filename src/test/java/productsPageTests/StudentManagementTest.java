@@ -1,25 +1,27 @@
 package productsPageTests;
 
-import base.BasePage;
-import base.BaseTest;
-import base.HeaderBasePage;
+import base.*;
 import data.Urls;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pageObjects.HomePage;
+import pageObjects.RequestDemoPopupPage;
+import pageObjects.products.HumanCapitalManagementPage;
 import pageObjects.products.StudentManagementPage;
 
 public class StudentManagementTest extends BaseTest {
-    HeaderBasePage headerBasePage;
-    StudentManagementPage studentManagementPage;
-
+    private HomePage homePage = new HomePage(getDriver());
+    private HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
+    private BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
+    private LetsTalkSectionPage letsTalkSectionPage = new LetsTalkSectionPage(getDriver());
+    private RequestDemoPopupPage requestDemoPopupPage = new RequestDemoPopupPage(getDriver());
+    StudentManagementPage studentManagementPage = new StudentManagementPage(getDriver());
 
     @Test
     public void checkAllTitlesPresent() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        headerBasePage = new HeaderBasePage(getDriver());
-        studentManagementPage = new StudentManagementPage(getDriver());
+        homePage.acceptCookies();
         headerBasePage.goToStudentManagement();
-
         Assert.assertTrue(studentManagementPage.isMainTitlePresent());
         Assert.assertTrue(studentManagementPage.isSupportGrowthTitlePresent());
         Assert.assertTrue(studentManagementPage.isStudentsManagementTitlePresent());
@@ -34,7 +36,7 @@ public class StudentManagementTest extends BaseTest {
         Assert.assertEquals(studentManagementPage.getSupportGrowthInLearningTitleText(), "Support Growth in Learning");
         Assert.assertEquals(studentManagementPage.getStudentsManagementDeliversTitleText(), "Unit4 Student Management Delivers");
         Assert.assertEquals(studentManagementPage.getCreateBetterWayTitleText(), "Create a Better Way to Work");
-        Assert.assertEquals(studentManagementPage.getManchesterUniversityTitleText(), "Manchester Metropolitan University");
+        Assert.assertEquals(studentManagementPage.getManchesterUniversityTitleText(), "Customer Overview: Manchester Metropolitan University");
         Assert.assertEquals(studentManagementPage.getTrustedOrganisationsTitleText(), "Trusted worldwide by organizations that serve students");
     }
 
@@ -45,6 +47,27 @@ public class StudentManagementTest extends BaseTest {
         Assert.assertTrue(studentManagementPage.isBillingSectionTitlePresent());
         Assert.assertTrue(studentManagementPage.isCommunicationSectionTitlePresent());
         Assert.assertTrue(studentManagementPage.isReportingSectionTitlePresent());
+    }
+
+    @Test
+    public void checkStudentManagementPageBreadCrumb() {
+        Assert.assertTrue(breadCrumbsBasePage.isStudentManagementCrumbVisible());
+    }
+
+    @Test()
+    public void openRequestDemoViaHeader() {
+        headerBasePage.clickRequestDemoForm();
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
+        requestDemoPopupPage.closeRequestDemoForm();
+    }
+
+    @Test()
+    public void openRequestDemoViaSection() {
+        letsTalkSectionPage.clickRequestDemoInSection();
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
+        requestDemoPopupPage.closeRequestDemoForm();
     }
 
 }

@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Unit4_auto" />
+        <module name="unit" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="unit" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

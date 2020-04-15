@@ -2,6 +2,7 @@ package base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 public class HeaderBasePage extends BasePage {
@@ -10,12 +11,13 @@ public class HeaderBasePage extends BasePage {
     private By customersHeaderItem = By.xpath("//*[@id='sitenav']//a[contains(text(), 'Customers')]");
     private By resourcesHeaderItem = By.xpath("//*[@id='sitenav']//a[contains(text(), 'Resources')]");
     private By whyUnit4HeaderItem = By.xpath("//*[@id='sitenav']//a[contains(text(), 'Why Unit4')]");
+    private By requestDemoCTA = By.xpath("//*[contains(@class, 'sitenav')]//*[contains(text(), 'Request a demo')]");
 
     private By enterpriseResourcePlanningDrpdwnItem = By.xpath("//li/a[contains(text(), 'Enterprise Resource Planning')]");
     private By financialPlanningDrpdwnItem = By.xpath("//a[contains(text(), 'Financial Planning & Analysis')]");
     private By humanCapitalManagementDrpdwnItem = By.xpath("//a[contains(text(), 'Human Capital Management')]");
     private By studentManagementDrpdwnItem = By.xpath("//a[contains(text(), 'Student Management')]");
-    private By thePeopleExperienceSuiteDrpdwnItem= By.xpath("//a[contains(text(), 'The People Experience Suite')]");
+    private By thePeopleExperienceSuiteDrpdwnItem = By.xpath("//ul//*[contains(text(), 'The People Experience Suite')]");
     private By viewAllProductsDrpdwnItem = By.xpath("//a[contains(text(), 'View all products')]");
 
     private By higherEducation = By.xpath("//*[contains(text(), 'Higher Education')]");
@@ -28,7 +30,7 @@ public class HeaderBasePage extends BasePage {
     private By library = By.xpath("//*[@id='sitenav']/nav/ul/li[4]/div/ul/li[3]");
 
     public HeaderBasePage(WebDriver driver) {
-
+        PageFactory.initElements(driver, this);
     }
 
     //header
@@ -90,24 +92,24 @@ public class HeaderBasePage extends BasePage {
     }
 
 
-
-
-
     //Industries
     public void goToHigherEducation() {
         hoverOverElement(industriesHeaderItem);
         clickOnElement(higherEducation);
     }
+
     //Industries
     public void goToNonProfit() {
         hoverOverElement(industriesHeaderItem);
         clickOnElement(nonProfit);
     }
+
     //Industries
     public void goToProfessionalServices() {
         hoverOverElement(industriesHeaderItem);
         clickOnElement(professionalServices);
     }
+
     //Industries
     public void goToPublicSector() {
         hoverOverElement(industriesHeaderItem);
@@ -121,12 +123,9 @@ public class HeaderBasePage extends BasePage {
     }
 
 
-
-
     public void goToCustomersHome() {
         clickOnElement(customersHeaderItem);
     }
-
 
 
     //Resources
@@ -150,5 +149,9 @@ public class HeaderBasePage extends BasePage {
 
     public void goToWhyUnit4() {
         clickOnElement(whyUnit4HeaderItem);
+    }
+
+    public void clickRequestDemoForm() {
+        clickOnElement(requestDemoCTA);
     }
 }

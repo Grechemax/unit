@@ -9,10 +9,11 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class RequestDemoPopupPage extends BasePage {
-    private By requestDemoCTA = By.xpath("//a[contains(@class, 'button cta cta-default button_global_demo')]");
+
+    private By closeRequestDemoBtn = By.xpath("//*[@id='u4-modal-request-demo']/div/div/div[3]/button");
     private By submitFormButton = By.xpath("//input[contains(@value, 'Schedule a demo')]");
-    private By requestDemoFormLongHeader = By.xpath("//div[@class = 'u4-modal-body']//h3");
-    private By requestDemoHeader = By.xpath("//form//h4");
+    private By requestDemoLongHeader = By.xpath("//*[contains(text(), 'See what a better People Experience can do for your organization.')]");
+    private By requestDemoMainHeader = By.xpath("//*[contains(text(), 'Get a Unit4 demo customized 4U!')]");
     private By thankYouPopupHeader = By.xpath("//div[@id='u4-modal-thanks']//h3");
 
     private By firstNameRequiredError = By.xpath("//span[@id='edit-first-name-error']");
@@ -30,24 +31,28 @@ public class RequestDemoPopupPage extends BasePage {
     private By companyInput = By.xpath("//input[@id = 'edit-company']");
     private By countryDropdown = By.xpath("//select[@id = 'edit-country']");
     private By privacyCheckbox = By.xpath("//input[@id='request-demo-confirm-privacy']");
+    private By confirmSubscribeCheckbox = By.xpath("//input[@id='request-demo-confirm-subscribe']");
 
 
     public RequestDemoPopupPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
-    public void openRequestDemoForm() {
-        clickOnElement(requestDemoCTA);
+    public void closeRequestDemoForm() {
+        clickOnElement(closeRequestDemoBtn);
+        Reporter.log("closing request demo form");
     }
 
-    public void checkRequestDemoFormText() {
-        String displayedRequestDemoFormHeader = getElementText(requestDemoHeader);
-        String displayedRequestDemoFormLongHeader = getElementText(requestDemoFormLongHeader);
-
-
-        Assert.assertEquals(displayedRequestDemoFormHeader, "Get a Unit4 demo customized 4U!");
-        Assert.assertEquals(displayedRequestDemoFormLongHeader, "See what a better People Experience can do for your organization.");
+    public boolean isRequestDemoFormMainHeaderPresent() {
+        Reporter.log("request form main header is present");
+        return isElementPresent(requestDemoMainHeader);
     }
+
+    public boolean isRequestDemoFormHeaderPresent() {
+        Reporter.log("request form additional header is present");
+        return isElementPresented(requestDemoLongHeader);
+    }
+
 
     public void checkErrorsAfterEmptyFormSubmitted() {
         String displayedFirstNameError = getElementText(firstNameRequiredError);
@@ -73,7 +78,7 @@ public class RequestDemoPopupPage extends BasePage {
 
     public boolean isThankYouPopupPresent() {
         Reporter.log("'Thank you' popup after form have been submitted is present");
-        goSleep(3);
+        waitForElement(thankYouPopupHeader);
         return isElementPresent(thankYouPopupHeader);
     }
 
@@ -85,16 +90,23 @@ public class RequestDemoPopupPage extends BasePage {
         findElement(companyInput).sendKeys(company);
         Select select = new Select(getDriver().findElement(countryDropdown));
         select.selectByVisibleText(country);
+        Reporter.log("inputting data");
     }
 
     public void acceptPrivacyPolicy() {
         clickOnElementUsingJS(privacyCheckbox);
+        Reporter.log("tick checkbox to accept privacy policy");
+    }
+
+    public void confirmSubscriptionCheckbox() {
+        clickOnElementUsingJS(confirmSubscribeCheckbox);
+        Reporter.log("tick checkbox to subscribe for news");
     }
 
     public void clickSubmitForm() {
         clickOnElementUsingJS(submitFormButton);
+        Reporter.log("submitting form");
     }
-
 
 
 }

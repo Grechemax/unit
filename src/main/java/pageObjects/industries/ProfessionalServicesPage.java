@@ -24,6 +24,10 @@ public class ProfessionalServicesPage extends BasePage {
     private By billWithPrecisionSectionTitle = By.xpath("//*[@id='tab-content-1986']/div[1]/div/h3");
     private By winBusinessSectionTitle = By.xpath("//*[@id='tab-content-1996']/div[1]/div/h3");
 
+    private By erpReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][1]//*[contains(text(), 'Read more')]");
+    private By financialPlanningReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][2]//*[contains(text(), 'Read more')]");
+    private By humanCapitalReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][3]//*[contains(text(), 'Read more')]");
+
     public ProfessionalServicesPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -114,5 +118,21 @@ public class ProfessionalServicesPage extends BasePage {
         waitForPresenceOfElement(findElement(winBusinessSectionTitle));
         Reporter.log("'Win the Right Business' is present");
         return isElementPresent(winBusinessSectionTitle);
+    }
+
+    public void clickReadMoreAboutERP() {
+        scrollToElement(yourNewPeopleExperienceTitle);
+        Reporter.log("clicking read more in 'ERP' block");
+        clickOnElement(erpReadMore);
+    }
+
+    public void clickReadMoreAboutFinancialPlanning() {
+        Reporter.log("clicking read more in 'Financial Capital' block");
+        clickOnElementUsingJS(financialPlanningReadMore);
+    }
+
+    public void clickReadMoreAboutHumanCapital() {
+        Reporter.log("clicking read more in 'Human Capital' block");
+        clickOnElementUsingJS(humanCapitalReadMore);
     }
 }
