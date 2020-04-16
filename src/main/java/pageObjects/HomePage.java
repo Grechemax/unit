@@ -104,7 +104,7 @@ public class HomePage extends BasePage {
     }
 
     public void clickReadMoreAboutWarChild() {
-        Reporter.log("clicking read more in Customer Success Stories 'War Child' block");
+        Reporter.log("clicking read more in 'Customer Overview: War Child' block");
         clickOnElement(readMoreWarChild);
     }
 }

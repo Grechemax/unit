@@ -5,7 +5,6 @@ import base.BreadCrumbsBasePage;
 import data.Urls;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.customers.CustomersHomePage;
 import pageObjects.customers.customers.FHstPoltenPage;
 
 public class FHstPoltenTest extends BasePage {
@@ -29,7 +28,7 @@ public class FHstPoltenTest extends BasePage {
 
     @Test
     public void checkReadMoreOpensRightPage() {
-        fHstPoltenPage.clickReadMoreButton();
+        fHstPoltenPage.clickReadMoreAboutFinancialPlanning();
         Assert.assertTrue(breadCrumbsBasePage.isDeliver360CrumbVisible());
     }
 

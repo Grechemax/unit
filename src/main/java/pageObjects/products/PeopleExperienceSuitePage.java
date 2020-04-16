@@ -76,7 +76,7 @@ public class PeopleExperienceSuitePage extends BasePage {
     public void goToStudentManagementPage() {
         Reporter.log("opening 'Student Management' page");
         waitForElement(studentManagementBlock);
-        clickOnElement(studentManagementBlock);
+        clickOnElementUsingJS(studentManagementBlock);
     }
 
 }

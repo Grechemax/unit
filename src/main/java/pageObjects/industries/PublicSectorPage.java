@@ -26,12 +26,13 @@ public class PublicSectorPage extends BasePage {
     private By empowerEmployeesSectionTitle = By.xpath("//*[@id='tab-content-4701']/div[1]/div/h3");
     private By improveServicesSectionTitle = By.xpath("//*[@id='tab-content-4711']/div[1]/div/h3");
 
-    private By readMoreCustomersStories = By.xpath("//a[contains(text(), 'Read our customer stories')]");
+    private By readMoreCustomersStories = By.xpath("//a[contains(text(), 'See more customer stories')]");
 
     private By erpReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][1]//*[contains(text(), 'Read more')]");
     private By financialPlanningReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][2]//*[contains(text(), 'Read more')]");
     private By humanCapitalReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][3]//*[contains(text(), 'Read more')]");
     private By cityOfPortReadMore = By.xpath("//section[6]//a[contains(text(), 'Read more')]");
+    private By seeAllNews = By.xpath("//a[contains(text(), 'See all news')]");
 
 
     public PublicSectorPage(WebDriver driver) {
@@ -129,26 +130,32 @@ public class PublicSectorPage extends BasePage {
 
     public void clickReadMoreAboutERP() {
         scrollToElement(yourNewPeopleExperienceTitle);
-        Reporter.log("clicking read more in 'ERP' block");
+        Reporter.log("clicking 'Read more' in 'ERP' block");
         clickOnElement(erpReadMore);
     }
 
     public void clickReadMoreAboutFinancialPlanning() {
-        Reporter.log("clicking read more in 'Financial Capital' block");
+        Reporter.log("clicking 'Read more' in 'Financial Capital' block");
         clickOnElement(financialPlanningReadMore);
     }
 
     public void clickReadMoreAboutHumanCapital() {
-        Reporter.log("clicking read more in 'Human Capital' block");
+        Reporter.log("clicking 'Read more' in 'Human Capital' block");
         clickOnElement(humanCapitalReadMore);
     }
 
     public void clickReadMoreAboutCityOfPort() {
-        Reporter.log("clicking read more in Customer Success Stories 'City of Port' block");
+        Reporter.log("clicking 'Read more' in Customer Success Stories 'City of Port' block");
         clickOnElement(cityOfPortReadMore);
     }
 
-    public void clickReadCustomersStories() {
+    public void clickSeeMoreCustomersStories() {
+        Reporter.log("clicking 'See more customer success stories' in 'Trusted by public sector organizations worldwide' section");
         clickOnElement(readMoreCustomersStories);
+    }
+
+    public void clickSeeAllNews() {
+        Reporter.log("clicking 'See all news'");
+        clickOnElement(seeAllNews);
     }
 }

@@ -1,0 +1,11 @@
+*.class
+
+.classpath
+*.prefs
+*.jar
+*.iml
+*.infra.providers.custom/
+.idea/
+target/
+test-output/
+/.DS_Store

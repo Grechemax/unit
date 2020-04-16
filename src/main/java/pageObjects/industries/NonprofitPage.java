@@ -28,12 +28,15 @@ public class NonprofitPage extends BasePage {
     private By erpReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][1]//*[contains(text(), 'Read more')]");
     private By financialPlanningReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][2]//*[contains(text(), 'Read more')]");
     private By humanCapitalReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][3]//*[contains(text(), 'Read more')]");
+    private By warChildReadMore = By.xpath("//section[6]//a[contains(text(), 'Read more')]");
+    private By seeMoreCustomersStories = By.xpath("//a[contains(text(), 'customer stories')]");
+    private By seeAllNews = By.xpath("//a[contains(text(), 'See all news')]");
 
     public NonprofitPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
-    public boolean isMainTitlePresent() {
+    public boolean isNonprofitMainTitlePresent() {
         waitForElement(mainTitle);
         Reporter.log("Main title is present");
         return isElementPresent(mainTitle);
@@ -138,4 +141,18 @@ public class NonprofitPage extends BasePage {
         clickOnElementUsingJS(humanCapitalReadMore);
     }
 
+    public void clickReadMoreAboutWarChild() {
+        Reporter.log("clicking read more in 'Human Capital' block");
+        clickOnElementUsingJS(warChildReadMore);
+    }
+
+    public void clickSeeMoreCustomersStories() {
+        Reporter.log("clicking 'See more customer success stories in 'Trusted by public sector organizations worldwide' section");
+        clickOnElement(seeMoreCustomersStories);
+    }
+
+    public void clickSeeAllNews() {
+        Reporter.log("clicking 'See all news'");
+        clickOnElement(seeAllNews);
+    }
 }

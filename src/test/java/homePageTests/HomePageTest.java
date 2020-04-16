@@ -40,7 +40,7 @@ public class HomePageTest extends BaseTest {
         BasePage.openURL(Urls.HOME_PAGE.URL());
 //        homePage.acceptCookies();
         homePage.clickReadMoreAboutERP();
-        Assert.assertTrue(enterpriseResourcePlanningPage.isMainTitlePresent());
+        Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
     }
 
     @Test

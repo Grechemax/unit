@@ -4,8 +4,14 @@ public enum Urls {
 
     HOME_PAGE(""),
     PRODUCTS("/products"),
+    PRODUCTS_ERP("/products/erp-accounting-software"),
+    PRODUCTS_FINANCIAL_PLANNING("/products/budget-and-forecasting-software"),
+    PRODUCTS_HUMAN_CAPITAL("/products/talent-and-hr-management-software"),
+    PRODUCTS_STUDENT_MANAGEMENT("/products/student-information-system"),
+    PRODUCTS_PEOPLE_EXPERIENCE("/products/the-people-experience-suite"),
+
     INDUSTRIES("/industries"),
-    INDUSTRIES_HIGH_EDUCATION("/industries/higher-education-erp-software"),
+    INDUSTRIES_HIGHER_EDUCATION("/industries/higher-education-erp-software"),
     INDUSTRIES_NONPROFIT("/industries/nonprofit-erp-accounting-software"),
     INDUSTRIES_PROFESSIONAL_SERVICES("/industries/professional-services-software"),
     INDUSTRIES_PUBLIC_SECTOR("/industries/public-sector-software"),

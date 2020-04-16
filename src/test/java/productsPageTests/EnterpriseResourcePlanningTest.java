@@ -19,11 +19,9 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
 
     @Test
     public void checkAllTitlesPresent() {
-        BasePage.openURL(Urls.HOME_PAGE.URL());
-        headerBasePage.goToEnterpriseResourcePlaning();
+        BasePage.openURL(Urls.PRODUCTS_ERP.URL());
         homePage.acceptCookies();
-
-        Assert.assertTrue(enterpriseResourcePlanningPage.isMainTitlePresent());
+        Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
         Assert.assertTrue(enterpriseResourcePlanningPage.isWarChildPresent());
         Assert.assertTrue(enterpriseResourcePlanningPage.isExperienceSuiteTitlePresent());
         Assert.assertTrue(enterpriseResourcePlanningPage.isCreateBetterWayTitlePresent());
@@ -32,11 +30,15 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
 
     @Test
     public void checkERPPageBreadCrumb() {
+        BasePage.openURL(Urls.PRODUCTS_ERP.URL());
+        homePage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
     }
 
     @Test
     public void checkAllTitlesText() {
+        BasePage.openURL(Urls.PRODUCTS_ERP.URL());
+        homePage.acceptCookies();
         Assert.assertEquals(enterpriseResourcePlanningPage.getWarChildTitleText(), "Customer Overview: War Child");
         Assert.assertEquals(enterpriseResourcePlanningPage.getMainTitleText(), "Unit4 Enterprise Resource Planning");
         Assert.assertEquals(enterpriseResourcePlanningPage.getElevateYourBusinessTitleText(), "Elevate Your Business");
@@ -47,6 +49,8 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
 
     @Test
     public void checkPanelTitlesPresent() {
+        BasePage.openURL(Urls.PRODUCTS_ERP.URL());
+        homePage.acceptCookies();
         Assert.assertTrue(enterpriseResourcePlanningPage.isHRSectionTitlePresent());
         Assert.assertTrue(enterpriseResourcePlanningPage.isFinancialManagementHeaderPresent());
         Assert.assertTrue(enterpriseResourcePlanningPage.isProjectManagementSectionTitlePresent());
@@ -57,6 +61,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
 
     @Test()
     public void openRequestDemoViaHeader() {
+        BasePage.openURL(Urls.PRODUCTS_ERP.URL());
         headerBasePage.clickRequestDemoForm();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
@@ -65,6 +70,8 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
 
     @Test()
     public void openRequestDemoViaSection() {
+        BasePage.openURL(Urls.PRODUCTS_ERP.URL());
+        homePage.acceptCookies();
         Assert.assertTrue(letsTalkSectionPage.isLetsTalkTextPresent());
         letsTalkSectionPage.clickRequestDemoInSection();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());

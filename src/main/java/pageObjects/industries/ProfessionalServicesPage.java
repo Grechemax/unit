@@ -13,6 +13,7 @@ public class ProfessionalServicesPage extends BasePage {
     private By yourNewPeopleExperienceTitle = By.xpath("//h2[contains(text(), 'Your New Unit4 People Experience Suite')]");
     private By customersSuccessStoriesTitle = By.xpath("//h2[contains(text(), 'Customer Success Stories')]");
     private By stanleySecurityTitle = By.xpath("//h3[contains(text(), 'Stanley Security')]");
+    private By stanleySecurityReadMore = By.xpath("//section[6]//a[contains(text(), 'Read more')]");
 
     private By driveProjectPanelItem = By.xpath("//a[@id='tab-link-1966']");
     private By optimizeResourcePanelItem = By.xpath("//a[@id='tab-link-1976']");
@@ -27,6 +28,10 @@ public class ProfessionalServicesPage extends BasePage {
     private By erpReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][1]//*[contains(text(), 'Read more')]");
     private By financialPlanningReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][2]//*[contains(text(), 'Read more')]");
     private By humanCapitalReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][3]//*[contains(text(), 'Read more')]");
+
+    private By peopleExperienceReadMore = By.xpath("//*[contains(text(), 'Learn more about our People')]");
+    private By seeAllNews = By.xpath("//a[contains(text(), 'See all news')]");
+
 
     public ProfessionalServicesPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -122,17 +127,33 @@ public class ProfessionalServicesPage extends BasePage {
 
     public void clickReadMoreAboutERP() {
         scrollToElement(yourNewPeopleExperienceTitle);
-        Reporter.log("clicking read more in 'ERP' block");
         clickOnElement(erpReadMore);
+        Reporter.log("clicking read more in 'ERP' block");
     }
 
     public void clickReadMoreAboutFinancialPlanning() {
         Reporter.log("clicking read more in 'Financial Capital' block");
-        clickOnElementUsingJS(financialPlanningReadMore);
+        clickOnElement(financialPlanningReadMore);
     }
 
     public void clickReadMoreAboutHumanCapital() {
         Reporter.log("clicking read more in 'Human Capital' block");
-        clickOnElementUsingJS(humanCapitalReadMore);
+        clickOnElement(humanCapitalReadMore);
+    }
+
+    public void clickLearnMoreAboutPplExperienceSuiteBtn() {
+        Reporter.log("clicking 'Learn more about our People Experience Suite' button");
+        scrollToElement(yourNewPeopleExperienceTitle);
+        clickOnElement(peopleExperienceReadMore);
+    }
+
+    public void clickReadMoreAboutStanleySecurity() {
+        Reporter.log("clicking 'Read more' in 'Customer Overview: Stanley Security' section");
+        clickOnElement(stanleySecurityReadMore);
+    }
+
+    public void clickSeeAllNews() {
+        Reporter.log("clicking 'See all news'");
+        clickOnElement(seeAllNews);
     }
 }

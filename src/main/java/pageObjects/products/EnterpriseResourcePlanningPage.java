@@ -33,7 +33,7 @@ public class EnterpriseResourcePlanningPage extends BasePage {
     }
 
 
-    public boolean isMainTitlePresent() {
+    public boolean isERPMainTitlePresent() {
         waitForElement(erpMainTitle);
         Reporter.log("Main title is present");
         return isElementPresent(erpMainTitle);

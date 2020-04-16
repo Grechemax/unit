@@ -19,9 +19,8 @@ public class StudentManagementTest extends BaseTest {
 
     @Test
     public void checkAllTitlesPresent() {
-        BasePage.openURL(Urls.HOME_PAGE.URL());
+        BasePage.openURL(Urls.PRODUCTS_STUDENT_MANAGEMENT.URL());
         homePage.acceptCookies();
-        headerBasePage.goToStudentManagement();
         Assert.assertTrue(studentManagementPage.isMainTitlePresent());
         Assert.assertTrue(studentManagementPage.isSupportGrowthTitlePresent());
         Assert.assertTrue(studentManagementPage.isStudentsManagementTitlePresent());

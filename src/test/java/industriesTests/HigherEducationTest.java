@@ -6,22 +6,33 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
 import pageObjects.RequestDemoPopupPage;
+import pageObjects.customers.CustomersHomePage;
+import pageObjects.customers.customers.ManchesterUniversityPage;
 import pageObjects.industries.HigherEducationPage;
+import pageObjects.products.EnterpriseResourcePlanningPage;
+import pageObjects.products.FinancialPlanningPage;
+import pageObjects.products.HumanCapitalManagementPage;
+import pageObjects.products.StudentManagementPage;
 
 
 public class HigherEducationTest extends BaseTest {
     private HomePage homePage = new HomePage(getDriver());
     private HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
+    private CustomersHomePage customersHomePage = new CustomersHomePage(getDriver());
     private LetsTalkSectionPage letsTalkSectionPage = new LetsTalkSectionPage(getDriver());
     private HigherEducationPage higherEducationPage = new HigherEducationPage(getDriver());
     private BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
     private RequestDemoPopupPage requestDemoPopupPage = new RequestDemoPopupPage(getDriver());
+    private StudentManagementPage studentManagementPage = new StudentManagementPage(getDriver());
+    private FinancialPlanningPage financialPlanningPage = new FinancialPlanningPage(getDriver());
+    private ManchesterUniversityPage manchesterUniversityPage = new ManchesterUniversityPage(getDriver());
+    private HumanCapitalManagementPage humanCapitalManagementPage = new HumanCapitalManagementPage(getDriver());
+    private EnterpriseResourcePlanningPage enterpriseResourcePlanningPage = new EnterpriseResourcePlanningPage(getDriver());
 
     @Test
     public void checkAllTitlesPresent() {
-        BasePage.openURL(Urls.INDUSTRIES_HIGH_EDUCATION.URL());
+        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
         homePage.acceptCookies();
-
         Assert.assertTrue(higherEducationPage.isMainTitlePresent());
         Assert.assertTrue(higherEducationPage.isYourPartnerInEducationTitle());
         Assert.assertTrue(higherEducationPage.isBreakFreeTitle());
@@ -32,11 +43,15 @@ public class HigherEducationTest extends BaseTest {
 
     @Test
     public void checkHigherEducationCrumb() {
+        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        homePage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isHigherEducationCrumbVisible());
     }
 
     @Test
     public void checkAllTitlesText() {
+        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        homePage.acceptCookies();
         Assert.assertEquals(higherEducationPage.getMainTitleText(), "Higher Education");
         Assert.assertEquals(higherEducationPage.getBreakFreeTitleText(), "Break free from legacy systems");
         Assert.assertEquals(higherEducationPage.getCustomersSuccessStoriesTitleText(), "Customer Success Stories");
@@ -48,21 +63,27 @@ public class HigherEducationTest extends BaseTest {
 
     @Test
     public void checkPanelTitlesPresent() {
+        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        homePage.acceptCookies();
         Assert.assertTrue(higherEducationPage.isAccelerateGrowthSectionTitlePresent());
         Assert.assertTrue(higherEducationPage.isBoostStudentsSuccessSectionTitlePresent());
         Assert.assertTrue(higherEducationPage.isImproveIndustrialEffectivenessSectionTitlePresent());
     }
 
-    @Test()
+    @Test
     public void openRequestDemoViaHeader() {
+        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        homePage.acceptCookies();
         headerBasePage.clickRequestDemoForm();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
         requestDemoPopupPage.closeRequestDemoForm();
     }
 
-    @Test()
+    @Test
     public void openRequestDemoViaSection() {
+        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        homePage.acceptCookies();
         Assert.assertTrue(letsTalkSectionPage.isLetsTalkTextPresent());
         letsTalkSectionPage.clickRequestDemoInSection();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
@@ -70,4 +91,59 @@ public class HigherEducationTest extends BaseTest {
         requestDemoPopupPage.closeRequestDemoForm();
     }
 
+    //Your New Unit4 People Experience Suite
+    @Test
+    public void checkReadMoreOpensERPPage() {
+        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        homePage.acceptCookies();
+        higherEducationPage.clickReadMoreAboutERP();
+        Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
+        Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
+    }
+
+    @Test
+    public void checkReadMoreOpensStudentManagementPage() {
+        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        homePage.acceptCookies();
+        higherEducationPage.clickReadMoreAboutStudentManagement();
+        Assert.assertTrue(studentManagementPage.isMainTitlePresent());
+        Assert.assertTrue(breadCrumbsBasePage.isStudentManagementCrumbVisible());
+    }
+
+    @Test
+    public void checkReadMoreOpensFinancialPlanningPage() {
+        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        homePage.acceptCookies();
+        higherEducationPage.clickReadMoreAboutFinancialPlanning();
+        Assert.assertTrue(financialPlanningPage.isMainTitlePresent());
+        Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
+    }
+
+    @Test
+    public void checkReadMoreOpensHumanCapitalPage() {
+        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        homePage.acceptCookies();
+        higherEducationPage.clickReadMoreAboutHumanCapital();
+        Assert.assertTrue(humanCapitalManagementPage.isMainTitlePresent());
+        Assert.assertTrue(breadCrumbsBasePage.isHumanCapitalManagementCrumbVisible());
+    }
+
+    // Customer Overview: Manchester
+    @Test
+    public void checkReadMoreOpensManchesterUniversityPage() {
+        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        homePage.acceptCookies();
+        higherEducationPage.clickReadMoreAboutManchesterUniversity();
+        Assert.assertTrue(breadCrumbsBasePage.isManchesterCrumbVisible());
+        Assert.assertTrue(manchesterUniversityPage.isManchesterMainTitlePresent());
+    }
+
+    @Test
+    public void checkSeeMoreCustomersStoriesOpensCustomersPage() {
+        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        homePage.acceptCookies();
+        higherEducationPage.clickSeeMoreCustomersStories();
+        Assert.assertTrue(customersHomePage.isCustomersMainTitlePresent());
+        Assert.assertTrue(breadCrumbsBasePage.isCustomersCrumbVisible());
+    }
 }

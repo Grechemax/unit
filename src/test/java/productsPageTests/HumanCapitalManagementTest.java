@@ -20,8 +20,7 @@ public class HumanCapitalManagementTest extends BaseTest {
 
     @Test
     public void checkAllTitlesPresent() {
-        BasePage.openURL(Urls.HOME_PAGE.URL());
-        headerBasePage.goToHumanCapitalManagement();
+        BasePage.openURL(Urls.PRODUCTS_HUMAN_CAPITAL.URL());
         homePage.acceptCookies();
         Assert.assertTrue(humanCapitalManagementPage.isMainTitlePresent());
         Assert.assertTrue(humanCapitalManagementPage.isEnergizeYourPeopleTitlePresent());
@@ -33,11 +32,15 @@ public class HumanCapitalManagementTest extends BaseTest {
 
     @Test
     public void checkHumanCapitalPageBreadCrumb() {
+        BasePage.openURL(Urls.PRODUCTS_HUMAN_CAPITAL.URL());
+        homePage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isHumanCapitalManagementCrumbVisible());
     }
 
     @Test
     public void checkAllTitlesText() {
+        BasePage.openURL(Urls.PRODUCTS_HUMAN_CAPITAL.URL());
+        homePage.acceptCookies();
         Assert.assertEquals(humanCapitalManagementPage.getMainTitleText(), "Unit4 Human Capital Management");
         Assert.assertEquals(humanCapitalManagementPage.getEnergizeYourPeopleTitleText(), "Energize Your People");
         Assert.assertEquals(humanCapitalManagementPage.getHumanCapitalManagementDeliversTitleText(), "Unit4 Human Capital Management Delivers");
@@ -48,6 +51,8 @@ public class HumanCapitalManagementTest extends BaseTest {
 
     @Test
     public void checkPanelTitlesPresent() {
+        BasePage.openURL(Urls.PRODUCTS_HUMAN_CAPITAL.URL());
+        homePage.acceptCookies();
         Assert.assertTrue(humanCapitalManagementPage.isHRSectionTitlePresent());
         Assert.assertTrue(humanCapitalManagementPage.isRecruitmentSectionTitlePresent());
         Assert.assertTrue(humanCapitalManagementPage.isPeoplePlanningSectionTitlePresent());
@@ -59,6 +64,8 @@ public class HumanCapitalManagementTest extends BaseTest {
 
     @Test()
     public void openRequestDemoViaHeader() {
+        BasePage.openURL(Urls.PRODUCTS_HUMAN_CAPITAL.URL());
+        homePage.acceptCookies();
         headerBasePage.clickRequestDemoForm();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
@@ -67,6 +74,8 @@ public class HumanCapitalManagementTest extends BaseTest {
 
     @Test()
     public void openRequestDemoViaSection() {
+        BasePage.openURL(Urls.PRODUCTS_HUMAN_CAPITAL.URL());
+        homePage.acceptCookies();
         letsTalkSectionPage.clickRequestDemoInSection();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());

@@ -12,7 +12,7 @@ public class FHstPoltenPage extends BasePage {
     private By challengeTitle = By.xpath("//h2[contains(text(), 'Challenge')]");
     private By impactsTitle = By.xpath("//*[contains(text(), 'Impacts')]");
     private By financialPlanningBlockTitle = By.xpath("//*[contains(text(), 'Financial Planning')]");
-    private By readMoreBtn = By.xpath("//a[contains(text(), 'Read more')]");
+    private By financialPlanningReadMore = By.xpath("//section[2]//a[contains(text(), 'Read more')]");
 
     public FHstPoltenPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -40,9 +40,9 @@ public class FHstPoltenPage extends BasePage {
         return isElementPresent(impactsTitle);
     }
 
-    public void clickReadMoreButton() {
-        waitForElement(readMoreBtn);
-        clickOnElement(readMoreBtn);
-        Reporter.log("'Deliver a 360° People Experience...' is opened");
+    public void clickReadMoreAboutFinancialPlanning() {
+        waitForElement(financialPlanningReadMore);
+        clickOnElement(financialPlanningReadMore);
+        Reporter.log("clicking 'Read more' in 'Unit4 Financial Planning & Analysis' section");
     }
 }

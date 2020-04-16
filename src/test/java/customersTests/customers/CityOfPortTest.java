@@ -33,7 +33,7 @@ public class CityOfPortTest extends BaseTest {
     @Test
     public void checkReadMoreOpensRightPage() {
         cityOfPortPage.clickReadMoreButton();
-        Assert.assertTrue(enterpriseResourcePlanningPage.isMainTitlePresent());
+        Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
     }
 

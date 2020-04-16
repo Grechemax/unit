@@ -436,7 +436,6 @@ public class BasePage extends BaseTest {
     }
 
 
-
     public void hoverOverElement(By element) {
         Actions action = new Actions(getDriver());
         action.moveToElement(findElement(element)).perform();
@@ -535,7 +534,6 @@ public class BasePage extends BaseTest {
     }
 
     public boolean isElementPresent(By locator) {
-//        waitForElement(locator);
         if (getDriver().findElements(locator).size() > 0) {
             return true;
         } else {
@@ -625,26 +623,11 @@ public class BasePage extends BaseTest {
     //Waiters
 
 
-    public void waitForElement(By by) {
-
-        FluentWait<WebDriver> wait3 = new FluentWait<>(getDriver())
-                .withTimeout(Duration.ofSeconds(200))
-                .pollingEvery(Duration.ofMillis(1000))
-                .ignoring(NoSuchElementException.class);
-
-        java.util.function.Function<WebDriver, WebElement> function = new Function<WebDriver, WebElement>() {
-
-            public WebElement apply(WebDriver arg0) {
-
-                WebElement element = arg0.findElement(by);
-                if (element != null) {
-                    Reporter.log("Element found");
-                }
-                return element;
-            }
-        };
-        wait3.until(function);
+    public void waitForElement(By locator) {
+        WebDriverWait wait = (new WebDriverWait(getDriver(), 30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+
 
     public static void waitUntilSpinnerAbsent(String xpathOfResult) {
 

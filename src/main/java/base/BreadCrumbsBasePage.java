@@ -13,29 +13,25 @@ public class BreadCrumbsBasePage extends BasePage {
     private By studentManagementCrumb = By.xpath("//ol/li[last() and contains(text(), 'Student Management')]");
     private By enterpriseResourcePlanningCrumb = By.xpath("//ol/li[last() and contains(text(), 'Enterprise Resource Planning')]");
     private By peopleExperienceSuiteCrumb = By.xpath("//ol/li[last() and contains(text(), 'The People Experience Suite')]");
-
     private By industriesCrumb = By.xpath("//ol/li[last() and contains(text(), 'Industries')]");
     private By higherEducationCrumb = By.xpath("//ol/li[last() and contains(text(), 'Higher Education')]");
     private By nonProfitCrumb = By.xpath("//ol/li[last() and contains(text(), 'Nonprofit')]");
     private By professionalServicesCrumb = By.xpath("//ol/li[last() and contains(text(), 'Professional Services')]");
     private By publicSectorCrumb = By.xpath("//ol/li[last() and contains(text(), 'Public Sector')]");
-
     private By customersCrumb = By.xpath("//ol/li[last() and contains(text(), 'Customers')]");
-
     private By cityOfPortCrumb = By.xpath("//ol/li[last() and contains(text(), 'Customer Overview: City of Port Coquitlam')]");
     private By fh_st_PoltenCrumb = By.xpath("//ol/li[last() and contains(text(), 'Customer Overview: FH St Pölten')]");
     private By manchesterCrumb = By.xpath("//ol/li[last() and contains(text(), 'Customer Overview: Manchester Metropolitan University')]");
     private By screwfixCrumb = By.xpath("//ol/li[last() and contains(text(), 'Customer Overview: Screwfix')]");
     private By stanleySecurityCrumb = By.xpath("//ol/li[last() and contains(text(), 'Customer Overview: Stanley Security')]");
     private By warChildCrumb = By.xpath("//ol/li[last() and contains(text(), 'Customer Overview: War Child')]");
-
     private By blogCrumb = By.xpath("//ol/li[last() and contains(text(), 'Blog')]");
     private By eventsCrumb = By.xpath("//ol/li[last() and contains(text(), 'Events')]");
     private By libraryCrumb = By.xpath("//ol/li[last() and contains(text(), 'Library')]");
-
     private By whyUnit4Crumb = By.xpath("//ol/li[last() and contains(text(), 'Why Unit4')]");
-
     private By deliver360Crumb = By.xpath("//ol/li[last() and contains(text(), 'Deliver a 360')]");
+    private By newsHomePageCrumb = By.xpath("//ol/li[last() and contains(text(), 'News')]");
+
 
 
     public BreadCrumbsBasePage(WebDriver driver) {
@@ -114,6 +110,7 @@ public class BreadCrumbsBasePage extends BasePage {
         Reporter.log("Checking breadcrumbs on 'City of Port' Page");
         return isElementPresent(cityOfPortCrumb);
     }
+
     public boolean isFHstPoltenCrumbVisible() {
         waitForElement(fh_st_PoltenCrumb);
         Reporter.log("Checking breadcrumbs on 'FH St Pölten' Page");
@@ -145,13 +142,11 @@ public class BreadCrumbsBasePage extends BasePage {
     }
 
 
-
-
-
-
-
-
-
+    public boolean isNewsHomePageCrumbVisible() {
+        waitForElement(newsHomePageCrumb);
+        Reporter.log("Checking breadcrumbs on 'News' Page");
+        return isElementPresent(newsHomePageCrumb);
+    }
 
     public boolean isBlogCrumbVisible() {
         waitForElement(blogCrumb);
@@ -187,4 +182,5 @@ public class BreadCrumbsBasePage extends BasePage {
         waitForElementClickable(peopleExperienceSuiteCrumb);
         clickOnElement(peopleExperienceSuiteCrumb);
     }
+
 }

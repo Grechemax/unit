@@ -33,6 +33,13 @@ public class FinancialPlanningPage extends BasePage {
     private By peoplePlanningSectionTitle = By.xpath("//h3[contains(text(), 'People Planning & Analytics')]");
     private By finalConsolidationSectionTitle = By.xpath("//h3[contains(text(), 'Financial Consolidation')]");
     private By ifrs16SectionTitle = By.xpath("//h3[contains(text(), 'IFRS 16')]");
+    private By readMoreFHstPolten = By.xpath("//section[5]//a[contains(text(), 'Read more')]");
+
+    //Looking for one of our other Unit4 solutions?
+    private By financialsLink = By.xpath("//strong[contains(text(), 'Unit4 Financials')]");
+    private By erpLink = By.xpath("//strong[contains(text(), 'Unit4 Enterprise Resource Planning')]");
+    private By humanCapitalManagementLink = By.xpath("//strong[contains(text(), 'Unit4 Human Capital Management')]");
+    private By financialPlanningLink = By.xpath("//strong[contains(text(), 'Unit4 Financial Planning & Analysis')]");
 
 
     public FinancialPlanningPage(WebDriver driver) {
@@ -143,6 +150,39 @@ public class FinancialPlanningPage extends BasePage {
         waitForPresenceOfElement(findElement(ifrs16SectionTitle));
         Reporter.log("ifrs16 Section Header is present");
         return isElementPresent(findElement(ifrs16SectionTitle));
+    }
+
+    public void clickReadMoreAboutFHstPolten() {
+        Reporter.log("clicking 'Read more' in 'Customer Overview: FH St Pölten' block");
+        clickOnElement(readMoreFHstPolten);
+    }
+
+    public void clickSeeMoreCustomersStories() {
+        Reporter.log("clicking 'See more customer success stories in 'Trusted by public sector organizations worldwide' section");
+        clickOnElement(seeMoreCustomersStories);
+    }
+
+    //Looking for one of our other Unit4 solutions?
+
+    public void clickERPLink() {
+        Reporter.log("clicking 'ERP' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(erpLink);
+    }
+
+    public void clickHCMLink() {
+        Reporter.log("clicking 'HCM' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(humanCapitalManagementLink);
+    }
+
+
+    public void clickFPALink() {
+        Reporter.log("clicking 'FP&A' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(financialPlanningLink);
+    }
+
+    public void clickFinancialsLink() {
+        Reporter.log("clicking 'Financials' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(financialsLink);
     }
 }
 

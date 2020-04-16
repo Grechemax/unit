@@ -21,10 +21,15 @@ public class HigherEducationPage extends BasePage {
     private By boostStudentsSuccessSectionTitle = By.xpath("//*[@id='tab-content-3131']/div[1]/div/h3");
     private By accelerateGrowthSectionTitle = By.xpath("//*[@id='tab-content-3256']/div[1]/div/h3");
     private By improveIndustrialEffectivenessSectionTitle = By.xpath("//*[@id='tab-content-3281']/div[1]/div/h3");
+    private By manchesterUniversityReadMore = By.xpath("//section[6]//a");
 
+    //Your New Unit4 People Experience Suite
+    private By erpReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][1]//*[contains(text(), 'Read more')]");
+    private By studentManagementReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][2]//*[contains(text(), 'Read more')]");
+    private By financialPlanningReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][3]//*[contains(text(), 'Read more')]");
+    private By humanCapitalReadMore = By.xpath("//*[contains(@class, 'tiles-info-body')]//*[contains(@class, 'tiles-info-tile-holder')][4]//*[contains(text(), 'Read more')]");
 
-
-
+    private By seeMoreCustomersStories = By.xpath("//a[contains(text(), 'customer stories')]");
 
     public HigherEducationPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -110,5 +115,37 @@ public class HigherEducationPage extends BasePage {
         waitForPresenceOfElement(findElement(improveIndustrialEffectivenessSectionTitle));
         Reporter.log("improve Industrial Effectiveness Header is present");
         return isElementPresent(improveIndustrialEffectivenessSectionTitle);
+    }
+//Your New Unit4 People Experience Suite
+    public void clickReadMoreAboutERP() {
+        scrollToElement(yourNewPeopleExperienceTitle);
+        clickOnElement(erpReadMore);
+        Reporter.log("clicking read more in 'ERP' block");
+    }
+
+    public void clickReadMoreAboutStudentManagement() {
+        Reporter.log("clicking read more about 'Students Management'");
+        clickOnElement(studentManagementReadMore);
+    }
+
+    public void clickReadMoreAboutFinancialPlanning() {
+        Reporter.log("clicking read more in 'Financial Capital' block");
+        clickOnElement(financialPlanningReadMore);
+    }
+
+    public void clickReadMoreAboutHumanCapital() {
+        Reporter.log("clicking read more in 'Human Capital' block");
+        clickOnElement(humanCapitalReadMore);
+    }
+
+
+    public void clickReadMoreAboutManchesterUniversity() {
+        Reporter.log("clicking 'Read more' in 'Customer Overview: Manchester Metropolitan University' section");
+        clickOnElement(manchesterUniversityReadMore);
+    }
+
+    public void clickSeeMoreCustomersStories() {
+        Reporter.log("clicking 'See more customer success stories in 'Trusted by public sector organizations worldwide' section");
+        clickOnElement(seeMoreCustomersStories);
     }
 }
