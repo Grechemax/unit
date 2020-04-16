@@ -20,18 +20,14 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 
+
+@org.testng.annotations.Listeners({base.Listeners.class})
+
 public class BaseTest {
 
     private static WebDriver driver;
     private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal();
-
-
     private static ThreadLocal<ExtentTest> test = new ThreadLocal();
-
-    public static String getSuiteName() {
-        return suiteName;
-    }
-
     private static String suiteName;
     private static ThreadLocal<ExtentTest> parentTest = new ThreadLocal();
     protected static String ENVIRONMENT;
@@ -93,9 +89,6 @@ public class BaseTest {
         return DRIVER.get();
     }
 
-
-
-
     @AfterTest
     public void tearDown() {
         if (driver != null) {
@@ -144,10 +137,5 @@ public class BaseTest {
     private static void setBrowser(String browser) {
         BROWSER = browser;
     }
-    public static String getBrowser() {
-        return BROWSER;
-    }
-    public static String getEnvironment() {
-        return ENVIRONMENT;
-    }
+
 }
