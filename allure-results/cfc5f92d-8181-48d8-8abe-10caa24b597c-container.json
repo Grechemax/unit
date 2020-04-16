@@ -1,1 +1,0 @@
-{"uuid":"cfc5f92d-8181-48d8-8abe-10caa24b597c","name":"Unit4_auto","children":["6da96414-f915-4688-8932-9f53e996d2e3"],"befores":[{"name":"driverSetUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1586165022048,"stop":1586165024885}],"afters":[],"links":[],"start":1586165022017,"stop":1586165031463}
