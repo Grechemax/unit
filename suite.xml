@@ -95,7 +95,6 @@
         </classes>
     </test>
 
-
 <!--    Customers-->
     <test name="Customers = > CityOfPortTest">
         <classes>
@@ -113,6 +112,12 @@
         </classes>
     </test>
 
+
+    <test name="NonFoundPage">
+        <classes>
+            <class name="NotFoundTest"/>
+        </classes>
+    </test>
     <!--    <test name="LeaveMessageFormTest">-->
     <!--        <classes>-->
     <!--            <class name="homePageTests.LeaveMessageFormTest"/>-->

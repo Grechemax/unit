@@ -24,7 +24,8 @@ public enum Urls {
     CUSTOMERS_STANLEY("/our-customers/stanley-security"),
     CUSTOMERS_WAR_CHILD("/our-customers/war-child"),
     RESOURCES("/our-customers/war-child"),
-    WHY_UNIT4("/why-choose-unit4");
+    WHY_UNIT4("/why-choose-unit4"),
+    WRONG_URL("/wrong");
 
 
     private String stage;

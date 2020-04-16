@@ -32,6 +32,7 @@ public class EnterpriseResourcePlanningPage extends BasePage {
     private By erpLink = By.xpath("//strong[contains(text(), 'Unit4 Enterprise Resource Planning')]");
     private By humanCapitalManagementLink = By.xpath("//strong[contains(text(), 'Unit4 Human Capital Management')]");
     private By financialPlanningLink = By.xpath("//strong[contains(text(), 'Unit4 Financial Planning & Analysis')]");
+
     private By readMoreCustomersStories = By.xpath("//a[contains(text(), 'Read our customer stories')]");
 
 

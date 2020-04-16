@@ -44,19 +44,23 @@ public class HomePage extends BasePage {
         }
     }
 
-    public void checkLogoPresence() {
+    public boolean isMainLogoPresent() {
         Reporter.log("site logo is present");
-        isElementPresent(siteLogo);
+        return isElementPresent(siteLogo);
     }
 
-    public void checkMainUpperHeader() {
-        String displayedMainUpperHeader = getElementText(mainUpperHeader);
-        Assert.assertEquals(displayedMainUpperHeader, "A better experience 4U");
+    public boolean isMainHeaderPresent() {
+        Reporter.log("Main header is present");
+        return isElementPresent(mainUpperHeader);
     }
 
-    public void checkCenterHeader() {
-        String displayedCenterHeader = getElementText(centerHeader);
-        Assert.assertEquals(displayedCenterHeader, "Our suite of People Experience solutions will free your people to focus on what matters: their success and yours.");
+    public String getMainUpperHeaderText() {
+        Reporter.log("getting Main HeaderText");
+        return getElementText(mainUpperHeader);
+    }
+
+    public String getCenterHeaderText() {
+        return getElementText(centerHeader);
     }
 
 
@@ -65,10 +69,10 @@ public class HomePage extends BasePage {
         clickOnElement(leaveMessageMinimized);
     }
 
-    public void checkLeaveMessageFormText() {
-        String displayedLeaveMessageFormHeader = getElementText(leaveMessageFormHeader);
-        Assert.assertEquals(displayedLeaveMessageFormHeader, "Welcome to LiveChat");
-    }
+//    public void checkLeaveMessageFormText() {
+//        String displayedLeaveMessageFormHeader = getElementText(leaveMessageFormHeader);
+//        Assert.assertEquals(displayedLeaveMessageFormHeader, "Welcome to LiveChat");
+//    }
 
     public void clickReadMoreAboutERP() {
         Reporter.log("clicking read more about 'Enterprise Resource Planning'");

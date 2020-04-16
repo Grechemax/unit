@@ -16,8 +16,6 @@ import pageObjects.products.FinancialPlanningPage;
 import pageObjects.products.HumanCapitalManagementPage;
 import pageObjects.products.StudentManagementPage;
 
-import javax.enterprise.inject.New;
-
 
 public class HomePageTest extends BaseTest {
     private HomePage homePage = new HomePage(getDriver());
@@ -36,9 +34,9 @@ public class HomePageTest extends BaseTest {
     public void homePageTest() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
         homePage.acceptCookies();
-        homePage.checkLogoPresence();
-        homePage.checkMainUpperHeader();
-        homePage.checkCenterHeader();
+        Assert.assertTrue(homePage.isMainLogoPresent());
+        Assert.assertEquals(homePage.getMainUpperHeaderText(), "A better experience 4U");
+        Assert.assertEquals(homePage.getCenterHeaderText(), "Our suite of People Experience solutions will free your people to focus on what matters: their success and yours.");
     }
 
     @Test
