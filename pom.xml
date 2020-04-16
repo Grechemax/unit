@@ -71,14 +71,6 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-testng</artifactId>
-            <version>1.2.5</version>
-        </dependency>
-
-
-
         <!-- Yandex AShot -->
         <dependency>
             <groupId>ru.yandex.qatools.ashot</groupId>
@@ -86,6 +78,11 @@
             <version>1.5.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.assertthat</groupId>
+            <artifactId>selenium-shutterbug</artifactId>
+            <version>0.9</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
@@ -100,7 +97,6 @@
             <version>4.3.0</version>
             <scope>test</scope>
         </dependency>
-
 
 
     </dependencies>
