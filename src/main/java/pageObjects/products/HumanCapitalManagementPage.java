@@ -7,8 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public class HumanCapitalManagementPage extends BasePage {
-    private By seeMoreCustomersStories = By.xpath("//a[contains(@class, 'cta-more logoblock_fpa')]");
-
     private By mainTitle = By.xpath("//h1[@class='section-title']");
     private By energizeYourPeopleTitle = By.xpath("//section[2]/div/div[1]/h2");
     private By humanCapitalManagementDeliversTitle = By.xpath("//section[3]/div/div[1]/h2");
@@ -31,6 +29,14 @@ public class HumanCapitalManagementPage extends BasePage {
     private By talentManagement_Learning_SectionTitle = By.xpath("//div[@id='tab-content-5656']/div[1]/div/h3");
     private By peoplePlanningSectionTitle = By.xpath("//div[@id='tab-content-5666']/div[1]/div/h3");
     private By recruitmentSectionTitle = By.xpath("//div[@id='tab-content-5676']/div[1]/div/h3");
+    private By cityOfPortReadMore = By.xpath("//section[5]//a[contains(text(), 'Read more')]");
+    private By seeMoreCustomersStories = By.xpath("//a[contains(text(), 'See more customer stories')]");
+
+    //Looking for one of our other Unit4 solutions?
+    private By financialsLink = By.xpath("//strong[contains(text(), 'Unit4 Financials')]");
+    private By erpLink = By.xpath("//strong[contains(text(), 'Unit4 Enterprise Resource Planning')]");
+    private By humanCapitalManagementLink = By.xpath("//strong[contains(text(), 'Unit4 Human Capital Management')]");
+    private By financialPlanningLink = By.xpath("//strong[contains(text(), 'Unit4 Financial Planning & Analysis')]");
 
     public HumanCapitalManagementPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -144,4 +150,31 @@ public class HumanCapitalManagementPage extends BasePage {
     }
 
 
+    public void clickReadMoreAboutCityOfPort() {
+        Reporter.log("clicking 'Read more' in Customer Success Stories 'City of Port' block");
+        clickOnElement(cityOfPortReadMore);
+    }
+
+    public void clickSeeMoreCustomersStories() {
+        Reporter.log("clicking 'See more customer success stories' in 'Trusted by public sector organizations worldwide' section");
+        clickOnElement(seeMoreCustomersStories);
+    }
+
+    //Looking for one of our other Unit4 solutions?
+    public void clickERPLink() {
+        Reporter.log("clicking 'ERP' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(erpLink);
+    }
+    public void clickHCMLink() {
+        Reporter.log("clicking 'HCM' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(humanCapitalManagementLink);
+    }
+    public void clickFPALink() {
+        Reporter.log("clicking 'FP&A' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(financialPlanningLink);
+    }
+    public void clickFinancialsLink() {
+        Reporter.log("clicking 'Financials' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(financialsLink);
+    }
 }

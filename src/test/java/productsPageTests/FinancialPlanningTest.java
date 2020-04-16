@@ -17,11 +17,13 @@ public class FinancialPlanningTest extends BaseTest {
     private HomePage homePage = new HomePage(getDriver());
     private FHstPoltenPage fHstPoltenPage = new FHstPoltenPage(getDriver());
     private HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
-    private FinancialsPage financialsPage = new FinancialsPage(getDriver());
+
     private CustomersHomePage customersHomePage = new CustomersHomePage(getDriver());
     private BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
     private LetsTalkSectionPage letsTalkSectionPage = new LetsTalkSectionPage(getDriver());
     private RequestDemoPopupPage requestDemoPopupPage = new RequestDemoPopupPage(getDriver());
+
+    private FinancialsPage financialsPage = new FinancialsPage(getDriver());
     private FinancialPlanningPage financialPlanningPage = new FinancialPlanningPage(getDriver());
     private HumanCapitalManagementPage humanCapitalManagementPage = new HumanCapitalManagementPage(getDriver());
     private EnterpriseResourcePlanningPage enterpriseResourcePlanningPage = new EnterpriseResourcePlanningPage(getDriver());
@@ -111,25 +113,23 @@ public class FinancialPlanningTest extends BaseTest {
 
     //Looking for one of our other Unit4 solutions?
     @Test
-    public void checkSeeMoreOpensERPPage() {
+    public void checkLinkOpensERPPage() {
         BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
         financialPlanningPage.clickERPLink();
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
         Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
     }
-
     @Test
-    public void checkSeeMoreOpensFinancialPlanningPage() {
+    public void checkLinkOpensFinancialPlanningPage() {
         BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
         financialPlanningPage.clickFPALink();
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
         Assert.assertTrue(financialPlanningPage.isMainTitlePresent());
     }
-
     @Test
-    public void checkSeeMoreOpensHumanCapitalManagementPage() {
+    public void checkLinkOpensHumanCapitalManagementPage() {
         BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
         financialPlanningPage.clickHCMLink();
@@ -137,7 +137,7 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertTrue(humanCapitalManagementPage.isMainTitlePresent());
     }
     @Test
-    public void checkSeeMoreOpensFinancialsPage() {
+    public void checkLinkOpensFinancialsPage() {
         BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
         financialPlanningPage.clickFinancialsLink();

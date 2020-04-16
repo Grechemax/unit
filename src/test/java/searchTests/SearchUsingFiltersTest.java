@@ -2,6 +2,7 @@ package searchTests;
 
 import base.BasePage;
 import base.BaseTest;
+import base.HeaderBasePage;
 import data.Urls;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
@@ -9,13 +10,13 @@ import pageObjects.SearchPage;
 
 public class SearchUsingFiltersTest extends BaseTest {
 
-    HomePage headerBasePage;
+    HeaderBasePage headerBasePage;
     SearchPage searchPage;
 
     @Test
     public void searchBlogOnly() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        headerBasePage = new HomePage(getDriver());
+        headerBasePage = new HeaderBasePage(getDriver());
         searchPage = new SearchPage(getDriver());
         String validQuerySearch = "skills";
         headerBasePage.doSearch(validQuerySearch);
@@ -29,7 +30,7 @@ public class SearchUsingFiltersTest extends BaseTest {
     @Test
     public void searchNewsOnly() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        headerBasePage = new HomePage(getDriver());
+        headerBasePage = new HeaderBasePage(getDriver());
         searchPage = new SearchPage(getDriver());
         String validQuerySearch = "news";
         headerBasePage.doSearch(validQuerySearch);

@@ -20,13 +20,20 @@ public class EnterpriseResourcePlanningPage extends BasePage {
     private By operationalReportingPanelItem = By.xpath("//a[@id='tab-link-1756']");
     private By hrPanelItem = By.xpath("//a[@id='tab-link-1726']");
     private By fieldServiceManagementPanelItem = By.xpath("//a[@id='tab-link-1746']");
-
     private By financialManagementSectionTitle = By.xpath("//div[@id='tab-content-1716']/div[1]/div/h3");
     private By projectManagementSectionTitle = By.xpath("//div[@id='tab-content-4436']/div[1]/div/h3");
     private By procurementManagementSectionTitle = By.xpath("//div[@id='tab-content-1736']/div[1]/div/h3");
     private By operationalReportingSectionTitle = By.xpath("//div[@id='tab-content-1756']/div[1]/div/h3");
     private By hrSectionTitle = By.xpath("//div[@id='tab-content-1726']/div[1]/div/h3");
     private By fieldServiceManagementSectionTitle = By.xpath("//div[@id='tab-content-1746']/div[1]/div/h3");
+    private By readMoreWarChild = By.xpath("//section[5]//a[contains(text(), 'Read more')]");
+    //Looking for one of our other Unit4 solutions?
+    private By financialsLink = By.xpath("//strong[contains(text(), 'Unit4 Financials')]");
+    private By erpLink = By.xpath("//strong[contains(text(), 'Unit4 Enterprise Resource Planning')]");
+    private By humanCapitalManagementLink = By.xpath("//strong[contains(text(), 'Unit4 Human Capital Management')]");
+    private By financialPlanningLink = By.xpath("//strong[contains(text(), 'Unit4 Financial Planning & Analysis')]");
+    private By readMoreCustomersStories = By.xpath("//a[contains(text(), 'Read our customer stories')]");
+
 
     public EnterpriseResourcePlanningPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -121,4 +128,31 @@ public class EnterpriseResourcePlanningPage extends BasePage {
         return isElementPresent(fieldServiceManagementSectionTitle);
     }
 
+    public void clickReadMoreAboutWarChild() {
+        Reporter.log("clicking read more in 'Customer Overview: War Child' block");
+        clickOnElement(readMoreWarChild);
+    }
+
+    //Looking for one of our other Unit4 solutions?
+    public void clickERPLink() {
+        Reporter.log("clicking 'ERP' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(erpLink);
+    }
+    public void clickHCMLink() {
+        Reporter.log("clicking 'HCM' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(humanCapitalManagementLink);
+    }
+    public void clickFPALink() {
+        Reporter.log("clicking 'FP&A' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(financialPlanningLink);
+    }
+    public void clickFinancialsLink() {
+        Reporter.log("clicking 'Financials' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(financialsLink);
+    }
+
+    public void clickReadCustomersStories() {
+        Reporter.log("clicking 'See more customer success stories in 'Trusted by public sector organizations worldwide' section");
+        clickOnElement(readMoreCustomersStories);
+    }
 }

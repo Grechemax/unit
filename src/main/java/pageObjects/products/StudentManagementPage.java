@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class StudentManagementPage extends BasePage {
 
-    private By seeMoreCustomersStories = By.xpath("//a[contains(@class, 'cta-more logoblock_fpa')]");
 
     private By mainTitle = By.xpath("//h1[@class='section-title']");
     private By supportGrowthInLearningTitle = By.xpath("//section[2]/div[1]/div/section/div/div/h3");
@@ -30,6 +29,8 @@ public class StudentManagementPage extends BasePage {
     private By billingSectionTitle = By.xpath("//div[@id='tab-content-3956']/div[1]/div/h3");
     private By communicationSectionTitle = By.xpath("//div[@id='tab-content-3966']/div[1]/div/h3");
     private By reportingSectionTitle = By.xpath("//div[@id='tab-content-3976']/div[1]/div/h3");
+
+    private By seeMoreCustomersStories = By.xpath("//a[contains(text(), 'customer stories')]");
 
     public StudentManagementPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -124,4 +125,10 @@ public class StudentManagementPage extends BasePage {
         Reporter.log("billing Header is present");
         return isElementPresent(reportingSectionTitle);
     }
+
+    public void clickSeeMoreCustomersStories() {
+        Reporter.log("clicking 'See more customer success stories' in 'Trusted by public sector organizations worldwide' section");
+        clickOnElement(seeMoreCustomersStories);
+    }
+
 }

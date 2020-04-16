@@ -1,6 +1,7 @@
 package base;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -12,6 +13,8 @@ public class HeaderBasePage extends BasePage {
     private By resourcesHeaderItem = By.xpath("//*[@id='sitenav']//a[contains(text(), 'Resources')]");
     private By whyUnit4HeaderItem = By.xpath("//*[@id='sitenav']//a[contains(text(), 'Why Unit4')]");
     private By requestDemoCTA = By.xpath("//*[contains(@class, 'sitenav')]//*[contains(text(), 'Request a demo')]");
+    private By magnifierIconToOpenSearch = By.xpath("//button[contains(@class, 'search-button-open')]");
+    private By searchInput = By.xpath("//input[contains(@placeholder, 'Enter search')]");
 
     private By enterpriseResourcePlanningDrpdwnItem = By.xpath("//li/a[contains(text(), 'Enterprise Resource Planning')]");
     private By financialPlanningDrpdwnItem = By.xpath("//a[contains(text(), 'Financial Planning & Analysis')]");
@@ -153,5 +156,12 @@ public class HeaderBasePage extends BasePage {
 
     public void clickRequestDemoForm() {
         clickOnElement(requestDemoCTA);
+    }
+
+    public void doSearch(String query) {
+        Reporter.log("inputting query");
+        clickOnElement(magnifierIconToOpenSearch);
+        getDriver().findElement(searchInput).sendKeys(query);
+        getDriver().findElement(searchInput).sendKeys(Keys.RETURN);
     }
 }

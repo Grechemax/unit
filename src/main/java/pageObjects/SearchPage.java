@@ -72,7 +72,7 @@ public class SearchPage extends BasePage {
     }
 
     public void checkIfOnlyBlogShown() {
-       goSleep(2);
+        waitForElement(resultsBlogItem);
         Assert.assertTrue(isElementPresent(resultsBlogItem), "Only Blog results are visible");
         Assert.assertFalse(isElementPresent(resultsNewsItem));
     }

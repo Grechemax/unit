@@ -163,23 +163,18 @@ public class FinancialPlanningPage extends BasePage {
     }
 
     //Looking for one of our other Unit4 solutions?
-
     public void clickERPLink() {
         Reporter.log("clicking 'ERP' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(erpLink);
     }
-
     public void clickHCMLink() {
         Reporter.log("clicking 'HCM' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(humanCapitalManagementLink);
     }
-
-
     public void clickFPALink() {
         Reporter.log("clicking 'FP&A' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(financialPlanningLink);
     }
-
     public void clickFinancialsLink() {
         Reporter.log("clicking 'Financials' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(financialsLink);

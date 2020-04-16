@@ -13,22 +13,21 @@ import org.testng.Assert;
 
 
 public class HomePage extends BasePage {
-    private By acceptCookiesButton = By.xpath("//button[contains(text(), 'Accept Cookies')]");
-    private By mainUpperHeader = By.xpath("//h1[contains(@class, 'section-title h1')]");
-    private By centerHeader = By.xpath("//h2[contains(@class, 'section-title text-center')]");
     private By siteLogo = By.xpath("//a[contains(@class, 'site-logo')]");
-    private By magnifierIconToOpenSearch = By.xpath("//button[contains(@class, 'search-button-open')]");
-    private By searchInput = By.xpath("//input[contains(@placeholder, 'Enter search')]");
-    private By leaveMessageMinimized = By.xpath("//p[contains(text(), 'Leave a message')]");
-    private By leaveMessageFormHeader = By.xpath("//h1[contains(text(), 'Welcome to LiveChat')]");
-    private By magnifierIconToSubmit = By.xpath("//*[@id='site-search-button-desktop']");
+    private By whyButton = By.xpath("//p/a[contains(text(), 'Why Unit4')]");
+    private By seeAllNews = By.xpath("//a[contains(text(), 'See all news')]");
+    private By mainUpperHeader = By.xpath("//h1[contains(@class, 'section-title h1')]");
     private By erpReadMore = By.xpath("//section[2]//*[contains(text(), 'Read more')]");
-    private By financialPlanningReadMore = By.xpath("//section[3]//*[contains(text(), 'Read more')]");
-    private By humanCapitalReadMore = By.xpath("//section[4]//*[contains(text(), 'Read more')]");
-    private By studentManagementReadMore = By.xpath("//section[5]//*[contains(text(), 'Read more')]");
-    private By readMoreCustomersStories = By.xpath("//a[contains(text(), 'Read our customer stories')]");
+    private By magnifierIconToSubmit = By.xpath("//*[@id='site-search-button-desktop']");
+    private By leaveMessageMinimized = By.xpath("//p[contains(text(), 'Leave a message')]");
     private By readMoreWarChild = By.xpath("//section[8]//a[contains(text(), 'Read more')]");
-
+    private By centerHeader = By.xpath("//h2[contains(@class, 'section-title text-center')]");
+    private By acceptCookiesButton = By.xpath("//button[contains(text(), 'Accept Cookies')]");
+    private By humanCapitalReadMore = By.xpath("//section[4]//*[contains(text(), 'Read more')]");
+    private By leaveMessageFormHeader = By.xpath("//h1[contains(text(), 'Welcome to LiveChat')]");
+    private By studentManagementReadMore = By.xpath("//section[5]//*[contains(text(), 'Read more')]");
+    private By financialPlanningReadMore = By.xpath("//section[3]//*[contains(text(), 'Read more')]");
+    private By readMoreCustomersStories = By.xpath("//a[contains(text(), 'Read our customer stories')]");
 
     public HomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -60,13 +59,6 @@ public class HomePage extends BasePage {
         Assert.assertEquals(displayedCenterHeader, "Our suite of People Experience solutions will free your people to focus on what matters: their success and yours.");
     }
 
-
-    public void doSearch(String query) {
-        Reporter.log("inputting query");
-        clickOnElement(magnifierIconToOpenSearch);
-        getDriver().findElement(searchInput).sendKeys(query);
-        getDriver().findElement(searchInput).sendKeys(Keys.RETURN);
-    }
 
     public void openLeaveMessageForm() {
         scrollToElement(centerHeader);
@@ -106,5 +98,15 @@ public class HomePage extends BasePage {
     public void clickReadMoreAboutWarChild() {
         Reporter.log("clicking read more in 'Customer Overview: War Child' block");
         clickOnElement(readMoreWarChild);
+    }
+
+    public void clickWhyButton() {
+        Reporter.log("clicking read more in 'Customer Overview: War Child' block");
+        clickOnElement(whyButton);
+    }
+
+    public void clickSeeAllNews() {
+        Reporter.log("clicking 'See all news'");
+        clickOnElement(seeAllNews);
     }
 }

@@ -2,23 +2,25 @@ package searchTests;
 
 import base.BasePage;
 import base.BaseTest;
+import base.HeaderBasePage;
 import data.Urls;
+import org.apache.http.Header;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
 import pageObjects.SearchPage;
 
 public class SearchTest extends BaseTest {
-    private HomePage homePage;
-    private SearchPage searchPage;
+    private SearchPage searchPage = new SearchPage(getDriver());
+    private HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
+    String invalidQuerySearch = "!@#$%^&*()";
+    String validQuerySearch = "experience";
+    String toShortQuery = "ts";
 
     @Test
     public void specialCharactersSearch() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        homePage = new HomePage(getDriver());
-        searchPage = new SearchPage(getDriver());
-        String invalidQuerySearch = "!@#$%^&*()";
-        homePage.doSearch(invalidQuerySearch);
+        headerBasePage.doSearch(invalidQuerySearch);
         searchPage.checkIfNoResultsFoundDisplayed();
 
         Assert.assertEquals(searchPage.getSearchPageHeader(), "Search Unit4");
@@ -28,10 +30,7 @@ public class SearchTest extends BaseTest {
     @Test
     public void tooShortQuery() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        homePage = new HomePage(getDriver());
-        searchPage = new SearchPage(getDriver());
-        String toShortQuery = "ts";
-        homePage.doSearch(toShortQuery);
+        headerBasePage.doSearch(toShortQuery);
         searchPage.checkIfNoResultsFoundDisplayed();
 
         Assert.assertEquals(searchPage.getSearchPageHeader(), "Search Unit4");
@@ -41,11 +40,9 @@ public class SearchTest extends BaseTest {
     @Test
     public void positiveSearch() throws InterruptedException {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        homePage = new HomePage(getDriver());
         searchPage = new SearchPage(getDriver());
-        homePage.acceptCookies();
-        String validQuerySearch = "experience";
-        homePage.doSearch(validQuerySearch);
+//        homePage.acceptCookies();
+        headerBasePage.doSearch(validQuerySearch);
         searchPage.compareResultsCount();
 
         Assert.assertEquals(searchPage.getSearchPageHeader(), "Search Unit4");
