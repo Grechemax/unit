@@ -6,12 +6,11 @@ public class Reporter {
     private static final Logger LOGGER = Logger.getLogger(Reporter.class.getName());
 
     public static void log(String s) {
-        System.out.println(s);
         printStdOut(s);
     }
 
     private static void printStdOut(String message) {
-//        BaseTest.getTest().get().info(message);
+        BaseTest.getTest().get().info(message);
         LOGGER.info(message);
     }
 
