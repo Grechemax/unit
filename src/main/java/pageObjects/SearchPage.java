@@ -1,8 +1,8 @@
 package pageObjects;
 
 import base.BasePage;
+import base.Reporter;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -11,10 +11,11 @@ import java.util.List;
 
 
 public class SearchPage extends BasePage {
-    private By noResultsFound = By.xpath("//main//div[contains(@class, 'tile-group-container--search')]/div[contains(@class, 'view-filters')]");
-    private By searchHeader = By.xpath("//h1[contains(text(), 'Search Unit4')]");
+    private By noResultsFound = By.xpath("//div[contains(@class, 'tile-group-container--search')]/div[contains(@class, 'view-filters')]");
+    private By searchPageMainHeader = By.xpath("//h1[contains(text(), 'Search Unit4')]");
     private By resultsCount = By.xpath("//strong[contains(@class, 'section-search-results-count')]");
     private By resultsItem = By.xpath("//li[contains(@class, 'tile')]");
+    private By firstResultsItem = By.xpath("//li[contains(@class, 'tile')]//span[1]");
     private By resultsBlogItem = By.xpath("//div[contains(text(), 'Blog')]");
     private By resultsNewsItem = By.xpath("//div[contains(text(), 'News')]");
 
@@ -29,35 +30,40 @@ public class SearchPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void checkIfNoResultsFoundDisplayed() {
-        isElementPresent(noResultsFound);
+    public boolean isNoResultsFoundPresent() {
+        waitForElement(noResultsFound);
+        return isElementPresent(noResultsFound);
     }
 
     public String getSearchPageHeader() {
-        waitForElement(searchHeader);
-        return getElementText(searchHeader);
+        waitForElement(searchPageMainHeader);
+        return getElementText(searchPageMainHeader);
     }
 
-    public void compareResultsCount() throws InterruptedException {
+    public boolean isSearchPageMainHeaderPresent() {
+        waitForElement(searchPageMainHeader);
+        return isElementPresent(searchPageMainHeader);
+    }
 
-        while (isElementPresent(showMoreButton)){
+    public boolean isResultsCountAndFoundResultEqual() {
+        while (isElementPresent(showMoreButton)) {
             scrollToElement(aboutUnit4FooterSection);
             clickOnElementUsingJS(showMoreButton);
-            Thread.sleep(1111);
+            sleepTightInSeconds(1);
         }
 
         List foundItemsList = findElements(resultsItem);
         int countFoundItems = foundItemsList.size();
         int countNumber = Integer.parseInt(findElement(resultsCount).getText());
-
-        Assert.assertEquals(countNumber, countFoundItems);
+        return countFoundItems == countNumber;
     }
 
     public void clickFilterDropdown() {
         clickOnElement(filterDropdown);
     }
 
-    public void selectBlogCheckbox() { ;
+    public void selectBlogCheckbox() {
+        ;
         clickOnElementUsingJS(blogCheckbox);
     }
 
@@ -77,4 +83,14 @@ public class SearchPage extends BasePage {
         Assert.assertFalse(isElementPresent(resultsNewsItem));
     }
 
+    public void openItemFromSearchResults() {
+        waitForElement(firstResultsItem);
+        clickOnElement(firstResultsItem);
+        Reporter.log("opening page from search result");
+    }
+
+    public String getItemsHeaderFromSearchResults() {
+        Reporter.log("getting item's header from search result");
+        return getElementText(firstResultsItem);
+    }
 }

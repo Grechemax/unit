@@ -10,30 +10,27 @@ import pageObjects.SearchPage;
 
 public class SearchUsingFiltersTest extends BaseTest {
 
-    HeaderBasePage headerBasePage;
-    SearchPage searchPage;
+    HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
+    SearchPage searchPage = new SearchPage(getDriver());
 
     @Test
     public void searchBlogOnly() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        headerBasePage = new HeaderBasePage(getDriver());
-        searchPage = new SearchPage(getDriver());
         String validQuerySearch = "skills";
-        headerBasePage.doSearch(validQuerySearch);
+        headerBasePage.inputDataToSearchInput(validQuerySearch);
+        headerBasePage.submitSearchViaReturn();
         searchPage.clickFilterDropdown();
         searchPage.selectBlogCheckbox();
         searchPage.clickFilterDropdown();
         searchPage.checkIfOnlyBlogShown();
     }
 
-
     @Test
     public void searchNewsOnly() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        headerBasePage = new HeaderBasePage(getDriver());
-        searchPage = new SearchPage(getDriver());
         String validQuerySearch = "news";
-        headerBasePage.doSearch(validQuerySearch);
+        headerBasePage.inputDataToSearchInput(validQuerySearch);
+        headerBasePage.submitSearchViaSearchIcon();
         searchPage.clickFilterDropdown();
         searchPage.selectNewsCheckbox();
         searchPage.checkIfOnlyNewsShown();

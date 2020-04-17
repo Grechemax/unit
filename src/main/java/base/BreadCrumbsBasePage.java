@@ -6,6 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class BreadCrumbsBasePage extends BasePage {
 
+    private By homeCrumb = By.xpath("//div[@class='u4-breadcrumb']//*[contains(text(), 'Home')]"); // right breadcrumb
     private By productsHomeCrumb = By.xpath("//ol/li[last() and contains(text(), 'Products')]");
     private By financialsCrumb = By.xpath("//ol/li[last() and contains(text(), 'Financials')]");
     private By financialPlanningCrumb = By.xpath("//ol/li[last() and contains(text(), 'Financial Planning')]");
@@ -31,6 +32,7 @@ public class BreadCrumbsBasePage extends BasePage {
     private By whyUnit4Crumb = By.xpath("//ol/li[last() and contains(text(), 'Why Unit4')]");
     private By deliver360Crumb = By.xpath("//ol/li[last() and contains(text(), 'Deliver a 360')]");
     private By newsHomePageCrumb = By.xpath("//ol/li[last() and contains(text(), 'News')]");
+    private By contactUsCrumb = By.xpath("//div[@class='u4-breadcrumb']//*[contains(text(), 'Contact Us')]"); // right breadcrumb
 
 
     public BreadCrumbsBasePage(WebDriver driver) {
@@ -189,16 +191,29 @@ public class BreadCrumbsBasePage extends BasePage {
         return isElementPresent(deliver360Crumb);
     }
 
-    public void goToProductsViaBreadCrumb() {
+    public boolean isContactUsCrumbVisible() {
+        waitForElementClickable(contactUsCrumb);
+        Reporter.log("Checking breadcrumbs on 'Contact us' Page");
+        return isElementPresent(contactUsCrumb);
+    }
+
+    public void goToHomeViaBreadCrumb() {
         waitForElementClickable(productsHomeCrumb);
-        Reporter.log("Checking breadcrumbs if it's possible open 'Products' Page via breadcrumbs");
+        Reporter.log("Checking if it's possible open 'Home' Page via breadcrumbs");
         clickOnElement(productsHomeCrumb);
     }
 
     public void goToPeopleExperienceSuiteViaBreadCrumb() {
         waitForElementClickable(peopleExperienceSuiteCrumb);
-        Reporter.log("Checking breadcrumbs if it's possible open 'People Experience Suite' Page via breadcrumbs");
+        Reporter.log("Checking if it's possible open 'People Experience Suite' Page via breadcrumbs");
         clickOnElement(peopleExperienceSuiteCrumb);
     }
+
+    public void goToHomePageViaBreadCrumb() {
+        waitForElementClickable(homeCrumb);
+        Reporter.log("Checking if it's possible open 'People Experience Suite' Page via breadcrumbs");
+        clickOnElement(homeCrumb);
+    }
+
 
 }

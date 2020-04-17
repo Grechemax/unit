@@ -541,6 +541,26 @@ public class BasePage extends BaseTest {
         }
     }
 
+    public boolean isElementPresentWithTimer(By locator, int waitTime) {
+        try {
+            WebDriverWait wait = (new WebDriverWait(getDriver(), waitTime));
+            wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isElementVisibleWithTimer(By locator, int waitTime) {
+        try {
+            WebDriverWait wait = (new WebDriverWait(getDriver(), waitTime));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public boolean isElementPresent(WebElement element) {
         waitForPresenceOfElement(element);
 
@@ -918,8 +938,6 @@ public class BasePage extends BaseTest {
     }
 
     public static void checkLinks(String page) {
-
-
         String url = "";
         HttpURLConnection huc = null;
         int respCode = 200;
@@ -967,6 +985,14 @@ public class BasePage extends BaseTest {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void sleepTightInSeconds(int seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (Exception e) {
+
         }
     }
 }

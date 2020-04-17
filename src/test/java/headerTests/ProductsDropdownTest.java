@@ -13,7 +13,7 @@ public class ProductsDropdownTest extends BaseTest {
     public void checkProductsDropdown() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
         headerBasePage = new HeaderBasePage(getDriver());
-        headerBasePage.checkIndustriesItems();
+        headerBasePage.checkProductsItems();
     }
 
     @Test

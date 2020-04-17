@@ -14,6 +14,8 @@ public class HeaderBasePage extends BasePage {
     private By whyUnit4HeaderItem = By.xpath("//*[@id='sitenav']//a[contains(text(), 'Why Unit4')]");
     private By requestDemoCTA = By.xpath("//*[contains(@class, 'sitenav')]//*[contains(text(), 'Request a demo')]");
     private By magnifierIconToOpenSearch = By.xpath("//button[contains(@class, 'search-button-open')]");
+    private By collapseSearchInputButton = By.xpath("//*[@id='site-search-close']");
+    private By magnifierIconToSubmit = By.xpath("//*[@id='site-search-button-desktop']");
     private By searchInput = By.xpath("//input[contains(@placeholder, 'Enter search')]");
 
     private By enterpriseResourcePlanningDrpdwnItem = By.xpath("//li/a[contains(text(), 'Enterprise Resource Planning')]");
@@ -36,7 +38,6 @@ public class HeaderBasePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    //header
     public void checkProductsItems() {
         hoverOverElement(productsHeaderItem);
         Assert.assertTrue(isElementPresent(enterpriseResourcePlanningDrpdwnItem));
@@ -45,7 +46,6 @@ public class HeaderBasePage extends BasePage {
         Assert.assertTrue(isElementPresent(studentManagementDrpdwnItem));
     }
 
-    //header
     public void checkResourcesItems() {
         hoverOverElement(resourcesHeaderItem);
         Assert.assertTrue(isElementPresent(blog));
@@ -55,7 +55,6 @@ public class HeaderBasePage extends BasePage {
         System.out.println(backgroundColorElement(findElement(library)));  // ????????????????????????????????????????
     }
 
-    //header
     public void checkIndustriesItems() {
         hoverOverElement(industriesHeaderItem);
         Assert.assertTrue(isElementPresent(higherEducation));
@@ -69,30 +68,23 @@ public class HeaderBasePage extends BasePage {
         hoverOverElement(productsHeaderItem);
         clickOnElement(enterpriseResourcePlanningDrpdwnItem);
     }
-
-    //Products
     public void goToFinancialPlaning() {
         hoverOverElement(productsHeaderItem);
         clickOnElement(financialPlanningDrpdwnItem);
     }
-
-    //Products
     public void goToHumanCapitalManagement() {
         hoverOverElement(productsHeaderItem);
         clickOnElement(humanCapitalManagementDrpdwnItem);
     }
-
-    //Products
     public void goToStudentManagement() {
         hoverOverElement(productsHeaderItem);
         clickOnElement(studentManagementDrpdwnItem);
     }
-
-    //Products
     public void goToThePeopleExperienceSuite() {
         hoverOverElement(productsHeaderItem);
         clickOnElement(thePeopleExperienceSuiteDrpdwnItem);
     }
+
 
 
     //Industries
@@ -158,10 +150,30 @@ public class HeaderBasePage extends BasePage {
         clickOnElement(requestDemoCTA);
     }
 
-    public void doSearch(String query) {
+    public void inputDataToSearchInput(String query) {
         Reporter.log("inputting query");
         clickOnElement(magnifierIconToOpenSearch);
         getDriver().findElement(searchInput).sendKeys(query);
+    }
+
+    public void submitSearchViaSearchIcon() {
+        Reporter.log("submitting search with search icon");
+        clickOnElement(magnifierIconToSubmit);
+    }
+
+    public void submitSearchViaReturn() {
+        Reporter.log("submitting search with pressing 'Enter'");
         getDriver().findElement(searchInput).sendKeys(Keys.RETURN);
     }
+
+    public void collapseSearchInput() {
+        Reporter.log("submitting search with pressing 'Enter'");
+        clickOnElement(collapseSearchInputButton);
+    }
+
+    public boolean isMagnifierIconToSubmitPresent() {
+        return isElementPresent(magnifierIconToSubmit);
+    }
+
+
 }

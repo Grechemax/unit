@@ -18,7 +18,6 @@ public class HomePage extends BasePage {
     private By seeAllNews = By.xpath("//a[contains(text(), 'See all news')]");
     private By mainUpperHeader = By.xpath("//h1[contains(@class, 'section-title h1')]");
     private By erpReadMore = By.xpath("//section[2]//*[contains(text(), 'Read more')]");
-    private By magnifierIconToSubmit = By.xpath("//*[@id='site-search-button-desktop']");
     private By leaveMessageMinimized = By.xpath("//p[contains(text(), 'Leave a message')]");
     private By readMoreWarChild = By.xpath("//section[8]//a[contains(text(), 'Read more')]");
     private By centerHeader = By.xpath("//h2[contains(@class, 'section-title text-center')]");
@@ -50,6 +49,7 @@ public class HomePage extends BasePage {
     }
 
     public boolean isMainHeaderPresent() {
+        waitForElement(mainUpperHeader);
         Reporter.log("Main header is present");
         return isElementPresent(mainUpperHeader);
     }

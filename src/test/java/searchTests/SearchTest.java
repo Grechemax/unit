@@ -4,25 +4,28 @@ import base.BasePage;
 import base.BaseTest;
 import base.HeaderBasePage;
 import data.Urls;
-import org.apache.http.Header;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
 import pageObjects.SearchPage;
 
 public class SearchTest extends BaseTest {
+    private HomePage homePage = new HomePage(getDriver());
     private SearchPage searchPage = new SearchPage(getDriver());
     private HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
+    String doubleValidQuerySearch = "people experience";
     String invalidQuerySearch = "!@#$%^&*()";
     String validQuerySearch = "experience";
+    String digitQuerySearch = "2020";
     String toShortQuery = "ts";
 
     @Test
     public void specialCharactersSearch() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        headerBasePage.doSearch(invalidQuerySearch);
-        searchPage.checkIfNoResultsFoundDisplayed();
-
+        homePage.acceptCookies();
+        headerBasePage.inputDataToSearchInput(invalidQuerySearch);
+        headerBasePage.submitSearchViaReturn();
+        Assert.assertTrue(searchPage.isNoResultsFoundPresent());
         Assert.assertEquals(searchPage.getSearchPageHeader(), "Search Unit4");
     }
 
@@ -30,22 +33,60 @@ public class SearchTest extends BaseTest {
     @Test
     public void tooShortQuery() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        headerBasePage.doSearch(toShortQuery);
-        searchPage.checkIfNoResultsFoundDisplayed();
-
+        homePage.acceptCookies();
+        headerBasePage.inputDataToSearchInput(toShortQuery);
+        headerBasePage.submitSearchViaReturn();
         Assert.assertEquals(searchPage.getSearchPageHeader(), "Search Unit4");
+        Assert.assertTrue(searchPage.isNoResultsFoundPresent());
     }
-
 
     @Test
-    public void positiveSearch() throws InterruptedException {
+    public void positiveOneWordSearch() {
         BasePage.openURL(Urls.HOME_PAGE.URL());
-        searchPage = new SearchPage(getDriver());
-//        homePage.acceptCookies();
-        headerBasePage.doSearch(validQuerySearch);
-        searchPage.compareResultsCount();
-
+        homePage.acceptCookies();
+        headerBasePage.inputDataToSearchInput(validQuerySearch);
+        headerBasePage.submitSearchViaReturn();
         Assert.assertEquals(searchPage.getSearchPageHeader(), "Search Unit4");
+        Assert.assertTrue(searchPage.isResultsCountAndFoundResultEqual());
     }
 
+    @Test
+    public void positiveTwoWordSearch() {
+        BasePage.openURL(Urls.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        headerBasePage.inputDataToSearchInput(doubleValidQuerySearch);
+        headerBasePage.submitSearchViaSearchIcon();
+        Assert.assertEquals(searchPage.getSearchPageHeader(), "Search Unit4");
+        Assert.assertTrue(searchPage.isResultsCountAndFoundResultEqual());
+    }
+
+    @Test
+    public void digitCharactersSearch() {
+        BasePage.openURL(Urls.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        headerBasePage.inputDataToSearchInput(digitQuerySearch);
+        headerBasePage.submitSearchViaSearchIcon();
+        Assert.assertEquals(searchPage.getSearchPageHeader(), "Search Unit4");
+        Assert.assertTrue(searchPage.isResultsCountAndFoundResultEqual());
+    }
+
+    @Test
+    public void collapseSearchInput() {
+        BasePage.openURL(Urls.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        headerBasePage.inputDataToSearchInput(doubleValidQuerySearch);
+        headerBasePage.collapseSearchInput();
+        Assert.assertTrue(headerBasePage.isMagnifierIconToSubmitPresent());
+    }
+
+    // todo Verify that User can open the pages from the search results
+    @Test
+    public void openPageFromSearchResult() {
+        BasePage.openURL(Urls.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        headerBasePage.inputDataToSearchInput(doubleValidQuerySearch);
+        headerBasePage.submitSearchViaSearchIcon();
+        searchPage.isSearchPageMainHeaderPresent();
+        searchPage.openItemFromSearchResults();
+    }
 }
