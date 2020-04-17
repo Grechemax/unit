@@ -11,7 +11,7 @@ public class PeopleExperienceSuitePage extends BasePage {
     BreadCrumbsBasePage breadCrumbsBasePage;
 
 
-    private By mainPeopleExperienceSuiteHeader = By.xpath("//*[contains(text(), 'Improve your people’s lives')]");
+    private By mainPeopleExperienceSuiteHeader = By.xpath("//*[contains(text(), 'Improve your people')]");
     private By whyUnit4Button = By.xpath("//section[1]//a[contains(text(), 'Why Unit4')]");
     // why unit 4 button // button leads to whyPage
     private By peopleExperienceTitle = By.xpath("//*[contains(text(), 'The Unit4 People Experience Suite will humanize')]");
