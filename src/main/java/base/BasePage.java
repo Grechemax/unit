@@ -494,6 +494,11 @@ public class BasePage extends BaseTest {
         Reporter.log("Switching to last tab");
     }
 
+    public static boolean isCurrentUrlContainsUrl(String urlToCompare) {
+        String currentUrl = getDriver().getCurrentUrl();
+        return currentUrl.contains(urlToCompare);
+    }
+
     public String backgroundColorElement(WebElement element) {
         try {
             waitForPresenceOfElement(element, 10);
@@ -930,7 +935,7 @@ public class BasePage extends BaseTest {
     /**
      * Performs click on element
      *
-     * @param locator - locator of the element
+     * @param element - locator of the element
      */
     public void clickOnElementUsingJS(WebElement element) {
         JavascriptExecutor executor = (JavascriptExecutor) getDriver();
@@ -988,11 +993,11 @@ public class BasePage extends BaseTest {
         }
     }
 
-    public void sleepTightInSeconds(int seconds) {
+    public void sleepTightInSeconds(int miliseconds) {
         try {
-            Thread.sleep(seconds * 1000);
+            Thread.sleep(miliseconds);
         } catch (Exception e) {
-
+            System.out.println(e);
         }
     }
 }

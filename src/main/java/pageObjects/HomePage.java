@@ -37,7 +37,7 @@ public class HomePage extends BasePage {
     }
 
     public void acceptCookies() {
-        if (isElementPresent(acceptCookiesButton)) {
+        if (isElementPresentWithTimer(acceptCookiesButton, 15)) {
             Reporter.log("accepting cookies");
             clickOnElementUsingJS(acceptCookiesButton);
         }

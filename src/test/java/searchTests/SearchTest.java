@@ -3,7 +3,7 @@ package searchTests;
 import base.BasePage;
 import base.BaseTest;
 import base.HeaderBasePage;
-import data.Urls;
+import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
@@ -21,7 +21,7 @@ public class SearchTest extends BaseTest {
 
     @Test
     public void specialCharactersSearch() {
-        BasePage.openURL(Urls.HOME_PAGE.URL());
+        BasePage.openURL(URLs.HOME_PAGE.URL());
         homePage.acceptCookies();
         headerBasePage.inputDataToSearchInput(invalidQuerySearch);
         headerBasePage.submitSearchViaReturn();
@@ -32,7 +32,7 @@ public class SearchTest extends BaseTest {
 
     @Test
     public void tooShortQuery() {
-        BasePage.openURL(Urls.HOME_PAGE.URL());
+        BasePage.openURL(URLs.HOME_PAGE.URL());
         homePage.acceptCookies();
         headerBasePage.inputDataToSearchInput(toShortQuery);
         headerBasePage.submitSearchViaReturn();
@@ -42,7 +42,7 @@ public class SearchTest extends BaseTest {
 
     @Test
     public void positiveOneWordSearch() {
-        BasePage.openURL(Urls.HOME_PAGE.URL());
+        BasePage.openURL(URLs.HOME_PAGE.URL());
         homePage.acceptCookies();
         headerBasePage.inputDataToSearchInput(validQuerySearch);
         headerBasePage.submitSearchViaReturn();
@@ -52,7 +52,7 @@ public class SearchTest extends BaseTest {
 
     @Test
     public void positiveTwoWordSearch() {
-        BasePage.openURL(Urls.HOME_PAGE.URL());
+        BasePage.openURL(URLs.HOME_PAGE.URL());
         homePage.acceptCookies();
         headerBasePage.inputDataToSearchInput(doubleValidQuerySearch);
         headerBasePage.submitSearchViaSearchIcon();
@@ -62,17 +62,17 @@ public class SearchTest extends BaseTest {
 
     @Test
     public void digitCharactersSearch() {
-        BasePage.openURL(Urls.HOME_PAGE.URL());
+        BasePage.openURL(URLs.HOME_PAGE.URL());
         homePage.acceptCookies();
         headerBasePage.inputDataToSearchInput(digitQuerySearch);
-        headerBasePage.submitSearchViaSearchIcon();
+        headerBasePage.submitSearchViaReturn();
         Assert.assertEquals(searchPage.getSearchPageHeader(), "Search Unit4");
-        Assert.assertTrue(searchPage.isResultsCountAndFoundResultEqual());
+        Assert.assertTrue(searchPage.isResultsCountAndFoundResultEqual(), "'x'results found doesn't match 'y' found items");
     }
 
     @Test
     public void collapseSearchInput() {
-        BasePage.openURL(Urls.HOME_PAGE.URL());
+        BasePage.openURL(URLs.HOME_PAGE.URL());
         homePage.acceptCookies();
         headerBasePage.inputDataToSearchInput(doubleValidQuerySearch);
         headerBasePage.collapseSearchInput();
@@ -82,7 +82,7 @@ public class SearchTest extends BaseTest {
     // todo Verify that User can open the pages from the search results
     @Test
     public void openPageFromSearchResult() {
-        BasePage.openURL(Urls.HOME_PAGE.URL());
+        BasePage.openURL(URLs.HOME_PAGE.URL());
         homePage.acceptCookies();
         headerBasePage.inputDataToSearchInput(doubleValidQuerySearch);
         headerBasePage.submitSearchViaSearchIcon();

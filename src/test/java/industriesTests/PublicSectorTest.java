@@ -1,7 +1,7 @@
 package industriesTests;
 
 import base.*;
-import data.Urls;
+import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
@@ -30,7 +30,7 @@ public class PublicSectorTest extends BaseTest {
 
     @Test
     public void checkAllTitlesPresent() {
-        BasePage.openURL(Urls.INDUSTRIES_PUBLIC_SECTOR.URL());
+        BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         homePage.acceptCookies();
         Assert.assertTrue(publicSectorPage.isMainTitlePresent());
         Assert.assertTrue(publicSectorPage.isLearnMoreBtnPresent());
@@ -44,14 +44,14 @@ public class PublicSectorTest extends BaseTest {
 
     @Test
     public void checkPublicSectorCrumb() {
-        BasePage.openURL(Urls.INDUSTRIES_PUBLIC_SECTOR.URL());
+        BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         homePage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isPublicSectorCrumbVisible());
     }
 
     @Test
     public void checkAllTitlesText() {
-        BasePage.openURL(Urls.INDUSTRIES_PUBLIC_SECTOR.URL());
+        BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         homePage.acceptCookies();
         Assert.assertEquals(publicSectorPage.getMainTitleText(), "Public Sector");
         Assert.assertEquals(publicSectorPage.getYourPartnerInPublicServiceTitleText(), "Your Partner in Public Service Excellence");
@@ -63,7 +63,7 @@ public class PublicSectorTest extends BaseTest {
 
     @Test
     public void checkPanelTitlesPresent() {
-        BasePage.openURL(Urls.INDUSTRIES_PUBLIC_SECTOR.URL());
+        BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         homePage.acceptCookies();
         Assert.assertTrue(publicSectorPage.isImproveServicesSectionTitlePresent());
         Assert.assertTrue(publicSectorPage.isAchieveEfficiencySectionTitlePresent());
@@ -73,7 +73,7 @@ public class PublicSectorTest extends BaseTest {
 
     @Test
     public void openRequestDemoViaHeader() {
-        BasePage.openURL(Urls.INDUSTRIES_PUBLIC_SECTOR.URL());
+        BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         homePage.acceptCookies();
         headerBasePage.clickRequestDemoForm();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
@@ -83,7 +83,7 @@ public class PublicSectorTest extends BaseTest {
 
     @Test
     public void openRequestDemoViaSection() {
-        BasePage.openURL(Urls.INDUSTRIES_PUBLIC_SECTOR.URL());
+        BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         homePage.acceptCookies();
         Assert.assertTrue(letsTalkSectionPage.isLetsTalkTextPresent());
         letsTalkSectionPage.clickRequestDemoInSection();
@@ -94,7 +94,7 @@ public class PublicSectorTest extends BaseTest {
 
     @Test
     public void checkReadMoreOpensERPPage() {
-        BasePage.openURL(Urls.INDUSTRIES_PUBLIC_SECTOR.URL());
+        BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         homePage.acceptCookies();
         publicSectorPage.clickReadMoreAboutERP();
         Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
@@ -104,7 +104,7 @@ public class PublicSectorTest extends BaseTest {
 
     @Test
     public void checkReadMoreOpensFinancialPlanningPage() {
-        BasePage.openURL(Urls.INDUSTRIES_PUBLIC_SECTOR.URL());
+        BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         homePage.acceptCookies();
         publicSectorPage.clickReadMoreAboutFinancialPlanning();
         Assert.assertTrue(financialPlanningPage.isMainTitlePresent());
@@ -113,7 +113,7 @@ public class PublicSectorTest extends BaseTest {
 
     @Test
     public void checkReadMoreOpensHumanCapitalPage() {
-        BasePage.openURL(Urls.INDUSTRIES_PUBLIC_SECTOR.URL());
+        BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         homePage.acceptCookies();
         publicSectorPage.clickReadMoreAboutHumanCapital();
         Assert.assertTrue(humanCapitalManagementPage.isMainTitlePresent());
@@ -123,7 +123,7 @@ public class PublicSectorTest extends BaseTest {
     // Customer Overview: City of Port
     @Test
     public void checkReadMoreOpensCityOfPortPage() {
-        BasePage.openURL(Urls.INDUSTRIES_PUBLIC_SECTOR.URL());
+        BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         homePage.acceptCookies();
         publicSectorPage.clickReadMoreAboutCityOfPort();
         Assert.assertTrue(cityOfPortPage.isCityOfPortMainTitlePresent());
@@ -132,7 +132,7 @@ public class PublicSectorTest extends BaseTest {
 
     @Test
     public void checkReadOurCustomersStoriesOpensCustomersPage() {
-        BasePage.openURL(Urls.INDUSTRIES_PUBLIC_SECTOR.URL());
+        BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         homePage.acceptCookies();
         publicSectorPage.clickSeeMoreCustomersStories();
         Assert.assertTrue(customersHomePage.isCustomersMainTitlePresent());
@@ -141,10 +141,10 @@ public class PublicSectorTest extends BaseTest {
 
     @Test
     public void checkSeeAllNewsOpensNewsPage() {
-        BasePage.openURL(Urls.INDUSTRIES_PUBLIC_SECTOR.URL());
+        BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         homePage.acceptCookies();
         publicSectorPage.clickSeeAllNews();
-        Assert.assertTrue(newsHomePage.isNewsMainTitlePresent());
+        Assert.assertTrue(newsHomePage.isNewsHomePageMainHeaderPresent());
         Assert.assertTrue(breadCrumbsBasePage.isNewsHomePageCrumbVisible());
     }
 }

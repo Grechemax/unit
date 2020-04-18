@@ -3,7 +3,7 @@ package customersTests.customers;
 import base.BasePage;
 import base.BaseTest;
 import base.BreadCrumbsBasePage;
-import data.Urls;
+import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
@@ -18,7 +18,7 @@ public class ManchesterUniversityTest extends BaseTest {
 
     @Test
     public void checkAllTitles() {
-        BasePage.openURL(Urls.CUSTOMERS_MANCHESTER.URL());
+        BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
         homePage.acceptCookies();
         Assert.assertTrue(manchesterUniversityPage.isManchesterMainTitlePresent());
         Assert.assertTrue(manchesterUniversityPage.isDownloadCaseStudyBtnPresented());

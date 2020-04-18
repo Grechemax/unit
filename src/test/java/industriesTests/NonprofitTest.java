@@ -2,7 +2,7 @@ package industriesTests;
 
 
 import base.*;
-import data.Urls;
+import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
@@ -32,7 +32,7 @@ public class NonprofitTest extends BaseTest {
 
     @Test
     public void checkAllTitlesPresent() {
-        BasePage.openURL(Urls.INDUSTRIES_NONPROFIT.URL());
+        BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         homePage.acceptCookies();
         Assert.assertTrue(nonprofitPage.isNonprofitMainTitlePresent());
         Assert.assertTrue(nonprofitPage.isWarChildPresent());
@@ -46,14 +46,14 @@ public class NonprofitTest extends BaseTest {
 
     @Test
     public void checkNonProfitCrumb() {
-        BasePage.openURL(Urls.INDUSTRIES_NONPROFIT.URL());
+        BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         homePage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isNonProfitCrumbVisible());
     }
 
     @Test
     public void checkAllTitlesText() {
-        BasePage.openURL(Urls.INDUSTRIES_NONPROFIT.URL());
+        BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         homePage.acceptCookies();
         Assert.assertEquals(nonprofitPage.getMainTitleText(), "Nonprofit");
         Assert.assertEquals(nonprofitPage.getYourPartnerInNonprofitTitleText(), "Your Partner in Nonprofit Program Excellence");
@@ -65,7 +65,7 @@ public class NonprofitTest extends BaseTest {
 
     @Test
     public void checkPanelTitlesPresent() {
-        BasePage.openURL(Urls.INDUSTRIES_NONPROFIT.URL());
+        BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         homePage.acceptCookies();
         Assert.assertTrue(nonprofitPage.isMakeDecisionsSectionTitlePresent());
         Assert.assertTrue(nonprofitPage.isDeliverMoreSectionTitlePresent());
@@ -75,7 +75,7 @@ public class NonprofitTest extends BaseTest {
 
     @Test
     public void openRequestDemoViaHeader() {
-        BasePage.openURL(Urls.INDUSTRIES_NONPROFIT.URL());
+        BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         homePage.acceptCookies();
         headerBasePage.clickRequestDemoForm();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
@@ -85,7 +85,7 @@ public class NonprofitTest extends BaseTest {
 
     @Test
     public void openRequestDemoViaSection() {
-        BasePage.openURL(Urls.INDUSTRIES_NONPROFIT.URL());
+        BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         homePage.acceptCookies();
         Assert.assertTrue(letsTalkSectionPage.isLetsTalkTextPresent());
         letsTalkSectionPage.clickRequestDemoInSection();
@@ -97,7 +97,7 @@ public class NonprofitTest extends BaseTest {
     //Your New Unit4 People Experience Suite
     @Test
     public void checkReadMoreOpensERPPage() {
-        BasePage.openURL(Urls.INDUSTRIES_NONPROFIT.URL());
+        BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         homePage.acceptCookies();
         nonprofitPage.clickReadMoreAboutERP();
         Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
@@ -106,7 +106,7 @@ public class NonprofitTest extends BaseTest {
 
     @Test
     public void checkReadMoreOpensFinancialPlanningPage() {
-        BasePage.openURL(Urls.INDUSTRIES_NONPROFIT.URL());
+        BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         homePage.acceptCookies();
         nonprofitPage.clickReadMoreAboutFinancialPlanning();
         Assert.assertTrue(financialPlanningPage.isMainTitlePresent());
@@ -115,7 +115,7 @@ public class NonprofitTest extends BaseTest {
 
     @Test
     public void checkReadMoreOpensHumanCapitalPage() {
-        BasePage.openURL(Urls.INDUSTRIES_NONPROFIT.URL());
+        BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         homePage.acceptCookies();
         nonprofitPage.clickReadMoreAboutHumanCapital();
         Assert.assertTrue(humanCapitalManagementPage.isMainTitlePresent());
@@ -125,7 +125,7 @@ public class NonprofitTest extends BaseTest {
     // Customer Overview: War Child
     @Test
     public void checkReadMoreOpensWarChildPage() {
-        BasePage.openURL(Urls.INDUSTRIES_NONPROFIT.URL());
+        BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         homePage.acceptCookies();
         nonprofitPage.clickReadMoreAboutWarChild();
         Assert.assertTrue(breadCrumbsBasePage.isWarChildCrumbVisible());
@@ -134,7 +134,7 @@ public class NonprofitTest extends BaseTest {
 
     @Test
     public void checkSeeMoreCustomersStoriesOpensCustomersPage() {
-        BasePage.openURL(Urls.INDUSTRIES_NONPROFIT.URL());
+        BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         homePage.acceptCookies();
         nonprofitPage.clickSeeMoreCustomersStories();
         Assert.assertTrue(customersHomePage.isCustomersMainTitlePresent());
@@ -143,10 +143,10 @@ public class NonprofitTest extends BaseTest {
 
     @Test
     public void checkSeeAllNewsOpensNewsPage() {
-        BasePage.openURL(Urls.INDUSTRIES_NONPROFIT.URL());
+        BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         homePage.acceptCookies();
         nonprofitPage.clickSeeAllNews();
-        Assert.assertTrue(newsHomePage.isNewsMainTitlePresent());
+        Assert.assertTrue(newsHomePage.isNewsHomePageMainHeaderPresent());
         Assert.assertTrue(breadCrumbsBasePage.isNewsHomePageCrumbVisible());
     }
 }

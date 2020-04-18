@@ -1,16 +1,13 @@
 package productsPageTests;
 
 import base.*;
-import data.Urls;
-import net.bytebuddy.asm.Advice;
+import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
 import pageObjects.RequestDemoPopupPage;
 import pageObjects.customers.CustomersHomePage;
 import pageObjects.customers.customers.ManchesterUniversityPage;
-import pageObjects.industries.PublicSectorPage;
-import pageObjects.news.NewsHomePage;
 import pageObjects.products.*;
 
 public class StudentManagementTest extends BaseTest {
@@ -30,7 +27,7 @@ public class StudentManagementTest extends BaseTest {
 
     @Test
     public void checkAllTitlesPresent() {
-        BasePage.openURL(Urls.PRODUCTS_STUDENT_MANAGEMENT.URL());
+        BasePage.openURL(URLs.PRODUCTS_STUDENT_MANAGEMENT.URL());
         homePage.acceptCookies();
         Assert.assertTrue(studentManagementPage.isMainTitlePresent());
         Assert.assertTrue(studentManagementPage.isSupportGrowthTitlePresent());
@@ -42,7 +39,7 @@ public class StudentManagementTest extends BaseTest {
 
     @Test
     public void checkAllTitlesText() {
-        BasePage.openURL(Urls.PRODUCTS_STUDENT_MANAGEMENT.URL());
+        BasePage.openURL(URLs.PRODUCTS_STUDENT_MANAGEMENT.URL());
         homePage.acceptCookies();
         Assert.assertEquals(studentManagementPage.getMainTitleText(), "Unit4 Student Management");
         Assert.assertEquals(studentManagementPage.getSupportGrowthInLearningTitleText(), "Support Growth in Learning");
@@ -54,7 +51,7 @@ public class StudentManagementTest extends BaseTest {
 
     @Test
     public void checkPanelTitlesPresent() {
-        BasePage.openURL(Urls.PRODUCTS_STUDENT_MANAGEMENT.URL());
+        BasePage.openURL(URLs.PRODUCTS_STUDENT_MANAGEMENT.URL());
         homePage.acceptCookies();
         Assert.assertTrue(studentManagementPage.isAdmissionsSectionTitlePresent());
         Assert.assertTrue(studentManagementPage.isAcademicsSectionTitlePresent());
@@ -65,14 +62,14 @@ public class StudentManagementTest extends BaseTest {
 
     @Test
     public void checkStudentManagementPageBreadCrumb() {
-        BasePage.openURL(Urls.PRODUCTS_STUDENT_MANAGEMENT.URL());
+        BasePage.openURL(URLs.PRODUCTS_STUDENT_MANAGEMENT.URL());
         homePage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isStudentManagementCrumbVisible());
     }
 
     @Test()
     public void openRequestDemoViaHeader() {
-        BasePage.openURL(Urls.PRODUCTS_STUDENT_MANAGEMENT.URL());
+        BasePage.openURL(URLs.PRODUCTS_STUDENT_MANAGEMENT.URL());
         homePage.acceptCookies();
         headerBasePage.clickRequestDemoForm();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
@@ -82,7 +79,7 @@ public class StudentManagementTest extends BaseTest {
 
     @Test()
     public void openRequestDemoViaSection() {
-        BasePage.openURL(Urls.PRODUCTS_STUDENT_MANAGEMENT.URL());
+        BasePage.openURL(URLs.PRODUCTS_STUDENT_MANAGEMENT.URL());
         homePage.acceptCookies();
         letsTalkSectionPage.clickRequestDemoInSection();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
@@ -93,7 +90,7 @@ public class StudentManagementTest extends BaseTest {
 
     @Test
     public void checkSeeMoreCustomersStoriesOpensCustomersPage() {
-        BasePage.openURL(Urls.PRODUCTS_STUDENT_MANAGEMENT.URL());
+        BasePage.openURL(URLs.PRODUCTS_STUDENT_MANAGEMENT.URL());
         homePage.acceptCookies();
         studentManagementPage.clickSeeMoreCustomersStories();
         Assert.assertTrue(customersHomePage.isCustomersMainTitlePresent());
@@ -103,7 +100,7 @@ public class StudentManagementTest extends BaseTest {
     // Customer Overview: Manchester
     @Test
     public void checkReadMoreOpensManchesterUniversityPage() {
-        BasePage.openURL(Urls.PRODUCTS_STUDENT_MANAGEMENT.URL());
+        BasePage.openURL(URLs.PRODUCTS_STUDENT_MANAGEMENT.URL());
         homePage.acceptCookies();
         studentManagementPage.clickReadMoreAboutManchesterUniversity();
         Assert.assertTrue(breadCrumbsBasePage.isManchesterCrumbVisible());
@@ -113,7 +110,7 @@ public class StudentManagementTest extends BaseTest {
     //Looking for one of our other Unit4 solutions?
     @Test
     public void checkLinkOpensERPPage() {
-        BasePage.openURL(Urls.PRODUCTS_STUDENT_MANAGEMENT.URL());
+        BasePage.openURL(URLs.PRODUCTS_STUDENT_MANAGEMENT.URL());
         homePage.acceptCookies();
         studentManagementPage.clickERPLink();
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
@@ -122,7 +119,7 @@ public class StudentManagementTest extends BaseTest {
 
     @Test
     public void checkLinkOpensFinancialPlanningPage() {
-        BasePage.openURL(Urls.PRODUCTS_STUDENT_MANAGEMENT.URL());
+        BasePage.openURL(URLs.PRODUCTS_STUDENT_MANAGEMENT.URL());
         homePage.acceptCookies();
         studentManagementPage.clickFPALink();
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
@@ -131,7 +128,7 @@ public class StudentManagementTest extends BaseTest {
 
     @Test
     public void checkLinkOpensHumanCapitalManagementPage() {
-        BasePage.openURL(Urls.PRODUCTS_STUDENT_MANAGEMENT.URL());
+        BasePage.openURL(URLs.PRODUCTS_STUDENT_MANAGEMENT.URL());
         homePage.acceptCookies();
         studentManagementPage.clickHCMLink();
         Assert.assertTrue(breadCrumbsBasePage.isHumanCapitalManagementCrumbVisible());
@@ -140,7 +137,7 @@ public class StudentManagementTest extends BaseTest {
 
     @Test
     public void checkLinkOpensFinancialsPage() {
-        BasePage.openURL(Urls.PRODUCTS_STUDENT_MANAGEMENT.URL());
+        BasePage.openURL(URLs.PRODUCTS_STUDENT_MANAGEMENT.URL());
         homePage.acceptCookies();
         studentManagementPage.clickFinancialsLink();
         Assert.assertTrue(breadCrumbsBasePage.isFinancialsCrumbVisible());

@@ -3,7 +3,7 @@ package customersTests.customers;
 import base.BasePage;
 import base.BaseTest;
 import base.BreadCrumbsBasePage;
-import data.Urls;
+import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.customers.CustomersHomePage;
@@ -17,7 +17,7 @@ public class ScrewfixTest extends BaseTest {
 
     @Test
     public void checkAllTitles() {
-        BasePage.openURL(Urls.CUSTOMERS_SCREWFIX.URL());
+        BasePage.openURL(URLs.CUSTOMERS_SCREWFIX.URL());
         screwfixPage = new ScrewfixPage(getDriver());
         customersHomePage = new CustomersHomePage(getDriver());
         Assert.assertTrue(screwfixPage.isScrewfixPageMainTitlePresent());

@@ -3,7 +3,7 @@ package headerTests;
 import base.BasePage;
 import base.BaseTest;
 import base.HeaderBasePage;
-import data.Urls;
+import data.URLs;
 import org.testng.annotations.Test;
 
 public class ProductsDropdownTest extends BaseTest {
@@ -11,7 +11,7 @@ public class ProductsDropdownTest extends BaseTest {
 
     @Test
     public void checkProductsDropdown() {
-        BasePage.openURL(Urls.HOME_PAGE.URL());
+        BasePage.openURL(URLs.HOME_PAGE.URL());
         headerBasePage = new HeaderBasePage(getDriver());
         headerBasePage.checkProductsItems();
     }

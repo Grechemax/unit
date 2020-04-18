@@ -41,20 +41,22 @@ public class SearchPage extends BasePage {
     }
 
     public boolean isSearchPageMainHeaderPresent() {
-        waitForElement(searchPageMainHeader);
-        return isElementPresent(searchPageMainHeader);
+        return isElementPresentWithTimer(searchPageMainHeader, 10);
     }
 
     public boolean isResultsCountAndFoundResultEqual() {
-        while (isElementPresent(showMoreButton)) {
+        while (isElementPresentWithTimer(showMoreButton, 5)) {
+            scrollToElement(aboutUnit4FooterSection);
             scrollToElement(aboutUnit4FooterSection);
             clickOnElementUsingJS(showMoreButton);
-            sleepTightInSeconds(1);
+            sleepTightInSeconds(1222);
         }
 
         List foundItemsList = findElements(resultsItem);
         int countFoundItems = foundItemsList.size();
         int countNumber = Integer.parseInt(findElement(resultsCount).getText());
+        System.out.println("countNumber" + countNumber);
+        System.out.println("found" + countFoundItems);
         return countFoundItems == countNumber;
     }
 

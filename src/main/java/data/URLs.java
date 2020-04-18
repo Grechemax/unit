@@ -1,6 +1,6 @@
 package data;
 
-public enum Urls {
+public enum URLs {
 
     HOME_PAGE(""),
     PRODUCTS("/products"),
@@ -31,7 +31,7 @@ public enum Urls {
 
     private String stage;
 
-    Urls(String stage) {
+    URLs(String stage) {
         this.stage = stage;
     }
 
@@ -40,7 +40,6 @@ public enum Urls {
         String username = "sql";
         String password = "www2020=";
         String fullUrl = "https://" + username + ":" + password + "@" + baseURL + stage;
-        System.out.println(fullUrl);
         return fullUrl;
     }
 

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 public class StudentManagementPage extends BasePage {
 
 
-    private By mainTitle = By.xpath("//h1[@class='section-title']");
+    private By mainTitle = By.xpath("//h1[contains(text(), 'Unit4 Student Management')]");
     private By supportGrowthInLearningTitle = By.xpath("//section[2]/div[1]/div/section/div/div/h3");
     private By studentsManagementDeliversTitle = By.xpath("//section[3]/div/div[1]/h2");
     private By createBetterWayTitle = By.xpath("//section[4]/div/div/div[1]/h3");

@@ -1,6 +1,6 @@
 import base.BasePage;
 import base.BaseTest;
-import data.Urls;
+import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
@@ -14,13 +14,13 @@ public class NotFoundTest extends BaseTest {
 
     @Test
     public void siteOpensCustom404Page() {
-        BasePage.openURL(Urls.WRONG_URL.URL());
+        BasePage.openURL(URLs.WRONG_URL.URL());
         notFoundPage.isNonFoundMainTitlePresent();
     }
 
     @Test
     public void siteOpensHomePage() {
-        BasePage.openURL(Urls.WRONG_URL.URL());
+        BasePage.openURL(URLs.WRONG_URL.URL());
         notFoundPage.clickTakeMeHomeBtn();
         Assert.assertTrue(homePage.isMainHeaderPresent());
     }

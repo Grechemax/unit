@@ -3,7 +3,7 @@ package customersTests.customers;
 import base.BasePage;
 import base.BaseTest;
 import base.BreadCrumbsBasePage;
-import data.Urls;
+import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.customers.customers.CityOfPortPage;
@@ -17,7 +17,7 @@ public class CityOfPortTest extends BaseTest {
 
     @Test
     public void checkAllTitles() {
-        BasePage.openURL(Urls.CUSTOMERS_CITY_OF_PORT.URL());
+        BasePage.openURL(URLs.CUSTOMERS_CITY_OF_PORT.URL());
         Assert.assertTrue(cityOfPortPage.isCityOfPortMainTitlePresent());
         Assert.assertTrue(cityOfPortPage.isDownloadCaseStudyBtnPresented());
         Assert.assertTrue(cityOfPortPage.isChallengeTitlePresented());

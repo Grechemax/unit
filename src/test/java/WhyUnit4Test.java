@@ -1,7 +1,7 @@
 import base.BasePage;
 import base.BaseTest;
 import base.BreadCrumbsBasePage;
-import data.Urls;
+import data.URLs;
 import pageObjects.industries.IndustriesHomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -19,19 +19,19 @@ public class WhyUnit4Test extends BaseTest {
 
     @Test
     public void siteOpensCustom404Page() {
-        BasePage.openURL(Urls.WHY_UNIT4.URL());
+        BasePage.openURL(URLs.WHY_UNIT4.URL());
         whyUnit4Page.isWhyUni4MainTitlePresent();
     }
 
     @Test
     public void checkWhyUnit4BreadCrumb() {
-        BasePage.openURL(Urls.WHY_UNIT4.URL());
+        BasePage.openURL(URLs.WHY_UNIT4.URL());
         Assert.assertTrue(breadCrumbsBasePage.isWhyUnit4CrumbVisible());
     }
 
     @Test
     public void readMoreWhatSoftwareOpensPeopleExperienceSuitePage() {
-        BasePage.openURL(Urls.WHY_UNIT4.URL());
+        BasePage.openURL(URLs.WHY_UNIT4.URL());
         whyUnit4Page.clickReadMoreWhatSoftware();
         Assert.assertTrue(breadCrumbsBasePage.isPeopleExperienceSuiteCrumbVisible());
         Assert.assertTrue(peopleExperienceSuitePage.isMainTitlePresent());
@@ -39,7 +39,7 @@ public class WhyUnit4Test extends BaseTest {
 
     @Test
     public void readSeeHowWeServeOpensIndustriesPage() {
-        BasePage.openURL(Urls.WHY_UNIT4.URL());
+        BasePage.openURL(URLs.WHY_UNIT4.URL());
         whyUnit4Page.clickReadSeeHowWeServe();
         Assert.assertTrue(breadCrumbsBasePage.isIndustriesHomeCrumbVisible());
         Assert.assertTrue(industriesHomePage.isIndustriesHomeMainTitlePresent());

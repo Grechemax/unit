@@ -112,10 +112,21 @@
         </classes>
     </test>
 
-
     <test name="NonFoundPage">
         <classes>
             <class name="NotFoundTest"/>
+        </classes>
+    </test>
+
+    <test name="Footer General Tests">
+        <classes>
+            <class name="footerTests.FooterGeneralTest"/>
+        </classes>
+    </test>
+
+    <test name="Footer">
+        <classes>
+            <class name="footerTests.ContactUsTest"/>
         </classes>
     </test>
     <!--    <test name="LeaveMessageFormTest">-->

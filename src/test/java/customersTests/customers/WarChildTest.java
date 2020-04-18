@@ -3,10 +3,9 @@ package customersTests.customers;
 import base.BasePage;
 import base.BaseTest;
 import base.BreadCrumbsBasePage;
-import data.Urls;
+import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.customers.customers.FHstPoltenPage;
 import pageObjects.customers.customers.WarChildPage;
 
 public class WarChildTest extends BaseTest {
@@ -15,7 +14,7 @@ public class WarChildTest extends BaseTest {
 
     @Test(priority = 1)
     public void checkAllTitles() {
-        BasePage.openURL(Urls.CUSTOMERS_WAR_CHILD.URL());
+        BasePage.openURL(URLs.CUSTOMERS_WAR_CHILD.URL());
         Assert.assertTrue(warChildPage.isWarChildMainTitlePresent());
         Assert.assertTrue(warChildPage.isDownloadCaseStudyBtnPresented());
         Assert.assertTrue(warChildPage.isChallengeTitlePresented());

@@ -3,7 +3,7 @@ package homePageTests;
 import base.BasePage;
 import base.BaseTest;
 import base.HeaderBasePage;
-import data.Urls;
+import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.RequestDemoPopupPage;
@@ -13,50 +13,72 @@ public class RequestDemoTest extends BaseTest {
     private RequestDemoPopupPage requestDemoPopupPage = new RequestDemoPopupPage(getDriver());
 
 
-    @Test(priority = 1)
+    @Test
     public void submitEmptyRequestDemoForm() {
-        BasePage.openURL(Urls.HOME_PAGE.URL());
+        BasePage.openURL(URLs.HOME_PAGE.URL());
         headerBasePage.clickRequestDemoForm();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
         requestDemoPopupPage.clickSubmitForm();
-        requestDemoPopupPage.checkErrorsAfterEmptyFormSubmitted();
+        Assert.assertTrue(requestDemoPopupPage.isFirstNameErrorPresent());
+        Assert.assertTrue(requestDemoPopupPage.isLastNameErrorPresent());
+        Assert.assertTrue(requestDemoPopupPage.isEmailRequiredErrorPresent());
+        Assert.assertTrue(requestDemoPopupPage.isJobErrorPresent());
+        Assert.assertTrue(requestDemoPopupPage.isCompanyErrorPresent());
+        Assert.assertTrue(requestDemoPopupPage.isCountryErrorPresent());
+        Assert.assertTrue(requestDemoPopupPage.isPrivacyErrorPresent());
     }
 
 
-    @Test(priority = 2)
+    @Test
     public void submitWrongDataDemoForm() {
-        BasePage.openURL(Urls.HOME_PAGE.URL());
+        BasePage.openURL(URLs.HOME_PAGE.URL());
         headerBasePage.clickRequestDemoForm();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
 
-        requestDemoPopupPage.inputData("#$%^&", "$%^&*", "email", "$%^&*", "98", "Ukraine");
+        requestDemoPopupPage.inputData("#$%^&", "$%^&*", "email", "$%^&*", "98");
+        requestDemoPopupPage.selectCountry("Ukraine");
         requestDemoPopupPage.clickSubmitForm();
-        requestDemoPopupPage.checkErrorsAfterWronglyFormSubmitted();
+        Assert.assertTrue(requestDemoPopupPage.isEmailInvalidErrorPresent());
     }
 
-    @Test(priority = 3)
+    @Test
     public void submitValidDataForm() {
-        BasePage.openURL(Urls.HOME_PAGE.URL());
+        BasePage.openURL(URLs.HOME_PAGE.URL());
         headerBasePage.clickRequestDemoForm();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
 
-        requestDemoPopupPage.inputData("firstName", "lastName", "email@i.ua", "AQA", "TestComp", "Poland");
+        requestDemoPopupPage.inputData("firstName", "lastName", "email@i.ua", "AQA", "TestComp");
+        requestDemoPopupPage.selectCountry("Ukraine");
         requestDemoPopupPage.acceptPrivacyPolicy();
         requestDemoPopupPage.clickSubmitForm();
         Assert.assertTrue(requestDemoPopupPage.isThankYouPopupPresent());
     }
 
-    @Test(priority = 4)
-    public void submitValidDataAndSubscribe() {
-        BasePage.openURL(Urls.HOME_PAGE.URL());
+    @Test
+    public void submitValidDataWithoutCountry() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
         headerBasePage.clickRequestDemoForm();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
 
-        requestDemoPopupPage.inputData("subscribe", "subscribe", "email@i.ua", "AQ", "TestComp2", "Spain");
+        requestDemoPopupPage.inputData("firstName", "lastName", "email@i.ua", "AQA", "TestComp");
+        requestDemoPopupPage.acceptPrivacyPolicy();
+        requestDemoPopupPage.clickSubmitForm();
+        Assert.assertTrue(requestDemoPopupPage.isCountryErrorPresent());
+    }
+
+    @Test
+    public void submitValidDataAndSubscribe() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        headerBasePage.clickRequestDemoForm();
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
+
+        requestDemoPopupPage.inputData("subscribe", "subscribe", "email@i.ua", "AQ", "TestComp2");
+        requestDemoPopupPage.selectCountry("Ukraine");
         requestDemoPopupPage.acceptPrivacyPolicy();
         requestDemoPopupPage.confirmSubscriptionCheckbox();
         requestDemoPopupPage.clickSubmitForm();
