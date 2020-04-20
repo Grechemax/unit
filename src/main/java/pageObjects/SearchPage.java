@@ -19,8 +19,8 @@ public class SearchPage extends BasePage {
     private By resultsBlogItem = By.xpath("//div[contains(text(), 'Blog')]");
     private By resultsNewsItem = By.xpath("//div[contains(text(), 'News')]");
 
-    private By showMoreButton = By.xpath("//*[contains(text(), 'Show more')]");
-    private By aboutUnit4FooterSection = By.xpath("//h3[contains(text(), 'About Unit4')]");
+
+//    private By aboutUnit4FooterSection = By.xpath("//h3[contains(text(), 'About Unit4')]");
     private By filterDropdown = By.xpath("//*[contains(text(), 'Filter by Product, Industry and Region')]");
     private By blogCheckbox = By.xpath("//input[@id='type-361']");
     private By newsCheckbox = By.xpath("//input[@id='type-451']");
@@ -44,14 +44,9 @@ public class SearchPage extends BasePage {
         return isElementPresentWithTimer(searchPageMainHeader, 10);
     }
 
-    public boolean isResultsCountAndFoundResultEqual() {
-        while (isElementPresentWithTimer(showMoreButton, 5)) {
-            scrollToElement(aboutUnit4FooterSection);
-            scrollToElement(aboutUnit4FooterSection);
-            clickOnElementUsingJS(showMoreButton);
-            sleepTightInSeconds(1222);
-        }
 
+    public boolean areResultsCountAndFoundResultEqual() {
+        clickShowMoreUntilVisible();
         List foundItemsList = findElements(resultsItem);
         int countFoundItems = foundItemsList.size();
         int countNumber = Integer.parseInt(findElement(resultsCount).getText());

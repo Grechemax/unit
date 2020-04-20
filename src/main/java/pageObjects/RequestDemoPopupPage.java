@@ -33,6 +33,9 @@ public class RequestDemoPopupPage extends BasePage {
     private By countryDropdown = By.xpath("//select[@id = 'edit-country']");
     private By privacyCheckbox = By.xpath("//input[@id='request-demo-confirm-privacy']");
     private By confirmSubscribeCheckbox = By.xpath("//input[@id='request-demo-confirm-subscribe']");
+    private By privacyPolicyLink = By.xpath("//*[@id='request-demo-confirm-privacy-label']/a[contains(text(), 'Privacy Policy')]");
+    private By infoPersonalDataLink = By.xpath("//*[@id='request-demo-confirm-privacy-label']/a[contains(text(), 'Information')]");
+    private By clickHereLink= By.xpath("//*[@id='request-demo-confirm-subscribe-label']/a[contains(text(), 'click here')]");
 
 
     public RequestDemoPopupPage(WebDriver driver) {
@@ -133,4 +136,18 @@ public class RequestDemoPopupPage extends BasePage {
     }
 
 
+    public void clickPrivacyPolicy() {
+        clickOnElementUsingJS(privacyPolicyLink);
+        Reporter.log("clicking 'Privacy Policy' link");
+    }
+
+    public void clickInfoAboutPersonalData() {
+        clickOnElementUsingJS(infoPersonalDataLink);
+        Reporter.log("clicking 'Info regarding your personal data' link");
+    }
+
+    public void clickClickHere() {
+        clickOnElementUsingJS(clickHereLink);
+        Reporter.log("clicking 'click here' to get more info link");
+    }
 }

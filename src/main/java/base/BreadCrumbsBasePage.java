@@ -33,6 +33,7 @@ public class BreadCrumbsBasePage extends BasePage {
     private By deliver360Crumb = By.xpath("//ol/li[last() and contains(text(), 'Deliver a 360')]");
     private By newsHomePageCrumb = By.xpath("//ol/li[last() and contains(text(), 'News')]");
     private By contactUsCrumb = By.xpath("//div[@class='u4-breadcrumb']//*[contains(text(), 'Contact Us')]"); // right breadcrumb
+    private By currentBredCrumb = By.xpath("//ol/li[last()]");
 
 
     public BreadCrumbsBasePage(WebDriver driver) {
@@ -157,11 +158,11 @@ public class BreadCrumbsBasePage extends BasePage {
 
     public boolean isNewsHomePageCrumbVisible() {
         waitForElement(newsHomePageCrumb);
-        Reporter.log("Checking breadcrumbs on 'News' Page");
+        Reporter.log("Checking breadcrumbs on 'News' Home Page");
         return isElementPresent(newsHomePageCrumb);
     }
 
-    public boolean isBlogCrumbVisible() {
+    public boolean isBlogHomePageCrumbVisible() {
         waitForElement(blogCrumb);
         Reporter.log("Checking breadcrumbs on 'Blog' Page");
         return isElementPresent(blogCrumb);
@@ -215,5 +216,10 @@ public class BreadCrumbsBasePage extends BasePage {
         clickOnElement(homeCrumb);
     }
 
+    public String getCurrentBreadCrumb() {
+        waitForElementClickable(currentBredCrumb);
+        Reporter.log("retrieving current breadcrumbs");
+        return getElementText(currentBredCrumb);
+    }
 
 }

@@ -111,6 +111,11 @@
             <class name="customersTests.customers.ManchesterUniversityTest"/>
         </classes>
     </test>
+    <test name="BlogHomeTest">
+        <classes>
+            <class name="blogTests.BlogHomeTest"/>
+        </classes>
+    </test>
 
     <test name="NonFoundPage">
         <classes>

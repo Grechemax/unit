@@ -3,6 +3,7 @@ package homePageTests;
 import base.BasePage;
 import base.BaseTest;
 import base.HeaderBasePage;
+import data.External_URLs;
 import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -83,5 +84,38 @@ public class RequestDemoTest extends BaseTest {
         requestDemoPopupPage.confirmSubscriptionCheckbox();
         requestDemoPopupPage.clickSubmitForm();
         Assert.assertTrue(requestDemoPopupPage.isThankYouPopupPresent());
+    }
+
+    @Test
+    public void privacyPolicyOpensRightPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        headerBasePage.clickRequestDemoForm();
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
+        requestDemoPopupPage.clickPrivacyPolicy();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains("terms-and-conditions"));
+    }
+
+    @Test
+    public void infoAboutPersonalDataOpensRightPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        headerBasePage.clickRequestDemoForm();
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
+        requestDemoPopupPage.clickInfoAboutPersonalData();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.INFO_PERSONAL_DATA.URL()));
+    }
+
+    @Test
+    public void clickHereOpensSubscriptionCenter() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        headerBasePage.clickRequestDemoForm();
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
+        Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
+        requestDemoPopupPage.clickClickHere();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.MORE_INFO.URL()));
     }
 }

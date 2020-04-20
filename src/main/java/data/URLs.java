@@ -23,11 +23,15 @@ public enum URLs {
     CUSTOMERS_SCREWFIX("/our-customers/screwfix"),
     CUSTOMERS_STANLEY("/our-customers/stanley-security"),
     CUSTOMERS_WAR_CHILD("/our-customers/war-child"),
-    RESOURCES("/our-customers/war-child"),
+
+    BLOG("/blog"),
+    EVENTS("/events"),
+    LIBRARY("/library"),
+
     WHY_UNIT4("/why-choose-unit4"),
     WRONG_URL("/wrong"),
-    CONTACT_US("/contact-us");
-
+    CONTACT_US("/contact-us"),
+    PRIVACY_POLICY("/terms-and-conditions");
 
     private String stage;
 

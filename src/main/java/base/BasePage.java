@@ -35,6 +35,8 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 public class BasePage extends BaseTest {
 
     private WebDriver driver;
+    private By footerLogo = By.xpath("//h2[contains(@class, 'sitefooter-logo')]");
+    private By showMoreButton = By.xpath("//*[contains(text(), 'Show more')]");
 
     public BasePage() {
         driver = getDriver();
@@ -494,9 +496,9 @@ public class BasePage extends BaseTest {
         Reporter.log("Switching to last tab");
     }
 
-    public static boolean isCurrentUrlContainsUrl(String urlToCompare) {
+    public static boolean isCurrentUrlContains(String bit) {
         String currentUrl = getDriver().getCurrentUrl();
-        return currentUrl.contains(urlToCompare);
+        return currentUrl.contains(bit);
     }
 
     public String backgroundColorElement(WebElement element) {
@@ -998,6 +1000,15 @@ public class BasePage extends BaseTest {
             Thread.sleep(miliseconds);
         } catch (Exception e) {
             System.out.println(e);
+        }
+    }
+
+    public void clickShowMoreUntilVisible() {
+        while (isElementPresentWithTimer(showMoreButton, 5)) {
+            scrollToElement(footerLogo);
+            scrollToElement(footerLogo);
+            clickOnElementUsingJS(showMoreButton);
+            sleepTightInSeconds(1222);
         }
     }
 }

@@ -42,7 +42,7 @@ public class FooterGeneralTest extends BaseTest {
         homePage.acceptCookies();
         footerGeneralPage.clickCommunityPortalLink();
         BasePage.switchToLastTab();
-        Assert.assertTrue(BasePage.isCurrentUrlContainsUrl(External_URLs.COMMUNITY_PORTAL_URL.URL()));
+        Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.COMMUNITY_PORTAL_URL.URL()));
     }
 
     @Test
@@ -92,7 +92,7 @@ public class FooterGeneralTest extends BaseTest {
         homePage.acceptCookies();
         footerGeneralPage.clickCareersLink();
         BasePage.switchToLastTab();
-        Assert.assertTrue(BasePage.isCurrentUrlContainsUrl(External_URLs.CAREERS_URL.URL()));
+        Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.CAREERS_URL.URL()));
     }
 
     @Test
@@ -117,7 +117,7 @@ public class FooterGeneralTest extends BaseTest {
         homePage.acceptCookies();
         footerGeneralPage.clickPrivacyLink();
         BasePage.switchToLastTab();
-        Assert.assertTrue(BasePage.isCurrentUrlContainsUrl(External_URLs.PRIVACY_AND_TRUST_URL.URL()));
+        Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.PRIVACY_AND_TRUST_URL.URL()));
     }
 
     //Social media
@@ -127,7 +127,7 @@ public class FooterGeneralTest extends BaseTest {
         homePage.acceptCookies();
         footerGeneralPage.clickFacebookIcon();
         BasePage.switchToLastTab();
-        Assert.assertTrue(BasePage.isCurrentUrlContainsUrl(External_URLs.FACEBOOK_URL.URL()));
+        Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.FACEBOOK_URL.URL()));
     }
 
     @Test
@@ -136,7 +136,7 @@ public class FooterGeneralTest extends BaseTest {
         homePage.acceptCookies();
         footerGeneralPage.clickLinkedInIcon();
         BasePage.switchToLastTab();
-        Assert.assertTrue(BasePage.isCurrentUrlContainsUrl(External_URLs.LINKEDIN_URL.URL()));
+        Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.LINKEDIN_URL.URL()));
     }
 
     @Test
@@ -145,7 +145,7 @@ public class FooterGeneralTest extends BaseTest {
         homePage.acceptCookies();
         footerGeneralPage.clickTwitterIcon();
         BasePage.switchToLastTab();
-        Assert.assertTrue(BasePage.isCurrentUrlContainsUrl(External_URLs.TWITTER_URL.URL()));
+        Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.TWITTER_URL.URL()));
     }
 
     @Test
@@ -154,7 +154,7 @@ public class FooterGeneralTest extends BaseTest {
         homePage.acceptCookies();
         footerGeneralPage.clickInstagramIcon();
         BasePage.switchToLastTab();
-        Assert.assertTrue(BasePage.isCurrentUrlContainsUrl(External_URLs.INSTAGRAM_URL.URL()));
+        Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.INSTAGRAM_URL.URL()));
     }
 
 }
