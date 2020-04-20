@@ -134,10 +134,6 @@
             <class name="footerTests.ContactUsTest"/>
         </classes>
     </test>
-    <!--    <test name="LeaveMessageFormTest">-->
-    <!--        <classes>-->
-    <!--            <class name="homePageTests.LeaveMessageFormTest"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+
 
 </suite>

@@ -18,15 +18,17 @@ public class HomePage extends BasePage {
     private By seeAllNews = By.xpath("//a[contains(text(), 'See all news')]");
     private By mainUpperHeader = By.xpath("//h1[contains(@class, 'section-title h1')]");
     private By erpReadMore = By.xpath("//section[2]//*[contains(text(), 'Read more')]");
-    private By leaveMessageMinimized = By.xpath("//p[contains(text(), 'Leave a message')]");
     private By readMoreWarChild = By.xpath("//section[8]//a[contains(text(), 'Read more')]");
     private By centerHeader = By.xpath("//h2[contains(@class, 'section-title text-center')]");
     private By acceptCookiesButton = By.xpath("//button[contains(text(), 'Accept Cookies')]");
     private By humanCapitalReadMore = By.xpath("//section[4]//*[contains(text(), 'Read more')]");
-    private By leaveMessageFormHeader = By.xpath("//h1[contains(text(), 'Welcome to LiveChat')]");
     private By studentManagementReadMore = By.xpath("//section[5]//*[contains(text(), 'Read more')]");
     private By financialPlanningReadMore = By.xpath("//section[3]//*[contains(text(), 'Read more')]");
     private By readMoreCustomersStories = By.xpath("//a[contains(text(), 'Read our customer stories')]");
+    private By firstBlockNews = By.xpath("//div[contains(@class, 'swiper-container')]/ul/li[1]//h3/span");
+    private By secondBlockNews = By.xpath("//div[contains(@class, 'swiper-container')]/ul/li[2]//h3/span");
+    private By thirdBlockNews = By.xpath("//div[contains(@class, 'swiper-container')]/ul/li[3]//h3/span");
+    private By downloadReportBtn = By.xpath("//a[contains(text(), 'Download report')]");
 
     public HomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -63,16 +65,6 @@ public class HomePage extends BasePage {
         return getElementText(centerHeader);
     }
 
-
-    public void openLeaveMessageForm() {
-        scrollToElement(centerHeader);
-        clickOnElement(leaveMessageMinimized);
-    }
-
-//    public void checkLeaveMessageFormText() {
-//        String displayedLeaveMessageFormHeader = getElementText(leaveMessageFormHeader);
-//        Assert.assertEquals(displayedLeaveMessageFormHeader, "Welcome to LiveChat");
-//    }
 
     public void clickReadMoreAboutERP() {
         Reporter.log("clicking read more about 'Enterprise Resource Planning'");
@@ -112,5 +104,42 @@ public class HomePage extends BasePage {
     public void clickSeeAllNews() {
         Reporter.log("clicking 'See all news'");
         clickOnElement(seeAllNews);
+    }
+
+    // The latest news
+    public void clickFirstBlockNews() {
+        Reporter.log("clicking on first block of news");
+        clickOnElement(firstBlockNews);
+    }
+
+    public String getFirstBlockNewsTitle() {
+        waitForElement(firstBlockNews);
+        Reporter.log("getting title of first block of news");
+        return getElementText(firstBlockNews);
+    }
+
+    public void clickSecondBlockNews() {
+        Reporter.log("clicking on second block of news");
+        clickOnElement(secondBlockNews);
+    }
+
+    public String getSecondBlockNewsTitle() {
+        Reporter.log("getting title of 2nd block of news");
+        return getElementText(secondBlockNews);
+    }
+
+    public void clickThirdBlockNews() {
+        Reporter.log("clicking on third block of news");
+        clickOnElement(thirdBlockNews);
+    }
+
+    public String getThirdBlockNewsTitle() {
+        Reporter.log("getting title of third block of news");
+        return getElementText(thirdBlockNews);
+    }
+
+    public void clickDownloadReport() {
+        Reporter.log("clicking on 'Download Report' button");
+        clickOnElement(downloadReportBtn);
     }
 }

@@ -135,4 +135,28 @@ public class BlogHomeTest extends BaseTest {
         blogHomePage.clickJoinButton();
         Assert.assertTrue(blogHomePage.isSuccessfulSubscriptionMessagePresent(), "You are subscribed. message should be displayed");
     }
+
+    @Test
+    public void selectOnlyNonprofit() {
+        BasePage.openURL(URLs.BLOG.URL());
+        homePage.acceptCookies();
+        Assert.assertTrue(blogHomePage.isBlogHomeMainTitlePresent());
+        blogHomePage.clickFilterDropdown();
+        blogHomePage.clickNonprofitCheckbox();
+        blogHomePage.clickFilterDropdown();
+        Assert.assertTrue(blogHomePage.nonprofitResultsShown(), "Only Nonprofit results are visible");
+    }
+
+    @Test
+    public void selectOnlyPublicSector() {
+        BasePage.openURL(URLs.BLOG.URL());
+        homePage.acceptCookies();
+        Assert.assertTrue(blogHomePage.isBlogHomeMainTitlePresent());
+        blogHomePage.clickFilterDropdown();
+        blogHomePage.clickPublicSectorCheckbox();
+        // todo ??? it doesn't trigger search
+        blogHomePage.clickFilterDropdown();
+        Assert.assertTrue(blogHomePage.publicSectorResultsShown(), "Only Public Sector results are visible");
+    }
+
 }

@@ -2,11 +2,12 @@ package pageObjects.blog;
 
 import base.BasePage;
 import base.Reporter;
+import base.SearchFilterBasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class BlogHomePage extends BasePage {
+public class BlogHomePage extends SearchFilterBasePage {
 
     private By readMoreButton = By.xpath("//p//*[contains(text(), 'Read more')]");
     private By blogHomeMainTitle = By.xpath("//h1");
@@ -33,12 +34,18 @@ public class BlogHomePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    public boolean isBlogHomeMainTitlePresent() {
+        waitForElement(blogHomeMainTitle);
+        return isElementPresent(blogHomeMainTitle);
+    }
+
     public void showMoreLoadsMore() {
+        Reporter.log("clicking 'Show more' on Blog Page to show more blog items");
         clickShowMoreUntilVisible();
     }
 
     public String getBlogHomePageMainTitle() {
-        Reporter.log("getting main title of Blog Page");
+        Reporter.log("getting text of main title of Blog Page");
         waitForElement(blogHomeMainTitle);
         return getElementText(blogHomeMainTitle);
     }
@@ -122,4 +129,6 @@ public class BlogHomePage extends BasePage {
         Reporter.log("inputting email");
         findElement(emailInput).sendKeys(email);
     }
+
+
 }

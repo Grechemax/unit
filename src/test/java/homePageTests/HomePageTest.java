@@ -2,6 +2,7 @@ package homePageTests;
 
 import base.BasePage;
 import base.BreadCrumbsBasePage;
+import data.External_URLs;
 import data.URLs;
 import org.testng.Assert;
 import pageObjects.HomePage;
@@ -102,6 +103,39 @@ public class HomePageTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isWhyUnit4CrumbVisible());
     }
 
+    //The latest news
+    @Test
+    public void checkFirstNewsBlockOpensRightPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        String newsItemHeader = homePage.getFirstBlockNewsTitle();
+        homePage.clickFirstBlockNews();
+        String openedPageBredCrumb = breadCrumbsBasePage.getCurrentBreadCrumb();
+        Assert.assertEquals(newsItemHeader, openedPageBredCrumb);
+    }
+
+    @Test
+    public void checkSecondNewsBlockOpensRightPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        String newsItemHeader = homePage.getSecondBlockNewsTitle();
+        homePage.clickSecondBlockNews();
+        String openedPageBredCrumb = breadCrumbsBasePage.getCurrentBreadCrumb();
+        Assert.assertEquals(newsItemHeader, openedPageBredCrumb);
+    }
+
+
+    @Test
+    public void checkThirdNewsBlockOpensRightPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        String newsItemHeader = homePage.getThirdBlockNewsTitle();
+        homePage.clickThirdBlockNews();
+        String openedPageBredCrumb = breadCrumbsBasePage.getCurrentBreadCrumb();
+        Assert.assertEquals(newsItemHeader, openedPageBredCrumb);
+    }
+
+
     @Test
     public void checkSeeAllNewsOpensNewsPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
@@ -109,5 +143,14 @@ public class HomePageTest extends BaseTest {
         homePage.clickSeeAllNews();
         Assert.assertTrue(newsHomePage.isNewsHomePageMainHeaderPresent());
         Assert.assertTrue(breadCrumbsBasePage.isNewsHomePageCrumbVisible());
+    }
+
+    @Test
+    public void downloadReportOpensDownloadFormPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        homePage.clickDownloadReport();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.DOWNLOAD_REPORT.URL()));
     }
 }

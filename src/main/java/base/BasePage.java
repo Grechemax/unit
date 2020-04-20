@@ -995,7 +995,7 @@ public class BasePage extends BaseTest {
         }
     }
 
-    public void sleepTightInSeconds(int miliseconds) {
+    public void sleepTightInMiliSeconds(int miliseconds) {
         try {
             Thread.sleep(miliseconds);
         } catch (Exception e) {
@@ -1008,7 +1008,7 @@ public class BasePage extends BaseTest {
             scrollToElement(footerLogo);
             scrollToElement(footerLogo);
             clickOnElementUsingJS(showMoreButton);
-            sleepTightInSeconds(1222);
+            sleepTightInMiliSeconds(1222);
         }
     }
 }

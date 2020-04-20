@@ -157,6 +157,7 @@ public class HeaderBasePage extends BasePage {
     }
 
     public void submitSearchViaSearchIcon() {
+        waitForElement(magnifierIconToSubmit);
         Reporter.log("submitting search with search icon");
         clickOnElement(magnifierIconToSubmit);
     }
