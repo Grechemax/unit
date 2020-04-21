@@ -8,9 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class StudentManagementPage extends BasePage {
 
-    private By seeMoreCustomersStories = By.xpath("//a[contains(@class, 'cta-more logoblock_fpa')]");
 
-    private By mainTitle = By.xpath("//h1[@class='section-title']");
+    private By mainTitle = By.xpath("//h1[contains(text(), 'Unit4 Student Management')]");
+    private By downloadBrochure = By.xpath("//a[contains(text(), 'Download product brochure')]");
     private By supportGrowthInLearningTitle = By.xpath("//section[2]/div[1]/div/section/div/div/h3");
     private By studentsManagementDeliversTitle = By.xpath("//section[3]/div/div[1]/h2");
     private By createBetterWayTitle = By.xpath("//section[4]/div/div/div[1]/h3");
@@ -28,8 +28,16 @@ public class StudentManagementPage extends BasePage {
     private By admissionsSectionTitle = By.xpath("//div[@id='tab-content-3936']/div[1]/div/h3");
     private By academicsSectionTitle = By.xpath("//div[@id='tab-content-3946']/div[1]/div/h3");
     private By billingSectionTitle = By.xpath("//div[@id='tab-content-3956']/div[1]/div/h3");
-    private By communicationSectionTitle = By.xpath("//div[@id='tab-content-3966']/div[1]/div/h3");
     private By reportingSectionTitle = By.xpath("//div[@id='tab-content-3976']/div[1]/div/h3");
+    private By seeMoreCustomersStories = By.xpath("//a[contains(text(), 'customer stories')]");
+    private By communicationSectionTitle = By.xpath("//div[@id='tab-content-3966']/div[1]/div/h3");
+    private By manchesterUniversityReadMore = By.xpath("//section[5]//a[contains(text(), 'Read more')]");
+
+    //Looking for one of our other Unit4 solutions?
+    private By financialsLink = By.xpath("//strong[contains(text(), 'Unit4 Financials')]");
+    private By erpLink = By.xpath("//strong[contains(text(), 'Unit4 Enterprise Resource Planning')]");
+    private By humanCapitalManagementLink = By.xpath("//strong[contains(text(), 'Unit4 Human Capital Management')]");
+    private By financialPlanningLink = By.xpath("//strong[contains(text(), 'Unit4 Financial Planning & Analysis')]");
 
     public StudentManagementPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -123,5 +131,38 @@ public class StudentManagementPage extends BasePage {
         waitForPresenceOfElement(findElement(reportingSectionTitle));
         Reporter.log("billing Header is present");
         return isElementPresent(reportingSectionTitle);
+    }
+
+    public void clickSeeMoreCustomersStories() {
+        Reporter.log("clicking 'See more customer success stories' in 'Trusted by public sector organizations worldwide' section");
+        clickOnElement(seeMoreCustomersStories);
+    }
+
+    public void clickReadMoreAboutManchesterUniversity() {
+        Reporter.log("clicking 'Read more' in 'Customer Overview: Manchester Metropolitan University' section");
+        clickOnElement(manchesterUniversityReadMore);
+    }
+
+    //Looking for one of our other Unit4 solutions?
+    public void clickERPLink() {
+        Reporter.log("clicking 'ERP' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(erpLink);
+    }
+    public void clickHCMLink() {
+        Reporter.log("clicking 'HCM' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(humanCapitalManagementLink);
+    }
+    public void clickFPALink() {
+        Reporter.log("clicking 'FP&A' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(financialPlanningLink);
+    }
+    public void clickFinancialsLink() {
+        Reporter.log("clicking 'Financials' link in 'Looking for one of our other Unit4 solutions?' section");
+        clickOnElement(financialsLink);
+    }
+
+    public void clickDownloadBrochure() {
+        Reporter.log("clicking 'Download product brochure' button");
+        clickOnElement(downloadBrochure);
     }
 }

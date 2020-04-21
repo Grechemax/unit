@@ -35,6 +35,8 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 public class BasePage extends BaseTest {
 
     private WebDriver driver;
+    private By footerLogo = By.xpath("//h2[contains(@class, 'sitefooter-logo')]");
+    private By showMoreButton = By.xpath("//*[contains(text(), 'Show more')]");
 
     public BasePage() {
         driver = getDriver();
@@ -494,6 +496,11 @@ public class BasePage extends BaseTest {
         Reporter.log("Switching to last tab");
     }
 
+    public static boolean isCurrentUrlContains(String bit) {
+        String currentUrl = getDriver().getCurrentUrl();
+        return currentUrl.contains(bit);
+    }
+
     public String backgroundColorElement(WebElement element) {
         try {
             waitForPresenceOfElement(element, 10);
@@ -537,6 +544,26 @@ public class BasePage extends BaseTest {
         if (getDriver().findElements(locator).size() > 0) {
             return true;
         } else {
+            return false;
+        }
+    }
+
+    public boolean isElementPresentWithTimer(By locator, int waitTime) {
+        try {
+            WebDriverWait wait = (new WebDriverWait(getDriver(), waitTime));
+            wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isElementVisibleWithTimer(By locator, int waitTime) {
+        try {
+            WebDriverWait wait = (new WebDriverWait(getDriver(), waitTime));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            return true;
+        } catch (Exception e) {
             return false;
         }
     }
@@ -910,7 +937,7 @@ public class BasePage extends BaseTest {
     /**
      * Performs click on element
      *
-     * @param locator - locator of the element
+     * @param element - locator of the element
      */
     public void clickOnElementUsingJS(WebElement element) {
         JavascriptExecutor executor = (JavascriptExecutor) getDriver();
@@ -918,8 +945,6 @@ public class BasePage extends BaseTest {
     }
 
     public static void checkLinks(String page) {
-
-
         String url = "";
         HttpURLConnection huc = null;
         int respCode = 200;
@@ -967,6 +992,23 @@ public class BasePage extends BaseTest {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void sleepTightInMiliSeconds(int miliseconds) {
+        try {
+            Thread.sleep(miliseconds);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void clickShowMoreUntilVisible() {
+        while (isElementPresentWithTimer(showMoreButton, 5)) {
+            scrollToElement(footerLogo);
+            scrollToElement(footerLogo);
+            clickOnElementUsingJS(showMoreButton);
+            sleepTightInMiliSeconds(1222);
         }
     }
 }

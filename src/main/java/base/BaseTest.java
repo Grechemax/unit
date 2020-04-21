@@ -89,16 +89,16 @@ public class BaseTest {
         return DRIVER.get();
     }
 
-    @AfterTest
-    public void tearDown() {
-        if (driver != null) {
-            driver.manage().deleteAllCookies();
-            driver.quit();
-            DRIVER.remove();
-        }
-        ExtentManager.getInstance(suiteName).flush();
-        Reporter.log("Tests PERFORMED");
-    }
+//    @AfterTest
+//    public void tearDown() {
+//        if (driver != null) {
+//            driver.manage().deleteAllCookies();
+//            driver.quit();
+//            DRIVER.remove();
+//        }
+//        ExtentManager.getInstance(suiteName).flush();
+//        Reporter.log("Tests PERFORMED");
+//    }
 
     public static ThreadLocal<ExtentTest> getTest() {
         return test;

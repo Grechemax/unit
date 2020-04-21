@@ -12,7 +12,7 @@ public class HigherEducationPage extends BasePage {
     private By breakFreeTitle = By.xpath("//section[3]/div/div/div[1]/h3");
     private By yourNewPeopleExperienceTitle = By.xpath("//section[4]/div/div[1]/h2");
     private By customersSuccessStoriesTitle = By.xpath("//section[5]/div/div/h1");
-    private By manchesterUniversityTitle = By.xpath("//section[6]/div/div/div[2]/div[1]/h3");
+    private By manchesterUniversityTitle = By.xpath("//*[contains(text(), 'Customer Overview: Manchester')]");
 
     private By boostStudentsSuccessPanelItem = By.xpath("//a[@id='tab-link-3131']");
     private By accelerateGrowthPanelItem = By.xpath("//a[@id='tab-link-3256']");
@@ -66,6 +66,7 @@ public class HigherEducationPage extends BasePage {
     }
 
     public boolean isManchesterUniversityTitlePresent() {
+        waitForElement(manchesterUniversityTitle);
         Reporter.log("Manchester University title is present");
         return isElementPresent(manchesterUniversityTitle);
     }

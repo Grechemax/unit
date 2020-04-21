@@ -3,19 +3,18 @@ package customersTests.customers;
 import base.BasePage;
 import base.BaseTest;
 import base.BreadCrumbsBasePage;
-import data.Urls;
+import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.customers.customers.FHstPoltenPage;
 import pageObjects.customers.customers.WarChildPage;
 
 public class WarChildTest extends BaseTest {
     WarChildPage warChildPage = new WarChildPage(getDriver());
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
 
-    @Test(priority = 1)
+    @Test
     public void checkAllTitles() {
-        BasePage.openURL(Urls.CUSTOMERS_WAR_CHILD.URL());
+        BasePage.openURL(URLs.CUSTOMERS_WAR_CHILD.URL());
         Assert.assertTrue(warChildPage.isWarChildMainTitlePresent());
         Assert.assertTrue(warChildPage.isDownloadCaseStudyBtnPresented());
         Assert.assertTrue(warChildPage.isChallengeTitlePresented());
@@ -23,14 +22,24 @@ public class WarChildTest extends BaseTest {
         Assert.assertTrue(warChildPage.isImpactsTitlePresent());
     }
 
-    @Test(priority = 2)
+    @Test
     public void checkWarChildPageBreadCrumb() {
+        BasePage.openURL(URLs.CUSTOMERS_WAR_CHILD.URL());
         Assert.assertTrue(breadCrumbsBasePage.isWarChildCrumbVisible());
     }
 
-    @Test(priority = 3)
+    @Test
     public void checkReadMoreOpensERPPage() {
+        BasePage.openURL(URLs.CUSTOMERS_WAR_CHILD.URL());
         warChildPage.clickReadMoreButton();
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
+    }
+
+    @Test
+    public void downloadCaseStudyOpensPDFPage() {
+        BasePage.openURL(URLs.CUSTOMERS_WAR_CHILD.URL());
+        warChildPage.clickDownloadCaseStudy();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
     }
 }

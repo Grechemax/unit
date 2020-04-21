@@ -45,4 +45,9 @@ public class ScrewfixPage extends BasePage {
         clickOnElement(readMoreBtn);
         Reporter.log("'Financials' Page is opened");
     }
+
+    public void clickDownloadCaseStudy() {
+        Reporter.log("clicking 'Download case study' button");
+        clickOnElement(downloadCaseStudyBtn);
+    }
 }

@@ -19,6 +19,7 @@ public class RequestDemoPopupPage extends BasePage {
     private By firstNameRequiredError = By.xpath("//span[@id='edit-first-name-error']");
     private By lastNameRequiredError = By.xpath("//span[@id='edit-last-name-error']");
     private By emailRequiredError = By.xpath("//span[@id='edit-email-address-error']");
+    private By emailInvalidError = By.xpath("//span[@id='edit-email-address-error' and contains(text(), 'does not contain a valid email')]");
     private By jobRequiredError = By.xpath("//span[@id='edit-job-title-error']");
     private By companyRequiredError = By.xpath("//span[@id='edit-company-error']");
     private By countryRequiredError = By.xpath("//span[@id ='edit-country-error']");
@@ -32,6 +33,9 @@ public class RequestDemoPopupPage extends BasePage {
     private By countryDropdown = By.xpath("//select[@id = 'edit-country']");
     private By privacyCheckbox = By.xpath("//input[@id='request-demo-confirm-privacy']");
     private By confirmSubscribeCheckbox = By.xpath("//input[@id='request-demo-confirm-subscribe']");
+    private By privacyPolicyLink = By.xpath("//*[@id='request-demo-confirm-privacy-label']/a[contains(text(), 'Privacy Policy')]");
+    private By infoPersonalDataLink = By.xpath("//*[@id='request-demo-confirm-privacy-label']/a[contains(text(), 'Information')]");
+    private By clickHereLink= By.xpath("//*[@id='request-demo-confirm-subscribe-label']/a[contains(text(), 'click here')]");
 
 
     public RequestDemoPopupPage(WebDriver driver) {
@@ -53,28 +57,46 @@ public class RequestDemoPopupPage extends BasePage {
         return isElementPresented(requestDemoLongHeader);
     }
 
-
-    public void checkErrorsAfterEmptyFormSubmitted() {
-        String displayedFirstNameError = getElementText(firstNameRequiredError);
-        String displayedLastNameError = getElementText(lastNameRequiredError);
-        String displayedEmailError = getElementText(emailRequiredError);
-        String displayedJobError = getElementText(jobRequiredError);
-        String displayedCompanyError = getElementText(companyRequiredError);
-        String displayedCountryError = getElementText(countryRequiredError);
-        String displayedPrivacyPolicyError = getElementText(privacyAgreementError);
-
-        Assert.assertEquals(displayedFirstNameError, "Required");
-        Assert.assertEquals(displayedLastNameError, "Required");
-        Assert.assertEquals(displayedCountryError, "Required");
-        Assert.assertEquals(displayedEmailError, "A valid email address is required");
-        Assert.assertEquals(displayedJobError, "Required");
-        Assert.assertEquals(displayedCompanyError, "Required");
-        Assert.assertEquals(displayedPrivacyPolicyError, "You must agree to this in order for us to proceed with your request");
+    public boolean isFirstNameErrorPresent() {
+        Reporter.log("checking if 'Required' error message is present for 'First Name'");
+        return isElementPresented(firstNameRequiredError);
     }
 
-    public void checkErrorsAfterWronglyFormSubmitted() {
-
+    public boolean isLastNameErrorPresent() {
+        Reporter.log("checking if 'Required' error message is present for 'Last Name'");
+        return isElementPresented(lastNameRequiredError);
     }
+
+    public boolean isEmailRequiredErrorPresent() {
+        Reporter.log("checking if 'A valid email address is required' error message is present for 'Email'");
+        return isElementPresented(emailRequiredError);
+    }
+
+    public boolean isEmailInvalidErrorPresent() {
+        Reporter.log("checking if 'Email Address does not contain a valid email.' error message is present for 'Email'");
+        return isElementPresented(emailRequiredError);
+    }
+
+    public boolean isJobErrorPresent() {
+        Reporter.log("checking if 'Required' error message is present for 'Job Title'");
+        return isElementPresented(jobRequiredError);
+    }
+
+    public boolean isCompanyErrorPresent() {
+        Reporter.log("checking if 'Required' error message is present for 'Company'");
+        return isElementPresented(companyRequiredError);
+    }
+
+    public boolean isCountryErrorPresent() {
+        Reporter.log("checking if 'Required' error message is present for 'Select country'");
+        return isElementPresented(countryRequiredError);
+    }
+
+    public boolean isPrivacyErrorPresent() {
+        Reporter.log("checking if 'You must agree...' error message is present for privacy policy checkbox");
+        return isElementPresented(privacyAgreementError);
+    }
+
 
     public boolean isThankYouPopupPresent() {
         Reporter.log("'Thank you' popup after form have been submitted is present");
@@ -82,25 +104,30 @@ public class RequestDemoPopupPage extends BasePage {
         return isElementPresent(thankYouPopupHeader);
     }
 
-    public void inputData(String firstName, String lastName, String email, String job, String company, String country) {
+    public void inputData(String firstName, String lastName, String email, String job, String company) {
         findElement(firstNameInput).sendKeys(firstName);
         findElement(lastNameInput).sendKeys(lastName);
         findElement(emailInput).sendKeys(email);
         findElement(jobInput).sendKeys(job);
         findElement(companyInput).sendKeys(company);
-        Select select = new Select(getDriver().findElement(countryDropdown));
-        select.selectByVisibleText(country);
         Reporter.log("inputting data");
     }
 
+    public void selectCountry(String country) {
+        Select select = new Select(getDriver().findElement(countryDropdown));
+        select.selectByVisibleText(country);
+        Reporter.log("selecting country");
+    }
+
+
     public void acceptPrivacyPolicy() {
         clickOnElementUsingJS(privacyCheckbox);
-        Reporter.log("tick checkbox to accept privacy policy");
+        Reporter.log("ticking checkbox to accept privacy policy");
     }
 
     public void confirmSubscriptionCheckbox() {
         clickOnElementUsingJS(confirmSubscribeCheckbox);
-        Reporter.log("tick checkbox to subscribe for news");
+        Reporter.log("ticking checkbox to subscribe for news");
     }
 
     public void clickSubmitForm() {
@@ -109,4 +136,18 @@ public class RequestDemoPopupPage extends BasePage {
     }
 
 
+    public void clickPrivacyPolicy() {
+        clickOnElementUsingJS(privacyPolicyLink);
+        Reporter.log("clicking 'Privacy Policy' link");
+    }
+
+    public void clickInfoAboutPersonalData() {
+        clickOnElementUsingJS(infoPersonalDataLink);
+        Reporter.log("clicking 'Info regarding your personal data' link");
+    }
+
+    public void clickClickHere() {
+        clickOnElementUsingJS(clickHereLink);
+        Reporter.log("clicking 'click here' to get more info link");
+    }
 }

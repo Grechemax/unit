@@ -8,22 +8,13 @@
         </classes>
     </test>
 
-<!--    Dropdowns-->
+
     <test name="IndustriesDropdownTest">
         <classes>
-            <class name="headerTests.IndustriesDropdownTest"/>
+            <class name="headerTests.HeaderTest"/>
         </classes>
     </test>
-    <test name="ProductsDropdownTest">
-        <classes>
-            <class name="headerTests.ProductsDropdownTest"/>
-        </classes>
-    </test>
-    <test name="ResourcesDropdownTest">
-        <classes>
-            <class name="headerTests.ResourcesDropdownTest"/>
-        </classes>
-    </test>
+
 
     <test name="RequestDemoTest">
         <classes>
@@ -95,8 +86,7 @@
         </classes>
     </test>
 
-
-<!--    Customers-->
+    <!--    Customers-->
     <test name="Customers = > CityOfPortTest">
         <classes>
             <class name="customersTests.customers.CityOfPortTest"/>
@@ -112,11 +102,39 @@
             <class name="customersTests.customers.ManchesterUniversityTest"/>
         </classes>
     </test>
+    <test name="BlogHomeTest">
+        <classes>
+            <class name="blogTests.BlogHomeTest"/>
+        </classes>
+    </test>
+    <test name="LibraryHomeTest">
+        <classes>
+            <class name="library.LibraryHomeTest"/>
+        </classes>
+    </test>
+    <test name="EventsHomeTest">
+        <classes>
+            <class name="eventsTests.EventsHomeTest"/>
+        </classes>
+    </test>
 
-    <!--    <test name="LeaveMessageFormTest">-->
-    <!--        <classes>-->
-    <!--            <class name="homePageTests.LeaveMessageFormTest"/>-->
-    <!--        </classes>-->
-    <!--    </test>-->
+    <test name="NonFoundPage">
+        <classes>
+            <class name="NotFoundTest"/>
+        </classes>
+    </test>
+
+    <test name="Footer General Tests">
+        <classes>
+            <class name="footerTests.FooterGeneralTest"/>
+        </classes>
+    </test>
+
+    <test name="Footer">
+        <classes>
+            <class name="footerTests.ContactUsTest"/>
+        </classes>
+    </test>
+
 
 </suite>

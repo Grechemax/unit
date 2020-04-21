@@ -50,4 +50,9 @@ public class StanleySecurityPage extends BasePage {
         clickOnElement(readMoreBtn);
         Reporter.log("ERP Page is opened after clicking 'Read More' button");
     }
+
+    public void clickDownloadCaseStudy() {
+        Reporter.log("clicking 'Download case study' button");
+        clickOnElement(downloadCaseStudyBtn);
+    }
 }

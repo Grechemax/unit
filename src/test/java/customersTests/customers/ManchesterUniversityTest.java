@@ -3,7 +3,7 @@ package customersTests.customers;
 import base.BasePage;
 import base.BaseTest;
 import base.BreadCrumbsBasePage;
-import data.Urls;
+import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
@@ -18,7 +18,7 @@ public class ManchesterUniversityTest extends BaseTest {
 
     @Test
     public void checkAllTitles() {
-        BasePage.openURL(Urls.CUSTOMERS_MANCHESTER.URL());
+        BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
         homePage.acceptCookies();
         Assert.assertTrue(manchesterUniversityPage.isManchesterMainTitlePresent());
         Assert.assertTrue(manchesterUniversityPage.isDownloadCaseStudyBtnPresented());
@@ -29,13 +29,26 @@ public class ManchesterUniversityTest extends BaseTest {
 
     @Test
     public void checkManchesterPageBreadCrumb() {
+        BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
+        homePage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isManchesterCrumbVisible());
     }
 
     @Test
     public void checkReadMoreOpensRightPage() {
+        BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
+        homePage.acceptCookies();
         manchesterUniversityPage.clickReadMoreButton();
         Assert.assertTrue(breadCrumbsBasePage.isStudentManagementCrumbVisible());
         Assert.assertTrue(studentManagementPage.isMainTitlePresent());
+    }
+
+    @Test
+    public void downloadCaseStudyOpensPDFPage() {
+        BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
+        homePage.acceptCookies();
+        manchesterUniversityPage.clickDownloadCaseStudy();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
     }
 }

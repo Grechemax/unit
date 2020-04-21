@@ -158,4 +158,9 @@ public class PublicSectorPage extends BasePage {
         Reporter.log("clicking 'See all news'");
         clickOnElement(seeAllNews);
     }
+
+    public void clickLearnMore() {
+        Reporter.log("clicking 'Learn More' button");
+        clickOnElement(learnMoreButton);
+    }
 }

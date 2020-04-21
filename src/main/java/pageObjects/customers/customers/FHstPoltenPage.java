@@ -20,11 +20,13 @@ public class FHstPoltenPage extends BasePage {
 
 
     public boolean isFHPoltenMainTitlePresent() {
+        Reporter.log("' Customer Overview: FH St Pölten' page main title is present");
         waitForElement(fhPoltenMainTitle);
         return isElementPresent(fhPoltenMainTitle);
     }
 
     public boolean isDownloadCaseStudyBtnPresented() {
+        Reporter.log("Download case study' button is present");
         return isElementPresent(downloadCaseStudyBtn);
     }
 
@@ -44,5 +46,10 @@ public class FHstPoltenPage extends BasePage {
         waitForElement(financialPlanningReadMore);
         clickOnElement(financialPlanningReadMore);
         Reporter.log("clicking 'Read more' in 'Unit4 Financial Planning & Analysis' section");
+    }
+
+    public void clickDownloadCaseStudy() {
+        Reporter.log("clicking 'Download case study' button");
+        clickOnElement(downloadCaseStudyBtn);
     }
 }

@@ -1,7 +1,7 @@
 package productsPageTests;
 
 import base.*;
-import data.Urls;
+import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
@@ -17,18 +17,20 @@ public class FinancialPlanningTest extends BaseTest {
     private HomePage homePage = new HomePage(getDriver());
     private FHstPoltenPage fHstPoltenPage = new FHstPoltenPage(getDriver());
     private HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
-    private FinancialsPage financialsPage = new FinancialsPage(getDriver());
+
     private CustomersHomePage customersHomePage = new CustomersHomePage(getDriver());
     private BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
     private LetsTalkSectionPage letsTalkSectionPage = new LetsTalkSectionPage(getDriver());
     private RequestDemoPopupPage requestDemoPopupPage = new RequestDemoPopupPage(getDriver());
+
+    private FinancialsPage financialsPage = new FinancialsPage(getDriver());
     private FinancialPlanningPage financialPlanningPage = new FinancialPlanningPage(getDriver());
     private HumanCapitalManagementPage humanCapitalManagementPage = new HumanCapitalManagementPage(getDriver());
     private EnterpriseResourcePlanningPage enterpriseResourcePlanningPage = new EnterpriseResourcePlanningPage(getDriver());
 
     @Test
     public void checkAllTitlesPresent() {
-        BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
 
         Assert.assertTrue(financialPlanningPage.isMainTitlePresent());
@@ -41,7 +43,7 @@ public class FinancialPlanningTest extends BaseTest {
 
     @Test
     public void checkAllTitlesText() {
-        BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
         Assert.assertEquals(financialPlanningPage.getAustrianUniversityTitleText(), "Customer Overview: FH St Pölten");
         Assert.assertEquals(financialPlanningPage.getMainTitleText(), "Unit4 Financial Planning & Analysis");
@@ -53,7 +55,7 @@ public class FinancialPlanningTest extends BaseTest {
 
     @Test
     public void checkPanelTitlesPresent() {
-        BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
         Assert.assertTrue(financialPlanningPage.isIfrs16SectionHeaderPresent());
         Assert.assertTrue(financialPlanningPage.isSalesPlanningSideHeaderPresent());
@@ -66,14 +68,14 @@ public class FinancialPlanningTest extends BaseTest {
 
     @Test
     public void checkFinancialPlanningCrumb() {
-        BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
     }
 
     @Test()
     public void openRequestDemoViaHeader() {
-        BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
         headerBasePage.clickRequestDemoForm();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
@@ -83,7 +85,7 @@ public class FinancialPlanningTest extends BaseTest {
 
     @Test()
     public void openRequestDemoViaSection() {
-        BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
         letsTalkSectionPage.clickRequestDemoInSection();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
@@ -93,7 +95,7 @@ public class FinancialPlanningTest extends BaseTest {
 
     @Test
     public void checkReadMoreOpensFHstPoltenPage() {
-        BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
         financialPlanningPage.clickReadMoreAboutFHstPolten();
         Assert.assertTrue(breadCrumbsBasePage.isFHstPoltenCrumbVisible());
@@ -102,7 +104,7 @@ public class FinancialPlanningTest extends BaseTest {
 
     @Test
     public void checkSeeMoreOpensCustomersPage() {
-        BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
         financialPlanningPage.clickSeeMoreCustomersStories();
         Assert.assertTrue(breadCrumbsBasePage.isCustomersCrumbVisible());
@@ -111,8 +113,8 @@ public class FinancialPlanningTest extends BaseTest {
 
     //Looking for one of our other Unit4 solutions?
     @Test
-    public void checkSeeMoreOpensERPPage() {
-        BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
+    public void checkLinkOpensERPPage() {
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
         financialPlanningPage.clickERPLink();
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
@@ -120,8 +122,8 @@ public class FinancialPlanningTest extends BaseTest {
     }
 
     @Test
-    public void checkSeeMoreOpensFinancialPlanningPage() {
-        BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
+    public void checkLinkOpensFinancialPlanningPage() {
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
         financialPlanningPage.clickFPALink();
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
@@ -129,20 +131,46 @@ public class FinancialPlanningTest extends BaseTest {
     }
 
     @Test
-    public void checkSeeMoreOpensHumanCapitalManagementPage() {
-        BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
+    public void checkLinkOpensHumanCapitalManagementPage() {
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
         financialPlanningPage.clickHCMLink();
         Assert.assertTrue(breadCrumbsBasePage.isHumanCapitalManagementCrumbVisible());
         Assert.assertTrue(humanCapitalManagementPage.isMainTitlePresent());
     }
+
     @Test
-    public void checkSeeMoreOpensFinancialsPage() {
-        BasePage.openURL(Urls.PRODUCTS_FINANCIAL_PLANNING.URL());
+    public void checkLinkOpensFinancialsPage() {
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         homePage.acceptCookies();
         financialPlanningPage.clickFinancialsLink();
         Assert.assertTrue(breadCrumbsBasePage.isFinancialsCrumbVisible());
         Assert.assertTrue(financialsPage.isFinancialsPageMainTitlePresent());
     }
 
+    @Test
+    public void downloadPDFOpensPDF() {
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
+        homePage.acceptCookies();
+        financialPlanningPage.clickDownloadBrochure();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
+    }
+
+    @Test
+    public void downloadResearchBundleOpensRouteToFPAPage() {
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
+        homePage.acceptCookies();
+        financialPlanningPage.clickDownloadResearchBundle();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains("routetoFPAleadership"));
+    }
+
+    @Test
+    public void returnToHomePageViaLogo() {
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
+        homePage.acceptCookies();
+        financialPlanningPage.clickMainLogo();
+        Assert.assertTrue(homePage.isMainHeaderPresent());
+    }
 }

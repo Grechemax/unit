@@ -1,7 +1,7 @@
 package customersTests;
 
 import base.*;
-import data.Urls;
+import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
@@ -18,7 +18,7 @@ public class CustomersHomePageTest extends BaseTest {
 
     @Test
     public void checkAllTitles() {
-        BasePage.openURL(Urls.CUSTOMERS.URL());
+        BasePage.openURL(URLs.CUSTOMERS.URL());
         homePage.acceptCookies();
         Assert.assertTrue(customersHomePage.isCustomersMainTitlePresent());
         Assert.assertTrue(customersHomePage.isScrewFixTitlePresent());

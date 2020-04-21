@@ -1,7 +1,7 @@
 package industriesTests;
 
 import base.*;
-import data.Urls;
+import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
@@ -31,7 +31,7 @@ public class HigherEducationTest extends BaseTest {
 
     @Test
     public void checkAllTitlesPresent() {
-        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         homePage.acceptCookies();
         Assert.assertTrue(higherEducationPage.isMainTitlePresent());
         Assert.assertTrue(higherEducationPage.isYourPartnerInEducationTitle());
@@ -43,14 +43,14 @@ public class HigherEducationTest extends BaseTest {
 
     @Test
     public void checkHigherEducationCrumb() {
-        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         homePage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isHigherEducationCrumbVisible());
     }
 
     @Test
     public void checkAllTitlesText() {
-        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         homePage.acceptCookies();
         Assert.assertEquals(higherEducationPage.getMainTitleText(), "Higher Education");
         Assert.assertEquals(higherEducationPage.getBreakFreeTitleText(), "Break free from legacy systems");
@@ -63,7 +63,7 @@ public class HigherEducationTest extends BaseTest {
 
     @Test
     public void checkPanelTitlesPresent() {
-        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         homePage.acceptCookies();
         Assert.assertTrue(higherEducationPage.isAccelerateGrowthSectionTitlePresent());
         Assert.assertTrue(higherEducationPage.isBoostStudentsSuccessSectionTitlePresent());
@@ -72,7 +72,7 @@ public class HigherEducationTest extends BaseTest {
 
     @Test
     public void openRequestDemoViaHeader() {
-        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         homePage.acceptCookies();
         headerBasePage.clickRequestDemoForm();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
@@ -82,7 +82,7 @@ public class HigherEducationTest extends BaseTest {
 
     @Test
     public void openRequestDemoViaSection() {
-        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         homePage.acceptCookies();
         Assert.assertTrue(letsTalkSectionPage.isLetsTalkTextPresent());
         letsTalkSectionPage.clickRequestDemoInSection();
@@ -94,7 +94,7 @@ public class HigherEducationTest extends BaseTest {
     //Your New Unit4 People Experience Suite
     @Test
     public void checkReadMoreOpensERPPage() {
-        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         homePage.acceptCookies();
         higherEducationPage.clickReadMoreAboutERP();
         Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
@@ -103,7 +103,7 @@ public class HigherEducationTest extends BaseTest {
 
     @Test
     public void checkReadMoreOpensStudentManagementPage() {
-        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         homePage.acceptCookies();
         higherEducationPage.clickReadMoreAboutStudentManagement();
         Assert.assertTrue(studentManagementPage.isMainTitlePresent());
@@ -112,7 +112,7 @@ public class HigherEducationTest extends BaseTest {
 
     @Test
     public void checkReadMoreOpensFinancialPlanningPage() {
-        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         homePage.acceptCookies();
         higherEducationPage.clickReadMoreAboutFinancialPlanning();
         Assert.assertTrue(financialPlanningPage.isMainTitlePresent());
@@ -121,7 +121,7 @@ public class HigherEducationTest extends BaseTest {
 
     @Test
     public void checkReadMoreOpensHumanCapitalPage() {
-        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         homePage.acceptCookies();
         higherEducationPage.clickReadMoreAboutHumanCapital();
         Assert.assertTrue(humanCapitalManagementPage.isMainTitlePresent());
@@ -131,7 +131,7 @@ public class HigherEducationTest extends BaseTest {
     // Customer Overview: Manchester
     @Test
     public void checkReadMoreOpensManchesterUniversityPage() {
-        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         homePage.acceptCookies();
         higherEducationPage.clickReadMoreAboutManchesterUniversity();
         Assert.assertTrue(breadCrumbsBasePage.isManchesterCrumbVisible());
@@ -140,7 +140,7 @@ public class HigherEducationTest extends BaseTest {
 
     @Test
     public void checkSeeMoreCustomersStoriesOpensCustomersPage() {
-        BasePage.openURL(Urls.INDUSTRIES_HIGHER_EDUCATION.URL());
+        BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         homePage.acceptCookies();
         higherEducationPage.clickSeeMoreCustomersStories();
         Assert.assertTrue(customersHomePage.isCustomersMainTitlePresent());

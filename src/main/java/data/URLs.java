@@ -1,6 +1,6 @@
 package data;
 
-public enum Urls {
+public enum URLs {
 
     HOME_PAGE(""),
     PRODUCTS("/products"),
@@ -23,13 +23,19 @@ public enum Urls {
     CUSTOMERS_SCREWFIX("/our-customers/screwfix"),
     CUSTOMERS_STANLEY("/our-customers/stanley-security"),
     CUSTOMERS_WAR_CHILD("/our-customers/war-child"),
-    RESOURCES("/our-customers/war-child"),
-    WHY_UNIT4("/why-choose-unit4");
 
+    BLOG("/blog"),
+    EVENTS("/events"),
+    LIBRARY("/library"),
+
+    WHY_UNIT4("/why-choose-unit4"),
+    WRONG_URL("/wrong"),
+    CONTACT_US("/contact-us"),
+    PRIVACY_POLICY("/terms-and-conditions");
 
     private String stage;
 
-    Urls(String stage) {
+    URLs(String stage) {
         this.stage = stage;
     }
 
@@ -38,7 +44,6 @@ public enum Urls {
         String username = "sql";
         String password = "www2020=";
         String fullUrl = "https://" + username + ":" + password + "@" + baseURL + stage;
-        System.out.println(fullUrl);
         return fullUrl;
     }
 
