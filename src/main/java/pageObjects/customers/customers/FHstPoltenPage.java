@@ -49,5 +49,7 @@ public class FHstPoltenPage extends BasePage {
     }
 
     public void clickDownloadCaseStudy() {
+        Reporter.log("clicking 'Download case study' button");
+        clickOnElement(downloadCaseStudyBtn);
     }
 }

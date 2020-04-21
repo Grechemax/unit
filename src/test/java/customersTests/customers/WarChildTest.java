@@ -34,4 +34,12 @@ public class WarChildTest extends BaseTest {
         warChildPage.clickReadMoreButton();
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
     }
+
+    @Test
+    public void downloadCaseStudyOpensPDFPage() {
+        BasePage.openURL(URLs.CUSTOMERS_WAR_CHILD.URL());
+        warChildPage.clickDownloadCaseStudy();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
+    }
 }

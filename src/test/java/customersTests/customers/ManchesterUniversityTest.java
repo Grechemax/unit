@@ -29,13 +29,26 @@ public class ManchesterUniversityTest extends BaseTest {
 
     @Test
     public void checkManchesterPageBreadCrumb() {
+        BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
+        homePage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isManchesterCrumbVisible());
     }
 
     @Test
     public void checkReadMoreOpensRightPage() {
+        BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
+        homePage.acceptCookies();
         manchesterUniversityPage.clickReadMoreButton();
         Assert.assertTrue(breadCrumbsBasePage.isStudentManagementCrumbVisible());
         Assert.assertTrue(studentManagementPage.isMainTitlePresent());
+    }
+
+    @Test
+    public void downloadCaseStudyOpensPDFPage() {
+        BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
+        homePage.acceptCookies();
+        manchesterUniversityPage.clickDownloadCaseStudy();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
     }
 }

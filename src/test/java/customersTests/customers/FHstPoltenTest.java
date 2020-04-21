@@ -36,7 +36,7 @@ public class FHstPoltenTest extends BasePage {
 
     @Test
     public void downloadCaseStudyOpensPDFPage() {
-        BasePage.openURL(URLs.CUSTOMERS_CITY_OF_PORT.URL());
+        BasePage.openURL(URLs.CUSTOMERS_FH_ST_POLTEN.URL());
         fHstPoltenPage.clickDownloadCaseStudy();
         BasePage.switchToLastTab();
         Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));

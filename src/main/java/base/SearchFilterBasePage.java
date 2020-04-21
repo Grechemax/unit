@@ -64,14 +64,13 @@ public class SearchFilterBasePage extends BasePage {
     public void clickFilterDropdown() {
         Reporter.log("click on filter dropdown");
         clickOnElementUsingJS(filterDropdown);
-//        goSleep(2);
     }
 
     //Industry
     public void clickPublicSectorCheckbox() {
         Reporter.log("select 'Public Sector' checkbox");
         waitForElement(publicSectorCheckbox);
-        clickOnElementUsingJS(publicSectorCheckbox);
+        clickOnElement(publicSectorCheckbox);
     }
 
     public void clickAccountancyCheckbox() {

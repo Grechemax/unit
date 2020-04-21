@@ -19,6 +19,10 @@ public class BlogHomePage extends SearchFilterBasePage {
     private By authorJeroenFigee = By.xpath("//a[contains(text(), 'Jeroen Figee')]");
     private By successfulSubscriptionMessage = By.xpath("//div[@aria-label='Status message']");
 
+    //todo
+    private By popularPostItem = By.xpath("//ul[contains(@class, 'blogposts-list')]//li//h3//span");
+
+
 
     //Newsletter form
     private By joinButton = By.xpath("//input[contains(@value, 'Join')]");

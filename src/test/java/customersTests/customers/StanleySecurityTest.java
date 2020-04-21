@@ -14,7 +14,7 @@ public class StanleySecurityTest extends BaseTest {
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
     StudentManagementPage studentManagementPage = new StudentManagementPage(getDriver());
 
-    @Test(priority = 1)
+    @Test
     public void checkAllTitles() {
         BasePage.openURL(URLs.CUSTOMERS_STANLEY.URL());
         Assert.assertTrue(stanleySecurityPage.isStanleySecurityPageMainTitlePresent());
@@ -24,15 +24,25 @@ public class StanleySecurityTest extends BaseTest {
         Assert.assertTrue(stanleySecurityPage.isImpactsTitlePresent());
     }
 
-    @Test(priority = 2)
+    @Test
     public void checkStanleyPageBreadCrumb() {
+        BasePage.openURL(URLs.CUSTOMERS_STANLEY.URL());
         Assert.assertTrue(breadCrumbsBasePage.isStanleySecurityCrumbVisible());
     }
 
-    @Test(priority = 3)
+    @Test
     public void checkReadMoreOpensRightPage() {
+        BasePage.openURL(URLs.CUSTOMERS_STANLEY.URL());
         stanleySecurityPage.clickReadMoreButton();
         Assert.assertTrue(breadCrumbsBasePage.isStudentManagementCrumbVisible());
         Assert.assertTrue(studentManagementPage.isMainTitlePresent());
+    }
+
+    @Test
+    public void downloadCaseStudyOpensPDFPage() {
+        BasePage.openURL(URLs.CUSTOMERS_STANLEY.URL());
+        stanleySecurityPage.clickDownloadCaseStudy();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
     }
 }

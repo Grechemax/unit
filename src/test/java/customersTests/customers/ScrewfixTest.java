@@ -10,16 +10,14 @@ import pageObjects.customers.CustomersHomePage;
 import pageObjects.customers.customers.ScrewfixPage;
 
 public class ScrewfixTest extends BaseTest {
-    ScrewfixPage screwfixPage;
-    CustomersHomePage customersHomePage;
-    BreadCrumbsBasePage breadCrumbsBasePage;
+    ScrewfixPage screwfixPage = new ScrewfixPage(getDriver());
+    CustomersHomePage customersHomePage = new CustomersHomePage(getDriver());
+    BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
 
 
     @Test
     public void checkAllTitles() {
         BasePage.openURL(URLs.CUSTOMERS_SCREWFIX.URL());
-        screwfixPage = new ScrewfixPage(getDriver());
-        customersHomePage = new CustomersHomePage(getDriver());
         Assert.assertTrue(screwfixPage.isScrewfixPageMainTitlePresent());
         Assert.assertTrue(screwfixPage.isChallengeTitlePresented());
         Assert.assertTrue(screwfixPage.isImpactsTitlePresent());
@@ -30,14 +28,22 @@ public class ScrewfixTest extends BaseTest {
 
     @Test
     public void checkScrewfixPageBreadCrumb() {
+        BasePage.openURL(URLs.CUSTOMERS_SCREWFIX.URL());
         Assert.assertTrue(breadCrumbsBasePage.isScrewfixCrumbVisible());
     }
 
     @Test
     public void checkReadMoreOpensRightPage() {
-        breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
+        BasePage.openURL(URLs.CUSTOMERS_SCREWFIX.URL());
         screwfixPage.clickReadMoreButton();
         Assert.assertTrue(breadCrumbsBasePage.isFinancialsCrumbVisible());
     }
 
+    @Test
+    public void downloadCaseStudyOpensPDFPage() {
+        BasePage.openURL(URLs.CUSTOMERS_SCREWFIX.URL());
+        screwfixPage.clickDownloadCaseStudy();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
+    }
 }
