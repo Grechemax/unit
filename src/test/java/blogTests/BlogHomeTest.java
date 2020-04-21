@@ -158,4 +158,12 @@ public class BlogHomeTest extends BaseTest {
 //        Assert.assertTrue(blogHomePage.publicSectorResultsShown(), "Only Public Sector results are visible");
     }
 
+    @Test
+    public void comparePopularPostsNamesWithPages() {
+        BasePage.openURL(URLs.BLOG.URL());
+        homePage.acceptCookies();
+        blogHomePage.comparePopularPostsNamesWithPages();
+    }
+
+
 }

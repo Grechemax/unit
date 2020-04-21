@@ -1,13 +1,21 @@
 package pageObjects.blog;
 
 import base.BasePage;
+import base.BreadCrumbsBasePage;
 import base.Reporter;
 import base.SearchFilterBasePage;
+import data.URLs;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BlogHomePage extends SearchFilterBasePage {
+    BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
 
     private By readMoreButton = By.xpath("//p//*[contains(text(), 'Read more')]");
     private By blogHomeMainTitle = By.xpath("//h1"); // Title can be variable
@@ -19,9 +27,7 @@ public class BlogHomePage extends SearchFilterBasePage {
     private By authorJeroenFigee = By.xpath("//a[contains(text(), 'Jeroen Figee')]");
     private By successfulSubscriptionMessage = By.xpath("//div[@aria-label='Status message']");
 
-    //todo
     private By popularPostItem = By.xpath("//ul[contains(@class, 'blogposts-list')]//li//h3//span");
-
 
 
     //Newsletter form
@@ -135,5 +141,24 @@ public class BlogHomePage extends SearchFilterBasePage {
         findElement(emailInput).sendKeys(email);
     }
 
+
+    public void comparePopularPostsNamesWithPages() {
+
+        int elementQuantity = getDriver().findElements(By.xpath("//ul[@class='blogposts-list']/li")).size();
+
+        String element = "//ul[@class='blogposts-list']/li[%s]//h3//span";
+        for (int i = 1; i <= elementQuantity; i++) {
+            By item = By.xpath(String.format(element, i));
+            Reporter.log("Comparing name of Popular Posts #" + i + " with title of opened page");
+            String postTitle = getElementText(item);
+            System.out.println(postTitle);
+            waitForElement(item);
+            clickOnElement(item);
+            String currentBreadCrumb = breadCrumbsBasePage.getCurrentBreadCrumb();
+            Assert.assertEquals(postTitle, currentBreadCrumb);
+            BasePage.openURL(URLs.BLOG.URL());
+            Assert.assertTrue(isBlogHomeMainTitlePresent());
+        }
+    }
 
 }
