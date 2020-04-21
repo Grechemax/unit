@@ -31,10 +31,12 @@ public class FHstPoltenPage extends BasePage {
     }
 
     public boolean isChallengeTitlePresented() {
+        Reporter.log("Verify is challenge title present");
         return isElementPresent(challengeTitle);
     }
 
     public boolean isFinancialPlanningBlockTitlePresent() {
+        Reporter.log("Verify is planning block present");
         return isElementPresent(financialPlanningBlockTitle);
     }
 

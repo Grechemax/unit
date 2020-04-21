@@ -20,23 +20,29 @@ public class ScrewfixPage extends BasePage {
     }
 
     public boolean isScrewfixPageMainTitlePresent() {
+        Reporter.log("Verify is screw fix page title present");
         waitForElement(screwfixPageMainTitle);
         return isElementPresent(screwfixPageMainTitle);
     }
 
     public boolean isDownloadCaseStudyBtnPresented() {
+        Reporter.log("Verify is download case study button present");
         return isElementPresent(downloadCaseStudyBtn);
     }
 
     public boolean isChallengeTitlePresented() {
+        Reporter.log("Verify is challenge title present");
         return isElementPresent(challengeTitle);
     }
 
     public boolean isImpactsTitlePresent() {
+        Reporter.log("Verify is impacts title present");
         return isElementPresent(impactsTitle);
     }
 
     public boolean isUnit4FinancialsBlockTitlePresent() {
+
+        Reporter.log("Verify is unit4 financials block title present");
         return isElementPresent(unit4FinancialsBlockTitle);
     }
 

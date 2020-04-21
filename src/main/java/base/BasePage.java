@@ -53,7 +53,9 @@ public class BasePage extends BaseTest {
 
     public String getElementText(By element) {
         WebElement wait = new WebDriverWait(getDriver(), 20).until(visibilityOf(findElement(element)));
-        return findElement(element).getText();
+        String s = findElement(element).getText();
+        base.Reporter.log("getting element text... '"+s+"'");
+        return s;
     }
 
     public static String getElementText(WebElement element) {
@@ -334,7 +336,7 @@ public class BasePage extends BaseTest {
         jse1.executeScript("scroll(0, " + end + ")"); // if the element is at bottom.
     }
 
-    public static void scrollToTop() {
+    public static void scrollToTop() {Reporter.log("Scrolling up");
         JavascriptExecutor jse1 = (JavascriptExecutor) getDriver();
         jse1.executeScript("scroll(1000, 0)"); // if the element is on top.
     }
@@ -414,6 +416,7 @@ public class BasePage extends BaseTest {
     }
 
     public void scrollToElement(By elem) {
+        base.Reporter.log("Scrolling to element");
         WebElement element = findElement(elem);
         ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
     }
@@ -445,6 +448,7 @@ public class BasePage extends BaseTest {
     }
 
     public static void openURL(String URL) {
+        base.Reporter.log("Opening Url: '"+URL);
         getDriver().get(URL);
     }
 

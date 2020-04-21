@@ -1,6 +1,7 @@
 package pageObjects.events;
 
 import base.BasePage;
+import base.Reporter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -14,6 +15,7 @@ public class EventsHomePage extends BasePage {
     }
 
     public boolean isEventsHomeMainTitlePresent() {
+        Reporter.log("Verify is events home main title present");
         waitForElement(eventsHomeMainTitle);
         return isElementPresent(eventsHomeMainTitle);
     }

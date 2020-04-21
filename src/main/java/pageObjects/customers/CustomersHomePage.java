@@ -1,6 +1,7 @@
 package pageObjects.customers;
 
 import base.BasePage;
+import base.Reporter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -28,27 +29,37 @@ public class CustomersHomePage extends BasePage {
         return isElementPresent(customersMainTitle);
     }
 
-    public boolean isCityOfPortTitlePresent() {
+    public boolean isCityOfPortTitlePresent()
+    {
+        Reporter.log("Verify is city of port title present");
         return isElementPresent(cityOfPortTitle);
     }
 
     public boolean isAustrianUniversityTitlePresent() {
+
+        Reporter.log("Verify is Australian University title present");
         return isElementPresent(austrianUniversityTitle);
     }
 
     public boolean isManchesterUniversityTitlePresent() {
+        Reporter.log("Verify is Manchester University title present");
         return isElementPresent(manchesterUniversityTitle);
     }
 
     public boolean isScrewFixTitlePresent() {
+
+        Reporter.log("Verify is screw fix title present");
         return isElementPresent(screwFixTitle);
     }
 
-    public boolean isStanleySecurityTitlePresent() {
+    public boolean isStanleySecurityTitlePresent(){
+        Reporter.log("Verify is stanley security title present");
         return isElementPresent(stanleySecurityTitle);
     }
 
     public boolean isWarChildTitlePresent() {
+        Reporter.log("Verify is war child title present");
+
         return isElementPresent(warChildTitle);
     }
 
