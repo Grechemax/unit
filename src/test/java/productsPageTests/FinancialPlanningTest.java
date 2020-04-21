@@ -120,6 +120,7 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
         Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
     }
+
     @Test
     public void checkLinkOpensFinancialPlanningPage() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
@@ -128,6 +129,7 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
         Assert.assertTrue(financialPlanningPage.isMainTitlePresent());
     }
+
     @Test
     public void checkLinkOpensHumanCapitalManagementPage() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
@@ -136,6 +138,7 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isHumanCapitalManagementCrumbVisible());
         Assert.assertTrue(humanCapitalManagementPage.isMainTitlePresent());
     }
+
     @Test
     public void checkLinkOpensFinancialsPage() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
@@ -145,4 +148,29 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertTrue(financialsPage.isFinancialsPageMainTitlePresent());
     }
 
+    @Test
+    public void downloadPDFOpensPDF() {
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
+        homePage.acceptCookies();
+        financialPlanningPage.clickDownloadBrochure();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
+    }
+
+    @Test
+    public void downloadResearchBundleOpensRouteToFPAPage() {
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
+        homePage.acceptCookies();
+        financialPlanningPage.clickDownloadResearchBundle();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains("routetoFPAleadership"));
+    }
+
+    @Test
+    public void returnToHomePageViaLogo() {
+        BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
+        homePage.acceptCookies();
+        financialPlanningPage.clickMainLogo();
+        Assert.assertTrue(homePage.isMainHeaderPresent());
+    }
 }

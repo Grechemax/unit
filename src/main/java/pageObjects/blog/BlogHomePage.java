@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 public class BlogHomePage extends SearchFilterBasePage {
 
     private By readMoreButton = By.xpath("//p//*[contains(text(), 'Read more')]");
-    private By blogHomeMainTitle = By.xpath("//h1");
+    private By blogHomeMainTitle = By.xpath("//h1"); // Title can be variable
 
     private By authorMikeEttling = By.xpath("//a[contains(text(), 'Mike Ettling')]");
     private By authorGrahamKimberley = By.xpath("//a[contains(text(), 'Graham Kimberley')]");
@@ -35,6 +35,7 @@ public class BlogHomePage extends SearchFilterBasePage {
     }
 
     public boolean isBlogHomeMainTitlePresent() {
+        Reporter.log("verify that 'Blog' home page main title is present");
         waitForElement(blogHomeMainTitle);
         return isElementPresent(blogHomeMainTitle);
     }

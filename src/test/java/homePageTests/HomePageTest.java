@@ -151,6 +151,6 @@ public class HomePageTest extends BaseTest {
         homePage.acceptCookies();
         homePage.clickDownloadReport();
         BasePage.switchToLastTab();
-        Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.DOWNLOAD_REPORT.URL()));
+        Assert.assertTrue(BasePage.isCurrentUrlContains("Report"));
     }
 }

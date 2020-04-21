@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class BreadCrumbsBasePage extends BasePage {
 
-    private By homeCrumb = By.xpath("//div[@class='u4-breadcrumb']//*[contains(text(), 'Home')]"); // right breadcrumb
+    private By homeCrumb = By.xpath("//*[@class='u4-breadcrumb']//*[contains(text(), 'Home')]"); // right breadcrumb
     private By productsHomeCrumb = By.xpath("//ol/li[last() and contains(text(), 'Products')]");
     private By financialsCrumb = By.xpath("//ol/li[last() and contains(text(), 'Financials')]");
     private By financialPlanningCrumb = By.xpath("//ol/li[last() and contains(text(), 'Financial Planning')]");

@@ -8,22 +8,13 @@
         </classes>
     </test>
 
-<!--    Dropdowns-->
+
     <test name="IndustriesDropdownTest">
         <classes>
-            <class name="headerTests.IndustriesDropdownTest"/>
+            <class name="headerTests.HeaderTest"/>
         </classes>
     </test>
-    <test name="ProductsDropdownTest">
-        <classes>
-            <class name="headerTests.ProductsDropdownTest"/>
-        </classes>
-    </test>
-    <test name="ResourcesDropdownTest">
-        <classes>
-            <class name="headerTests.ResourcesDropdownTest"/>
-        </classes>
-    </test>
+
 
     <test name="RequestDemoTest">
         <classes>
@@ -95,7 +86,7 @@
         </classes>
     </test>
 
-<!--    Customers-->
+    <!--    Customers-->
     <test name="Customers = > CityOfPortTest">
         <classes>
             <class name="customersTests.customers.CityOfPortTest"/>
@@ -114,6 +105,16 @@
     <test name="BlogHomeTest">
         <classes>
             <class name="blogTests.BlogHomeTest"/>
+        </classes>
+    </test>
+    <test name="LibraryHomeTest">
+        <classes>
+            <class name="library.LibraryHomeTest"/>
+        </classes>
+    </test>
+    <test name="EventsHomeTest">
+        <classes>
+            <class name="eventsTests.EventsHomeTest"/>
         </classes>
     </test>
 

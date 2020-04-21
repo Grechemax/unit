@@ -147,4 +147,13 @@ public class PublicSectorTest extends BaseTest {
         Assert.assertTrue(newsHomePage.isNewsHomePageMainHeaderPresent());
         Assert.assertTrue(breadCrumbsBasePage.isNewsHomePageCrumbVisible());
     }
+
+    @Test
+    public void learnMoreOpensPDF() {
+        BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
+        homePage.acceptCookies();
+        publicSectorPage.clickLearnMore();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
+    }
 }

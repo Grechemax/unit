@@ -10,6 +10,7 @@ public class StudentManagementPage extends BasePage {
 
 
     private By mainTitle = By.xpath("//h1[contains(text(), 'Unit4 Student Management')]");
+    private By downloadBrochure = By.xpath("//a[contains(text(), 'Download product brochure')]");
     private By supportGrowthInLearningTitle = By.xpath("//section[2]/div[1]/div/section/div/div/h3");
     private By studentsManagementDeliversTitle = By.xpath("//section[3]/div/div[1]/h2");
     private By createBetterWayTitle = By.xpath("//section[4]/div/div/div[1]/h3");
@@ -158,5 +159,10 @@ public class StudentManagementPage extends BasePage {
     public void clickFinancialsLink() {
         Reporter.log("clicking 'Financials' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(financialsLink);
+    }
+
+    public void clickDownloadBrochure() {
+        Reporter.log("clicking 'Download product brochure' button");
+        clickOnElement(downloadBrochure);
     }
 }

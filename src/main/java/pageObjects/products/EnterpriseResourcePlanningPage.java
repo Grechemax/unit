@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class EnterpriseResourcePlanningPage extends BasePage {
     private By erpMainTitle = By.xpath("//h1[contains(text(), 'Unit4 Enterprise Resource Planning')]");
+    private By downloadBrochure = By.xpath("//a[contains(text(), 'Download product brochure')]");
     private By elevateYourBusinessTitle = By.xpath("//section[2]/div[1]/div/h2");
     private By experienceSuiteTitle = By.xpath("//section[3]/div/div[1]/h2");
     private By createBetterWayTitle = By.xpath("//section[4]/div/div/div[1]/h2");
@@ -129,6 +130,11 @@ public class EnterpriseResourcePlanningPage extends BasePage {
         return isElementPresent(fieldServiceManagementSectionTitle);
     }
 
+    public void clickDownloadBrochure() {
+        Reporter.log("clicking 'Download product brochure' button");
+        clickOnElement(downloadBrochure);
+    }
+
     public void clickReadMoreAboutWarChild() {
         Reporter.log("clicking read more in 'Customer Overview: War Child' block");
         clickOnElement(readMoreWarChild);
@@ -139,14 +145,17 @@ public class EnterpriseResourcePlanningPage extends BasePage {
         Reporter.log("clicking 'ERP' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(erpLink);
     }
+
     public void clickHCMLink() {
         Reporter.log("clicking 'HCM' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(humanCapitalManagementLink);
     }
+
     public void clickFPALink() {
         Reporter.log("clicking 'FP&A' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(financialPlanningLink);
     }
+
     public void clickFinancialsLink() {
         Reporter.log("clicking 'Financials' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(financialsLink);

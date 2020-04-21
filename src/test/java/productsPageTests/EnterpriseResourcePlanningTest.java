@@ -145,5 +145,14 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isFinancialsCrumbVisible());
         Assert.assertTrue(financialsPage.isFinancialsPageMainTitlePresent());
     }
+
+    @Test
+    public void downloadPDFOpensPDF() {
+        BasePage.openURL(URLs.PRODUCTS_ERP.URL());
+        homePage.acceptCookies();
+        enterpriseResourcePlanningPage.clickDownloadBrochure();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
+    }
 }
 

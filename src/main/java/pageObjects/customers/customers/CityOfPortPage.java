@@ -46,8 +46,13 @@ public class CityOfPortPage extends BasePage {
     }
 
     public void clickReadMoreButton() {
+        Reporter.log("ERP Page is opened after clicking 'Read More' button");
         waitForElement(readMoreBtn);
         clickOnElement(readMoreBtn);
-        Reporter.log("ERP Page is opened after clicking 'Read More' button");
+    }
+
+    public void clickDownloadCaseStudy() {
+        Reporter.log("clicking 'Download case study' button");
+        clickOnElement(downloadCaseStudyBtn);
     }
 }

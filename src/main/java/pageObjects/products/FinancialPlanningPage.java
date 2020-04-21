@@ -9,9 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 public class FinancialPlanningPage extends BasePage {
 
 
-    private By seeMoreCustomersStories = By.xpath("//a[contains(@class, 'cta-more logoblock_fpa')]");
-
     private By mainTitle = By.xpath("//h1[contains(@class, 'section-title')]");
+    private By mainLogo = By.xpath("//a[contains(@class, 'site-logo')]");
+    private By downloadBrochure = By.xpath("//a[contains(text(), 'Download product brochure')]");
     private By gainMeaningfulInsightsTitle = By.xpath("//h2[contains(text(), 'Gain Meaningful Insights')]");
     private By financialPlanningTitle = By.xpath("//h2[contains(text(), 'Unit4 Financial Planning & Analysis Delivers')]");
     private By createBetterWayTitle = By.xpath("//h3[contains(text(), 'Create a Better Way to Work')]");
@@ -35,6 +35,8 @@ public class FinancialPlanningPage extends BasePage {
     private By ifrs16SectionTitle = By.xpath("//h3[contains(text(), 'IFRS 16')]");
     private By readMoreFHstPolten = By.xpath("//section[5]//a[contains(text(), 'Read more')]");
 
+    private By seeMoreCustomersStories = By.xpath("//a[contains(@class, 'cta-more logoblock_fpa')]");
+    private By downloadResearchBundle = By.xpath("//a[contains(text(), 'Download our research bundle')]");
     //Looking for one of our other Unit4 solutions?
     private By financialsLink = By.xpath("//strong[contains(text(), 'Unit4 Financials')]");
     private By erpLink = By.xpath("//strong[contains(text(), 'Unit4 Enterprise Resource Planning')]");
@@ -167,17 +169,35 @@ public class FinancialPlanningPage extends BasePage {
         Reporter.log("clicking 'ERP' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(erpLink);
     }
+
     public void clickHCMLink() {
         Reporter.log("clicking 'HCM' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(humanCapitalManagementLink);
     }
+
     public void clickFPALink() {
         Reporter.log("clicking 'FP&A' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(financialPlanningLink);
     }
+
     public void clickFinancialsLink() {
         Reporter.log("clicking 'Financials' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(financialsLink);
+    }
+
+    public void clickDownloadBrochure() {
+        Reporter.log("clicking 'Download product brochure' button");
+        clickOnElement(downloadBrochure);
+    }
+
+    public void clickDownloadResearchBundle() {
+        Reporter.log("clicking 'Download our research bundle' button");
+        clickOnElement(downloadResearchBundle);
+    }
+
+    public void clickMainLogo() {
+        Reporter.log("clicking on main logo");
+        clickOnElement(mainLogo);
     }
 }
 

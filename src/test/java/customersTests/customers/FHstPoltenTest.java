@@ -23,13 +23,22 @@ public class FHstPoltenTest extends BasePage {
 
     @Test
     public void checkFHstPoltenPageBreadCrumb() {
+        BasePage.openURL(URLs.CUSTOMERS_FH_ST_POLTEN.URL());
         Assert.assertTrue(breadCrumbsBasePage.isFHstPoltenCrumbVisible());
     }
 
     @Test
     public void checkReadMoreOpensRightPage() {
+        BasePage.openURL(URLs.CUSTOMERS_FH_ST_POLTEN.URL());
         fHstPoltenPage.clickReadMoreAboutFinancialPlanning();
         Assert.assertTrue(breadCrumbsBasePage.isDeliver360CrumbVisible());
     }
 
+    @Test
+    public void downloadCaseStudyOpensPDFPage() {
+        BasePage.openURL(URLs.CUSTOMERS_CITY_OF_PORT.URL());
+        fHstPoltenPage.clickDownloadCaseStudy();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
+    }
 }

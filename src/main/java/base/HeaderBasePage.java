@@ -12,6 +12,8 @@ public class HeaderBasePage extends BasePage {
     private By customersHeaderItem = By.xpath("//*[@id='sitenav']//a[contains(text(), 'Customers')]");
     private By resourcesHeaderItem = By.xpath("//*[@id='sitenav']//a[contains(text(), 'Resources')]");
     private By whyUnit4HeaderItem = By.xpath("//*[@id='sitenav']//a[contains(text(), 'Why Unit4')]");
+    private By communityHeaderItem = By.xpath("//*[@id='sitenav']//a[contains(text(), 'Community')]");
+
     private By requestDemoCTA = By.xpath("//*[contains(@class, 'sitenav')]//*[contains(text(), 'Request a demo')]");
     private By magnifierIconToOpenSearch = By.xpath("//button[contains(@class, 'search-button-open')]");
     private By collapseSearchInputButton = By.xpath("//*[@id='site-search-close']");
@@ -23,7 +25,7 @@ public class HeaderBasePage extends BasePage {
     private By humanCapitalManagementDrpdwnItem = By.xpath("//a[contains(text(), 'Human Capital Management')]");
     private By studentManagementDrpdwnItem = By.xpath("//a[contains(text(), 'Student Management')]");
     private By thePeopleExperienceSuiteDrpdwnItem = By.xpath("//ul//*[contains(text(), 'The People Experience Suite')]");
-    private By viewAllProductsDrpdwnItem = By.xpath("//a[contains(text(), 'View all products')]");
+    private By viewAllIndustriesDrpdwnItem = By.xpath("//a[contains(text(), 'View all industries')]");
 
     private By higherEducation = By.xpath("//*[contains(text(), 'Higher Education')]");
     private By nonProfit = By.xpath("//*[contains(text(), 'Nonprofit')]");
@@ -38,116 +40,107 @@ public class HeaderBasePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void checkProductsItems() {
-        hoverOverElement(productsHeaderItem);
-        Assert.assertTrue(isElementPresent(enterpriseResourcePlanningDrpdwnItem));
-        Assert.assertTrue(isElementPresent(financialPlanningDrpdwnItem));
-        Assert.assertTrue(isElementPresent(humanCapitalManagementDrpdwnItem));
-        Assert.assertTrue(isElementPresent(studentManagementDrpdwnItem));
-    }
-
-    public void checkResourcesItems() {
-        hoverOverElement(resourcesHeaderItem);
-        Assert.assertTrue(isElementPresent(blog));
-        Assert.assertTrue(isElementPresent(events));
-        Assert.assertTrue(isElementPresent(library));
-        System.out.println(backgroundColorElement(findElement(blog))); // ????????????????????????????????????????
-        System.out.println(backgroundColorElement(findElement(library)));  // ????????????????????????????????????????
-    }
-
-    public void checkIndustriesItems() {
-        hoverOverElement(industriesHeaderItem);
-        Assert.assertTrue(isElementPresent(higherEducation));
-        Assert.assertTrue(isElementPresent(nonProfit));
-        Assert.assertTrue(isElementPresent(professionalServices));
-        Assert.assertTrue(isElementPresent(publicSector));
-    }
-
-    //Products
-    public void goToEnterpriseResourcePlaning() {
+    public void goToERP() {
+        Reporter.log("hovering and clicking ERP");
         hoverOverElement(productsHeaderItem);
         clickOnElement(enterpriseResourcePlanningDrpdwnItem);
     }
-    public void goToFinancialPlaning() {
+
+    public void goToFinancialPlanning() {
+        Reporter.log("hovering and clicking FinPlanning");
         hoverOverElement(productsHeaderItem);
         clickOnElement(financialPlanningDrpdwnItem);
     }
-    public void goToHumanCapitalManagement() {
+
+    public void goToHumanCapital() {
+        Reporter.log("hovering and clicking Human Capital");
         hoverOverElement(productsHeaderItem);
         clickOnElement(humanCapitalManagementDrpdwnItem);
     }
-    public void goToStudentManagement() {
+
+    public void goToStudentsManagement() {
+        Reporter.log("hovering and clicking Students Management");
         hoverOverElement(productsHeaderItem);
         clickOnElement(studentManagementDrpdwnItem);
     }
-    public void goToThePeopleExperienceSuite() {
+
+    public void goToPeopleExperience() {
+        Reporter.log("hovering and clicking 'The People Experience Suite'");
         hoverOverElement(productsHeaderItem);
         clickOnElement(thePeopleExperienceSuiteDrpdwnItem);
     }
 
 
-
     //Industries
     public void goToHigherEducation() {
+        Reporter.log("hovering and clicking 'Higher Education'");
         hoverOverElement(industriesHeaderItem);
         clickOnElement(higherEducation);
     }
 
-    //Industries
-    public void goToNonProfit() {
+    public void goToNonprofit() {
+        Reporter.log("hovering and clicking 'Nonprofit'");
         hoverOverElement(industriesHeaderItem);
         clickOnElement(nonProfit);
     }
 
-    //Industries
     public void goToProfessionalServices() {
+        Reporter.log("hovering and clicking 'Professional Services'");
         hoverOverElement(industriesHeaderItem);
         clickOnElement(professionalServices);
     }
 
-    //Industries
     public void goToPublicSector() {
+        Reporter.log("hovering and clicking 'Public Sector'");
         hoverOverElement(industriesHeaderItem);
         clickOnElement(publicSector);
     }
 
-    //Industries
     public void goToIndustriesHome() {
-        hoverOverElement(productsHeaderItem);
-        clickOnElement(viewAllProductsDrpdwnItem);
+        Reporter.log("hovering and clicking 'View all industries'");
+        hoverOverElement(industriesHeaderItem);
+        clickOnElement(viewAllIndustriesDrpdwnItem);
     }
 
-
     public void goToCustomersHome() {
+        Reporter.log("clicking 'Customers'");
         clickOnElement(customersHeaderItem);
     }
 
 
     //Resources
     public void goToBlog() {
+        Reporter.log("hovering and clicking 'Blog'");
         hoverOverElement(resourcesHeaderItem);
         clickOnElement(blog);
     }
 
-    //Resources
     public void goToEvents() {
+        Reporter.log("hovering and clicking 'Events'");
         hoverOverElement(resourcesHeaderItem);
         clickOnElement(events);
     }
 
-    //Resources
     public void goToLibrary() {
+        Reporter.log("hovering and clicking 'Library'");
         hoverOverElement(resourcesHeaderItem);
         clickOnElement(library);
     }
 
-
     public void goToWhyUnit4() {
+        Reporter.log("hovering and clicking 'Why Unit4'");
         clickOnElement(whyUnit4HeaderItem);
     }
 
+
     public void clickRequestDemoForm() {
+        Reporter.log("opening Request Demo Form");
         clickOnElement(requestDemoCTA);
+    }
+
+    public void clickCommunityHeaderItem() {
+        Reporter.log("opening Community");
+        clickOnElement(communityHeaderItem);
     }
 
     public void inputDataToSearchInput(String query) {
@@ -175,6 +168,5 @@ public class HeaderBasePage extends BasePage {
     public boolean isMagnifierIconToSubmitPresent() {
         return isElementPresent(magnifierIconToSubmit);
     }
-
 
 }

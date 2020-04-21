@@ -144,5 +144,15 @@ public class StudentManagementTest extends BaseTest {
         Assert.assertTrue(financialsPage.isFinancialsPageMainTitlePresent());
     }
 
+
+    @Test
+    public void downloadPDFOpensPDF() {
+        BasePage.openURL(URLs.PRODUCTS_STUDENT_MANAGEMENT.URL());
+        homePage.acceptCookies();
+        studentManagementPage.clickDownloadBrochure();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
+    }
+
 }
 

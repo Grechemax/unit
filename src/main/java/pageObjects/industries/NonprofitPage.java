@@ -31,6 +31,8 @@ public class NonprofitPage extends BasePage {
     private By warChildReadMore = By.xpath("//section[6]//a[contains(text(), 'Read more')]");
     private By seeMoreCustomersStories = By.xpath("//a[contains(text(), 'customer stories')]");
     private By seeAllNews = By.xpath("//a[contains(text(), 'See all news')]");
+    private By learnMoreButton = By.xpath("//a[contains(text(), 'Learn more')]");
+
 
     public NonprofitPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -154,5 +156,10 @@ public class NonprofitPage extends BasePage {
     public void clickSeeAllNews() {
         Reporter.log("clicking 'See all news'");
         clickOnElement(seeAllNews);
+    }
+
+    public void clickLearnMore() {
+        Reporter.log("clicking 'Learn More' button");
+        clickOnElement(learnMoreButton);
     }
 }

@@ -12,7 +12,7 @@ public class WarChildTest extends BaseTest {
     WarChildPage warChildPage = new WarChildPage(getDriver());
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
 
-    @Test(priority = 1)
+    @Test
     public void checkAllTitles() {
         BasePage.openURL(URLs.CUSTOMERS_WAR_CHILD.URL());
         Assert.assertTrue(warChildPage.isWarChildMainTitlePresent());
@@ -22,13 +22,15 @@ public class WarChildTest extends BaseTest {
         Assert.assertTrue(warChildPage.isImpactsTitlePresent());
     }
 
-    @Test(priority = 2)
+    @Test
     public void checkWarChildPageBreadCrumb() {
+        BasePage.openURL(URLs.CUSTOMERS_WAR_CHILD.URL());
         Assert.assertTrue(breadCrumbsBasePage.isWarChildCrumbVisible());
     }
 
-    @Test(priority = 3)
+    @Test
     public void checkReadMoreOpensERPPage() {
+        BasePage.openURL(URLs.CUSTOMERS_WAR_CHILD.URL());
         warChildPage.clickReadMoreButton();
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
     }

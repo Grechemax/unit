@@ -149,4 +149,13 @@ public class NonprofitTest extends BaseTest {
         Assert.assertTrue(newsHomePage.isNewsHomePageMainHeaderPresent());
         Assert.assertTrue(breadCrumbsBasePage.isNewsHomePageCrumbVisible());
     }
+
+    @Test
+    public void learnMoreOpensPDF() {
+        BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
+        homePage.acceptCookies();
+        nonprofitPage.clickLearnMore();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
+    }
 }
