@@ -31,7 +31,12 @@ public enum URLs {
     WHY_UNIT4("/why-choose-unit4"),
     WRONG_URL("/wrong"),
     CONTACT_US("/contact-us"),
-    PRIVACY_POLICY("/terms-and-conditions");
+
+    PRIVACY_POLICY("/terms-and-conditions"),
+    DISCLAIMER("/terms-and-conditions/disclaimer"),
+    COOKIES("/terms-and-conditions/cookies-policy"),
+    TRADEMARKS("/terms-and-conditions/trademarks"),
+    SITEMAP("/sitemap");
 
     private String stage;
 
@@ -45,6 +50,10 @@ public enum URLs {
         String password = "www2020=";
         String fullUrl = "https://" + username + ":" + password + "@" + baseURL + stage;
         return fullUrl;
+    }
+
+    public String STAGE() {
+        return stage;
     }
 
 }

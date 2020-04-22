@@ -27,6 +27,14 @@ public class FooterGeneralPage extends BasePage {
     private By twitterIcon = By.xpath("//img[@alt = 'twitter']");
     private By instagramIcon = By.xpath("//img[@alt = 'instagram']");
 
+    //Very bottom
+    private By termsAndConditionsLink = By.xpath("//footer//a[contains(text(), 'Terms & Conditions')]");
+    private By disclaimerLink = By.xpath("//footer//a[contains(text(), 'Disclaimer')]");
+    private By cookiesLink = By.xpath("//footer//a[contains(text(), 'Cookies')]");
+    private By modernSlaveryLink = By.xpath("//footer//a[contains(text(), 'Modern Slavery')]");
+    private By trademarksLink = By.xpath("//footer//a[contains(text(), 'Trademarks')]");
+    private By sitemapLink = By.xpath("//footer//a[contains(text(), 'Sitemap')]");
+
     public FooterGeneralPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -46,22 +54,27 @@ public class FooterGeneralPage extends BasePage {
         Reporter.log("clicking 'Partners' link in the footer");
         clickOnElement(partnersLink);
     }
+
     public void clickNewsLink() {
         Reporter.log("clicking 'News' link in the footer");
         clickOnElement(newsLink);
     }
+
     public void clickCareersLink() {
         Reporter.log("clicking 'Careers' link in the footer");
         clickOnElement(careersLink);
     }
+
     public void clickServicesLink() {
         Reporter.log("clicking 'Services' link in the footer");
         clickOnElement(servicesLink);
     }
+
     public void clickSupportLink() {
         Reporter.log("clicking 'Support' link in the footer");
         clickOnElement(supportLink);
     }
+
     public void clickPrivacyLink() {
         Reporter.log("clicking 'Privacy & Trust' link in the footer");
         clickOnElement(privacyLink);
@@ -104,4 +117,35 @@ public class FooterGeneralPage extends BasePage {
         Reporter.log("clicking 'InstagramIcon' link in the footer");
         clickOnElement(instagramIcon);
     }
+
+    public void clickTermsAndConditions() {
+        Reporter.log("clicking 'Terms & Conditions' link in the footer");
+        clickOnElement(termsAndConditionsLink);
+    }
+
+    public void clickDisclaimer() {
+        Reporter.log("clicking 'Disclaimer' link in the footer");
+        clickOnElement(disclaimerLink);
+    }
+
+    public void clickCookies() {
+        Reporter.log("clicking 'Cookies' link in the footer");
+        clickOnElement(cookiesLink);
+    }
+
+    public void clickModernSlavery() {
+        Reporter.log("clicking 'Modern Slavery' link in the footer");
+        clickOnElement(modernSlaveryLink);
+    }
+
+    public void clickTrademarks() {
+        Reporter.log("clicking 'Trademerks' link in the footer");
+        clickOnElement(trademarksLink);
+    }
+
+    public void clickSitemap() {
+        Reporter.log("clicking 'Sitemap' link in the footer");
+        clickOnElement(sitemapLink);
+    }
+
 }

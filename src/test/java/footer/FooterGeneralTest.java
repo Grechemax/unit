@@ -120,6 +120,61 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.PRIVACY_AND_TRUST_URL.URL()));
     }
 
+    //very bottom links
+    @Test
+    public void termsAndConditionsOpensRightPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        footerGeneralPage.clickTermsAndConditions();
+        BasePage.goSleep(2);
+        Assert.assertTrue(BasePage.isCurrentUrlContains(URLs.PRIVACY_POLICY.STAGE()));
+    }
+
+    @Test
+    public void disclaimerOpensRightPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        footerGeneralPage.clickDisclaimer();
+        BasePage.goSleep(2);
+        Assert.assertTrue(BasePage.isCurrentUrlContains(URLs.DISCLAIMER.STAGE()));
+    }
+
+    @Test
+    public void cookiesOpensRightPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        footerGeneralPage.clickCookies();
+        BasePage.goSleep(2);
+        Assert.assertTrue(BasePage.isCurrentUrlContains(URLs.COOKIES.STAGE()));
+    }
+
+    @Test
+    public void modernSlaveryOpensRightPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        footerGeneralPage.clickModernSlavery();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains("Modern-Slavery"));
+    }
+
+    @Test
+    public void trademarksOpensRightPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        footerGeneralPage.clickTrademarks();
+        BasePage.goSleep(2);
+        Assert.assertTrue(BasePage.isCurrentUrlContains(URLs.TRADEMARKS.STAGE()));
+    }
+
+    @Test
+    public void sitemapOpensRightPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        footerGeneralPage.clickSitemap();
+        BasePage.goSleep(2);
+        Assert.assertTrue(BasePage.isCurrentUrlContains(URLs.SITEMAP.STAGE()));
+    }
+
     //Social media
     @Test
     public void linkOpensFacebook() {

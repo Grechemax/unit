@@ -44,4 +44,40 @@ public class WhyUnit4Test extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isIndustriesHomeCrumbVisible());
         Assert.assertTrue(industriesHomePage.isIndustriesHomeMainTitlePresent());
     }
+
+    @Test
+    public void downloadReportOpensDownloadFormPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        whyUnit4Page.clickDownloadReport();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains("Report"));
+    }
+
+    @Test
+    public void downloadPDF1OpensCorrectPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        whyUnit4Page.clickDownloadPDF1();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
+    }
+
+    @Test
+    public void downloadPDF2OpensCorrectPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        whyUnit4Page.clickDownloadPDF2();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains("Next-Level-ERP"));
+    }
+
+    @Test
+    public void downloadPDF3OpensCorrectPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        homePage.acceptCookies();
+        whyUnit4Page.clickDownloadPDF3();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains("Hot-Companies"));
+    }
 }
