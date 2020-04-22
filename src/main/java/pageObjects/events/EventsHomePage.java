@@ -19,4 +19,9 @@ public class EventsHomePage extends BasePage {
         waitForElement(eventsHomeMainTitle);
         return isElementPresent(eventsHomeMainTitle);
     }
+
+    public void clickShowMoreToLoadMoreEventsItems() {
+        Reporter.log("clicking 'Show more' on Events Page to show more events");
+        clickShowMoreUntilVisible();
+    }
 }

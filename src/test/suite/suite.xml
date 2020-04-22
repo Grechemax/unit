@@ -4,107 +4,107 @@
 <suite name="SmokeTest">
     <test name="HomePageTest">
         <classes>
-            <class name="homePageTests.HomePageTest"/>
+            <class name="home.HomePageTest"/>
         </classes>
     </test>
 
 
     <test name="IndustriesDropdownTest">
         <classes>
-            <class name="headerTests.HeaderTest"/>
+            <class name="header.HeaderTest"/>
         </classes>
     </test>
 
 
     <test name="RequestDemoTest">
         <classes>
-            <class name="homePageTests.RequestDemoTest"/>
+            <class name="home.RequestDemoTest"/>
         </classes>
     </test>
 
     <test name="SearchTest">
         <classes>
-            <class name="searchTests.SearchTest"/>
+            <class name="search.SearchTest"/>
         </classes>
     </test>
     <test name="SearchWithFilters">
         <classes>
-            <class name="searchTests.SearchUsingFiltersTest"/>
+            <class name="search.SearchUsingFiltersTest"/>
         </classes>
     </test>
 
     <test name="ProductsPageTest">
         <classes>
-            <class name="productsPageTests.ProductsHomePageTest"/>
+            <class name="products.ProductsHomePageTest"/>
         </classes>
     </test>
     <test name="Products => EnterpriseResourcePlanningTest">
         <classes>
-            <class name="productsPageTests.EnterpriseResourcePlanningTest"/>
+            <class name="products.EnterpriseResourcePlanningTest"/>
         </classes>
     </test>
     <test name="Products => FinancialPlanningTest">
         <classes>
-            <class name="productsPageTests.FinancialPlanningTest"/>
+            <class name="products.FinancialPlanningTest"/>
         </classes>
     </test>
     <test name="Products => HumanCapitalManagementTest">
         <classes>
-            <class name="productsPageTests.HumanCapitalManagementTest"/>
+            <class name="products.HumanCapitalManagementTest"/>
         </classes>
     </test>
     <test name="Products = > StudentManagementTest">
         <classes>
-            <class name="productsPageTests.StudentManagementTest"/>
+            <class name="products.StudentManagementTest"/>
         </classes>
     </test>
     <test name="Products = > PeopleExperienceSuiteTest">
         <classes>
-            <class name="productsPageTests.PeopleExperienceSuiteTest"/>
+            <class name="products.PeopleExperienceSuiteTest"/>
         </classes>
     </test>
 
 
     <test name="Industries = > HigherEducationTest">
         <classes>
-            <class name="industriesTests.HigherEducationTest"/>
+            <class name="industries.HigherEducationTest"/>
         </classes>
     </test>
     <test name="Industries = > NonprofitTest">
         <classes>
-            <class name="industriesTests.NonprofitTest"/>
+            <class name="industries.NonprofitTest"/>
         </classes>
     </test>
     <test name="Industries = > ProfessionalServicesTest">
         <classes>
-            <class name="industriesTests.ProfessionalServicesTest"/>
+            <class name="industries.ProfessionalServicesTest"/>
         </classes>
     </test>
     <test name="Industries = > PublicSectorTest">
         <classes>
-            <class name="industriesTests.PublicSectorTest"/>
+            <class name="industries.PublicSectorTest"/>
         </classes>
     </test>
 
     <!--    Customers-->
     <test name="Customers = > CityOfPortTest">
         <classes>
-            <class name="customersTests.customers.CityOfPortTest"/>
+            <class name="customers.customers.CityOfPortTest"/>
         </classes>
     </test>
     <test name="Customers = > FHstPoltenTest">
         <classes>
-            <class name="customersTests.customers.FHstPoltenTest"/>
+            <class name="customers.customers.FHstPoltenTest"/>
         </classes>
     </test>
     <test name="Customers = > ManchesterUniversityTest">
         <classes>
-            <class name="customersTests.customers.ManchesterUniversityTest"/>
+            <class name="customers.customers.ManchesterUniversityTest"/>
         </classes>
     </test>
     <test name="BlogHomeTest">
         <classes>
-            <class name="blogTests.BlogHomeTest"/>
+            <class name="blog.BlogHomeTest"/>
         </classes>
     </test>
     <test name="LibraryHomeTest">
@@ -114,7 +114,7 @@
     </test>
     <test name="EventsHomeTest">
         <classes>
-            <class name="eventsTests.EventsHomeTest"/>
+            <class name="events.EventsHomeTest"/>
         </classes>
     </test>
 
@@ -126,13 +126,13 @@
 
     <test name="Footer General Tests">
         <classes>
-            <class name="footerTests.FooterGeneralTest"/>
+            <class name="footer.FooterGeneralTest"/>
         </classes>
     </test>
 
     <test name="Footer">
         <classes>
-            <class name="footerTests.ContactUsTest"/>
+            <class name="footer.ContactUsTest"/>
         </classes>
     </test>
 

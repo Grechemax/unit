@@ -51,25 +51,45 @@ public class BasePage extends BaseTest {
     }
 
 
-    public String getElementText(By element) {
-        WebElement wait = new WebDriverWait(getDriver(), 20).until(visibilityOf(findElement(element)));
-        String s = findElement(element).getText();
-        base.Reporter.log("getting element text... '"+s+"'");
-        return s;
-    }
+//    public String getElementText(By element) {
+//        waitForElement(element);
+//        return findElement(element).getText();
+//    }
 
-    public static String getElementText(WebElement element) {
-
+    /**
+     * Return text value of element
+     *
+     * @param locator
+     * @return
+     */
+    public static String getElementText(By locator) {
+        String textValue;
         try {
-            waitForPresenceOfElement(element);
-            goSleep(1);
-            return element.getText();
+            textValue = getDriver().findElement(locator).getText();
         } catch (StaleElementReferenceException e) {
-            e.printStackTrace();
-            goSleep(3);
-            return element.getText();
+            goSleep(4);
+            textValue = getDriver().findElement(locator).getText();
         }
+        return textValue;
     }
+
+    /**
+     * Return text value of element
+     *
+     * @param element
+     * @return
+     */
+    public static String getElementText(WebElement element) {
+        String textValue;
+        try {
+            textValue = element.getText();
+        } catch (StaleElementReferenceException e) {
+            goSleep(4);
+            textValue = element.getText();
+        }
+        return textValue;
+    }
+
 
     public String getElementHref(By element) {
         Reporter.log("Getting element href - " + findElement(element).getAttribute("href"));
@@ -168,7 +188,7 @@ public class BasePage extends BaseTest {
     }
 
     public void clickOnElement(By element) {
-        waitForPresenceOfElement(findElement(element));
+        waitForElement(element);
         findElement(element).click();
     }
 
@@ -656,7 +676,7 @@ public class BasePage extends BaseTest {
 
     public void waitForElement(By locator) {
         WebDriverWait wait = (new WebDriverWait(getDriver(), 30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));  // visibilityOfElementLocated: Checks to see if the element is present and also visible.
     }
 
 
