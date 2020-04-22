@@ -1,12 +1,15 @@
 package pageObjects.industries;
 
 import base.BasePage;
+import base.BreadCrumbsBasePage;
 import base.Reporter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class ProfessionalServicesPage extends BasePage {
+    BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
     private By professionalServiceMainTitle = By.xpath("//h1[contains(text(), 'Professional Services')]");
     private By yourPartnerInDeliveringExcellenceTitle = By.xpath("//h2[contains(text(), 'Your Partner in Delivering Excellence')]");
     private By crackProductivityCodeTitle = By.xpath("//h2[contains(text(), 'Crack the Productivity Code')]");
@@ -155,5 +158,21 @@ public class ProfessionalServicesPage extends BasePage {
     public void clickSeeAllNews() {
         Reporter.log("clicking 'See all news'");
         clickOnElement(seeAllNews);
+    }
+
+    public void compareNewsArticleNamesWithPages() {
+        String newsElement = "//div[contains(@class, 'swiper-container')]/ul/li[%s]//h3/span";
+
+        for (int i = 1; i <= 3; i++) {
+            By item = By.xpath(String.format(newsElement, i));
+            Reporter.log("Comparing name of News Block #" + i + " with title of opened page");
+            String postTitle = getElementText(item);
+            System.out.println(postTitle);
+            clickOnElement(item);
+            String currentBreadCrumb = breadCrumbsBasePage.getCurrentBreadCrumb();
+            Assert.assertEquals(postTitle, currentBreadCrumb);
+            getDriver().navigate().back();
+            Assert.assertTrue(isMainTitlePresent());
+        }
     }
 }

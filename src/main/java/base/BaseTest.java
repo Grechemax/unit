@@ -47,6 +47,7 @@ public class BaseTest {
 
         if ("chrome".equalsIgnoreCase(browser)) {
             WebDriverManager.chromedriver().setup();
+            System.setProperty("webdriver.chrome.silentOutput","true");
             driver = new ChromeDriver();
             driver.manage().window().setPosition(new Point(0, 0));
             driver.manage().window().setSize(new Dimension(1924, 838));

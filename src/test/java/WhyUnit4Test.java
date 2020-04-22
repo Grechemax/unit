@@ -18,7 +18,7 @@ public class WhyUnit4Test extends BaseTest {
 
 
     @Test
-    public void siteOpensCustom404Page() {
+    public void checkPageTitle() {
         BasePage.openURL(URLs.WHY_UNIT4.URL());
         whyUnit4Page.isWhyUni4MainTitlePresent();
     }
