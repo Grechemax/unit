@@ -6,6 +6,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
@@ -47,7 +48,7 @@ public class BaseTest {
 
         if ("chrome".equalsIgnoreCase(browser)) {
             WebDriverManager.chromedriver().setup();
-            System.setProperty("webdriver.chrome.silentOutput","true");
+            System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
             driver = new ChromeDriver();
             driver.manage().window().setPosition(new Point(0, 0));
             driver.manage().window().setSize(new Dimension(1924, 838));
@@ -90,16 +91,16 @@ public class BaseTest {
         return DRIVER.get();
     }
 
-//    @AfterTest
-//    public void tearDown() {
-//        if (driver != null) {
-//            driver.manage().deleteAllCookies();
-//            driver.quit();
-//            DRIVER.remove();
-//        }
-//        ExtentManager.getInstance(suiteName).flush();
-//        Reporter.log("Tests PERFORMED");
-//    }
+    @AfterTest
+    public void tearDown() {
+        if (driver != null) {
+            driver.manage().deleteAllCookies();
+            driver.quit();
+            DRIVER.remove();
+        }
+        ExtentManager.getInstance(suiteName).flush();
+        Reporter.log("Tests PERFORMED");
+    }
 
     public static ThreadLocal<ExtentTest> getTest() {
         return test;

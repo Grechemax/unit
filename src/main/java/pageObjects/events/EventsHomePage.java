@@ -15,6 +15,7 @@ public class EventsHomePage extends BasePage {
     }
 
     public boolean isEventsHomeMainTitlePresent() {
+        Reporter.log("Verify is events home main title present");
         waitForElement(eventsHomeMainTitle);
         return isElementPresent(eventsHomeMainTitle);
     }
