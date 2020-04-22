@@ -12,8 +12,9 @@ import pageObjects.HomePage;
 import pageObjects.locations.LocationsHomePage;
 
 public class LocationsHomeTest extends BaseTest {
-    LocationsHomePage locationsHomePage = new LocationsHomePage(getDriver());
     HomePage homePage = new HomePage(getDriver());
+    LocationsHomePage locationsHomePage = new LocationsHomePage(getDriver());
+    BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
 
 
     @Test
@@ -23,4 +24,12 @@ public class LocationsHomeTest extends BaseTest {
         locationsHomePage.compareLocationsNamesWithPages();
     }
 
+    @Test
+    public void checkLocationsHomeBreadCrumbs() {
+        BasePage.openURL(URLs.LOCATIONS.URL());
+        homePage.acceptCookies();
+        Assert.assertTrue(breadCrumbsBasePage.isLocationsCrumbVisible());
+        breadCrumbsBasePage.goToHomePageViaBreadCrumb();
+        Assert.assertTrue(homePage.isMainHeaderPresent());
+    }
 }

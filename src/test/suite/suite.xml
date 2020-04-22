@@ -123,10 +123,19 @@
             <class name="NotFoundTest"/>
         </classes>
     </test>
-
-    <test name="Footer General Tests">
+    <test name="LocationsHomeTest">
+        <classes>
+            <class name="locations.LocationsHomeTest"/>
+        </classes>
+    </test>
+    <test name="FooterGeneralTest">
         <classes>
             <class name="footer.FooterGeneralTest"/>
+        </classes>
+    </test>
+    <test name="CookiesPanelTest">
+        <classes>
+            <class name="CookiesPanelTest"/>
         </classes>
     </test>
 
