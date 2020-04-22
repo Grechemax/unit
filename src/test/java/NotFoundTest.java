@@ -13,13 +13,13 @@ public class NotFoundTest extends BaseTest {
 
 
     @Test
-    public void siteOpensCustom404Page() {
+    public void checkPageTitle() {
         BasePage.openURL(URLs.WRONG_URL.URL());
         notFoundPage.isNonFoundMainTitlePresent();
     }
 
     @Test
-    public void siteOpensHomePage() {
+    public void takeMeHomeBtnOpensHomePage() {
         BasePage.openURL(URLs.WRONG_URL.URL());
         notFoundPage.clickTakeMeHomeBtn();
         Assert.assertTrue(homePage.isMainHeaderPresent());

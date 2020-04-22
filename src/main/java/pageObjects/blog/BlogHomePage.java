@@ -50,7 +50,7 @@ public class BlogHomePage extends SearchFilterBasePage {
         return isElementPresent(blogHomeMainTitle);
     }
 
-    public void showMoreLoadsMore() {
+    public void clickShowMoreToLoadMoreBlogItems() {
         Reporter.log("clicking 'Show more' on Blog Page to show more blog items");
         clickShowMoreUntilVisible();
     }
@@ -143,20 +143,19 @@ public class BlogHomePage extends SearchFilterBasePage {
 
 
     public void comparePopularPostsNamesWithPages() {
-
         int elementQuantity = getDriver().findElements(By.xpath("//ul[@class='blogposts-list']/li")).size();
-
         String element = "//ul[@class='blogposts-list']/li[%s]//h3//span";
+
         for (int i = 1; i <= elementQuantity; i++) {
             By item = By.xpath(String.format(element, i));
             Reporter.log("Comparing name of Popular Posts #" + i + " with title of opened page");
             String postTitle = getElementText(item);
             System.out.println(postTitle);
-            waitForElement(item);
+//            scrollToElement(item);
             clickOnElement(item);
             String currentBreadCrumb = breadCrumbsBasePage.getCurrentBreadCrumb();
             Assert.assertEquals(postTitle, currentBreadCrumb);
-            BasePage.openURL(URLs.BLOG.URL());
+            getDriver().navigate().back();
             Assert.assertTrue(isBlogHomeMainTitlePresent());
         }
     }

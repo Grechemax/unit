@@ -51,23 +51,27 @@ public class BasePage extends BaseTest {
     }
 
 
-    public String getElementText(By element) {
-        waitForElement(element);
-        return findElement(element).getText();
-    }
-
-//    public static String getElementText(WebElement element) {
-//
-//        try {
-////            waitForPresenceOfElement(element);
-//            goSleep(1);
-//            return element.getText();
-//        } catch (StaleElementReferenceException e) {
-//            e.printStackTrace();
-//            goSleep(3);
-//            return element.getText();
-//        }
+//    public String getElementText(By element) {
+//        waitForElement(element);
+//        return findElement(element).getText();
 //    }
+
+    /**
+     * Return text value of element
+     *
+     * @param locator
+     * @return
+     */
+    public static String getElementText(By locator) {
+        String textValue;
+        try {
+            textValue = getDriver().findElement(locator).getText();
+        } catch (StaleElementReferenceException e) {
+            goSleep(4);
+            textValue = getDriver().findElement(locator).getText();
+        }
+        return textValue;
+    }
 
     /**
      * Return text value of element
@@ -184,7 +188,7 @@ public class BasePage extends BaseTest {
     }
 
     public void clickOnElement(By element) {
-        waitForPresenceOfElement(findElement(element));
+        waitForElement(element);
         findElement(element).click();
     }
 

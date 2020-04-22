@@ -8,12 +8,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public class PeopleExperienceSuitePage extends BasePage {
-    BreadCrumbsBasePage breadCrumbsBasePage;
-
 
     private By mainPeopleExperienceSuiteHeader = By.xpath("//*[contains(text(), 'Improve your people')]");
     private By whyUnit4Button = By.xpath("//section[1]//a[contains(text(), 'Why Unit4')]");
-    // why unit 4 button // button leads to whyPage
+
     private By peopleExperienceTitle = By.xpath("//*[contains(text(), 'The Unit4 People Experience Suite will humanize')]");
     private By builtOnUnit4Title = By.xpath("//*[contains(text(), 'Built on the Unit4 People Platform')]");
     private By backedByUnit4Title = By.xpath("//*[contains(text(), 'Backed by the full Unit4 People Experience Suite')]");
@@ -77,6 +75,11 @@ public class PeopleExperienceSuitePage extends BasePage {
         Reporter.log("opening 'Student Management' page");
         waitForElement(studentManagementBlock);
         clickOnElementUsingJS(studentManagementBlock);
+    }
+
+    public void clickWhyUnit4Button() {
+        Reporter.log("clicking 'Why Unit4' button");
+        clickOnElement(whyUnit4Button);
     }
 
 }
