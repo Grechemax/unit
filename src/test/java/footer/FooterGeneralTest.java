@@ -12,6 +12,7 @@ import pageObjects.footer.aboutUs.AboutUsHomePage;
 import pageObjects.footer.aboutUs.LeadershipTeamPage;
 import pageObjects.footer.aboutUs.ServicesPage;
 import pageObjects.footer.aboutUs.SupportPage;
+import pageObjects.locations.LocationsHomePage;
 import pageObjects.news.NewsHomePage;
 
 
@@ -22,7 +23,7 @@ public class FooterGeneralTest extends BaseTest {
     ServicesPage servicesPage = new ServicesPage(getDriver());
     NewsHomePage newsHomePage = new NewsHomePage(getDriver());
     ContactUsPage contactUsPage = new ContactUsPage(getDriver());
-    LocationsPage locationsPage = new LocationsPage(getDriver());
+    LocationsHomePage locationsHomePage = new LocationsHomePage(getDriver());
     AboutUsHomePage aboutUsHomePage = new AboutUsHomePage(getDriver());
     FooterGeneralPage footerGeneralPage = new FooterGeneralPage(getDriver());
     LeadershipTeamPage leadershipTeamPage = new LeadershipTeamPage(getDriver());
@@ -50,7 +51,7 @@ public class FooterGeneralTest extends BaseTest {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         homePage.acceptCookies();
         footerGeneralPage.clickLocationsLink();
-        Assert.assertTrue(locationsPage.isLocationsMainHeaderPresent());
+        Assert.assertTrue(locationsHomePage.isLocationsMainHeaderPresent());
     }
 
     //About Unit4

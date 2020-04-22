@@ -4,12 +4,16 @@ import base.BasePage;
 import base.BaseTest;
 import base.BreadCrumbsBasePage;
 import data.URLs;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.HomePage;
+import pageObjects.footer.ContactUsPage;
 
 public class ContactUsTest extends BaseTest {
     HomePage homePage = new HomePage(getDriver());
+    ContactUsPage contactUsPage = new ContactUsPage(getDriver());
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
 
 
@@ -26,5 +30,12 @@ public class ContactUsTest extends BaseTest {
         homePage.acceptCookies();
         breadCrumbsBasePage.goToHomePageViaBreadCrumb();
         Assert.assertTrue(homePage.isMainHeaderPresent());
+    }
+
+    @Test
+    public void compareLocationsNamesWithPages() {
+        BasePage.openURL(URLs.CONTACT_US.URL());
+        homePage.acceptCookies();
+        contactUsPage.compareLocationsNamesWithPages();
     }
 }

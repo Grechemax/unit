@@ -28,6 +28,8 @@ public enum URLs {
     EVENTS("/events"),
     LIBRARY("/library"),
 
+    LOCATIONS("/our-locations"),
+
     WHY_UNIT4("/why-choose-unit4"),
     WRONG_URL("/wrong"),
     CONTACT_US("/contact-us"),

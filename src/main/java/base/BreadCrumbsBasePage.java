@@ -33,6 +33,7 @@ public class BreadCrumbsBasePage extends BasePage {
     private By deliver360Crumb = By.xpath("//ol/li[last() and contains(text(), 'Deliver a 360')]");
     private By newsHomePageCrumb = By.xpath("//ol/li[last() and contains(text(), 'News')]");
     private By contactUsCrumb = By.xpath("//li[contains(text(), 'Contact Us')]"); // right breadcrumb
+    private By locationCrumb = By.xpath("//li[contains(text(), 'Locations')]");
     private By currentBredCrumb = By.xpath("//ol/li[last()]");
 
 
@@ -190,6 +191,12 @@ public class BreadCrumbsBasePage extends BasePage {
         waitForElement(deliver360Crumb);
         Reporter.log("Checking breadcrumbs on 'Deliver 360' Page");
         return isElementPresent(deliver360Crumb);
+    }
+
+    public boolean isLocationsCrumbVisible() {
+        waitForElement(locationCrumb);
+        Reporter.log("Checking breadcrumbs on 'Locations' Page");
+        return isElementPresent(locationCrumb);
     }
 
     public boolean isContactUsCrumbVisible() {

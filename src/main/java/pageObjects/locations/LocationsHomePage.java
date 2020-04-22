@@ -1,4 +1,4 @@
-package pageObjects.footer;
+package pageObjects.locations;
 
 import base.BasePage;
 import base.BreadCrumbsBasePage;
@@ -8,26 +8,26 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-public class ContactUsPage extends BasePage {
+public class LocationsHomePage extends BasePage {
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
-    private By contactUsPageMainHeader = By.xpath("//h1[contains(text(), 'How can we help?')]");
+    private By locationsPageMainHeader = By.xpath("//h1[contains(text(), 'Unit4 Locations')]");
 
 
-    public ContactUsPage(WebDriver driver) {
+
+    public LocationsHomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
-    public boolean isContactUsMainTitlePresent() {
-        waitForElement(contactUsPageMainHeader);
-        Reporter.log("'How can we help?' - main title on 'Contact Us' is present");
-        return isElementPresent(contactUsPageMainHeader);
+    public boolean isLocationsMainHeaderPresent() {
+        waitForElement(locationsPageMainHeader);
+        Reporter.log("'Locations' main title is present");
+        return isElementPresent(locationsPageMainHeader);
     }
 
-
     public void compareLocationsNamesWithPages() {
-        int locationsQuantity = getDriver().findElements(By.xpath("//ul[contains(@class, 'plain equally-spaced-items')]/li/a")).size();
+        int locationsQuantity = getDriver().findElements(By.xpath("//div[contains(@class, 'tile-group-tile-wrap')]//div[contains(@class, 'tile tile--location clickable')]")).size();
 
-        String locationElement = "//ul[contains(@class, 'plain equally-spaced-items')]/li[%s]/a";
+        String locationElement = "//div[contains(@class, 'tile-group-tile-wrap')]//div[contains(@class, 'tile tile--location clickable')][%s]//span";
 
         for (int i = 1; i <= locationsQuantity; i++) {
             By item = By.xpath(String.format(locationElement, i));
@@ -40,4 +40,5 @@ public class ContactUsPage extends BasePage {
             getDriver().navigate().back();
         }
     }
+
 }

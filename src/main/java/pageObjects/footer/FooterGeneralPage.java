@@ -18,8 +18,8 @@ public class FooterGeneralPage extends BasePage {
     private By privacyLink = By.xpath("//footer//a[contains(text(), 'Privacy & Trust')]");
 
     private By contactSalesLink = By.xpath("//footer//a[contains(text(), 'Contact Sales')]");
-    private By communityPortal = By.xpath("//footer//a[contains(text(), 'Community Portal')]");
-    private By locations = By.xpath("//footer//a[contains(text(), 'Locations')]");
+    private By communityPortalLink = By.xpath("//footer//a[contains(text(), 'Community Portal')]");
+    private By locationsLink = By.xpath("//footer//a[contains(text(), 'Locations')]");
 
     //Social media
     private By fbIcon = By.xpath("//img[@alt = 'facebook']");
@@ -89,12 +89,12 @@ public class FooterGeneralPage extends BasePage {
 
     public void clickCommunityPortalLink() {
         Reporter.log("clicking 'Community Portal' link in the footer");
-        clickOnElement(communityPortal);
+        clickOnElement(communityPortalLink);
     }
 
     public void clickLocationsLink() {
         Reporter.log("clicking 'Locations' link in the footer");
-        clickOnElement(locations);
+        clickOnElement(locationsLink);
     }
 
     //Social media
