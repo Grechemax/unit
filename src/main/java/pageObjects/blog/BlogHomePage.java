@@ -27,7 +27,6 @@ public class BlogHomePage extends SearchFilterBasePage {
     private By authorJeroenFigee = By.xpath("//a[contains(text(), 'Jeroen Figee')]");
     private By successfulSubscriptionMessage = By.xpath("//div[@aria-label='Status message']");
 
-    private By popularPostItem = By.xpath("//ul[contains(@class, 'blogposts-list')]//li//h3//span");
 
 
     //Newsletter form
@@ -150,9 +149,8 @@ public class BlogHomePage extends SearchFilterBasePage {
             By item = By.xpath(String.format(element, i));
             Reporter.log("Comparing name of Popular Posts #" + i + " with title of opened page");
             String postTitle = getElementText(item);
-            System.out.println(postTitle);
-//            scrollToElement(item);
-            clickOnElement(item);
+            scrollToElement(item);
+            clickOnElementUsingJS(item);
             String currentBreadCrumb = breadCrumbsBasePage.getCurrentBreadCrumb();
             Assert.assertEquals(postTitle, currentBreadCrumb);
             getDriver().navigate().back();

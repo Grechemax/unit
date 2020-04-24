@@ -20,7 +20,7 @@ public class HeaderBasePage extends BasePage {
     private By magnifierIconToSubmit = By.xpath("//*[@id='site-search-button-desktop']");
     private By searchInput = By.xpath("//input[contains(@placeholder, 'Enter search')]");
 
-    private By enterpriseResourcePlanningDrpdwnItem = By.xpath("//li/a[contains(text(), 'Enterprise Resource Planning')]");
+    private By enterpriseResourcePlanningDrpdwnItem = By.xpath("//a[contains(text(), 'Enterprise Resource Planning')]");
     private By financialPlanningDrpdwnItem = By.xpath("//a[contains(text(), 'Financial Planning & Analysis')]");
     private By humanCapitalManagementDrpdwnItem = By.xpath("//a[contains(text(), 'Human Capital Management')]");
     private By studentManagementDrpdwnItem = By.xpath("//a[contains(text(), 'Student Management')]");

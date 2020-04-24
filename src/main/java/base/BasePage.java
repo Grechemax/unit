@@ -67,7 +67,7 @@ public class BasePage extends BaseTest {
         try {
             textValue = getDriver().findElement(locator).getText();
         } catch (StaleElementReferenceException e) {
-            goSleep(4);
+            goSleep(5);
             textValue = getDriver().findElement(locator).getText();
         }
         return textValue;
@@ -675,7 +675,7 @@ public class BasePage extends BaseTest {
 
 
     public void waitForElement(By locator) {
-        WebDriverWait wait = (new WebDriverWait(getDriver(), 30));
+        WebDriverWait wait = (new WebDriverWait(getDriver(), 20));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));  // visibilityOfElementLocated: Checks to see if the element is present and also visible.
     }
 

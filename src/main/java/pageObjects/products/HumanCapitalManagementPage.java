@@ -8,10 +8,11 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HumanCapitalManagementPage extends BasePage {
     private By mainTitle = By.xpath("//h1[@class='section-title']");
+    private By downloadBrochure = By.xpath("//a[contains(text(), 'Download product brochure')]");
     private By energizeYourPeopleTitle = By.xpath("//section[2]/div/div[1]/h2");
     private By humanCapitalManagementDeliversTitle = By.xpath("//section[3]/div/div[1]/h2");
     private By createBetterWayTitle = By.xpath("//section[4]/div/div/div[1]/h3");
-    private By cityOfPortTitle = By.xpath("//section[5]/div/div/div[2]/div[1]/h3");
+    private By customerStoryTitle = By.xpath("//section[5]//*[contains(text(), 'Customer Story')]");
     private By trustedOrganizationsTitle = By.xpath("//section[6]/div/div/h2");
 
     private By payrollManagementPanelItem = By.xpath("//a[@id='tab-link-5616']");
@@ -31,12 +32,14 @@ public class HumanCapitalManagementPage extends BasePage {
     private By recruitmentSectionTitle = By.xpath("//div[@id='tab-content-5676']/div[1]/div/h3");
     private By cityOfPortReadMore = By.xpath("//section[5]//a[contains(text(), 'Read more')]");
     private By seeMoreCustomersStories = By.xpath("//a[contains(text(), 'See more customer stories')]");
+    private By downloadReportButton = By.xpath("//strong[contains(text(), '//a[contains(text(), 'Download the report')]");
 
     //Looking for one of our other Unit4 solutions?
     private By financialsLink = By.xpath("//strong[contains(text(), 'Unit4 Financials')]");
     private By erpLink = By.xpath("//strong[contains(text(), 'Unit4 Enterprise Resource Planning')]");
     private By humanCapitalManagementLink = By.xpath("//strong[contains(text(), 'Unit4 Human Capital Management')]");
     private By financialPlanningLink = By.xpath("//strong[contains(text(), 'Unit4 Financial Planning & Analysis')]");
+
 
     public HumanCapitalManagementPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -65,7 +68,7 @@ public class HumanCapitalManagementPage extends BasePage {
 
     public boolean isCityOfPortTitlePresent() {
         Reporter.log("City of port title is present");
-        return isElementPresent(cityOfPortTitle);
+        return isElementPresent(customerStoryTitle);
     }
 
     public boolean isTrustedOrganizationsTitlePresent() {
@@ -92,7 +95,7 @@ public class HumanCapitalManagementPage extends BasePage {
     }
 
     public String getCityOfPortTitleTitleText() {
-        return getElementText(cityOfPortTitle);
+        return getElementText(customerStoryTitle);
     }
 
     public String getTrustedOrganisationsTitleText() {
@@ -160,21 +163,39 @@ public class HumanCapitalManagementPage extends BasePage {
         clickOnElement(seeMoreCustomersStories);
     }
 
+    public void clickDownloadTheReportBtn() {
+        Reporter.log("clicking 'Download the report' in 'Employee Engagement Trends' section");
+        clickOnElement(downloadReportButton);
+    }
+
+
+    public void clickDownloadProductBrochureBtn() {
+        Reporter.log("clicking 'Download product brochure' button");
+        clickOnElement(downloadBrochure);
+    }
+
+
+
     //Looking for one of our other Unit4 solutions?
     public void clickERPLink() {
         Reporter.log("clicking 'ERP' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(erpLink);
     }
+
     public void clickHCMLink() {
         Reporter.log("clicking 'HCM' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(humanCapitalManagementLink);
     }
+
     public void clickFPALink() {
         Reporter.log("clicking 'FP&A' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(financialPlanningLink);
     }
+
     public void clickFinancialsLink() {
         Reporter.log("clicking 'Financials' link in 'Looking for one of our other Unit4 solutions?' section");
         clickOnElement(financialsLink);
     }
+
+
 }

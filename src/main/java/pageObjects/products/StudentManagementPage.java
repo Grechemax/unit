@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 public class StudentManagementPage extends BasePage {
 
 
-    private By mainTitle = By.xpath("//h1[contains(text(), 'Unit4 Student Management')]");
+    private By studentManagementMainTitle = By.xpath("//h1[contains(text(), 'Unit4 Student Management')]");
     private By downloadBrochure = By.xpath("//a[contains(text(), 'Download product brochure')]");
     private By supportGrowthInLearningTitle = By.xpath("//section[2]/div[1]/div/section/div/div/h3");
     private By studentsManagementDeliversTitle = By.xpath("//section[3]/div/div[1]/h2");
@@ -44,9 +44,9 @@ public class StudentManagementPage extends BasePage {
     }
 
     public boolean isMainTitlePresent() {
-        waitForElement(mainTitle);
+        waitForElement(studentManagementMainTitle);
         Reporter.log("Main title is present");
-        return isElementPresent(mainTitle);
+        return isElementPresent(studentManagementMainTitle);
     }
 
     public boolean isSupportGrowthTitlePresent() {
@@ -75,7 +75,7 @@ public class StudentManagementPage extends BasePage {
     }
 
     public String getMainTitleText() {
-        return getElementText(mainTitle);
+        return getElementText(studentManagementMainTitle);
     }
 
     public String getSupportGrowthInLearningTitleText() {

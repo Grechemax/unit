@@ -6,12 +6,12 @@ import base.BreadCrumbsBasePage;
 import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
+import pageObjects.cookies.CookiesPanelPage;
 import pageObjects.customers.customers.ManchesterUniversityPage;
 import pageObjects.products.StudentManagementPage;
 
 public class ManchesterUniversityTest extends BaseTest {
-    HomePage homePage = new HomePage(getDriver());
+    CookiesPanelPage cookiesPanelPage = new CookiesPanelPage(getDriver());
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
     StudentManagementPage studentManagementPage = new StudentManagementPage(getDriver());
     ManchesterUniversityPage manchesterUniversityPage = new ManchesterUniversityPage(getDriver());
@@ -19,7 +19,7 @@ public class ManchesterUniversityTest extends BaseTest {
     @Test
     public void checkAllTitles() {
         BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(manchesterUniversityPage.isManchesterMainTitlePresent());
         Assert.assertTrue(manchesterUniversityPage.isDownloadCaseStudyBtnPresented());
         Assert.assertTrue(manchesterUniversityPage.isChallengeTitlePresented());
@@ -30,14 +30,14 @@ public class ManchesterUniversityTest extends BaseTest {
     @Test
     public void checkManchesterPageBreadCrumb() {
         BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isManchesterCrumbVisible());
     }
 
     @Test
     public void checkReadMoreOpensRightPage() {
         BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         manchesterUniversityPage.clickReadMoreButton();
         Assert.assertTrue(breadCrumbsBasePage.isStudentManagementCrumbVisible());
         Assert.assertTrue(studentManagementPage.isMainTitlePresent());
@@ -46,7 +46,7 @@ public class ManchesterUniversityTest extends BaseTest {
     @Test
     public void downloadCaseStudyOpensPDFPage() {
         BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         manchesterUniversityPage.clickDownloadCaseStudy();
         BasePage.switchToLastTab();
         Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));

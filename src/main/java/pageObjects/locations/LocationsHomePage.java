@@ -24,6 +24,11 @@ public class LocationsHomePage extends BasePage {
         return isElementPresent(locationsPageMainHeader);
     }
 
+    public void clickShowMoreToLoadMoreLocationItems() {
+        Reporter.log("clicking 'Show more' on Locations Page to show more locations");
+        clickShowMoreUntilVisible();
+    }
+
     public void compareLocationsNamesWithPages() {
         int locationsQuantity = getDriver().findElements(By.xpath("//div[contains(@class, 'tile-group-tile-wrap')]//div[contains(@class, 'tile tile--location clickable')]")).size();
 
@@ -35,8 +40,7 @@ public class LocationsHomePage extends BasePage {
             String postTitle = getElementText(item);
             System.out.println(postTitle);
             clickOnElement(item);
-            String currentBreadCrumb = breadCrumbsBasePage.getCurrentBreadCrumb();
-            Assert.assertEquals(postTitle, currentBreadCrumb);
+            Assert.assertEquals(postTitle, breadCrumbsBasePage.getCurrentBreadCrumb());
             getDriver().navigate().back();
         }
     }

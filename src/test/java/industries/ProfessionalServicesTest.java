@@ -4,6 +4,7 @@ import base.*;
 import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pageObjects.cookies.CookiesPanelPage;
 import pageObjects.HomePage;
 import pageObjects.RequestDemoPopupPage;
 import pageObjects.customers.CustomersHomePage;
@@ -19,6 +20,7 @@ public class ProfessionalServicesTest extends BaseTest {
     private HomePage homePage = new HomePage(getDriver());
     private NewsHomePage newsHomePage = new NewsHomePage(getDriver());
     private HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
+    private CookiesPanelPage cookiesPanelPage = new CookiesPanelPage(getDriver());
     private CustomersHomePage customersHomePage = new CustomersHomePage(getDriver());
     private StanleySecurityPage stanleySecurityPage = new StanleySecurityPage(getDriver());
     private BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
@@ -33,39 +35,38 @@ public class ProfessionalServicesTest extends BaseTest {
     @Test
     public void checkAllTitlesPresent() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(professionalServicesPage.isMainTitlePresent());
         Assert.assertTrue(professionalServicesPage.isYourPartnerInDeliveringExcellenceTitlePresent());
         Assert.assertTrue(professionalServicesPage.isCrackProductivityCodeTitlePresent());
         Assert.assertTrue(professionalServicesPage.isYourNewPeopleExperienceTitlePresent());
         Assert.assertTrue(professionalServicesPage.isCustomerSuccessTitle());
-        Assert.assertTrue(professionalServicesPage.isStanleySecurityTitlePresent());
+        Assert.assertTrue(professionalServicesPage.isCustomersStoryTitlePresent());
 
     }
 
     @Test
     public void checkProfessionalServicesCrumb() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isProfessionalServicesCrumbVisible());
     }
 
     @Test
     public void checkAllTitlesText() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertEquals(professionalServicesPage.getMainTitleText(), "Professional Services Organizations");
         Assert.assertEquals(professionalServicesPage.getYourPartnerInOperationalExcellenceTitleText(), "Your Partner in Delivering Excellence");
         Assert.assertEquals(professionalServicesPage.getCrackProductivityCodeTitleText(), "Crack the Productivity Code");
         Assert.assertEquals(professionalServicesPage.getYourNewPeopleExperienceTitleText(), "Your New Unit4 People Experience Suite");
         Assert.assertEquals(professionalServicesPage.getCustomersSuccessStoriesTitleText(), "Customer Success Stories");
-        Assert.assertEquals(professionalServicesPage.getStanleySecurityTitleText(), "Customer Overview: Stanley Security");
     }
 
     @Test
     public void checkPanelTitlesPresent() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(professionalServicesPage.isDriveProjectSectionTitlePresent());
         Assert.assertTrue(professionalServicesPage.isOptimizeResourceSectionTitlePresent());
         Assert.assertTrue(professionalServicesPage.isBillWithPrecisionSectionTitlePresent());
@@ -75,7 +76,7 @@ public class ProfessionalServicesTest extends BaseTest {
     @Test
     public void openRequestDemoViaHeader() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         headerBasePage.clickRequestDemoForm();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
@@ -85,7 +86,7 @@ public class ProfessionalServicesTest extends BaseTest {
     @Test
     public void openRequestDemoViaSection() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(letsTalkSectionPage.isLetsTalkTextPresent());
         letsTalkSectionPage.clickRequestDemoInSection();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
@@ -98,7 +99,7 @@ public class ProfessionalServicesTest extends BaseTest {
     @Test
     public void checkLearnMoreBtnOpensPeopleExperienceSuitePage() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         professionalServicesPage.clickLearnMoreAboutPplExperienceSuiteBtn();
         Assert.assertTrue(peopleExperienceSuitePage.isMainTitlePresent());
         Assert.assertTrue(breadCrumbsBasePage.isPeopleExperienceSuiteCrumbVisible());
@@ -107,7 +108,7 @@ public class ProfessionalServicesTest extends BaseTest {
     @Test
     public void checkReadMoreOpensERPPage() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         professionalServicesPage.clickReadMoreAboutERP();
         Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
@@ -117,7 +118,7 @@ public class ProfessionalServicesTest extends BaseTest {
     @Test
     public void checkReadMoreOpensFinancialPlanningPage() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         professionalServicesPage.clickReadMoreAboutFinancialPlanning();
         Assert.assertTrue(financialPlanningPage.isMainTitlePresent());
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
@@ -126,7 +127,7 @@ public class ProfessionalServicesTest extends BaseTest {
     @Test
     public void checkReadMoreOpensHumanCapitalPage() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         professionalServicesPage.clickReadMoreAboutHumanCapital();
         Assert.assertTrue(humanCapitalManagementPage.isMainTitlePresent());
         Assert.assertTrue(breadCrumbsBasePage.isHumanCapitalManagementCrumbVisible());
@@ -135,10 +136,10 @@ public class ProfessionalServicesTest extends BaseTest {
 
     // Customer Overview: War Stanley
     @Test
-    public void checkReadMoreOpensStanleySecurityPage() {
+    public void checkReadMoreOpensPDFPage() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
-        homePage.acceptCookies();
-        professionalServicesPage.clickReadMoreAboutStanleySecurity();
+        cookiesPanelPage.acceptCookies();
+        professionalServicesPage.clickReadMoreAboutCustomersStory();
         Assert.assertTrue(breadCrumbsBasePage.isStanleySecurityCrumbVisible());
         Assert.assertTrue(stanleySecurityPage.isStanleySecurityPageMainTitlePresent());
     }
@@ -146,8 +147,8 @@ public class ProfessionalServicesTest extends BaseTest {
     @Test
     public void checkReadOurCustomersStoriesOpensCustomersPage() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
-        homePage.acceptCookies();
-        homePage.clickReadCustomersStories();
+        cookiesPanelPage.acceptCookies();
+        professionalServicesPage.clickReadCustomersStories();
         Assert.assertTrue(customersHomePage.isCustomersMainTitlePresent());
         Assert.assertTrue(breadCrumbsBasePage.isCustomersCrumbVisible());
     }
@@ -155,7 +156,7 @@ public class ProfessionalServicesTest extends BaseTest {
     @Test
     public void checkSeeAllNewsOpensNewsPage() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         professionalServicesPage.clickSeeAllNews();
         Assert.assertTrue(newsHomePage.isNewsHomePageMainHeaderPresent());
         Assert.assertTrue(breadCrumbsBasePage.isNewsHomePageCrumbVisible());
@@ -166,7 +167,7 @@ public class ProfessionalServicesTest extends BaseTest {
     @Test
     public void compareNewsArticleNamesWithOpenedPages() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         professionalServicesPage.compareNewsArticleNamesWithPages();
     }
 }

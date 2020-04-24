@@ -7,12 +7,12 @@ import base.LetsTalkSectionPage;
 import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
+import pageObjects.cookies.CookiesPanelPage;
 import pageObjects.RequestDemoPopupPage;
 import pageObjects.blog.BlogHomePage;
 
 public class BlogHomeTest extends BaseTest {
-    HomePage homePage = new HomePage(getDriver());
+    CookiesPanelPage cookiesPanelPage = new CookiesPanelPage(getDriver());
     BlogHomePage blogHomePage = new BlogHomePage(getDriver());
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
     LetsTalkSectionPage letsTalkSectionPage = new LetsTalkSectionPage(getDriver());
@@ -21,21 +21,21 @@ public class BlogHomeTest extends BaseTest {
     @Test
     public void showMoreLoadsMoreBlogItems() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         blogHomePage.clickShowMoreToLoadMoreBlogItems();
     }
 
     @Test
     public void checkBlogBreadCrumb() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         breadCrumbsBasePage.isBlogHomePageCrumbVisible();
     }
 
     @Test
     public void readMoreOpensRightPage() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         blogHomePage.clickReadMoreButton();
         Assert.assertEquals(blogHomePage.getBlogHomePageMainTitle(), breadCrumbsBasePage.getCurrentBreadCrumb());
     }
@@ -43,7 +43,7 @@ public class BlogHomeTest extends BaseTest {
     @Test
     public void openRequestDemoInBlogPageViaSection() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(letsTalkSectionPage.isLetsTalkTextPresent());
         letsTalkSectionPage.clickRequestDemoInSection();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
@@ -55,7 +55,8 @@ public class BlogHomeTest extends BaseTest {
     @Test
     public void openMikeEttlingArticles() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
+        blogHomePage.clickShowMoreUntilVisible();
         blogHomePage.clickMikeEttling();
         Assert.assertEquals(breadCrumbsBasePage.getCurrentBreadCrumb(), "Mike Ettling");
     }
@@ -63,7 +64,8 @@ public class BlogHomeTest extends BaseTest {
     @Test
     public void openGrahamKimberleyArticles() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
+        blogHomePage.clickShowMoreUntilVisible();
         blogHomePage.clickGrahamKimberley();
         Assert.assertEquals(breadCrumbsBasePage.getCurrentBreadCrumb(), "Graham Kimberley");
     }
@@ -71,7 +73,8 @@ public class BlogHomeTest extends BaseTest {
     @Test
     public void openJeroenFigeeArticles() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
+        blogHomePage.clickShowMoreUntilVisible();
         blogHomePage.clickJeroenFigee();
         Assert.assertEquals(breadCrumbsBasePage.getCurrentBreadCrumb(), "Jeroen Figee");
     }
@@ -79,7 +82,8 @@ public class BlogHomeTest extends BaseTest {
     @Test
     public void openNickSchiaviArticles() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
+        blogHomePage.clickShowMoreUntilVisible();
         blogHomePage.clickNickSchiavi();
         Assert.assertEquals(breadCrumbsBasePage.getCurrentBreadCrumb(), "Nick Schiavi");
     }
@@ -87,7 +91,8 @@ public class BlogHomeTest extends BaseTest {
     @Test
     public void openJulieKnightArticles() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
+        blogHomePage.clickShowMoreUntilVisible();
         blogHomePage.clickJulieKnight();
         Assert.assertEquals(breadCrumbsBasePage.getCurrentBreadCrumb(), "Julie Knight");
     }
@@ -96,7 +101,7 @@ public class BlogHomeTest extends BaseTest {
     @Test
     public void checkErrorsAfterEmptyFormSubmitted() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(blogHomePage.isNewsletterTitlePresent());
         blogHomePage.clickJoinButton();
         Assert.assertTrue(blogHomePage.isEmailRequiredErrorPresent());
@@ -106,7 +111,7 @@ public class BlogHomeTest extends BaseTest {
     @Test
     public void submitFormWithWrongEmail() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(blogHomePage.isNewsletterTitlePresent());
         blogHomePage.enterEmail("wrong_shaped@email");
         blogHomePage.clickPolicyAgreement();
@@ -117,7 +122,7 @@ public class BlogHomeTest extends BaseTest {
     @Test
     public void submitFormWithValidSpecialCharacters() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(blogHomePage.isNewsletterTitlePresent());
         blogHomePage.enterEmail("!#$%&'*+-/=?^_`{|}~@mail.com");
         blogHomePage.clickPolicyAgreement();
@@ -128,7 +133,7 @@ public class BlogHomeTest extends BaseTest {
     @Test
     public void submitFormWithValidEmail() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(blogHomePage.isNewsletterTitlePresent());
         blogHomePage.enterEmail("test@email.com");
         blogHomePage.clickPolicyAgreement();
@@ -139,7 +144,7 @@ public class BlogHomeTest extends BaseTest {
     @Test
     public void selectOnlyNonprofit() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(blogHomePage.isBlogHomeMainTitlePresent());
         blogHomePage.clickFilterDropdown();
         blogHomePage.clickNonprofitCheckbox();
@@ -150,7 +155,7 @@ public class BlogHomeTest extends BaseTest {
     @Test
     public void selectOnlyPublicSector() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(blogHomePage.isBlogHomeMainTitlePresent());
         blogHomePage.clickFilterDropdown();
         blogHomePage.clickPublicSectorCheckbox();
@@ -161,7 +166,7 @@ public class BlogHomeTest extends BaseTest {
     @Test
     public void comparePopularPostsNamesWithPages() {
         BasePage.openURL(URLs.BLOG.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         blogHomePage.comparePopularPostsNamesWithPages();
     }
 

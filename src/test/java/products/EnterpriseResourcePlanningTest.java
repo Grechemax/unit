@@ -4,7 +4,7 @@ import base.*;
 import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
+import pageObjects.cookies.CookiesPanelPage;
 import pageObjects.RequestDemoPopupPage;
 import pageObjects.customers.CustomersHomePage;
 import pageObjects.customers.customers.WarChildPage;
@@ -15,7 +15,7 @@ import pageObjects.products.HumanCapitalManagementPage;
 
 
 public class EnterpriseResourcePlanningTest extends BaseTest {
-    private HomePage homePage = new HomePage(getDriver());
+    private CookiesPanelPage cookiesPanelPage = new CookiesPanelPage(getDriver());
     private WarChildPage warChildPage = new WarChildPage(getDriver());
     private HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
     private BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
@@ -30,7 +30,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     @Test
     public void checkAllTitlesPresent() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
         Assert.assertTrue(enterpriseResourcePlanningPage.isWarChildPresent());
         Assert.assertTrue(enterpriseResourcePlanningPage.isExperienceSuiteTitlePresent());
@@ -41,14 +41,14 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     @Test
     public void checkERPPageBreadCrumb() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
     }
 
     @Test
     public void checkAllTitlesText() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertEquals(enterpriseResourcePlanningPage.getWarChildTitleText(), "Customer Overview: War Child");
         Assert.assertEquals(enterpriseResourcePlanningPage.getMainTitleText(), "Unit4 Enterprise Resource Planning");
         Assert.assertEquals(enterpriseResourcePlanningPage.getElevateYourBusinessTitleText(), "Elevate Your Business");
@@ -60,7 +60,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     @Test
     public void checkPanelTitlesPresent() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(enterpriseResourcePlanningPage.isHRSectionTitlePresent());
         Assert.assertTrue(enterpriseResourcePlanningPage.isFinancialManagementHeaderPresent());
         Assert.assertTrue(enterpriseResourcePlanningPage.isProjectManagementSectionTitlePresent());
@@ -81,7 +81,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     @Test()
     public void openRequestDemoViaSection() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(letsTalkSectionPage.isLetsTalkTextPresent());
         letsTalkSectionPage.clickRequestDemoInSection();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
@@ -93,7 +93,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     @Test
     public void checkReadMoreOpensWarChildPage() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         enterpriseResourcePlanningPage.clickReadMoreAboutWarChild();
         Assert.assertTrue(breadCrumbsBasePage.isWarChildCrumbVisible());
         Assert.assertTrue(warChildPage.isWarChildMainTitlePresent());
@@ -103,7 +103,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     @Test
     public void checkReadOurCustomersStoriesOpensCustomersPage() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         enterpriseResourcePlanningPage.clickReadCustomersStories();
         Assert.assertTrue(customersHomePage.isCustomersMainTitlePresent());
         Assert.assertTrue(breadCrumbsBasePage.isCustomersCrumbVisible());
@@ -113,7 +113,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     @Test
     public void checkLinkOpensERPPage() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         enterpriseResourcePlanningPage.clickERPLink();
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
         Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
@@ -122,7 +122,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     @Test
     public void checkLinkOpensFinancialPlanningPage() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         enterpriseResourcePlanningPage.clickFPALink();
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
         Assert.assertTrue(financialPlanningPage.isMainTitlePresent());
@@ -131,7 +131,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     @Test
     public void checkLinkOpensHumanCapitalManagementPage() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         enterpriseResourcePlanningPage.clickHCMLink();
         Assert.assertTrue(breadCrumbsBasePage.isHumanCapitalManagementCrumbVisible());
         Assert.assertTrue(humanCapitalManagementPage.isMainTitlePresent());
@@ -140,7 +140,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     @Test
     public void checkLinkOpensFinancialsPage() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         enterpriseResourcePlanningPage.clickFinancialsLink();
         Assert.assertTrue(breadCrumbsBasePage.isFinancialsCrumbVisible());
         Assert.assertTrue(financialsPage.isFinancialsPageMainTitlePresent());
@@ -149,7 +149,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     @Test
     public void downloadPDFOpensPDF() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         enterpriseResourcePlanningPage.clickDownloadBrochure();
         BasePage.switchToLastTab();
         Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));

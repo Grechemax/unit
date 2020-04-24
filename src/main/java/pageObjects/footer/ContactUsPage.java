@@ -7,8 +7,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import pageObjects.HomePage;
 
 public class ContactUsPage extends BasePage {
+    HomePage homePage = new HomePage(getDriver());
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
     private By contactUsPageMainHeader = By.xpath("//h1[contains(text(), 'How can we help?')]");
 
@@ -38,6 +40,7 @@ public class ContactUsPage extends BasePage {
             String currentBreadCrumb = breadCrumbsBasePage.getCurrentBreadCrumb();
             Assert.assertEquals(postTitle, currentBreadCrumb);
             getDriver().navigate().back();
+            Assert.assertTrue(homePage.isMainHeaderPresent());
         }
     }
 }

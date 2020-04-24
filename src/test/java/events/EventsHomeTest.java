@@ -6,18 +6,20 @@ import base.BreadCrumbsBasePage;
 import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pageObjects.cookies.CookiesPanelPage;
 import pageObjects.HomePage;
 import pageObjects.events.EventsHomePage;
 
 public class EventsHomeTest extends BaseTest {
     HomePage homePage = new HomePage(getDriver());
     EventsHomePage eventsHomePage = new EventsHomePage(getDriver());
+    CookiesPanelPage cookiesPanelPage = new CookiesPanelPage(getDriver());
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
 
     @Test
     public void checkEventsHomePageBreadCrumb() {
         BasePage.openURL(URLs.EVENTS.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isEventsCrumbVisible());
         breadCrumbsBasePage.goToHomePageViaBreadCrumb();
         Assert.assertTrue(homePage.isMainHeaderPresent());
@@ -26,7 +28,7 @@ public class EventsHomeTest extends BaseTest {
     @Test
     public void showMoreLoadsMoreEventItems() {
         BasePage.openURL(URLs.EVENTS.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         eventsHomePage.clickShowMoreToLoadMoreEventsItems();
     }
 }

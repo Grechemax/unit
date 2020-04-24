@@ -2,6 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="SmokeTest">
+    <test name="CookiesPanelTest">
+        <classes>
+            <class name="CookiesPanelTest"/>
+        </classes>
+    </test>
+
     <test name="HomePageTest">
         <classes>
             <class name="home.HomePageTest"/>
@@ -131,11 +137,6 @@
     <test name="FooterGeneralTest">
         <classes>
             <class name="footer.FooterGeneralTest"/>
-        </classes>
-    </test>
-    <test name="CookiesPanelTest">
-        <classes>
-            <class name="CookiesPanelTest"/>
         </classes>
     </test>
 

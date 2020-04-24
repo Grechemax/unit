@@ -15,7 +15,7 @@ public class FinancialPlanningPage extends BasePage {
     private By gainMeaningfulInsightsTitle = By.xpath("//h2[contains(text(), 'Gain Meaningful Insights')]");
     private By financialPlanningTitle = By.xpath("//h2[contains(text(), 'Unit4 Financial Planning & Analysis Delivers')]");
     private By createBetterWayTitle = By.xpath("//h3[contains(text(), 'Create a Better Way to Work')]");
-    private By austrianUniversityTitle = By.xpath("//h3[contains(text(), 'FH St Pölten')]");
+    private By customerStoryTitle = By.xpath("//h3[contains(text(), 'Customer Story: ')]");
     private By trustedOrganizationsTitle = By.xpath("//h2[contains(text(), 'Trusted worldwide by organizations that serve people')]");
 
     private By financialPlanningPanelItem = By.xpath("//span[contains(text(), 'Financial Planning, Budgeting & Forecasting')]");
@@ -37,6 +37,7 @@ public class FinancialPlanningPage extends BasePage {
 
     private By seeMoreCustomersStories = By.xpath("//a[contains(@class, 'cta-more logoblock_fpa')]");
     private By downloadResearchBundle = By.xpath("//a[contains(text(), 'Download our research bundle')]");
+
     //Looking for one of our other Unit4 solutions?
     private By financialsLink = By.xpath("//strong[contains(text(), 'Unit4 Financials')]");
     private By erpLink = By.xpath("//strong[contains(text(), 'Unit4 Enterprise Resource Planning')]");
@@ -70,9 +71,9 @@ public class FinancialPlanningPage extends BasePage {
         return isElementPresent(createBetterWayTitle);
     }
 
-    public boolean isAustrianUniversityPresent() {
-        Reporter.log("FH St Pölten title is present");
-        return isElementPresent(austrianUniversityTitle);
+    public boolean isCustomerStoryPresent() {
+        Reporter.log("Customer story title is present");
+        return isElementPresent(customerStoryTitle);
     }
 
     public boolean isTrustedOrganizationsTitlePresent() {
@@ -97,7 +98,7 @@ public class FinancialPlanningPage extends BasePage {
     }
 
     public String getAustrianUniversityTitleText() {
-        return getElementText(austrianUniversityTitle);
+        return getElementText(customerStoryTitle);
     }
 
     public String getTrustedOrganizationsTitleText() {

@@ -3,16 +3,16 @@ package locations;
 import base.BasePage;
 import base.BaseTest;
 import base.BreadCrumbsBasePage;
-import base.Reporter;
 import data.URLs;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pageObjects.cookies.CookiesPanelPage;
 import pageObjects.HomePage;
 import pageObjects.locations.LocationsHomePage;
 
 public class LocationsHomeTest extends BaseTest {
     HomePage homePage = new HomePage(getDriver());
+    CookiesPanelPage cookiesPanelPage = new CookiesPanelPage(getDriver());
     LocationsHomePage locationsHomePage = new LocationsHomePage(getDriver());
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
 
@@ -20,16 +20,23 @@ public class LocationsHomeTest extends BaseTest {
     @Test
     public void compareLocationsNamesWithPages() {
         BasePage.openURL(URLs.LOCATIONS.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         locationsHomePage.compareLocationsNamesWithPages();
     }
 
     @Test
     public void checkLocationsHomeBreadCrumbs() {
         BasePage.openURL(URLs.LOCATIONS.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isLocationsCrumbVisible());
         breadCrumbsBasePage.goToHomePageViaBreadCrumb();
         Assert.assertTrue(homePage.isMainHeaderPresent());
+    }
+
+    @Test
+    public void showMoreLoadsMoreLocationItems() {
+        BasePage.openURL(URLs.LOCATIONS.URL());
+        cookiesPanelPage.acceptCookies();
+        locationsHomePage.clickShowMoreToLoadMoreLocationItems();
     }
 }

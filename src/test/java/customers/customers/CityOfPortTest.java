@@ -6,14 +6,14 @@ import base.BreadCrumbsBasePage;
 import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
+import pageObjects.cookies.CookiesPanelPage;
 import pageObjects.customers.customers.CityOfPortPage;
 import pageObjects.products.EnterpriseResourcePlanningPage;
 
 
 public class CityOfPortTest extends BaseTest {
-    HomePage homePage = new HomePage(getDriver());
     CityOfPortPage cityOfPortPage = new CityOfPortPage(getDriver());
+    CookiesPanelPage cookiesPanelPage = new CookiesPanelPage(getDriver());
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
     EnterpriseResourcePlanningPage enterpriseResourcePlanningPage = new EnterpriseResourcePlanningPage(getDriver());
 
@@ -36,7 +36,7 @@ public class CityOfPortTest extends BaseTest {
     @Test
     public void checkReadMoreOpensRightPage() {
         BasePage.openURL(URLs.CUSTOMERS_CITY_OF_PORT.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         cityOfPortPage.clickReadMoreButton();
         Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
@@ -45,7 +45,7 @@ public class CityOfPortTest extends BaseTest {
     @Test
     public void downloadCaseStudyOpensPDFPage() {
         BasePage.openURL(URLs.CUSTOMERS_CITY_OF_PORT.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         cityOfPortPage.clickDownloadCaseStudy();
         BasePage.switchToLastTab();
         Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));

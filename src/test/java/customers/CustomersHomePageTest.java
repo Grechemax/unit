@@ -4,12 +4,12 @@ import base.*;
 import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
+import pageObjects.cookies.CookiesPanelPage;
 import pageObjects.RequestDemoPopupPage;
 import pageObjects.customers.CustomersHomePage;
 
 public class CustomersHomePageTest extends BaseTest {
-    private HomePage homePage = new HomePage(getDriver());
+    private CookiesPanelPage cookiesPanelPage = new CookiesPanelPage(getDriver());
     private HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
     private CustomersHomePage customersHomePage = new CustomersHomePage(getDriver());
     private BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
@@ -19,7 +19,7 @@ public class CustomersHomePageTest extends BaseTest {
     @Test
     public void checkAllTitles() {
         BasePage.openURL(URLs.CUSTOMERS.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(customersHomePage.isCustomersMainTitlePresent());
         Assert.assertTrue(customersHomePage.isScrewFixTitlePresent());
         Assert.assertTrue(customersHomePage.isWarChildTitlePresent());

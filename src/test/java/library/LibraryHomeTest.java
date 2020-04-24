@@ -7,13 +7,13 @@ import base.LetsTalkSectionPage;
 import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
+import pageObjects.cookies.CookiesPanelPage;
 import pageObjects.RequestDemoPopupPage;
 import pageObjects.library.LibraryHomePage;
 
 public class LibraryHomeTest extends BaseTest {
-    HomePage homePage = new HomePage(getDriver());
     LibraryHomePage libraryHomePage = new LibraryHomePage(getDriver());
+    CookiesPanelPage cookiesPanelPage = new CookiesPanelPage(getDriver());
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
     LetsTalkSectionPage letsTalkSectionPage = new LetsTalkSectionPage(getDriver());
     RequestDemoPopupPage requestDemoPopupPage = new RequestDemoPopupPage(getDriver());
@@ -21,14 +21,14 @@ public class LibraryHomeTest extends BaseTest {
     @Test
     public void checkLibraryHomePageCrumb() {
         BasePage.openURL(URLs.LIBRARY.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isLibraryCrumbVisible());
     }
 
     @Test
     public void openRequestDemoViaSection() {
         BasePage.openURL(URLs.LIBRARY.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(letsTalkSectionPage.isLetsTalkTextPresent());
         letsTalkSectionPage.clickRequestDemoInSection();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
@@ -39,7 +39,7 @@ public class LibraryHomeTest extends BaseTest {
     @Test
     public void downloadPDFOpensPDF() {
         BasePage.openURL(URLs.LIBRARY.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         libraryHomePage.clickDownloadPDF();
         BasePage.switchToLastTab();
         Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
