@@ -4,13 +4,13 @@ import base.*;
 import data.URLs;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
+import pageObjects.cookies.CookiesPanelPage;
 import pageObjects.RequestDemoPopupPage;
 import pageObjects.WhyUnit4Page;
 import pageObjects.products.PeopleExperienceSuitePage;
 
 public class PeopleExperienceSuiteTest extends BaseTest {
-    private HomePage homePage = new HomePage(getDriver());
+    private CookiesPanelPage cookiesPanelPage = new CookiesPanelPage(getDriver());
     private WhyUnit4Page whyUnit4Page = new WhyUnit4Page(getDriver());
     private HeaderBasePage headerBasePage = new HeaderBasePage(getDriver());
     private BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
@@ -21,7 +21,7 @@ public class PeopleExperienceSuiteTest extends BaseTest {
     @Test
     public void checkAllTitlesPresent() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(peopleExperienceSuitePage.isMainTitlePresent());
         Assert.assertTrue(peopleExperienceSuitePage.isWhyUnit4ButtonPresent());
         Assert.assertTrue(peopleExperienceSuitePage.isPeopleExperienceTitlePresent());
@@ -32,14 +32,14 @@ public class PeopleExperienceSuiteTest extends BaseTest {
     @Test
     public void checkPeopleExperienceSuitePageBreadCrumb() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isPeopleExperienceSuiteCrumbVisible());
     }
 
     @Test
     public void erpReadMoreOpensRightPage() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         peopleExperienceSuitePage.goToEnterpriseResourcePlanningPage();
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
     }
@@ -47,7 +47,7 @@ public class PeopleExperienceSuiteTest extends BaseTest {
     @Test
     public void financialPlanningReadMoreOpensRightPage() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         peopleExperienceSuitePage.goToFinancialPlanningPage();
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
     }
@@ -55,7 +55,7 @@ public class PeopleExperienceSuiteTest extends BaseTest {
     @Test
     public void humanCapitalManagementReadMoreOpensRightPage() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         peopleExperienceSuitePage.goToHumanCapitalManagementPage();
         Assert.assertTrue(breadCrumbsBasePage.isHumanCapitalManagementCrumbVisible());
     }
@@ -63,7 +63,7 @@ public class PeopleExperienceSuiteTest extends BaseTest {
     @Test
     public void studentManagementReadMoreOpensRightPage() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         peopleExperienceSuitePage.goToStudentManagementPage();
         Assert.assertTrue(breadCrumbsBasePage.isStudentManagementCrumbVisible());
     }
@@ -71,7 +71,7 @@ public class PeopleExperienceSuiteTest extends BaseTest {
     @Test()
     public void openRequestDemoViaHeader() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         headerBasePage.clickRequestDemoForm();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
@@ -81,7 +81,7 @@ public class PeopleExperienceSuiteTest extends BaseTest {
     @Test()
     public void openRequestDemoViaSection() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
 
         Assert.assertTrue(letsTalkSectionPage.isLetsTalkTextPresent());
         letsTalkSectionPage.clickRequestDemoInSection();
@@ -93,7 +93,7 @@ public class PeopleExperienceSuiteTest extends BaseTest {
     @Test
     public void checkWhyUnit4BtnOpensWhyUnit4Page() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
 
         peopleExperienceSuitePage.clickWhyUnit4Button();
         Assert.assertTrue(whyUnit4Page.isWhyUni4MainTitlePresent());

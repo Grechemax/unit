@@ -35,7 +35,7 @@ public class BaseTest {
     protected static String BROWSER;
 
     @Parameters({"environment","browser"})
-    @BeforeTest
+    @BeforeMethod
     public synchronized void beforeClass(ITestContext ctx, @Optional("chrome") String browser, @Optional("TEST") String environment
     ) {
 
@@ -91,7 +91,7 @@ public class BaseTest {
         return DRIVER.get();
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown() {
         if (driver != null) {
             driver.manage().deleteAllCookies();

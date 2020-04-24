@@ -15,8 +15,9 @@ public class ProfessionalServicesPage extends BasePage {
     private By crackProductivityCodeTitle = By.xpath("//h2[contains(text(), 'Crack the Productivity Code')]");
     private By yourNewPeopleExperienceTitle = By.xpath("//h2[contains(text(), 'Your New Unit4 People Experience Suite')]");
     private By customersSuccessStoriesTitle = By.xpath("//h2[contains(text(), 'Customer Success Stories')]");
-    private By stanleySecurityTitle = By.xpath("//h3[contains(text(), 'Stanley Security')]");
-    private By stanleySecurityReadMore = By.xpath("//section[6]//a[contains(text(), 'Read more')]");
+    private By customersStoryTitle = By.xpath("//h3[contains(text(), 'Customers Story ')]");
+    private By customersStoryReadMoreButton = By.xpath("//section[6]//a[contains(text(), 'Read more')]");
+    private By readMoreCustomersStories = By.xpath("//a[contains(text(), 'Read our customer stories')]");
 
     private By driveProjectPanelItem = By.xpath("//a[@id='tab-link-1966']");
     private By optimizeResourcePanelItem = By.xpath("//a[@id='tab-link-1976']");
@@ -66,9 +67,9 @@ public class ProfessionalServicesPage extends BasePage {
         return isElementPresent(customersSuccessStoriesTitle);
     }
 
-    public boolean isStanleySecurityTitlePresent() {
-        Reporter.log("'Stanley Security' Title is present");
-        return isElementPresent(stanleySecurityTitle);
+    public boolean isCustomersStoryTitlePresent() {
+        Reporter.log("'Customer Story: Magnox' Title is present");
+        return isElementPresent(customersStoryTitle);
     }
 
     public String getMainTitleText() {
@@ -92,9 +93,6 @@ public class ProfessionalServicesPage extends BasePage {
         return getElementText(customersSuccessStoriesTitle);
     }
 
-    public String getStanleySecurityTitleText() {
-        return getElementText(stanleySecurityTitle);
-    }
 
 
     public boolean isDriveProjectSectionTitlePresent() {
@@ -150,9 +148,9 @@ public class ProfessionalServicesPage extends BasePage {
         clickOnElement(peopleExperienceReadMore);
     }
 
-    public void clickReadMoreAboutStanleySecurity() {
-        Reporter.log("clicking 'Read more' in 'Customer Overview: Stanley Security' section");
-        clickOnElement(stanleySecurityReadMore);
+    public void clickReadMoreAboutCustomersStory() {
+        Reporter.log("clicking 'Read more' in 'Customer Overview: ...' section");
+        clickOnElement(customersStoryReadMoreButton);
     }
 
     public void clickSeeAllNews() {
@@ -174,5 +172,10 @@ public class ProfessionalServicesPage extends BasePage {
             getDriver().navigate().back();
             Assert.assertTrue(isMainTitlePresent());
         }
+    }
+
+    public void clickReadCustomersStories() {
+        Reporter.log("clicking 'Read our customer stories' in 'Trusted by public sector organizations worldwide' section");
+        clickOnElement(readMoreCustomersStories);
     }
 }

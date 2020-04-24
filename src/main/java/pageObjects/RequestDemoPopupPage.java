@@ -74,7 +74,7 @@ public class RequestDemoPopupPage extends BasePage {
 
     public boolean isEmailInvalidErrorPresent() {
         Reporter.log("checking if 'Email Address does not contain a valid email.' error message is present for 'Email'");
-        return isElementPresented(emailRequiredError);
+        return isElementPresented(emailInvalidError);
     }
 
     public boolean isJobErrorPresent() {
@@ -96,7 +96,6 @@ public class RequestDemoPopupPage extends BasePage {
         Reporter.log("checking if 'You must agree...' error message is present for privacy policy checkbox");
         return isElementPresented(privacyAgreementError);
     }
-
 
     public boolean isThankYouPopupPresent() {
         Reporter.log("'Thank you' popup after form have been submitted is present");

@@ -1,4 +1,4 @@
-package footer;
+package locations;
 
 import base.BasePage;
 import base.BaseTest;
@@ -8,34 +8,35 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.cookies.CookiesPanelPage;
 import pageObjects.HomePage;
-import pageObjects.footer.ContactUsPage;
+import pageObjects.locations.LocationsHomePage;
 
-public class ContactUsTest extends BaseTest {
+public class LocationsHomeTest extends BaseTest {
     HomePage homePage = new HomePage(getDriver());
-    ContactUsPage contactUsPage = new ContactUsPage(getDriver());
     CookiesPanelPage cookiesPanelPage = new CookiesPanelPage(getDriver());
+    LocationsHomePage locationsHomePage = new LocationsHomePage(getDriver());
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
 
 
     @Test
-    public void checkContactUsPageCrumb() {
-        BasePage.openURL(URLs.CONTACT_US.URL());
+    public void compareLocationsNamesWithPages() {
+        BasePage.openURL(URLs.LOCATIONS.URL());
         cookiesPanelPage.acceptCookies();
-        Assert.assertTrue(breadCrumbsBasePage.isContactUsCrumbVisible());
+        locationsHomePage.compareLocationsNamesWithPages();
     }
 
     @Test
-    public void goHomeViaCrumb() {
-        BasePage.openURL(URLs.CONTACT_US.URL());
+    public void checkLocationsHomeBreadCrumbs() {
+        BasePage.openURL(URLs.LOCATIONS.URL());
         cookiesPanelPage.acceptCookies();
+        Assert.assertTrue(breadCrumbsBasePage.isLocationsCrumbVisible());
         breadCrumbsBasePage.goToHomePageViaBreadCrumb();
         Assert.assertTrue(homePage.isMainHeaderPresent());
     }
 
     @Test
-    public void compareLocationsNamesWithPages() {
-        BasePage.openURL(URLs.CONTACT_US.URL());
+    public void showMoreLoadsMoreLocationItems() {
+        BasePage.openURL(URLs.LOCATIONS.URL());
         cookiesPanelPage.acceptCookies();
-        contactUsPage.compareLocationsNamesWithPages();
+        locationsHomePage.clickShowMoreToLoadMoreLocationItems();
     }
 }

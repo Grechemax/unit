@@ -2,16 +2,16 @@ import base.BasePage;
 import base.BaseTest;
 import base.BreadCrumbsBasePage;
 import data.URLs;
+import pageObjects.cookies.CookiesPanelPage;
 import pageObjects.industries.IndustriesHomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.HomePage;
 import pageObjects.WhyUnit4Page;
 import pageObjects.products.PeopleExperienceSuitePage;
 
 public class WhyUnit4Test extends BaseTest {
-    HomePage homePage = new HomePage(getDriver());
     WhyUnit4Page whyUnit4Page = new WhyUnit4Page(getDriver());
+    CookiesPanelPage cookiesPanelPage = new CookiesPanelPage(getDriver());
     IndustriesHomePage industriesHomePage = new IndustriesHomePage(getDriver());
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
     PeopleExperienceSuitePage peopleExperienceSuitePage = new PeopleExperienceSuitePage(getDriver());
@@ -43,5 +43,41 @@ public class WhyUnit4Test extends BaseTest {
         whyUnit4Page.clickReadSeeHowWeServe();
         Assert.assertTrue(breadCrumbsBasePage.isIndustriesHomeCrumbVisible());
         Assert.assertTrue(industriesHomePage.isIndustriesHomeMainTitlePresent());
+    }
+
+    @Test
+    public void downloadReportOpensDownloadFormPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        cookiesPanelPage.acceptCookies();
+        whyUnit4Page.clickDownloadReport();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains("Report"));
+    }
+
+    @Test
+    public void downloadPDF1OpensCorrectPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        cookiesPanelPage.acceptCookies();
+        whyUnit4Page.clickDownloadPDF1();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
+    }
+
+    @Test
+    public void downloadPDF2OpensCorrectPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        cookiesPanelPage.acceptCookies();
+        whyUnit4Page.clickDownloadPDF2();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains("Next-Level-ERP"));
+    }
+
+    @Test
+    public void downloadPDF3OpensCorrectPage() {
+        BasePage.openURL(URLs.HOME_PAGE.URL());
+        cookiesPanelPage.acceptCookies();
+        whyUnit4Page.clickDownloadPDF3();
+        BasePage.switchToLastTab();
+        Assert.assertTrue(BasePage.isCurrentUrlContains("Hot-Companies"));
     }
 }

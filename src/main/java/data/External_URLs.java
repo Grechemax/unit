@@ -6,12 +6,17 @@ public enum External_URLs {
     PRIVACY_AND_TRUST_URL("https://info.unit4.com/rs"),
     INFO_PERSONAL_DATA("https://info.unit4.com/Information-regarding-your-personal-data"),
     MORE_INFO("https://info.unit4.com/Unit4-Subscription-Cente"),
-    DOWNLOAD_REPORT("https://info.unit4.com/Global-Unit4-2020-Analyst-Report"),
+    DOWNLOAD_REPORT("https://info.unit4.com/Global-Unit4-2020-Analyst-Report"), // report can have different URLs
 
-    FACEBOOK_URL("facebook.com"),
-    LINKEDIN_URL("linkedin.com"),
-    TWITTER_URL("twitter.com"),
-    INSTAGRAM_URL("instagram.com");
+    FACEBOOK("facebook.com"),
+    LINKEDIN("linkedin.com"),
+    TWITTER("twitter.com"),
+    INSTAGRAM("instagram.com"),
+
+    ONE_TRUST("onetrust.com/");
+
+
+
 
     private String EXT_URL;
 

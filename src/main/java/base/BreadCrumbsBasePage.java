@@ -6,7 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class BreadCrumbsBasePage extends BasePage {
 
-    private By homeCrumb = By.xpath("//*[@class='u4-breadcrumb']//*[contains(text(), 'Home')]"); // right breadcrumb
+    private By homeCrumb = By.xpath("//*[@class='u4-breadcrumb']//*[contains(text(), 'Home')]");
+    private By cookiesCrumb = By.xpath("//*[@class='u4-breadcrumb']//*[contains(text(), 'Cookies')]");
     private By productsHomeCrumb = By.xpath("//ol/li[last() and contains(text(), 'Products')]");
     private By financialsCrumb = By.xpath("//ol/li[last() and contains(text(), 'Financials')]");
     private By financialPlanningCrumb = By.xpath("//ol/li[last() and contains(text(), 'Financial Planning')]");
@@ -19,7 +20,7 @@ public class BreadCrumbsBasePage extends BasePage {
     private By nonProfitCrumb = By.xpath("//ol/li[last() and contains(text(), 'Nonprofit')]");
     private By professionalServicesCrumb = By.xpath("//ol/li[last() and contains(text(), 'Professional Services')]");
     private By publicSectorCrumb = By.xpath("//ol/li[last() and contains(text(), 'Public Sector')]");
-    private By customersCrumb = By.xpath("/ /ol/li[last() and contains(text(), 'Customers')]");
+    private By customersCrumb = By.xpath("//ol/li[last() and contains(text(), 'Customers')]");
     private By cityOfPortCrumb = By.xpath("//ol/li[last() and contains(text(), 'Customer Overview: City of Port Coquitlam')]");
     private By fh_st_PoltenCrumb = By.xpath("//ol/li[last() and contains(text(), 'Customer Overview: FH St Pölten')]");
     private By manchesterCrumb = By.xpath("//ol/li[last() and contains(text(), 'Customer Overview: Manchester Metropolitan University')]");
@@ -33,6 +34,7 @@ public class BreadCrumbsBasePage extends BasePage {
     private By deliver360Crumb = By.xpath("//ol/li[last() and contains(text(), 'Deliver a 360')]");
     private By newsHomePageCrumb = By.xpath("//ol/li[last() and contains(text(), 'News')]");
     private By contactUsCrumb = By.xpath("//li[contains(text(), 'Contact Us')]"); // right breadcrumb
+    private By locationCrumb = By.xpath("//li[contains(text(), 'Locations')]");
     private By currentBredCrumb = By.xpath("//ol/li[last()]");
 
 
@@ -55,25 +57,25 @@ public class BreadCrumbsBasePage extends BasePage {
     public boolean isProductsERPCrumbCrumbVisible() {
         waitForElement(enterpriseResourcePlanningCrumb);
         Reporter.log("Checking breadcrumbs on 'ERP' Page");
-        return isElementPresent(enterpriseResourcePlanningCrumb);
+        return isElementPresentWithTimer(enterpriseResourcePlanningCrumb, 5);
     }
 
     public boolean isFinancialPlanningCrumbVisible() {
         waitForElement(financialPlanningCrumb);
         Reporter.log("Checking breadcrumbs on 'Financial Planning' Page");
-        return isElementPresent(financialPlanningCrumb);
+        return isElementPresentWithTimer(financialPlanningCrumb, 5);
     }
 
     public boolean isFinancialsCrumbVisible() {
         waitForElement(financialsCrumb);
         Reporter.log("Checking breadcrumbs on 'Financials' Page");
-        return isElementPresent(financialsCrumb);
+        return isElementPresentWithTimer(financialsCrumb, 5);
     }
 
     public boolean isHumanCapitalManagementCrumbVisible() {
         waitForElement(humanCapitalManagementCrumb);
         Reporter.log("Checking breadcrumbs on 'Human Capital Management' Page");
-        return isElementPresent(humanCapitalManagementCrumb);
+        return isElementPresentWithTimer(humanCapitalManagementCrumb, 5);
     }
 
     public boolean isStudentManagementCrumbVisible() {
@@ -116,13 +118,13 @@ public class BreadCrumbsBasePage extends BasePage {
     public boolean isCustomersCrumbVisible() {
         waitForElement(customersCrumb);
         Reporter.log("Checking breadcrumbs on 'Customers Home' Page");
-        return isElementPresent(customersCrumb);
+        return isElementPresentWithTimer(customersCrumb,5);
     }
 
     public boolean isCityOfPortCrumbVisible() {
         waitForElement(cityOfPortCrumb);
         Reporter.log("Checking breadcrumbs on 'City of Port' Page");
-        return isElementPresent(cityOfPortCrumb);
+        return isElementPresentWithTimer(cityOfPortCrumb, 5);
     }
 
     public boolean isFHstPoltenCrumbVisible() {
@@ -190,6 +192,12 @@ public class BreadCrumbsBasePage extends BasePage {
         waitForElement(deliver360Crumb);
         Reporter.log("Checking breadcrumbs on 'Deliver 360' Page");
         return isElementPresent(deliver360Crumb);
+    }
+
+    public boolean isLocationsCrumbVisible() {
+        waitForElement(locationCrumb);
+        Reporter.log("Checking breadcrumbs on 'Locations' Page");
+        return isElementPresent(locationCrumb);
     }
 
     public boolean isContactUsCrumbVisible() {

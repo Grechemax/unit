@@ -19,7 +19,6 @@ public class HomePage extends BasePage {
     private By erpReadMore = By.xpath("//section[2]//*[contains(text(), 'Read more')]");
     private By readMoreWarChild = By.xpath("//section[8]//a[contains(text(), 'Read more')]");
     private By centerHeader = By.xpath("//h2[contains(@class, 'section-title text-center')]");
-    private By acceptCookiesButton = By.xpath("//button[contains(text(), 'Accept Cookies')]");
     private By humanCapitalReadMore = By.xpath("//section[4]//*[contains(text(), 'Read more')]");
     private By studentManagementReadMore = By.xpath("//section[5]//*[contains(text(), 'Read more')]");
     private By financialPlanningReadMore = By.xpath("//section[3]//*[contains(text(), 'Read more')]");
@@ -30,16 +29,6 @@ public class HomePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void checkHomePageLinks(String page) {
-        BasePage.checkLinks(page);
-    }
-
-    public void acceptCookies() {
-        if (isElementPresentWithTimer(acceptCookiesButton, 30)) {
-            Reporter.log("accepting cookies");
-            clickOnElementUsingJS(acceptCookiesButton);
-        }
-    }
 
     public boolean isMainLogoPresent() {
         Reporter.log("site logo is present");
@@ -102,37 +91,6 @@ public class HomePage extends BasePage {
         clickOnElement(seeAllNews);
     }
 
-//    // The latest news
-//    public void clickFirstBlockNews() {
-//        Reporter.log("clicking on first block of news");
-//        clickOnElement(firstBlockNews);
-//    }
-//
-//    public String getFirstBlockNewsTitle() {
-//        waitForElement(firstBlockNews);
-//        Reporter.log("getting title of first block of news");
-//        return getElementText(firstBlockNews);
-//    }
-//
-//    public void clickSecondBlockNews() {
-//        Reporter.log("clicking on second block of news");
-//        clickOnElement(secondBlockNews);
-//    }
-//
-//    public String getSecondBlockNewsTitle() {
-//        Reporter.log("getting title of 2nd block of news");
-//        return getElementText(secondBlockNews);
-//    }
-//
-//    public void clickThirdBlockNews() {
-//        Reporter.log("clicking on third block of news");
-//        clickOnElement(thirdBlockNews);
-//    }
-//
-//    public String getThirdBlockNewsTitle() {
-//        Reporter.log("getting title of third block of news");
-//        return getElementText(thirdBlockNews);
-//    }
 
     public void clickDownloadReport() {
         Reporter.log("clicking on 'Download Report' button");
@@ -140,9 +98,7 @@ public class HomePage extends BasePage {
     }
 
     public void compareNewsArticleNamesWithPages() {
-
         String newsElement = "//div[contains(@class, 'swiper-container')]/ul/li[%s]//h3/span";
-
         for (int i = 1; i <= 3; i++) {
             breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
             By item = By.xpath(String.format(newsElement, i));
@@ -154,7 +110,7 @@ public class HomePage extends BasePage {
             String currentBreadCrumb = breadCrumbsBasePage.getCurrentBreadCrumb();
             Assert.assertEquals(postTitle, currentBreadCrumb);
             getDriver().navigate().back();
-            Assert.assertTrue(isMainHeaderPresent());
+//            Assert.assertTrue(isMainHeaderPresent());
         }
     }
 }

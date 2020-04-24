@@ -162,7 +162,7 @@ public class EnterpriseResourcePlanningPage extends BasePage {
     }
 
     public void clickReadCustomersStories() {
-        Reporter.log("clicking 'See more customer success stories in 'Trusted by public sector organizations worldwide' section");
+        Reporter.log("clicking 'Read our customer stories' in 'Trusted by public sector organizations worldwide' section");
         clickOnElement(readMoreCustomersStories);
     }
 }

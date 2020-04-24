@@ -4,6 +4,7 @@ import base.BasePage;
 import base.BreadCrumbsBasePage;
 import data.URLs;
 import org.testng.Assert;
+import pageObjects.cookies.CookiesPanelPage;
 import pageObjects.HomePage;
 import base.BaseTest;
 import org.testng.annotations.Test;
@@ -22,6 +23,7 @@ public class HomePageTest extends BaseTest {
     private NewsHomePage newsHomePage = new NewsHomePage(getDriver());
     private WarChildPage warChildPage = new WarChildPage(getDriver());
     private WhyUnit4Page whyUnit4Page = new WhyUnit4Page(getDriver());
+    private CookiesPanelPage cookiesPanelPage = new CookiesPanelPage(getDriver());
     private CustomersHomePage customersHomePage = new CustomersHomePage(getDriver());
     private BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
     private StudentManagementPage studentManagementPage = new StudentManagementPage(getDriver());
@@ -33,7 +35,7 @@ public class HomePageTest extends BaseTest {
     @Test
     public void homePageTest() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         Assert.assertTrue(homePage.isMainLogoPresent());
         Assert.assertEquals(homePage.getMainUpperHeaderText(), "A better experience 4U");
         Assert.assertEquals(homePage.getCenterHeaderText(), "Our suite of People Experience solutions will free your people to focus on what matters: their success and yours.");
@@ -42,7 +44,7 @@ public class HomePageTest extends BaseTest {
     @Test
     public void checkReadMoreOpensERPPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         homePage.clickReadMoreAboutERP();
         Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
     }
@@ -50,7 +52,7 @@ public class HomePageTest extends BaseTest {
     @Test
     public void checkReadMoreOpensFinancialPlanningPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         homePage.clickReadMoreAboutFinancialPlanning();
         Assert.assertTrue(financialPlanningPage.isMainTitlePresent());
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
@@ -59,7 +61,7 @@ public class HomePageTest extends BaseTest {
     @Test
     public void checkReadMoreOpensHumanCapitalPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         homePage.clickReadMoreAboutHumanCapital();
         Assert.assertTrue(humanCapitalManagementPage.isMainTitlePresent());
         Assert.assertTrue(breadCrumbsBasePage.isHumanCapitalManagementCrumbVisible());
@@ -69,7 +71,7 @@ public class HomePageTest extends BaseTest {
     @Test
     public void checkReadMoreOpensStudentManagementPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         homePage.clickReadMoreAboutStudentManagement();
         Assert.assertTrue(studentManagementPage.isMainTitlePresent());
         Assert.assertTrue(breadCrumbsBasePage.isStudentManagementCrumbVisible());
@@ -78,7 +80,7 @@ public class HomePageTest extends BaseTest {
     @Test
     public void checkReadMoreOpensWarChildPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         homePage.clickReadMoreAboutWarChild();
         Assert.assertTrue(warChildPage.isWarChildMainTitlePresent());
         Assert.assertTrue(breadCrumbsBasePage.isWarChildCrumbVisible());
@@ -87,7 +89,7 @@ public class HomePageTest extends BaseTest {
     @Test
     public void checkReadOurCustomersStoriesOpensCustomersPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         homePage.clickReadCustomersStories();
         Assert.assertTrue(customersHomePage.isCustomersMainTitlePresent());
         Assert.assertTrue(breadCrumbsBasePage.isCustomersCrumbVisible());
@@ -96,7 +98,7 @@ public class HomePageTest extends BaseTest {
     @Test
     public void checkWhyUnit4ButtonOpensWhyPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         homePage.clickWhyUnit4Button();
         Assert.assertTrue(whyUnit4Page.isWhyUni4MainTitlePresent());
         Assert.assertTrue(breadCrumbsBasePage.isWhyUnit4CrumbVisible());
@@ -106,7 +108,7 @@ public class HomePageTest extends BaseTest {
     @Test
     public void compareNewsArticleNamesWithOpenedPages() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         homePage.compareNewsArticleNamesWithPages();
     }
 
@@ -114,7 +116,7 @@ public class HomePageTest extends BaseTest {
     @Test
     public void checkSeeAllNewsOpensNewsPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         homePage.clickSeeAllNews();
         Assert.assertTrue(newsHomePage.isNewsHomePageMainHeaderPresent());
         Assert.assertTrue(breadCrumbsBasePage.isNewsHomePageCrumbVisible());
@@ -123,7 +125,7 @@ public class HomePageTest extends BaseTest {
     @Test
     public void downloadReportOpensDownloadFormPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
-        homePage.acceptCookies();
+        cookiesPanelPage.acceptCookies();
         homePage.clickDownloadReport();
         BasePage.switchToLastTab();
         Assert.assertTrue(BasePage.isCurrentUrlContains("Report"));
