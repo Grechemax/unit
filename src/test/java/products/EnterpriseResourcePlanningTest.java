@@ -27,7 +27,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     private FinancialsPage financialsPage = new FinancialsPage(getDriver());
     private CustomersHomePage customersHomePage = new CustomersHomePage(getDriver());
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitlesPresent() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
         cookiesPanelPage.acceptCookies();
@@ -38,14 +38,14 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
         Assert.assertTrue(enterpriseResourcePlanningPage.isElevateYourBusinessTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkERPPageBreadCrumb() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
         cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitlesText() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
         cookiesPanelPage.acceptCookies();
@@ -57,7 +57,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkPanelTitlesPresent() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
         cookiesPanelPage.acceptCookies();
@@ -69,7 +69,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
         Assert.assertTrue(enterpriseResourcePlanningPage.isFieldServiceManagementSectionTitlePresent());
     }
 
-    @Test()
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaHeader() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
         headerBasePage.clickRequestDemoForm();
@@ -78,7 +78,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
         requestDemoPopupPage.closeRequestDemoForm();
     }
 
-    @Test()
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaSection() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
         cookiesPanelPage.acceptCookies();
@@ -90,7 +90,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     }
 
     // Customer Overview: War Child
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensWarChildPage() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
         cookiesPanelPage.acceptCookies();
@@ -100,7 +100,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     }
 
     //Read Customers stories
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadOurCustomersStoriesOpensCustomersPage() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
         cookiesPanelPage.acceptCookies();
@@ -110,7 +110,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
     }
 
     //Looking for one of our other Unit4 solutions?
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkLinkOpensERPPage() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
         cookiesPanelPage.acceptCookies();
@@ -119,7 +119,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
         Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkLinkOpensFinancialPlanningPage() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
         cookiesPanelPage.acceptCookies();
@@ -128,7 +128,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
         Assert.assertTrue(financialPlanningPage.isMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkLinkOpensHumanCapitalManagementPage() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
         cookiesPanelPage.acceptCookies();
@@ -137,7 +137,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
         Assert.assertTrue(humanCapitalManagementPage.isMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkLinkOpensFinancialsPage() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
         cookiesPanelPage.acceptCookies();
@@ -146,7 +146,7 @@ public class EnterpriseResourcePlanningTest extends BaseTest {
         Assert.assertTrue(financialsPage.isFinancialsPageMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void downloadPDFOpensPDF() {
         BasePage.openURL(URLs.PRODUCTS_ERP.URL());
         cookiesPanelPage.acceptCookies();

@@ -29,7 +29,7 @@ public class FooterGeneralTest extends BaseTest {
     LeadershipTeamPage leadershipTeamPage = new LeadershipTeamPage(getDriver());
 
     //Contact us section
-    @Test
+    @Test(groups = {"Sanity"})
     public void contactSalesLinkOpensContactUsPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -37,7 +37,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(contactUsPage.isContactUsMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void communityPortalLinkOpensCommunityPortalPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -46,7 +46,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.COMMUNITY_PORTAL_URL.URL()));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void locationsLinkOpensLocationPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -55,7 +55,7 @@ public class FooterGeneralTest extends BaseTest {
     }
 
     //About Unit4
-    @Test
+    @Test(groups = {"Sanity"})
     public void theCompanyLinkOpensAboutUsPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -63,7 +63,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(aboutUsHomePage.isAboutUsPageMainHeaderPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void leadershipLinkLeadershipTeamPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -71,7 +71,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(leadershipTeamPage.isLeadershipTeamMainHeaderPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void partnersLinkOpensLocationPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -79,7 +79,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(partnersPage.isPartnersPageMainHeaderPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void newsLinkOpensNewsHomePage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -87,7 +87,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(newsHomePage.isNewsHomePageMainHeaderPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void careersLinkOpens_Page() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -96,7 +96,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.CAREERS_URL.URL()));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void servicesLinkOpensServicesPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -104,7 +104,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(servicesPage.isServicesPageMainHeaderPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void supportLinkOpensSupportPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -112,7 +112,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(supportPage.isSupportPageMainHeaderPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void privacyAndTrustLinkOpensExtPrivacyPolicyPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -122,7 +122,7 @@ public class FooterGeneralTest extends BaseTest {
     }
 
     //very bottom links
-    @Test
+    @Test(groups = {"Sanity"})
     public void termsAndConditionsOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -131,7 +131,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains(URLs.PRIVACY_POLICY.STAGE()));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void disclaimerOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -140,7 +140,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains(URLs.DISCLAIMER.STAGE()));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void cookiesOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -149,7 +149,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains(URLs.COOKIES.STAGE()));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void modernSlaveryOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -158,7 +158,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains("Modern-Slavery"));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void trademarksOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -167,7 +167,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains(URLs.TRADEMARKS.STAGE()));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void sitemapOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -177,7 +177,7 @@ public class FooterGeneralTest extends BaseTest {
     }
 
     //Social media
-    @Test
+    @Test(groups = {"Sanity"})
     public void linkOpensFacebook() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -186,7 +186,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.FACEBOOK.URL()));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void linkOpensLinkedIn() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -195,7 +195,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.LINKEDIN.URL()));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void linkOpensTwitter() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -204,7 +204,7 @@ public class FooterGeneralTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.TWITTER.URL()));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void linkOpensInstagram() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();

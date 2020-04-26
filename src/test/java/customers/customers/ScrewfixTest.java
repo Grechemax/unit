@@ -15,7 +15,7 @@ public class ScrewfixTest extends BaseTest {
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitles() {
         BasePage.openURL(URLs.CUSTOMERS_SCREWFIX.URL());
         Assert.assertTrue(screwfixPage.isScrewfixPageMainTitlePresent());
@@ -26,20 +26,20 @@ public class ScrewfixTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkScrewfixPageBreadCrumb() {
         BasePage.openURL(URLs.CUSTOMERS_SCREWFIX.URL());
         Assert.assertTrue(breadCrumbsBasePage.isScrewfixCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensRightPage() {
         BasePage.openURL(URLs.CUSTOMERS_SCREWFIX.URL());
         screwfixPage.clickReadMoreButton();
         Assert.assertTrue(breadCrumbsBasePage.isFinancialsCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void downloadCaseStudyOpensPDFPage() {
         BasePage.openURL(URLs.CUSTOMERS_SCREWFIX.URL());
         screwfixPage.clickDownloadCaseStudy();

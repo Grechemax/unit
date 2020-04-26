@@ -21,43 +21,43 @@ public class CookiesPanelPage extends BasePage {
 
     public void acceptCookies() {
         if (isElementPresentWithTimer(acceptCookiesButton, 30)) {
-            Reporter.log("accepting cookies");
+            Reporter.log("Accepting cookies");
             clickOnElementUsingJS(acceptCookiesButton);
         }
     }
 
     public void clickCookieSettings() {
-        waitForElement(cookiePolicyLink);
-        Reporter.log("clicking 'Cookie Settings'");
+        waitForElementWithWaitTime(cookiePolicyLink, 60);
+        Reporter.log("Clicking 'Cookie Settings'");
         clickOnElementUsingJS(cookieSettingsButton);
     }
 
     public void clickCookiePolicy() {
-        waitForElement(cookiePolicyLink);
-        Reporter.log("clicking 'Cookie policy'");
+        waitForElementWithWaitTime(cookiePolicyLink, 60);
+        Reporter.log("Clicking 'Cookie policy'");
         clickOnElementUsingJS(cookiePolicyLink);
     }
 
     public void clickSaveSettingsButton() {
-        waitForElement(saveSettingsButton);
-        Reporter.log("clicking 'Save Settings' button");
+        waitForElementWithWaitTime(saveSettingsButton, 60);
+        Reporter.log("Clicking 'Save Settings' button");
         clickOnElementUsingJS(saveSettingsButton);
     }
 
     public void clickAllowAllButton() {
-        waitForElement(allowAllButton);
-        Reporter.log("clicking 'Allow All' button");
+        waitForElementWithWaitTime(allowAllButton, 60);
+        Reporter.log("Clicking 'Allow All' button");
         clickOnElementUsingJS(allowAllButton);
     }
 
     public void clickOneTrust() {
-        waitForElement(oneTrustLink);
-        Reporter.log("clicking 'OneTrust' link");
+        waitForElementWithWaitTime(oneTrustLink, 60);
+        Reporter.log("Clicking 'OneTrust' link");
         clickOnElementUsingJS(oneTrustLink);
     }
 
     public boolean isCookiesSettingsModalPresent() {
-        waitForElement(cookieSettingsModalWindowHeader);
+        waitForElementWithWaitTime(cookieSettingsModalWindowHeader, 60);
         Reporter.log("'Cookie Settings' modal window is present");
         return isElementPresent(cookieSettingsModalWindowHeader);
     }

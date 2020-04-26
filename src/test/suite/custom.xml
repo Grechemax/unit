@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Custom" verbose="2" configfailurepolicy="continue">
+    <test name="Custom">
+        <packages>
+
+            <package name="custom.*"></package>
+        </packages>
+    </test>
+</suite>

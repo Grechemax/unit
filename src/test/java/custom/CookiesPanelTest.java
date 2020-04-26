@@ -1,3 +1,5 @@
+package custom;
+
 import base.BasePage;
 import base.BaseTest;
 import data.External_URLs;
@@ -11,21 +13,21 @@ public class CookiesPanelTest extends BaseTest {
     CookiesPanelPage cookiesPanelPage = new CookiesPanelPage(getDriver());
     CookiesHomePage cookiesHomePage = new CookiesHomePage(getDriver());
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void cookiesPolicyOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.clickCookiePolicy();
         Assert.assertTrue(cookiesHomePage.isCookiesHomePageMainHeaderPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void clickingCookiesSettingsOpensModalWindow() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.clickCookieSettings();
         Assert.assertTrue(cookiesPanelPage.isCookiesSettingsModalPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void clickingSaveSettingsClosesModalWindow() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.clickCookieSettings();
@@ -33,7 +35,7 @@ public class CookiesPanelTest extends BaseTest {
         Assert.assertTrue(cookiesPanelPage.isModalAbsent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void clickingAllowAllClosesModalWindow() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.clickCookieSettings();
@@ -41,7 +43,7 @@ public class CookiesPanelTest extends BaseTest {
         Assert.assertTrue(cookiesPanelPage.isModalAbsent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void oneTrustLinkOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.clickCookieSettings();

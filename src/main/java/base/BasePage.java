@@ -1,24 +1,17 @@
 package base;
 
-import com.assertthat.selenium_shutterbug.core.Shutterbug;
 import com.google.common.base.Function;
-import org.openqa.selenium.*;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
-import ru.yandex.qatools.ashot.comparison.ImageDiff;
-import ru.yandex.qatools.ashot.comparison.ImageDiffer;
-
-import javax.imageio.ImageIO;
-//import javax.xml.ws.Response;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -28,8 +21,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import static java.lang.System.getProperty;
+import java.util.regex.Pattern;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class BasePage extends BaseTest {
@@ -42,19 +34,482 @@ public class BasePage extends BaseTest {
         driver = getDriver();
     }
 
-    public WebElement findElement(By element) {
-        return getDriver().findElement(element);
+
+
+    public WebElement findElement(By locator) {
+        return getDriver().findElement(locator);
     }
 
-    public List<WebElement> findElements(By element) {
-        return getDriver().findElements(element);
+    /**
+     * Method returns List of webElements from locator
+     * @param locator - locator of the element
+     * @return
+     */
+    public List<WebElement> findElements(By locator) {
+        return getDriver().findElements(locator);
+    }
+
+    /**
+     * Method performs click on webElement if element present on page
+     * @param locator - locator of the element
+     */
+    public void clickElementIfPresent(By locator)  {
+        if(isElementPresent(locator)){
+            getDriver().findElement(locator).click();
+        }
+    }
+
+    /**
+     * Method performs click on webElement if element present on page
+     * @param locator - locator of the element
+     */
+    public void clickElementIfVisible(By locator)  {
+        if(isElementVisible(locator)){
+            clickOnElement(locator);
+        }
+    }
+
+    /**
+     * Method performs click on webElement if element present on page
+     * @param locator - locator of the element
+     */
+    public void clickElementIfPresent(By locator, int howMuchTimeToWait)  {
+        if(isElementPresent(locator, howMuchTimeToWait)){
+            waitUntilElementToBeClickable(locator,15);
+            getDriver().findElement(locator).click();
+        }
+    }
+
+    /**
+     * Method performs click on webElement if element present on page and wait invisibility
+     * @param locator - locator of the element
+     */
+    public void clickElementIfPresentAndWaitInvisibility(By locator, int howMuchWaitForVisibility, int howMuchWaitForInVisibility)  {
+        if(isElementVisible(locator,howMuchWaitForVisibility)) {
+            clickOnElementUsingJS(locator);
+            waitInVisibilityOfElement(locator, howMuchWaitForInVisibility);
+        }
+    }
+
+    /**
+     * Method performs click on webElement if element clickable on page
+     * @param locator - locator of the element
+     */
+    public void clickElementIfClickable(By locator, int howMuchTimeToWait)  {
+        if(isElementClickable(locator, howMuchTimeToWait)){
+            getDriver().findElement(locator).click();
+        }
+    }
+
+    /**
+     * Returns true if element present on page
+     * @param locator - locator of the element
+     * @return
+     */
+    public boolean isElementPresent(By locator){
+        return findElements(locator).size()>0;
+    }
+
+    /**
+     * Performs click on element
+     * @param locator - locator of the element
+     */
+    public void clickOnElement(By locator) {
+        findElement(locator).click();
     }
 
 
-//    public String getElementText(By element) {
-//        waitForElement(element);
-//        return findElement(element).getText();
-//    }
+    /**
+     * Performs move to element if element present ignoring stale element reference exception one time with pause
+     * @param locator
+     */
+    public void clickOnPresentedElementUsingJSThroughStaleElementReference(By locator, int howMuchWait) {
+        waitPresenceOfElement(locator, howMuchWait);
+        try {
+            clickOnElementUsingJS(locator);
+        } catch (StaleElementReferenceException e){
+            sleepTightInSeconds(5);
+            clickOnElementUsingJS(locator);
+        }
+    }
+
+
+    /**
+     * Method waits for element visibility status and clicks after that
+     * @param locator - locator of the element
+     * @param timeWait - how much time to wait
+     */
+    public void clickOnVisibleElement(By locator, int timeWait) {
+        waitVisibilityOfElement(locator, timeWait);
+        clickOnElement(locator);
+    }
+
+    /**
+     * Method for navigate to url
+     * @param URL
+     */
+    public static void openURL(String URL){
+        Reporter reporter = new Reporter();
+        reporter.log("Opening url '"+URL+"'", true);
+        getDriver().get(URL);
+    }
+
+    /**
+     * Performs maximize action of browser
+     */
+    public void maximizeWindow(){
+        getDriver().manage().window().maximize();
+    }
+
+    /**
+     * Performs full screen action of browser
+     */
+    public void fullScreenWindow(){
+        getDriver().manage().window().fullscreen();
+    }
+
+
+    public void waitUntilElementToBeClickable(By locator, int howMuchTimeToWait){
+        WebDriverWait wait = new WebDriverWait(getDriver(), howMuchTimeToWait);
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public void waitUntilElementToBeClickable(WebElement element, int howMuchTimeToWait){
+        WebDriverWait wait = new WebDriverWait(getDriver(), howMuchTimeToWait);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public void waitForElementContainsAnyText(By locator, int howMuchTimeToWait) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), howMuchTimeToWait);
+        wait.until(ExpectedConditions.textMatches(locator, Pattern.compile(".")));
+    }
+
+    public void waitVisibilityOfElement(By locator, int waitTime) {
+        WebDriverWait wait = (new WebDriverWait(getDriver(), waitTime));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public void waitInVisibilityOfElement(By locator, int waitTime) {
+        WebDriverWait wait = (new WebDriverWait(getDriver(), waitTime));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+
+    public void waitPresenceOfElement(By locator, int waitTime) {
+        WebDriverWait wait = (new WebDriverWait(getDriver(), waitTime));
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+    public boolean isElementPresent(By locator, int waitTime) {
+        try {
+            WebDriverWait wait = (new WebDriverWait(getDriver(), waitTime));
+            wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+            return true;
+        } catch (Exception e) {
+
+            return false;
+        }
+    }
+
+    public boolean isElementContainsAnyText(By locator, int waitTime) {
+        try {
+            WebDriverWait wait = (new WebDriverWait(getDriver(), waitTime));
+            wait.until(ExpectedConditions.textMatches(locator, Pattern.compile(".")));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isElementClickable(By locator, int waitTime) {
+        try {
+            WebDriverWait wait = (new WebDriverWait(getDriver(), waitTime));
+            wait.until(ExpectedConditions.elementToBeClickable(locator));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isElementVisible(By locator, int waitTime) {
+        WebDriverWait wait = (new WebDriverWait(getDriver(), waitTime));
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isElementVisible(By locator) {
+        WebDriverWait wait = (new WebDriverWait(getDriver(), 1));
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
+    public boolean isFrameReadyToSwitch(By locator, int waitTime) {
+        WebDriverWait wait = (new WebDriverWait(getDriver(), waitTime));
+        try {
+            wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(locator));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
+     * Performs text setting with text clearing, ignoring StaleElementReference
+     * @param locator
+     * @param text
+     */
+    public void setTextInElementWithTextClearing(By locator, String text) {
+        waitUntilElementToBeClickable(locator, 15);
+        try {
+            findElement(locator).clear();
+            Actions actions = new Actions(getDriver());
+            actions.moveToElement(findElement(locator)).click().build().perform();
+            findElement(locator).sendKeys(text);
+        } catch (Exception e){
+            sleepTightInSeconds(3);
+            findElement(locator).clear();
+            findElement(locator).sendKeys(text);
+        }
+    }
+
+    /**
+     * Fro switching to frame
+     * @param locator
+     */
+    public void switchToFrame(By locator) {
+        getDriver().switchTo().frame(findElement(locator));
+    }
+
+    /**
+     * Fro switching to frame
+     * @param locator
+     */
+    public void switchToFrame(String id) {
+        getDriver().switchTo().frame(id);
+    }
+
+    /**
+     * For switching to default content
+     */
+    public void switchToDefaultContent() {
+        getDriver().switchTo().defaultContent();
+    }
+
+    /**
+     * Returns value of element as String , ignoring staleelement reference exception one time with pause
+     * @param element
+     * @param attributeName
+     * @return
+     */
+    public String getAttributeValueByName(WebElement element, String attributeName){
+        String attributeValue;
+        try {
+            moveToElement(element);
+            attributeValue = element.getAttribute(attributeName);
+        } catch (Exception e){
+            sleepTightInSeconds(10);
+            moveToElement(element);
+            attributeValue= element.getAttribute(attributeName);
+        }
+
+        return attributeValue;
+    }
+
+    /**
+     * Returns value of element as String , ignoring staleelement reference exception one time with pause
+     * @param locator
+     * @param attributeName
+     * @return
+     */
+    public String getAttributeValueByName(By locator, String attributeName){
+        String attributeValue;
+        WebElement element = findElement(locator);
+        try {
+            moveToElement(element);
+            attributeValue = element.getAttribute(attributeName);
+        } catch (StaleElementReferenceException e){
+            sleepTightInSeconds(10);
+            moveToElement(element);
+            attributeValue= element.getAttribute(attributeName);
+        }
+
+        return attributeValue;
+    }
+
+    /**
+     * Return text value of element
+     * @param locator
+     * @return
+     */
+    public String getTextValue(By locator){
+        String textValue;
+        try {
+            textValue= getDriver().findElement(locator).getText();
+        } catch (StaleElementReferenceException e){
+            sleepTightInSeconds(4);
+            textValue= getDriver().findElement(locator).getText();
+        }
+        return textValue;
+    }
+
+    public String getTextValueIfElementPresent(By locator){
+        if(isElementPresent(locator,3)){
+            return getTextValue(locator);
+        } else {
+            return "";
+        }
+    }
+
+    /**
+     * Returns list of certain attribute values as list of strings that fetched from list of web elements
+     * @param webElements - list to get values
+     * @param attributeName - attribute that we want to return
+     * @return
+     */
+    public List<String> getAttributesListFromWebElementList(List<WebElement> webElements, String attributeName){
+        List<String> attributes = new ArrayList<>();
+        webElements.forEach(webElement
+                -> attributes.add(getAttributeValueByName(webElement,attributeName)));
+        return attributes;
+    }
+
+    /**
+     * Returns list of text values as list of strings that fetched from list of web elements
+     * @param webElements - list to get text values
+     * @return
+     */
+    public List<String> getTextListFromWebElementList(By locatorOfList){
+        List<String> attributes = new ArrayList<>();
+        findElements(locatorOfList).forEach(webElement -> attributes.add(webElement.getText()));
+        return attributes;
+    }
+
+    /**
+     * Performs scroll to bottom action
+     */
+    public void scrollToBottom() {
+        JavascriptExecutor jse1 = (JavascriptExecutor) getDriver();
+        jse1.executeScript("scroll(0, 10000)"); // if the element is at bottom.
+    }
+
+    /**
+     * Returns web element list size as int
+     * @param locator
+     * @return
+     */
+    public int quantityOfElements(By locator){
+        int size;
+        try {
+            size = findElements(locator).size();
+        } catch (StaleElementReferenceException e){
+            sleepTightInSeconds(3);
+            size = findElements(locator).size();
+        }
+        return size;
+    }
+
+    public boolean isEnvironmentStage(){
+        return getDriver().getCurrentUrl().contains("stage");
+    }
+
+    /**
+     * Performs scroll into view
+     * @param scrolledElement
+     */
+    public void scrollIntoView(By scrolledElement){
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
+        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", findElement(scrolledElement));
+    }
+
+    /**
+     * Performs move to element (mouse hover)
+     * @param element
+     */
+    public void moveToElement(By locator) {
+        Actions actions = new Actions(getDriver());
+        WebElement element = findElement(locator);
+        Action mouseOver = actions.moveToElement(element).build();
+        mouseOver.perform();
+    }
+
+    /**
+     * Performs move to element (mouse hover)
+     * @param element
+     */
+    public void moveToElement(WebElement element) {
+        Actions actions = new Actions(getDriver());
+        Action mouseOver = actions.moveToElement(element).build();
+        mouseOver.perform();
+    }
+
+    /**
+     * Performs move to element if element present ignoring stale element reference exception one time with pause
+     * @param locator
+     */
+    public void moveToElementIfPresentThroughStaleElementReference(By locator) {
+        if (isElementPresent(locator)) {
+            try {
+                moveToElement(locator);
+            } catch (StaleElementReferenceException e){
+                sleepTightInSeconds(2);
+                moveToElement(locator);
+            }
+
+        }
+    }
+
+    /**
+     * Method returns height of element in pixels at page
+     * @param locator - locator of element
+     * @return
+     */
+    public int getElementHeight(By locator){
+        int height;
+        try {
+            height = Integer.parseInt(findElement(locator).getCssValue("height").replace("px",""));
+        } catch (StaleElementReferenceException e) {
+            sleepTightInSeconds(2);
+            height = Integer.parseInt(findElement(locator).getCssValue("height").replace("px",""));
+        }
+        return  height;
+    }
+
+    /**
+     * Performs click on element from list by relative number
+     * @param locatorOfElementsList - locator of list
+     * @param relativeNumber - index of element
+     */
+    public void clickOnTheElementByIndex(By locatorOfElementsList, int relativeNumber) {
+        List<WebElement> elements = findElements(locatorOfElementsList);
+        moveToElement(elements.get(relativeNumber));
+        sleepTightInSeconds(2);
+        waitUntilElementToBeClickable(elements.get(relativeNumber),30);
+        clickOnElementUsingJS(elements.get(relativeNumber));
+    }
+
+
+
+    /**
+     * Methods for wait that element present and after that wait when element disappears (generally for spinners etc)
+     * @param locator - locator of the element
+     * @param howMuchWaitForVisibility - time in sec how much time to wait for visibility of element
+     * @param howMuchWaitForInVisibility - if element present how much time to wait for invisibility of element
+     */
+
+    public void waitForElementVisibilityAndInvisibilityAfterIt(By locator, int howMuchWaitForVisibility, int howMuchWaitForInVisibility ){
+        if(isElementVisible(locator,howMuchWaitForVisibility)) {
+            waitInVisibilityOfElement(locator, howMuchWaitForInVisibility);
+        }
+
+    }
 
     /**
      * Return text value of element
@@ -62,7 +517,7 @@ public class BasePage extends BaseTest {
      * @param locator
      * @return
      */
-    public static String getElementText(By locator) {
+    public String getElementText(By locator) {
         String textValue;
         try {
             textValue = getDriver().findElement(locator).getText();
@@ -79,7 +534,7 @@ public class BasePage extends BaseTest {
      * @param element
      * @return
      */
-    public static String getElementText(WebElement element) {
+    public String getElementText(WebElement element) {
         String textValue;
         try {
             textValue = element.getText();
@@ -150,22 +605,18 @@ public class BasePage extends BaseTest {
         }
     }
 
-    public static void switchToFrame(String frameName) {
-        getDriver().switchTo().frame(frameName);
-    }
+
 
     public void switchToFrame(int index) {
         getDriver().switchTo().frame(index);
     }
 
-    public static void switchToFrame(WebElement element) {
+    public void switchToFrame(WebElement element) {
         waitForPresenceOfElement(element);
         getDriver().switchTo().frame(element);
     }
 
-    public static void switchToDefaultContent() {
-        getDriver().switchTo().defaultContent();
-    }
+
 
     public void switchToPopUp() {
         switchToDefaultContent();
@@ -187,18 +638,12 @@ public class BasePage extends BaseTest {
         getDriver().findElements(elements).get(elementIndex - 1).click();
     }
 
-    public void clickOnElement(By element) {
-        waitForElement(element);
-        findElement(element).click();
-    }
 
 
     public void clickOnElement(WebElement element) {
 
         try {
             waitForElementClickable(element, 40);
-
-
             Actions actions = new Actions(driver);
             actions.moveToElement(element).build().perform();
             element.click();
@@ -211,78 +656,8 @@ public class BasePage extends BaseTest {
 
     }
 
-    public void clickOnElementWithoutSpinnerDisapears(WebElement element) {
 
-        try {
-            waitForElementClickable(element, 45);
-
-
-            Actions actions = new Actions(driver);
-            actions.moveToElement(element).build().perform();
-            element.click();
-        } catch (StaleElementReferenceException e) {
-            clickThrowStaleException(element);
-        } catch (WebDriverException e) {
-            clickThrowStaleException(element);
-        }
-
-    }
-
-
-    public void clickOnNotClickableElement(WebElement element) {
-
-        try {
-            waitForPresenceOfElement(element, 120);
-
-
-            Actions actions = new Actions(driver);
-            actions.moveToElement(element).build().perform();
-            element.click();
-        } catch (StaleElementReferenceException e) {
-            clickThrowStaleException(element);
-        }
-
-    }
-
-
-    public void clickOnElementNotClickable(WebElement element) {
-        waitForElementWithMouse(element);
-        Actions actions = new Actions(getDriver());
-        actions.moveToElement(element).build().perform();
-        element.click();
-    }
-
-    public void clickThrowStaleException(WebElement element) {
-        FluentWait<WebDriver> wait = new FluentWait<>(getDriver())
-                .withTimeout(Duration.ofSeconds(60))
-                .pollingEvery(Duration.ofMillis(3000))
-                .ignoring(StaleElementReferenceException.class);
-
-        Function<WebDriver, Boolean> function = new Function<WebDriver, Boolean>() {
-            public Boolean apply(WebDriver arg0) {
-
-                try {
-                    clickOnElement(element);
-                    return true;
-                } catch (WebDriverException e) {
-                    return false;
-                }
-            }
-        };
-        wait.until(function);
-    }
-
-    public static void uploadFile(WebElement element, String path) {
-        waitForPresenceOfElement(element);
-        try {
-            element.sendKeys(path);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void uploadFileAppProfile(WebElement element, String path) {
-
+    public void uploadFile(WebElement element, String path) {
         try {
             element.sendKeys(path);
         } catch (Exception e) {
@@ -291,12 +666,14 @@ public class BasePage extends BaseTest {
     }
 
 
-    public static void fixElement(WebElement element) {
+
+
+    public void fixElement(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("arguments[0].setAttribute('style', 'position: static!important;')", element);
     }
 
-    public static void hideElement(WebElement element) {
+    public void hideElement(WebElement element) {
         JavascriptExecutor js1 = (JavascriptExecutor) getDriver();
 
         js1.executeScript("arguments[0].setAttribute('style', 'display:none;')", element);
@@ -304,7 +681,7 @@ public class BasePage extends BaseTest {
 
     }
 
-    public static void displayElement(WebElement element) {
+    public void displayElement(WebElement element) {
 
         JavascriptExecutor js1 = (JavascriptExecutor) getDriver();
         js1.executeScript("arguments[0].setAttribute('style', 'display: block;')", element);
@@ -312,11 +689,6 @@ public class BasePage extends BaseTest {
 
     }
 
-    public void jsClickOnElement(WebElement element) {
-        waitForPresenceOfElement(element);
-        JavascriptExecutor executor = (JavascriptExecutor) getDriver();
-        executor.executeScript("arguments[0].click();", element);
-    }
 
     public void clickOnElementWithWait(String message, By element, int timeWaitSeconds) {
         Reporter.log(message);
@@ -344,11 +716,6 @@ public class BasePage extends BaseTest {
         return findElement(element).getAttribute(attributeName).contains(textToContain);
     }
 
-
-    public static void scrollToBottom() {
-        JavascriptExecutor jse1 = (JavascriptExecutor) getDriver();
-        jse1.executeScript("scroll(0, 1000)"); // if the element is at bottom.
-    }
 
     public static void scrollToBottom(int end) {
         Reporter.log("Scrolling down");
@@ -422,14 +789,6 @@ public class BasePage extends BaseTest {
     }
 
 
-    public void choseElementByIndex(String messages, By element, String tagName, int answerNumber) {
-        Reporter.log(messages);
-        WebElement table = findElement(element);
-        goSleep(5);
-        table.findElements(By.tagName(tagName)).get(answerNumber - 1).click();
-    }
-
-
     public void useHotKey(String message, String hotKey) {
         Reporter.log(message);
         findElement(new By.ById("txtChatScenarioText")).sendKeys(hotKey);
@@ -467,19 +826,15 @@ public class BasePage extends BaseTest {
 //        goSleep(2);
     }
 
-    public static void openURL(String URL) {
-        base.Reporter.log("Opening Url: '"+URL);
-        getDriver().get(URL);
-    }
 
 
-    public static void chooseDropdownItem(String itemName, WebElement element) {
+    public void chooseDropdownItem(String itemName, WebElement element) {
         waitForPresenceOfElement(element);
         Select selectTitle = new Select(element);
         selectTitle.selectByVisibleText(itemName);
     }
 
-    public static void chooseDropdownItem(int index, WebElement element) {
+    public void chooseDropdownItem(int index, WebElement element) {
         waitForPresenceOfElement(element);
         Select selectTitle = new Select(element);
         selectTitle.selectByIndex(index);
@@ -502,20 +857,20 @@ public class BasePage extends BaseTest {
         findElement(element).sendKeys(text);
     }
 
-    public static void switchToTab(int i) {
-        ArrayList tabs2 = new ArrayList(getDriver().getWindowHandles());
+    public void switchToTab(int i) {
+        ArrayList<String> tabs2 = new ArrayList<>(getDriver().getWindowHandles());
         getDriver().switchTo().window(String.valueOf(tabs2.get(i)));
         Reporter.log("Switching to tab #" + i);
     }
 
-    public static void switchToFirstTab() {
-        ArrayList tabs2 = new ArrayList(getDriver().getWindowHandles());
+    public void switchToFirstTab() {
+        ArrayList<String> tabs2 = new ArrayList<>(getDriver().getWindowHandles());
         getDriver().switchTo().window(String.valueOf(tabs2.get(0)));
         Reporter.log("Switching to first tab");
     }
 
     public static void switchToLastTab() {
-        ArrayList tabs2 = new ArrayList(getDriver().getWindowHandles());
+        ArrayList<String> tabs2 = new ArrayList<>(getDriver().getWindowHandles());
         getDriver().switchTo().window(String.valueOf(tabs2.get(tabs2.size() - 1)));
         Reporter.log("Switching to last tab");
     }
@@ -537,40 +892,33 @@ public class BasePage extends BaseTest {
     //Regexp
 
 
-    public static boolean isCountIsCorrect(String s) {
+    public boolean isCountIsCorrect(String s) {
 //1234
         Reporter.log("Verifying of " + s + " count format");
         return s.matches("\\d+$");
     }
 
 
-    public static boolean isDateFormatIsCorrect(String s) {
+    public boolean isDateFormatIsCorrect(String s) {
 //MM/dd/yyyy
         Reporter.log("Verifying of " + s + " date format");
         return s.matches("((0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])/(19|20)\\d\\d)$");
     }
 
-    public static boolean isMoneyFormatIsCorrect(String s) {
+    public boolean isMoneyFormatIsCorrect(String s) {
 
 //"$123,546,423.50"
         Reporter.log("Verifying of " + s + " money format");
         return s.matches("(([$]\\d{1,3})[.](\\d{2}))$|(([$]\\d{1,3}[,]\\d{3})[.](\\d{2}))$|(([$]\\d{1,3}[,]\\d{1,3}[,]\\d{3})[.](\\d{2}))$");
     }
 
-    public static boolean isMoneyFormatIsCorrectRefunds(String s) {
+    public boolean isMoneyFormatIsCorrectRefunds(String s) {
 
 //"$-123,546,423.50"
         Reporter.log("Verifying of " + s + " money format");
         return s.matches("(([-][$]\\d{1,3})[.](\\d\\d))$|(([-][$]\\d{1,3}[,]\\d{3})[.](\\d\\d))$|(([-][$]\\d{1,3}[,]\\d{1,3}[,]\\d{3})[.](\\d\\d))$");
     }
 
-    public boolean isElementPresent(By locator) {
-        if (getDriver().findElements(locator).size() > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public boolean isElementPresentWithTimer(By locator, int waitTime) {
         try {
@@ -605,7 +953,7 @@ public class BasePage extends BaseTest {
         }
     }
 
-    public static Boolean isElementPresented(By element) {
+    public Boolean isElementPresented(By element) {
         Boolean elementCondition = false;
         try {
             elementCondition = getDriver().findElement(element).isDisplayed();
@@ -615,7 +963,7 @@ public class BasePage extends BaseTest {
         return elementCondition;
     }
 
-    public static Boolean isElementPresented(WebElement element) {
+    public Boolean isElementPresented(WebElement element) {
         Boolean elementCondition = false;
         try {
             elementCondition = element.isDisplayed();
@@ -625,7 +973,7 @@ public class BasePage extends BaseTest {
         return elementCondition;
     }
 
-    public static Boolean isPresent(WebElement element, int timeWait) {
+    public Boolean isPresent(WebElement element, int timeWait) {
         Boolean isPresent;
         try {
             WebDriverWait webDriverWait = new WebDriverWait(getDriver(), timeWait);
@@ -637,41 +985,7 @@ public class BasePage extends BaseTest {
         return isPresent;
     }
 
-    public boolean baseImageComparison(WebElement element, String imageName,
-                                       String pathName) throws IOException {
-        Shutterbug.shootElement(getDriver(), element).withName("actual" + imageName).save(getProperty("user.dir") + "/reports/screenshots/actual/" + pathName);
 
-        File actual = new File(getProperty("user.dir") + File.separator + "reports" + File.separator + "screenshots" + File.separator +
-                "actual" + File.separator + pathName + File.separator + "actual" + imageName + ".png");
-        BufferedImage actualImage = ImageIO.read(actual);
-        File expected = new File(getProperty("user.dir") + File.separator + "reports" + File.separator + "screenshots" + File.separator +
-                "expected" + File.separator + pathName + File.separator + imageName + ".png");
-
-        BufferedImage expectedImage = ImageIO.read(expected);
-        ImageDiff diff = new ImageDiffer().makeDiff(actualImage, expectedImage);
-
-        if (diff.getDiffSize() < 400) {
-            Reporter.log("Verifying of '" + imageName + "' block in '" + pathName + "' page successful");
-            return true;
-        } else {
-            File diffFile = new File(getProperty("user.dir") + File.separator + "reports" + File.separator + "screenshots" + File.separator +
-                    "diff" + File.separator + pathName + File.separator + "actual" + imageName + ".png");
-            ImageIO.write(diff.getMarkedImage(), "png", diffFile);
-            Reporter.log("Verifying of '" + imageName + "' block in '" + pathName + "' page failed");
-            Reporter.log("DiffSize is '" + diff.getDiffSize());
-            return false;
-        }
-
-    }
-
-
-    public void firstTimeImageSaving(WebElement element, String imageName,
-                                     String pathName) {
-        Shutterbug.shootElement(getDriver(), element).withName(imageName).save(getProperty("user.dir") + "/reports/screenshots/expected/" + pathName);
-
-    }
-
-    //Waiters
 
 
     public void waitForElement(By locator) {
@@ -679,132 +993,12 @@ public class BasePage extends BaseTest {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));  // visibilityOfElementLocated: Checks to see if the element is present and also visible.
     }
 
-
-    public static void waitUntilSpinnerAbsent(String xpathOfResult) {
-
-        FluentWait<WebDriver> wait2 = new FluentWait<>(getDriver())
-                .withTimeout(Duration.ofSeconds(30))
-                .pollingEvery(Duration.ofMillis(4000))
-                .ignoring(NoSuchElementException.class);
-
-        Function<WebDriver, Boolean> function = new Function<WebDriver, Boolean>() {
-            public Boolean apply(WebDriver arg0) {
-                if (isElementPresented(By.xpath(xpathOfResult))) {
-                    Reporter.log("Spinner is present");
-                    goSleep(4);
-                    hideElement(getDriver().findElement(By.xpath(xpathOfResult)));
-                    return false;
-                }
-                return true;
-            }
-        };
-        wait2.until(function);
-    }
-
-    public static void waitUntilElementDissapears(WebElement element) {
-        try {
-            WebDriverWait wait = new WebDriverWait(getDriver(), 20);
-            wait.until(ExpectedConditions.invisibilityOf(element));
-        } catch (Exception e) {
-
-            throw e;
-        }
+    public void waitForElementWithWaitTime(By locator, int timeWait) {
+        WebDriverWait wait = (new WebDriverWait(getDriver(), timeWait));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));  // visibilityOfElementLocated: Checks to see if the element is present and also visible.
     }
 
 
-    public static void waitUntilElementAbsent(WebElement element) {
-
-        FluentWait<WebDriver> wait2 = new FluentWait<>(getDriver())
-                .withTimeout(Duration.ofSeconds(40))
-                .pollingEvery(Duration.ofMillis(2000))
-                .ignoring(NoSuchElementException.class);
-
-        Function<WebDriver, Boolean> function = new Function<WebDriver, Boolean>() {
-            public Boolean apply(WebDriver arg0) {
-                if (isElementPresented(element)) {
-                    Reporter.log("Alert is present");
-                    return false;
-                }
-                Reporter.log("Alert is closed");
-                return true;
-            }
-        };
-        wait2.until(function);
-    }
-
-    public static void waitUntilTextWitinElementEquals(WebElement element, String expectedText) {
-
-        FluentWait<WebDriver> wait = new FluentWait<>(getDriver())
-                .withTimeout(Duration.ofSeconds(200))
-                .pollingEvery(Duration.ofMillis(1000))
-                .ignoring(NoSuchElementException.class)
-                .ignoring(StaleElementReferenceException.class);
-
-        Function<WebDriver, Boolean> function = new Function<WebDriver, Boolean>() {
-            public Boolean apply(WebDriver arg0) {
-                if (getElementText(element).equals(expectedText)) {
-                    Reporter.log("Text within element equals expected result (" + expectedText + ")");
-                    return true;
-                }
-                Reporter.log("Waiting for expected text within element");
-                return false;
-            }
-        };
-        wait.until(function);
-    }
-
-
-    public static void waitUntilElementPresence(String xpathOfResult) {
-
-        FluentWait<WebDriver> wait2 = new FluentWait<>(getDriver())
-                .withTimeout(Duration.ofSeconds(40))
-                .pollingEvery(Duration.ofMillis(1000))
-                .ignoring(NoSuchElementException.class);
-
-        Function<WebDriver, Boolean> function = new Function<WebDriver, Boolean>() {
-            public Boolean apply(WebDriver arg0) {
-                goSleep(3);
-                if (!isElementPresented(arg0.findElement(By.xpath(xpathOfResult)))) {
-
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-        };
-        wait2.until(function);
-    }
-
-    public static void waitUntilBlinkingElementPresence(WebElement element) {
-
-        FluentWait<WebDriver> wait2 = new FluentWait<>(getDriver())
-                .withTimeout(Duration.ofSeconds(30))
-                .pollingEvery(Duration.ofMillis(300))
-                .ignoring(NoSuchElementException.class);
-
-        Function<WebDriver, Boolean> function = new Function<WebDriver, Boolean>() {
-            public Boolean apply(WebDriver arg0) {
-                if (isElementPresented(element)) {
-                    JavascriptExecutor executor = (JavascriptExecutor) arg0;
-                    executor.executeScript("arguments[0].click();", element);
-                    Actions actions = new Actions(arg0);
-                    actions.moveToElement(element).build().perform();
-                    element.click();
-
-                    return true;
-                } else {
-                    Actions actions = new Actions(arg0);
-
-                    actions.moveToElement(element).build().perform();
-                    Reporter.log("Element is absent");
-                    JavascriptExecutor executor = (JavascriptExecutor) arg0;
-                    executor.executeScript("arguments[0].click();", element);
-                    return false;
-                }
-            }
-        };
-        wait2.until(function);
-    }
 
     public void waitForElement(WebElement webElement) {
 
@@ -832,49 +1026,9 @@ public class BasePage extends BaseTest {
         }
     }
 
-    public static void waitForElementDisplayed(WebElement element, String nameAttr, String expectedAttr) {
-
-        FluentWait<WebDriver> wait2 = new FluentWait<>(getDriver())
-                .withTimeout(Duration.ofSeconds(200))
-                .pollingEvery(Duration.ofMillis(1000))
-                .ignoring(NoSuchElementException.class);
-
-        Function<WebDriver, Boolean> function = new Function<WebDriver, Boolean>() {
-            public Boolean apply(WebDriver arg0) {
-                if (element.getAttribute(nameAttr).equals(expectedAttr)) {
-                    Reporter.log("Givelithon is displayed");
-                    return true;
-                }
-                Reporter.log("Givelithon isn't displayed");
-                return false;
-            }
-        };
-        wait2.until(function);
-    }
 
 
-    public void waitForElementWithMouse(WebElement element) {
-
-        FluentWait<WebDriver> wait2 = new FluentWait<>(getDriver())
-                .withTimeout(Duration.ofSeconds(60))
-                .pollingEvery(Duration.ofMillis(1000))
-                .ignoring(NoSuchElementException.class);
-
-        Function<WebDriver, Boolean> function = new Function<WebDriver, Boolean>() {
-            public Boolean apply(WebDriver arg0) {
-
-                getDriver().manage().window().setSize(new Dimension(1926, 840));
-
-                if (isElementPresented(element)) {
-                    return true;
-                }
-                return false;
-            }
-        };
-        wait2.until(function);
-    }
-
-    public static void waitForPresenceOfElement(WebElement element) {
+    public void waitForPresenceOfElement(WebElement element) {
         try {
             WebDriverWait wait = new WebDriverWait(getDriver(), 60);
             wait.until(ExpectedConditions.visibilityOf(element));
@@ -883,18 +1037,8 @@ public class BasePage extends BaseTest {
         }
     }
 
-    public static void waitForPresenceOfElement(String xpath) {
-        try {
-            WebDriverWait wait = new WebDriverWait(getDriver(), 60);
-            wait.until(visibilityOf(getDriver().findElement(By.xpath(xpath))));
-        } catch (Exception e) {
 
-            throw e;
-        }
-    }
-
-
-    public static void waitForPresenceOfElement(WebElement element, int time) {
+    public void waitForPresenceOfElement(WebElement element, int time) {
         try {
             WebDriverWait wait = new WebDriverWait(getDriver(), time);
             wait.until(visibilityOf(element));
@@ -904,7 +1048,7 @@ public class BasePage extends BaseTest {
         }
     }
 
-    public static void waitForElementClickable(WebElement element) {
+    public void waitForElementClickable(WebElement element) {
         try {
             WebDriverWait wait = new WebDriverWait(getDriver(), 60);
             wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -914,7 +1058,7 @@ public class BasePage extends BaseTest {
         }
     }
 
-    public static void waitForElementClickable(By locator) {
+    public void waitForElementClickable(By locator) {
         try {
             WebDriverWait wait = new WebDriverWait(getDriver(), 60);
             wait.until(ExpectedConditions.elementToBeClickable(locator));
@@ -924,7 +1068,7 @@ public class BasePage extends BaseTest {
         }
     }
 
-    public static void waitForElementClickable(WebElement element, int timeout) {
+    public void waitForElementClickable(WebElement element, int timeout) {
         try {
             WebDriverWait wait = new WebDriverWait(getDriver(), timeout);
             wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -934,19 +1078,7 @@ public class BasePage extends BaseTest {
         }
     }
 
-    public static void waitForPresenceofElements(List<WebElement> elements) {
-        List<WebElement> wait = (new WebDriverWait(getDriver(), 45)).until(ExpectedConditions.visibilityOfAllElements(elements));
-    }
 
-    public static void waitForStalenessOfElement(WebElement element) {
-        try {
-            WebDriverWait wait = new WebDriverWait(getDriver(), 60);
-            wait.until(ExpectedConditions.stalenessOf(element));
-        } catch (Exception e) {
-
-            throw e;
-        }
-    }
 
     /**
      * Performs click on element
@@ -1031,9 +1163,42 @@ public class BasePage extends BaseTest {
         while (isElementPresentWithTimer(showMoreButton, 5)) {
             scrollToElement(footerLogo);
             scrollToElement(footerLogo);
+
+            moveToElement(showMoreButton);
+            goSleep(2);
             clickOnElementUsingJS(showMoreButton);
             sleepTightInMiliSeconds(1222);
         }
     }
+
+    public void sleepTightInSeconds(int seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (Exception e) {
+
+        }
+    }
+
+    public void waitUntilElementAbsent(WebElement element) {
+
+        FluentWait<WebDriver> wait2 = new FluentWait<>(getDriver())
+                .withTimeout(Duration.ofSeconds(40))
+                .pollingEvery(Duration.ofMillis(2000))
+                .ignoring(NoSuchElementException.class);
+
+        Function<WebDriver, Boolean> function = new Function<WebDriver, Boolean>() {
+            public Boolean apply(WebDriver arg0) {
+                if (isElementPresented(element)) {
+                    base.Reporter.log("Alert is present");
+                    return false;
+                }
+                base.Reporter.log("Alert is closed");
+                return true;
+            }
+        };
+        wait2.until(function);
+    }
+
+
 }
 

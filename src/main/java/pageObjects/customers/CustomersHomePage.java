@@ -5,7 +5,6 @@ import base.Reporter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import pageObjects.products.EnterpriseResourcePlanningPage;
 
 public class CustomersHomePage extends BasePage {
     CustomersHomePage customersHomePage;

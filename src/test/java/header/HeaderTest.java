@@ -39,7 +39,7 @@ public class HeaderTest extends BaseTest {
 
 
     //Products
-    @Test
+    @Test(groups = {"Sanity"})
     public void erpDropdownItemOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -47,7 +47,7 @@ public class HeaderTest extends BaseTest {
         Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void financialPlanningDropdownItemOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -55,7 +55,7 @@ public class HeaderTest extends BaseTest {
         Assert.assertTrue(financialPlanningPage.isMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void humanCapitalDropdownItemOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -63,7 +63,7 @@ public class HeaderTest extends BaseTest {
         Assert.assertTrue(humanCapitalManagementPage.isMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void studentManagementDropdownItemOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -72,7 +72,7 @@ public class HeaderTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void peopleExperienceSuiteDropdownItemOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -81,7 +81,7 @@ public class HeaderTest extends BaseTest {
     }
 
     //Industries
-    @Test
+    @Test(groups = {"Sanity"})
     public void higherEducationDropdownItemOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -89,7 +89,7 @@ public class HeaderTest extends BaseTest {
         Assert.assertTrue(higherEducationPage.isMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void nonprofitDropdownItemOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -97,7 +97,7 @@ public class HeaderTest extends BaseTest {
         Assert.assertTrue(nonprofitPage.isNonprofitMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void professionalServicesDropdownItemOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -105,7 +105,7 @@ public class HeaderTest extends BaseTest {
         Assert.assertTrue(professionalServicesPage.isMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void publicSectorDropdownItemOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -113,7 +113,7 @@ public class HeaderTest extends BaseTest {
         Assert.assertTrue(publicSectorPage.isMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void industriesDropdownItemOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -121,7 +121,7 @@ public class HeaderTest extends BaseTest {
         Assert.assertTrue(industriesHomePage.isIndustriesHomeMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void customersHeaderItemOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -129,7 +129,7 @@ public class HeaderTest extends BaseTest {
         Assert.assertTrue(customersHomePage.isCustomersMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void blogDropdownItemOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -137,7 +137,7 @@ public class HeaderTest extends BaseTest {
         Assert.assertTrue(blogHomePage.isBlogHomeMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void eventsDropdownItemOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -145,7 +145,7 @@ public class HeaderTest extends BaseTest {
         Assert.assertTrue(eventsHomePage.isEventsHomeMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void libraryDropdownItemOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -153,7 +153,7 @@ public class HeaderTest extends BaseTest {
         Assert.assertTrue(libraryHomePage.isLibraryHomeMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void whyUnit4HeaderItemOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -161,7 +161,7 @@ public class HeaderTest extends BaseTest {
         Assert.assertTrue(whyUnit4Page.isWhyUni4MainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void isHeaderPresentAfterScroll() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -169,7 +169,7 @@ public class HeaderTest extends BaseTest {
         Assert.assertTrue(homePage.isMainLogoPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void communityOpensCommunityPortal() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();

@@ -11,7 +11,7 @@ public class FHstPoltenTest extends BasePage {
     FHstPoltenPage fHstPoltenPage = new FHstPoltenPage(getDriver());
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitles() {
         BasePage.openURL(URLs.CUSTOMERS_FH_ST_POLTEN.URL());
         Assert.assertTrue(fHstPoltenPage.isFHPoltenMainTitlePresent());
@@ -21,20 +21,20 @@ public class FHstPoltenTest extends BasePage {
         Assert.assertTrue(fHstPoltenPage.isImpactsTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkFHstPoltenPageBreadCrumb() {
         BasePage.openURL(URLs.CUSTOMERS_FH_ST_POLTEN.URL());
         Assert.assertTrue(breadCrumbsBasePage.isFHstPoltenCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensRightPage() {
         BasePage.openURL(URLs.CUSTOMERS_FH_ST_POLTEN.URL());
         fHstPoltenPage.clickReadMoreAboutFinancialPlanning();
         Assert.assertTrue(breadCrumbsBasePage.isDeliver360CrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void downloadCaseStudyOpensPDFPage() {
         BasePage.openURL(URLs.CUSTOMERS_FH_ST_POLTEN.URL());
         fHstPoltenPage.clickDownloadCaseStudy();

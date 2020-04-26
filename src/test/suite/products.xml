@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Products" verbose="2" configfailurepolicy="continue">
+    <test name="Products">
+        <packages>
+
+            <package name="products.*"></package>
+
+        </packages>
+    </test>
+</suite>

@@ -32,7 +32,7 @@ public class HomePageTest extends BaseTest {
     private EnterpriseResourcePlanningPage enterpriseResourcePlanningPage = new EnterpriseResourcePlanningPage(getDriver());
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void homePageTest() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -41,7 +41,7 @@ public class HomePageTest extends BaseTest {
         Assert.assertEquals(homePage.getCenterHeaderText(), "Our suite of People Experience solutions will free your people to focus on what matters: their success and yours.");
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensERPPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -49,7 +49,7 @@ public class HomePageTest extends BaseTest {
         Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensFinancialPlanningPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -58,7 +58,7 @@ public class HomePageTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensHumanCapitalPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -68,7 +68,7 @@ public class HomePageTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensStudentManagementPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -77,7 +77,7 @@ public class HomePageTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isStudentManagementCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensWarChildPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -86,7 +86,7 @@ public class HomePageTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isWarChildCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadOurCustomersStoriesOpensCustomersPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -95,7 +95,7 @@ public class HomePageTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isCustomersCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkWhyUnit4ButtonOpensWhyPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -105,7 +105,7 @@ public class HomePageTest extends BaseTest {
     }
 
     //The latest news
-    @Test
+    @Test(groups = {"Sanity"})
     public void compareNewsArticleNamesWithOpenedPages() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
         cookiesPanelPage.acceptCookies();
@@ -113,7 +113,7 @@ public class HomePageTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkSeeAllNewsOpensNewsPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -122,7 +122,7 @@ public class HomePageTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isNewsHomePageCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void downloadReportOpensDownloadFormPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();

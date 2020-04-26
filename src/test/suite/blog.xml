@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Blog" verbose="2" configfailurepolicy="continue">
+    <test name="Blog">
+        <packages>
+            <package name="blog.*"></package>
+
+        </packages>
+    </test>
+</suite>

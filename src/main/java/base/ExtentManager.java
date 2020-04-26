@@ -2,13 +2,10 @@ package base;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-
 import com.aventstack.extentreports.reporter.configuration.Theme;
-
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 
 public class ExtentManager {
@@ -29,7 +26,7 @@ public class ExtentManager {
         htmlReporter.config().setTheme(Theme.STANDARD);
         htmlReporter.config().setDocumentTitle("Acceptance Tests");
         htmlReporter.config().setEncoding("utf-8");
-        htmlReporter.config().setReportName("Givelify");
+        htmlReporter.config().setReportName("Unit4");
 
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);

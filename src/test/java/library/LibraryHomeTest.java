@@ -18,14 +18,14 @@ public class LibraryHomeTest extends BaseTest {
     LetsTalkSectionPage letsTalkSectionPage = new LetsTalkSectionPage(getDriver());
     RequestDemoPopupPage requestDemoPopupPage = new RequestDemoPopupPage(getDriver());
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkLibraryHomePageCrumb() {
         BasePage.openURL(URLs.LIBRARY.URL());
         cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isLibraryCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaSection() {
         BasePage.openURL(URLs.LIBRARY.URL());
         cookiesPanelPage.acceptCookies();
@@ -36,7 +36,7 @@ public class LibraryHomeTest extends BaseTest {
         requestDemoPopupPage.closeRequestDemoForm();
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void downloadPDFOpensPDF() {
         BasePage.openURL(URLs.LIBRARY.URL());
         cookiesPanelPage.acceptCookies();

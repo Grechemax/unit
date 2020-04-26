@@ -30,7 +30,7 @@ public class FinancialPlanningTest extends BaseTest {
     private HumanCapitalManagementPage humanCapitalManagementPage = new HumanCapitalManagementPage(getDriver());
     private EnterpriseResourcePlanningPage enterpriseResourcePlanningPage = new EnterpriseResourcePlanningPage(getDriver());
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitlesPresent() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         cookiesPanelPage.acceptCookies();
@@ -43,7 +43,7 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertTrue(financialPlanningPage.isTrustedOrganizationsTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitlesText() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         cookiesPanelPage.acceptCookies();
@@ -55,7 +55,7 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertEquals(financialPlanningPage.getTrustedOrganizationsTitleText(), "Trusted worldwide by organizations that serve people");
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkPanelTitlesPresent() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         cookiesPanelPage.acceptCookies();
@@ -68,14 +68,14 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertTrue(financialPlanningPage.isFinalConsolidationSectionHeaderPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkFinancialPlanningCrumb() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
     }
 
-    @Test()
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaHeader() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         cookiesPanelPage.acceptCookies();
@@ -85,7 +85,7 @@ public class FinancialPlanningTest extends BaseTest {
         requestDemoPopupPage.closeRequestDemoForm();
     }
 
-    @Test()
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaSection() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         cookiesPanelPage.acceptCookies();
@@ -95,7 +95,7 @@ public class FinancialPlanningTest extends BaseTest {
         requestDemoPopupPage.closeRequestDemoForm();
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensPDFPage() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         cookiesPanelPage.acceptCookies();
@@ -103,7 +103,7 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkSeeMoreOpensCustomersPage() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         cookiesPanelPage.acceptCookies();
@@ -113,7 +113,7 @@ public class FinancialPlanningTest extends BaseTest {
     }
 
     //Looking for one of our other Unit4 solutions?
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkLinkOpensERPPage() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         cookiesPanelPage.acceptCookies();
@@ -122,7 +122,7 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertTrue(enterpriseResourcePlanningPage.isERPMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkLinkOpensFinancialPlanningPage() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         cookiesPanelPage.acceptCookies();
@@ -131,7 +131,7 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertTrue(financialPlanningPage.isMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkLinkOpensHumanCapitalManagementPage() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         cookiesPanelPage.acceptCookies();
@@ -140,7 +140,7 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertTrue(humanCapitalManagementPage.isMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkLinkOpensFinancialsPage() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         cookiesPanelPage.acceptCookies();
@@ -149,7 +149,7 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertTrue(financialsPage.isFinancialsPageMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void downloadPDFOpensPDF() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         cookiesPanelPage.acceptCookies();
@@ -158,7 +158,7 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void downloadResearchBundleOpensRouteToFPAPage() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         cookiesPanelPage.acceptCookies();
@@ -167,7 +167,7 @@ public class FinancialPlanningTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains("TheroutetoFPAleadership"));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void returnToHomePageViaLogo() {
         BasePage.openURL(URLs.PRODUCTS_FINANCIAL_PLANNING.URL());
         cookiesPanelPage.acceptCookies();

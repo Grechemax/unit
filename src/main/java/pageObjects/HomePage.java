@@ -1,7 +1,6 @@
 package pageObjects;
 
 import base.BasePage;
-
 import base.BreadCrumbsBasePage;
 import base.Reporter;
 import org.openqa.selenium.By;

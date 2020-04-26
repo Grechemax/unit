@@ -33,7 +33,7 @@ public class HigherEducationTest extends BaseTest {
     private HumanCapitalManagementPage humanCapitalManagementPage = new HumanCapitalManagementPage(getDriver());
     private EnterpriseResourcePlanningPage enterpriseResourcePlanningPage = new EnterpriseResourcePlanningPage(getDriver());
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitlesPresent() {
         BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         cookiesPanelPage.acceptCookies();
@@ -45,14 +45,14 @@ public class HigherEducationTest extends BaseTest {
         Assert.assertTrue(higherEducationPage.isManchesterUniversityTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkHigherEducationCrumb() {
         BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isHigherEducationCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitlesText() {
         BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         cookiesPanelPage.acceptCookies();
@@ -65,7 +65,7 @@ public class HigherEducationTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkPanelTitlesPresent() {
         BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         cookiesPanelPage.acceptCookies();
@@ -74,7 +74,7 @@ public class HigherEducationTest extends BaseTest {
         Assert.assertTrue(higherEducationPage.isImproveIndustrialEffectivenessSectionTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaHeader() {
         BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         cookiesPanelPage.acceptCookies();
@@ -84,7 +84,7 @@ public class HigherEducationTest extends BaseTest {
         requestDemoPopupPage.closeRequestDemoForm();
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaSection() {
         BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         cookiesPanelPage.acceptCookies();
@@ -96,7 +96,7 @@ public class HigherEducationTest extends BaseTest {
     }
 
     //Your New Unit4 People Experience Suite
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensERPPage() {
         BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         cookiesPanelPage.acceptCookies();
@@ -105,7 +105,7 @@ public class HigherEducationTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensStudentManagementPage() {
         BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         cookiesPanelPage.acceptCookies();
@@ -114,7 +114,7 @@ public class HigherEducationTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isStudentManagementCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensFinancialPlanningPage() {
         BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         cookiesPanelPage.acceptCookies();
@@ -123,7 +123,7 @@ public class HigherEducationTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensHumanCapitalPage() {
         BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         cookiesPanelPage.acceptCookies();
@@ -133,7 +133,7 @@ public class HigherEducationTest extends BaseTest {
     }
 
     // Customer Overview: Manchester
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensManchesterUniversityPage() {
         BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         cookiesPanelPage.acceptCookies();
@@ -142,7 +142,7 @@ public class HigherEducationTest extends BaseTest {
         Assert.assertTrue(manchesterUniversityPage.isManchesterMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkSeeMoreCustomersStoriesOpensCustomersPage() {
         BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         cookiesPanelPage.acceptCookies();
@@ -151,7 +151,7 @@ public class HigherEducationTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isCustomersCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkSeeAllNewsOpensNewsPage() {
         BasePage.openURL(URLs.INDUSTRIES_HIGHER_EDUCATION.URL());
         cookiesPanelPage.acceptCookies();

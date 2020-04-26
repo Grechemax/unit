@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 public class HeaderBasePage extends BasePage {
     private By productsHeaderItem = By.xpath("//*[@id='sitenav']//a[contains(text(), 'Products')]");
@@ -153,6 +152,7 @@ public class HeaderBasePage extends BasePage {
         waitForElement(magnifierIconToSubmit);
         Reporter.log("submitting search with search icon");
         clickOnElement(magnifierIconToSubmit);
+        clickElementIfPresent(By.id("icon-search"),35);
     }
 
     public void submitSearchViaReturn() {

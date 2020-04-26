@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-
 import java.util.List;
 
 
@@ -36,7 +35,7 @@ public class SearchPage extends SearchFilterBasePage {
 
     public boolean isSearchPageMainHeaderPresent() {
         Reporter.log("'Search Page' main header is present");
-        waitForElement(searchPageMainHeader);
+        waitForElementWithWaitTime(searchPageMainHeader, 45);
         return isElementPresentWithTimer(searchPageMainHeader, 10);
     }
 

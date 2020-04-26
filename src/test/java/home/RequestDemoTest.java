@@ -14,7 +14,7 @@ public class RequestDemoTest extends BaseTest {
     private RequestDemoPopupPage requestDemoPopupPage = new RequestDemoPopupPage(getDriver());
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void submitEmptyRequestDemoForm() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         headerBasePage.clickRequestDemoForm();
@@ -31,7 +31,7 @@ public class RequestDemoTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void submitWrongDataDemoForm() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         headerBasePage.clickRequestDemoForm();
@@ -44,7 +44,7 @@ public class RequestDemoTest extends BaseTest {
         Assert.assertTrue(requestDemoPopupPage.isEmailInvalidErrorPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void submitValidDataForm() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         headerBasePage.clickRequestDemoForm();
@@ -58,7 +58,7 @@ public class RequestDemoTest extends BaseTest {
         Assert.assertTrue(requestDemoPopupPage.isThankYouPopupPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void submitValidDataWithoutCountry() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         headerBasePage.clickRequestDemoForm();
@@ -71,7 +71,7 @@ public class RequestDemoTest extends BaseTest {
         Assert.assertTrue(requestDemoPopupPage.isCountryErrorPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void submitValidDataAndSubscribe() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         headerBasePage.clickRequestDemoForm();
@@ -86,7 +86,7 @@ public class RequestDemoTest extends BaseTest {
         Assert.assertTrue(requestDemoPopupPage.isThankYouPopupPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void privacyPolicyOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         headerBasePage.clickRequestDemoForm();
@@ -97,7 +97,7 @@ public class RequestDemoTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains("terms-and-conditions"));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void infoAboutPersonalDataOpensRightPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         headerBasePage.clickRequestDemoForm();
@@ -108,7 +108,7 @@ public class RequestDemoTest extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains(External_URLs.INFO_PERSONAL_DATA.URL()));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void clickHereOpensSubscriptionCenter() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         headerBasePage.clickRequestDemoForm();

@@ -28,7 +28,7 @@ public class PublicSectorTest extends BaseTest {
     private HumanCapitalManagementPage humanCapitalManagementPage = new HumanCapitalManagementPage(getDriver());
     private EnterpriseResourcePlanningPage enterpriseResourcePlanningPage = new EnterpriseResourcePlanningPage(getDriver());
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitlesPresent() {
         BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         cookiesPanelPage.acceptCookies();
@@ -42,14 +42,14 @@ public class PublicSectorTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkPublicSectorCrumb() {
         BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isPublicSectorCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitlesText() {
         BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         cookiesPanelPage.acceptCookies();
@@ -61,7 +61,7 @@ public class PublicSectorTest extends BaseTest {
         Assert.assertEquals(publicSectorPage.getCityOfPortTitleText(), "Customer Overview: City of Port Coquitlam");
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkPanelTitlesPresent() {
         BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         cookiesPanelPage.acceptCookies();
@@ -71,7 +71,7 @@ public class PublicSectorTest extends BaseTest {
         Assert.assertTrue(publicSectorPage.isDeliverTransparencySectionTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaHeader() {
         BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         cookiesPanelPage.acceptCookies();
@@ -81,7 +81,7 @@ public class PublicSectorTest extends BaseTest {
         requestDemoPopupPage.closeRequestDemoForm();
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaSection() {
         BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         cookiesPanelPage.acceptCookies();
@@ -92,7 +92,7 @@ public class PublicSectorTest extends BaseTest {
         requestDemoPopupPage.closeRequestDemoForm();
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensERPPage() {
         BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         cookiesPanelPage.acceptCookies();
@@ -102,7 +102,7 @@ public class PublicSectorTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensFinancialPlanningPage() {
         BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         cookiesPanelPage.acceptCookies();
@@ -111,7 +111,7 @@ public class PublicSectorTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensHumanCapitalPage() {
         BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         cookiesPanelPage.acceptCookies();
@@ -121,7 +121,7 @@ public class PublicSectorTest extends BaseTest {
     }
 
     // Customer Overview: City of Port
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensCityOfPortPage() {
         BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         cookiesPanelPage.acceptCookies();
@@ -130,7 +130,7 @@ public class PublicSectorTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isCityOfPortCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadOurCustomersStoriesOpensCustomersPage() {
         BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         cookiesPanelPage.acceptCookies();
@@ -139,7 +139,7 @@ public class PublicSectorTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isCustomersCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkSeeAllNewsOpensNewsPage() {
         BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         cookiesPanelPage.acceptCookies();
@@ -148,7 +148,7 @@ public class PublicSectorTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isNewsHomePageCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void learnMoreOpensPDF() {
         BasePage.openURL(URLs.INDUSTRIES_PUBLIC_SECTOR.URL());
         cookiesPanelPage.acceptCookies();

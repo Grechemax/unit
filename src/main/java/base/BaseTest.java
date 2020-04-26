@@ -11,7 +11,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -36,11 +40,11 @@ public class BaseTest {
 
     @Parameters({"environment","browser"})
     @BeforeMethod
-    public synchronized void beforeClass(ITestContext ctx, @Optional("chrome") String browser, @Optional("TEST") String environment
+    public synchronized void beforeClass(ITestContext ctx, Method method, @Optional("chrome") String browser, @Optional("TEST") String environment
     ) {
 
         suiteName = ctx.getCurrentXmlTest().getSuite().getName();
-        ExtentTest parent = ExtentManager.getInstance(suiteName).createTest(getClass().getName());
+        ExtentTest parent = ExtentManager.getInstance(suiteName).createTest(method.getName());
         parentTest.set(parent);
         setEnvironmentForTests(environment);
         setBrowser(browser);
@@ -112,9 +116,6 @@ public class BaseTest {
         if (result.getStatus() == ITestResult.FAILURE) {
             test.get().fail(result.getThrowable());
             Reporter.logFail("Test "+result.getMethod().getMethodName()+ " FAILED");
-            try {
-                test.get().addScreenCaptureFromPath(Ashot.getDiffPath());
-            } catch (IOException e) { }
             try {
                 DateFormat dateFormat = new SimpleDateFormat("yyyy MM d");
                 Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Europe/Kiev"));

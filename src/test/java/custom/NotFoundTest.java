@@ -1,3 +1,5 @@
+package custom;
+
 import base.BasePage;
 import base.BaseTest;
 import data.URLs;
@@ -12,13 +14,13 @@ public class NotFoundTest extends BaseTest {
     HomePage homePage = new HomePage(getDriver());
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkPageTitle() {
         BasePage.openURL(URLs.WRONG_URL.URL());
         notFoundPage.isNonFoundMainTitlePresent();
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void takeMeHomeBtnOpensHomePage() {
         BasePage.openURL(URLs.WRONG_URL.URL());
         notFoundPage.clickTakeMeHomeBtn();

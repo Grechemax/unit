@@ -16,7 +16,7 @@ public class SearchUsingFiltersTest extends BaseTest {
     SearchPage searchPage = new SearchPage(getDriver());
     String validQuerySearch = "news";
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void searchBlogOnly() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -30,7 +30,7 @@ public class SearchUsingFiltersTest extends BaseTest {
         Assert.assertFalse(searchPage.newsResultsShown());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void searchNewsOnly() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();

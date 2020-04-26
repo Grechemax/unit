@@ -17,14 +17,14 @@ public class LocationsHomeTest extends BaseTest {
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void compareLocationsNamesWithPages() {
         BasePage.openURL(URLs.LOCATIONS.URL());
         cookiesPanelPage.acceptCookies();
         locationsHomePage.compareLocationsNamesWithPages();
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkLocationsHomeBreadCrumbs() {
         BasePage.openURL(URLs.LOCATIONS.URL());
         cookiesPanelPage.acceptCookies();
@@ -33,7 +33,7 @@ public class LocationsHomeTest extends BaseTest {
         Assert.assertTrue(homePage.isMainHeaderPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void showMoreLoadsMoreLocationItems() {
         BasePage.openURL(URLs.LOCATIONS.URL());
         cookiesPanelPage.acceptCookies();

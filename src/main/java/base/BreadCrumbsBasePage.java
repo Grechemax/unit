@@ -226,6 +226,7 @@ public class BreadCrumbsBasePage extends BasePage {
 
     public String getCurrentBreadCrumb() {
         waitForElement(currentBredCrumb);
+        goSleep(7);
         Reporter.log("retrieving current breadcrumbs");
         return getElementText(currentBredCrumb);
     }

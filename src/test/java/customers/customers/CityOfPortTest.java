@@ -17,7 +17,7 @@ public class CityOfPortTest extends BaseTest {
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
     EnterpriseResourcePlanningPage enterpriseResourcePlanningPage = new EnterpriseResourcePlanningPage(getDriver());
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitles() {
         BasePage.openURL(URLs.CUSTOMERS_CITY_OF_PORT.URL());
         Assert.assertTrue(cityOfPortPage.isCityOfPortMainTitlePresent());
@@ -27,13 +27,13 @@ public class CityOfPortTest extends BaseTest {
         Assert.assertTrue(cityOfPortPage.isImpactsTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkCityOfPortPageBreadCrumb() {
         BasePage.openURL(URLs.CUSTOMERS_CITY_OF_PORT.URL());
         Assert.assertTrue(breadCrumbsBasePage.isCityOfPortCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensRightPage() {
         BasePage.openURL(URLs.CUSTOMERS_CITY_OF_PORT.URL());
         cookiesPanelPage.acceptCookies();
@@ -42,7 +42,7 @@ public class CityOfPortTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void downloadCaseStudyOpensPDFPage() {
         BasePage.openURL(URLs.CUSTOMERS_CITY_OF_PORT.URL());
         cookiesPanelPage.acceptCookies();

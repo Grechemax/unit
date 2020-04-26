@@ -1,3 +1,5 @@
+package custom;
+
 import base.BasePage;
 import base.BaseTest;
 import base.BreadCrumbsBasePage;
@@ -17,19 +19,19 @@ public class WhyUnit4Test extends BaseTest {
     PeopleExperienceSuitePage peopleExperienceSuitePage = new PeopleExperienceSuitePage(getDriver());
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkPageTitle() {
         BasePage.openURL(URLs.WHY_UNIT4.URL());
         whyUnit4Page.isWhyUni4MainTitlePresent();
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkWhyUnit4BreadCrumb() {
         BasePage.openURL(URLs.WHY_UNIT4.URL());
         Assert.assertTrue(breadCrumbsBasePage.isWhyUnit4CrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void readMoreWhatSoftwareOpensPeopleExperienceSuitePage() {
         BasePage.openURL(URLs.WHY_UNIT4.URL());
         whyUnit4Page.clickReadMoreWhatSoftware();
@@ -37,7 +39,7 @@ public class WhyUnit4Test extends BaseTest {
         Assert.assertTrue(peopleExperienceSuitePage.isMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void readSeeHowWeServeOpensIndustriesPage() {
         BasePage.openURL(URLs.WHY_UNIT4.URL());
         whyUnit4Page.clickReadSeeHowWeServe();
@@ -45,7 +47,7 @@ public class WhyUnit4Test extends BaseTest {
         Assert.assertTrue(industriesHomePage.isIndustriesHomeMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void downloadReportOpensDownloadFormPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -54,7 +56,7 @@ public class WhyUnit4Test extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains("Report"));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void downloadPDF1OpensCorrectPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -63,7 +65,7 @@ public class WhyUnit4Test extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains(".pdf"));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void downloadPDF2OpensCorrectPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();
@@ -72,7 +74,7 @@ public class WhyUnit4Test extends BaseTest {
         Assert.assertTrue(BasePage.isCurrentUrlContains("Next-Level-ERP"));
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void downloadPDF3OpensCorrectPage() {
         BasePage.openURL(URLs.HOME_PAGE.URL());
         cookiesPanelPage.acceptCookies();

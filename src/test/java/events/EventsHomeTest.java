@@ -16,7 +16,7 @@ public class EventsHomeTest extends BaseTest {
     CookiesPanelPage cookiesPanelPage = new CookiesPanelPage(getDriver());
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkEventsHomePageBreadCrumb() {
         BasePage.openURL(URLs.EVENTS.URL());
         cookiesPanelPage.acceptCookies();
@@ -25,7 +25,7 @@ public class EventsHomeTest extends BaseTest {
         Assert.assertTrue(homePage.isMainHeaderPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void showMoreLoadsMoreEventItems() {
         BasePage.openURL(URLs.EVENTS.URL());
         cookiesPanelPage.acceptCookies();

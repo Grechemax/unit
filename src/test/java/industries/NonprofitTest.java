@@ -30,7 +30,7 @@ public class NonprofitTest extends BaseTest {
     private EnterpriseResourcePlanningPage enterpriseResourcePlanningPage = new EnterpriseResourcePlanningPage(getDriver());
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitlesPresent() {
         BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         cookiesPanelPage.acceptCookies();
@@ -44,14 +44,14 @@ public class NonprofitTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkNonProfitCrumb() {
         BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isNonProfitCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitlesText() {
         BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         cookiesPanelPage.acceptCookies();
@@ -63,7 +63,7 @@ public class NonprofitTest extends BaseTest {
         Assert.assertEquals(nonprofitPage.getWarChildTitleText(), "Customer Overview: War Child");
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkPanelTitlesPresent() {
         BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         cookiesPanelPage.acceptCookies();
@@ -73,7 +73,7 @@ public class NonprofitTest extends BaseTest {
         Assert.assertTrue(nonprofitPage.isImproveComplianceSectionTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaHeader() {
         BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         cookiesPanelPage.acceptCookies();
@@ -83,7 +83,7 @@ public class NonprofitTest extends BaseTest {
         requestDemoPopupPage.closeRequestDemoForm();
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaSection() {
         BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         cookiesPanelPage.acceptCookies();
@@ -95,7 +95,7 @@ public class NonprofitTest extends BaseTest {
     }
 
     //Your New Unit4 People Experience Suite
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensERPPage() {
         BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         cookiesPanelPage.acceptCookies();
@@ -104,7 +104,7 @@ public class NonprofitTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensFinancialPlanningPage() {
         BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         cookiesPanelPage.acceptCookies();
@@ -113,7 +113,7 @@ public class NonprofitTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensHumanCapitalPage() {
         BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         cookiesPanelPage.acceptCookies();
@@ -123,7 +123,7 @@ public class NonprofitTest extends BaseTest {
     }
 
     // Customer Overview: War Child
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensWarChildPage() {
         BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         cookiesPanelPage.acceptCookies();
@@ -132,7 +132,7 @@ public class NonprofitTest extends BaseTest {
         Assert.assertTrue(warChildPage.isWarChildMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkSeeMoreCustomersStoriesOpensCustomersPage() {
         BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         cookiesPanelPage.acceptCookies();
@@ -141,7 +141,7 @@ public class NonprofitTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isCustomersCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkSeeAllNewsOpensNewsPage() {
         BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         cookiesPanelPage.acceptCookies();
@@ -150,7 +150,7 @@ public class NonprofitTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isNewsHomePageCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void learnMoreOpensPDF() {
         BasePage.openURL(URLs.INDUSTRIES_NONPROFIT.URL());
         cookiesPanelPage.acceptCookies();

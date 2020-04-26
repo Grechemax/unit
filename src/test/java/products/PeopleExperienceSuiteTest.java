@@ -18,7 +18,7 @@ public class PeopleExperienceSuiteTest extends BaseTest {
     private RequestDemoPopupPage requestDemoPopupPage = new RequestDemoPopupPage(getDriver());
     private PeopleExperienceSuitePage peopleExperienceSuitePage = new PeopleExperienceSuitePage(getDriver());
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitlesPresent() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
         cookiesPanelPage.acceptCookies();
@@ -29,14 +29,14 @@ public class PeopleExperienceSuiteTest extends BaseTest {
         Assert.assertTrue(peopleExperienceSuitePage.isBackedByUnit4TitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkPeopleExperienceSuitePageBreadCrumb() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
         cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isPeopleExperienceSuiteCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void erpReadMoreOpensRightPage() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
         cookiesPanelPage.acceptCookies();
@@ -44,7 +44,7 @@ public class PeopleExperienceSuiteTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isProductsERPCrumbCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void financialPlanningReadMoreOpensRightPage() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
         cookiesPanelPage.acceptCookies();
@@ -52,7 +52,7 @@ public class PeopleExperienceSuiteTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void humanCapitalManagementReadMoreOpensRightPage() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
         cookiesPanelPage.acceptCookies();
@@ -60,7 +60,7 @@ public class PeopleExperienceSuiteTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isHumanCapitalManagementCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void studentManagementReadMoreOpensRightPage() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
         cookiesPanelPage.acceptCookies();
@@ -68,7 +68,7 @@ public class PeopleExperienceSuiteTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isStudentManagementCrumbVisible());
     }
 
-    @Test()
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaHeader() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
         cookiesPanelPage.acceptCookies();
@@ -78,7 +78,7 @@ public class PeopleExperienceSuiteTest extends BaseTest {
         requestDemoPopupPage.closeRequestDemoForm();
     }
 
-    @Test()
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaSection() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
         cookiesPanelPage.acceptCookies();
@@ -90,7 +90,7 @@ public class PeopleExperienceSuiteTest extends BaseTest {
         requestDemoPopupPage.closeRequestDemoForm();
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkWhyUnit4BtnOpensWhyUnit4Page() {
         BasePage.openURL(URLs.PRODUCTS_PEOPLE_EXPERIENCE.URL());
         cookiesPanelPage.acceptCookies();

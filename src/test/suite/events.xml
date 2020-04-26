@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Events" verbose="2" configfailurepolicy="continue">
+    <test name="Events">
+        <packages>
+
+            <package name="events.*"></package>
+
+        </packages>
+    </test>
+</suite>

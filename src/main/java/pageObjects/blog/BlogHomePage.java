@@ -1,18 +1,12 @@
 package pageObjects.blog;
 
-import base.BasePage;
 import base.BreadCrumbsBasePage;
 import base.Reporter;
 import base.SearchFilterBasePage;
-import data.URLs;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class BlogHomePage extends SearchFilterBasePage {
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
@@ -57,6 +51,8 @@ public class BlogHomePage extends SearchFilterBasePage {
     public String getBlogHomePageMainTitle() {
         Reporter.log("getting text of main title of Blog Page");
         waitForElement(blogHomeMainTitle);
+        By title = By.xpath("//div[@class='container']//h1//span");
+        waitForElementWithWaitTime(title, 45);
         return getElementText(blogHomeMainTitle);
     }
 
@@ -147,15 +143,66 @@ public class BlogHomePage extends SearchFilterBasePage {
 
         for (int i = 1; i <= elementQuantity; i++) {
             By item = By.xpath(String.format(element, i));
-            Reporter.log("Comparing name of Popular Posts #" + i + " with title of opened page");
+
             String postTitle = getElementText(item);
+            Reporter.log("Comparing name of Popular Posts with name " + postTitle + " with title of opened page");
             scrollToElement(item);
             clickOnElementUsingJS(item);
-            String currentBreadCrumb = breadCrumbsBasePage.getCurrentBreadCrumb();
+            By title = By.xpath("//div[@class='container']//h1//span");
+            waitForElement(title);
+            String currentBreadCrumb = getElementText(title);
+            Reporter.log("Verify that you are on page with title '"+postTitle+"'");
             Assert.assertEquals(postTitle, currentBreadCrumb);
-            getDriver().navigate().back();
+            openURL("https://stg.unit4.com/blog");
             Assert.assertTrue(isBlogHomeMainTitlePresent());
         }
     }
+    private By showMoreButton = By.xpath("//*[contains(text(), 'Show more')]");
 
+    public void checkAllBlogs(){
+        int j = 0;
+        scrollToBottom(700);
+        for (int i =1; i<7; i++){
+
+            By blog = By.xpath("(//div[@class='tile-group-tile-wrap']//h3//span)["+i+"]");
+
+            waitForElement(blog);
+            moveToElement(blog);
+            String s = getElementText(blog);
+            Reporter.log("Opening blog with name '"+s+"'");
+            goSleep(5);
+            clickOnElementUsingJS(blog);
+            By title = By.xpath("//div[@class='container']//h1//span");
+            waitForElement(title);
+            moveToElement(title);
+            goSleep(5);
+            Reporter.log("Verify that you are on page with title '"+s+"'");
+            Assert.assertEquals(s,getElementText(title));
+
+            if (i == 6){
+                Reporter.log("**Navigating to the next blog page**");
+                goSleep(10);
+                i = 1;
+                j++;
+            }
+
+            switch (j){
+                case 0:
+                    openURL("https://stg.unit4.com/blog");
+                    break;
+                case 1:
+
+                    openURL("https://stg.unit4.com/blog?page=1");
+                    break;
+                case 2:
+                    openURL("https://stg.unit4.com/blog?page=2");
+                    break;
+            }
+            goSleep(5);
+            if (j==3){
+                return;
+            }
+        }
+
+    }
 }

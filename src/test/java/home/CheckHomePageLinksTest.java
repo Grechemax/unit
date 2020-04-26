@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class CheckHomePageLinksTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkHomePageLinks() {
         BasePage.checkLinks(URLs.HOME_PAGE.URL());
 

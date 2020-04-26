@@ -17,14 +17,14 @@ public class ContactUsTest extends BaseTest {
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkContactUsPageCrumb() {
         BasePage.openURL(URLs.CONTACT_US.URL());
         cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isContactUsCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void goHomeViaCrumb() {
         BasePage.openURL(URLs.CONTACT_US.URL());
         cookiesPanelPage.acceptCookies();
@@ -32,7 +32,7 @@ public class ContactUsTest extends BaseTest {
         Assert.assertTrue(homePage.isMainHeaderPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void compareLocationsNamesWithPages() {
         BasePage.openURL(URLs.CONTACT_US.URL());
         cookiesPanelPage.acceptCookies();

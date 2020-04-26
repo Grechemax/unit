@@ -32,7 +32,7 @@ public class ProfessionalServicesTest extends BaseTest {
     private HumanCapitalManagementPage humanCapitalManagementPage = new HumanCapitalManagementPage(getDriver());
     private EnterpriseResourcePlanningPage enterpriseResourcePlanningPage = new EnterpriseResourcePlanningPage(getDriver());
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitlesPresent() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
         cookiesPanelPage.acceptCookies();
@@ -45,14 +45,14 @@ public class ProfessionalServicesTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkProfessionalServicesCrumb() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
         cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isProfessionalServicesCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitlesText() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
         cookiesPanelPage.acceptCookies();
@@ -63,7 +63,7 @@ public class ProfessionalServicesTest extends BaseTest {
         Assert.assertEquals(professionalServicesPage.getCustomersSuccessStoriesTitleText(), "Customer Success Stories");
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkPanelTitlesPresent() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
         cookiesPanelPage.acceptCookies();
@@ -73,7 +73,7 @@ public class ProfessionalServicesTest extends BaseTest {
         Assert.assertTrue(professionalServicesPage.isWinBusinessSectionTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaHeader() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
         cookiesPanelPage.acceptCookies();
@@ -83,7 +83,7 @@ public class ProfessionalServicesTest extends BaseTest {
         requestDemoPopupPage.closeRequestDemoForm();
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaSection() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
         cookiesPanelPage.acceptCookies();
@@ -96,7 +96,7 @@ public class ProfessionalServicesTest extends BaseTest {
 
 
     //Your New Unit4 People Experience Suite
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkLearnMoreBtnOpensPeopleExperienceSuitePage() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
         cookiesPanelPage.acceptCookies();
@@ -105,7 +105,7 @@ public class ProfessionalServicesTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isPeopleExperienceSuiteCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensERPPage() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
         cookiesPanelPage.acceptCookies();
@@ -115,7 +115,7 @@ public class ProfessionalServicesTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensFinancialPlanningPage() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
         cookiesPanelPage.acceptCookies();
@@ -124,7 +124,7 @@ public class ProfessionalServicesTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isFinancialPlanningCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensHumanCapitalPage() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
         cookiesPanelPage.acceptCookies();
@@ -135,7 +135,7 @@ public class ProfessionalServicesTest extends BaseTest {
 
 
     // Customer Overview: War Stanley
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensPDFPage() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
         cookiesPanelPage.acceptCookies();
@@ -144,7 +144,7 @@ public class ProfessionalServicesTest extends BaseTest {
         Assert.assertTrue(stanleySecurityPage.isStanleySecurityPageMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadOurCustomersStoriesOpensCustomersPage() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
         cookiesPanelPage.acceptCookies();
@@ -153,7 +153,7 @@ public class ProfessionalServicesTest extends BaseTest {
         Assert.assertTrue(breadCrumbsBasePage.isCustomersCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkSeeAllNewsOpensNewsPage() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
         cookiesPanelPage.acceptCookies();
@@ -164,7 +164,7 @@ public class ProfessionalServicesTest extends BaseTest {
 
 
     //The latest news
-    @Test
+    @Test(groups = {"Sanity"})
     public void compareNewsArticleNamesWithOpenedPages() {
         BasePage.openURL(URLs.INDUSTRIES_PROFESSIONAL_SERVICES.URL());
         cookiesPanelPage.acceptCookies();

@@ -16,7 +16,7 @@ public class ManchesterUniversityTest extends BaseTest {
     StudentManagementPage studentManagementPage = new StudentManagementPage(getDriver());
     ManchesterUniversityPage manchesterUniversityPage = new ManchesterUniversityPage(getDriver());
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitles() {
         BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
         cookiesPanelPage.acceptCookies();
@@ -27,14 +27,14 @@ public class ManchesterUniversityTest extends BaseTest {
         Assert.assertTrue(manchesterUniversityPage.isImpactsTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkManchesterPageBreadCrumb() {
         BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
         cookiesPanelPage.acceptCookies();
         Assert.assertTrue(breadCrumbsBasePage.isManchesterCrumbVisible());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkReadMoreOpensRightPage() {
         BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
         cookiesPanelPage.acceptCookies();
@@ -43,7 +43,7 @@ public class ManchesterUniversityTest extends BaseTest {
         Assert.assertTrue(studentManagementPage.isMainTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void downloadCaseStudyOpensPDFPage() {
         BasePage.openURL(URLs.CUSTOMERS_MANCHESTER.URL());
         cookiesPanelPage.acceptCookies();

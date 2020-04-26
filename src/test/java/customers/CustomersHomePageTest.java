@@ -16,7 +16,7 @@ public class CustomersHomePageTest extends BaseTest {
     private LetsTalkSectionPage letsTalkSectionPage = new LetsTalkSectionPage(getDriver());
     private RequestDemoPopupPage requestDemoPopupPage = new RequestDemoPopupPage(getDriver());
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkAllTitles() {
         BasePage.openURL(URLs.CUSTOMERS.URL());
         cookiesPanelPage.acceptCookies();
@@ -29,22 +29,28 @@ public class CustomersHomePageTest extends BaseTest {
         Assert.assertTrue(customersHomePage.isManchesterUniversityTitlePresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkCustomersHomePageBreadCrumb() {
+        BasePage.openURL(URLs.CUSTOMERS.URL());
+        cookiesPanelPage.acceptCookies();
         breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
         breadCrumbsBasePage.isCustomersCrumbVisible();
     }
 
-    @Test()
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaHeader() {
+        BasePage.openURL(URLs.CUSTOMERS.URL());
+        cookiesPanelPage.acceptCookies();
         headerBasePage.clickRequestDemoForm();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());
         requestDemoPopupPage.closeRequestDemoForm();
     }
 
-    @Test()
+    @Test(groups = {"Sanity"})
     public void openRequestDemoViaSection() {
+        BasePage.openURL(URLs.CUSTOMERS.URL());
+        cookiesPanelPage.acceptCookies();
         letsTalkSectionPage.clickRequestDemoInSection();
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormMainHeaderPresent());
         Assert.assertTrue(requestDemoPopupPage.isRequestDemoFormHeaderPresent());

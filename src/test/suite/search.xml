@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Search" verbose="2" configfailurepolicy="continue">
+    <test name="Search">
+        <packages>
+
+            <package name="search.*"></package>
+        </packages>
+    </test>
+</suite>

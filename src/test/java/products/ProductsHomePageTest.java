@@ -19,7 +19,7 @@ public class ProductsHomePageTest extends BaseTest {
     BreadCrumbsBasePage breadCrumbsBasePage = new BreadCrumbsBasePage(getDriver());
 
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkProductsHomeTitles() {
         BasePage.openURL(URLs.PRODUCTS.URL());
         cookiesPanelPage.acceptCookies();
@@ -27,7 +27,7 @@ public class ProductsHomePageTest extends BaseTest {
         Assert.assertTrue(productsHomePage.isProductsHomePageIntroPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void checkProductsHomeCrumbs() {
         BasePage.openURL(URLs.PRODUCTS.URL());
         cookiesPanelPage.acceptCookies();
@@ -37,7 +37,7 @@ public class ProductsHomePageTest extends BaseTest {
         Assert.assertTrue(homePage.isMainLogoPresent());
     }
 
-    @Test
+    @Test(groups = {"Sanity"})
     public void productsItemOpensRightPage() {
         BasePage.openURL(URLs.PRODUCTS.URL());
         cookiesPanelPage.acceptCookies();
