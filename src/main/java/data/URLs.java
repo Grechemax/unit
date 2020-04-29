@@ -26,19 +26,16 @@ public enum URLs {
 
     BLOG("/blog"),
     EVENTS("/events"),
+    SITEMAP("/sitemap"),
     LIBRARY("/library"),
-
-    LOCATIONS("/our-locations"),
-
-    WHY_UNIT4("/why-choose-unit4"),
     WRONG_URL("/wrong"),
     CONTACT_US("/contact-us"),
-
+    LOCATIONS("/our-locations"),
+    WHY_UNIT4("/why-choose-unit4"),
     PRIVACY_POLICY("/terms-and-conditions"),
     DISCLAIMER("/terms-and-conditions/disclaimer"),
     COOKIES("/terms-and-conditions/cookies-policy"),
-    TRADEMARKS("/terms-and-conditions/trademarks"),
-    SITEMAP("/sitemap");
+    TRADEMARKS("/terms-and-conditions/trademarks");
 
     private String stage;
 
