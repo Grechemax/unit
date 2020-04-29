@@ -48,8 +48,7 @@ public enum URLs {
 
     public String URL() {
         String baseURL = "stg.unit4.com";
-        String username = "sql";
-        String password = "www2020=";
+       // todo pass and user are hidden due to NDA
         String fullUrl = "https://" + username + ":" + password + "@" + baseURL + stage;
         return fullUrl;
     }
